@@ -1,19 +1,22 @@
 # InterviewAutoEditor
 
 InterviewAutoEditor is a planned local Windows tool for turning a Zoom interview
-starter project into a new, editable Kdenlive project. **There is no working editor
-yet.** The repository contains the planning bootstrap, Git checkpoint tooling
-and S01's genuine synthetic Kdenlive reference captures and capture tools.
+starter project into a new, editable Kdenlive project. **There is no automatic
+interview editor yet.** S02 adds an experimental minimal adapter that exports one
+manually specified shared interior cut, with named participant tracks, groups,
+a guide and MP4 audio disabled. Its editable output passed actual GUI checks.
 
 The installed primary target is independently verified as **Kdenlive 26.08.2,
 revision d4e87e4**. Its two-participant synthetic reference passed actual GUI
 open/play/group-edit/undo/save/reopen/render checks. Product compatibility remains
-experimental: there is no exporter yet. S01 is complete: the owner's example
-media is privately indexed, and a genuine four-participant starter was saved,
+experimental: the exporter is a bounded synthetic proof. S01 is complete: the
+owner's example media is privately indexed, and a genuine four-participant starter was saved,
 played and reopened in Kdenlive. Initial intake exposed timing differences that
 still require S03 validation. See [the compatibility record](docs/COMPATIBILITY.md),
 [capture evidence](docs/fixtures/S01_CAPTURE.md) and
-[private-input observations](docs/fixtures/S01_REAL_INPUTS.md).
+[private-input observations](docs/fixtures/S01_REAL_INPUTS.md). See the
+[S02 export proof](docs/fixtures/S02_EXPORT_PROOF.md) for exact limits, usage,
+native gain-edge measurements, GUI evidence and recovery instructions.
 
 ## Planned workflow
 
@@ -28,8 +31,11 @@ still require S03 validation. See [the compatibility record](docs/COMPATIBILITY.
 - Isolate Kdenlive format details in replaceable adapters. Future versions require
   their own evidence and are never automatically claimed compatible.
 
-These are requirements, not implemented capabilities. Audio processing, model
-installation, export and desktop UI development have not started.
+These are the full product requirements. The S02 proof implements only simple
+starter import and manual shared-cut export. Automatic analysis/planning, idle
+noise cleanup, model installation and the product desktop UI have not started.
+Real source offsets, drift and subframe tails remain unverified. The observed
+native one-frame sequence extent change is retained explicitly in the proof.
 
 ## Development and continuation
 

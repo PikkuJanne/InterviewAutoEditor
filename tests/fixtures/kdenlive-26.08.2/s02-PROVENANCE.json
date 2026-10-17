@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "step": "S02",
+  "observed_date": "2026-10-17",
+  "technical_gates": {
+    "G01": "PASS_bounded_synthetic_proof",
+    "G02": "PASS_actual_application"
+  },
+  "compatibility": "EXPERIMENTAL",
+  "creation_build": "26.08.2 - rev. d4e87e4",
+  "document_version": "1.1",
+  "mlt": "7.43.0",
+  "platform": "Windows NT 10.0.26300.0 AMD64",
+  "installed_executable_sha256_rechecked": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352",
+  "source": {
+    "project": "starter-2.kdenlive",
+    "sha256": "2c836b9a55b318483aa18f8b77c9dcf3a8152c883d2f27688b9a984da1194b08",
+    "provenance": "S01 genuine GUI-created project; existing generated test pattern and tones; no recorded people",
+    "media_manifest": "media-2/synthetic-media.json",
+    "source_media_hashes_unchanged": true
+  },
+  "export": {
+    "adapter": "26.08.2",
+    "compatibility": "EXPERIMENTAL",
+    "manual_cut_source_frames": [
+      100,
+      125
+    ],
+    "retained_source_frames": [
+      [
+        0,
+        100
+      ],
+      [
+        125,
+        300
+      ]
+    ],
+    "output_frames": 275,
+    "input_clip_frames": 300,
+    "input_sequence_extent_delta_frames": 0,
+    "participants": 2,
+    "excluded_mp4_audio_tracks": 0,
+    "gain_edges": true,
+    "source_timing_certified": false
+  },
+  "artifacts": [
+    {
+      "path": "s02-manual-cut.kdenlive",
+      "sha256": "208d5d27c209962f8277263ec8d4c3a55423a0b406fb103cef263ee6c1158288",
+      "provenance": "adapter-generated; NOT claimed as GUI-created"
+    },
+    {
+      "path": "s02-native-roundtrip.kdenlive",
+      "sha256": "6adf4f2f2dee144086b63fb0f6b268413d920a75b967f3a92e7623197bd93ecb",
+      "provenance": "actual native Save As after GUI editing and undo of adapter output; sanitized relative resources",
+      "sanitization": {
+        "raw_capture_sha256": "8a3553f2506e4856beb83554280d5655eae3524b1d190fcc210920ef5a6f78cb",
+        "sanitized_sha256": "6adf4f2f2dee144086b63fb0f6b268413d920a75b967f3a92e7623197bd93ecb",
+        "resource_references": 6,
+        "removed_properties": [
+          "kdenlive:docproperties.browserurl",
+          "kdenlive:docproperties.layout",
+          "kdenlive:docproperties.profile",
+          "kdenlive:documentnotes"
+        ],
+        "root_attribute_removed": true,
+        "manual_publication_review": "PASS; generated synthetic source package, neutral labels and reviewed relative references",
+        "gui_reopen_of_sanitized_copy": "PASS; observed actual 26.08.2 open without repair or missing media"
+      }
+    },
+    {
+      "path": "s02-gui-render.mp4",
+      "sha256": "1e979756f71d450038c1eb7a237e3116e2f01edd30cfa41f55bfca14b6d5e26f",
+      "bytes": 434858,
+      "provenance": "actual GUI Render to File, full project, MP4-H264/AAC, completed in 12 seconds",
+      "primary_deliverable": false
+    }
+  ],
+  "gui_actions": {
+    "open": "PASS",
+    "native_entry_volume_six_keyframes_visible_selectable": "PASS",
+    "delete_first_group_three_clips": "PASS",
+    "undo_group_deletion": "PASS",
+    "move_second_group_100_to_125_output_frames_native_duration_dialog": "PASS",
+    "undo_group_move": "PASS",
+    "play_changing_picture_timecode_meters": "PASS_observed_output_00:00:03:01_to_00:00:08:08",
+    "save_as_copy": "PASS",
+    "close_by_opening_unchanged_starter": "PASS",
+    "reopen": "PASS_no_repair_or_missing_media",
+    "gui_render": "PASS",
+    "sanitized_public_fixture_reopen": "PASS_no_repair_or_missing_media"
+  },
+  "render_measurements": "s02-render-validation.json",
+  "whole_project_semantic_equal": false,
+  "native_sequence_extent_delta_frames": 1,
+  "timeline_semantics_equal": true,
+  "clip_and_render_frames": 275,
+  "gain_representation_decision": "native per-entry Volume keyframes for proven frame-grid ramps; derived PCM not needed for S02; subframe/real listening remains unproved",
+  "private_intake_recheck": {
+    "assertions": 102,
+    "original_media_unchanged": 5,
+    "sample_exact_excerpts": 12,
+    "real_alignment_certified": false
+  },
+  "failures_retained_locally": [
+    "chain filter serialized but not an editable clip effect; corrected to native entry filter and GUI proof repeated",
+    "duplicate filter IDs in hand-authored linked-audio test mutation; corrected mutation",
+    "constant periodic tone gave ambiguous lag minimum; corrected to onset/end anchor without changing GUI render",
+    "direct group drags only selected; native Duration dialog move succeeded"
+  ],
+  "not_run": [
+    "subjective_listening_or_interview_content_acceptance",
+    "real_export_group_edit_render",
+    "sample_or_subframe_native_gain",
+    "3_6_8_participant_GUI_matrix",
+    "fractional_FPS_GUI",
+    "UNC_paths",
+    "future_builds"
+  ],
+  "evidence_report": "docs/fixtures/S02_EXPORT_PROOF.md",
+  "raw_projects_and_failed_reports": "ignored local S02 directory; no raw screenshots published"
+}
