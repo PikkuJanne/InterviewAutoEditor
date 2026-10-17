@@ -2,13 +2,15 @@
 
 InterviewAutoEditor is a planned local Windows tool for turning a Zoom interview
 starter project into a new, editable Kdenlive project. **There is no working editor
-yet.** The repository currently contains the S00 planning bootstrap and Git
-checkpoint verification tooling.
+yet.** The repository contains the planning bootstrap, Git checkpoint tooling
+and S01's genuine synthetic Kdenlive reference captures and capture tools.
 
-The primary target is the owner's reported **Kdenlive 26.08.2** installation.
-That build has not yet been verified or tested by this project. No Kdenlive
-version is currently supported by demonstrated application evidence; see
-[the compatibility record](docs/COMPATIBILITY.md).
+The installed primary target is independently verified as **Kdenlive 26.08.2,
+revision d4e87e4**. Its two-participant synthetic reference passed actual GUI
+open/play/group-edit/undo/save/reopen/render checks. Product compatibility remains
+experimental: there is no exporter yet, and S01 is blocked on a real starter
+project and private sample locations. See [the compatibility record](docs/COMPATIBILITY.md)
+and [capture evidence](docs/fixtures/S01_CAPTURE.md).
 
 ## Planned workflow
 
@@ -48,10 +50,12 @@ With Python 3.9 or later and Git on PATH (S00 uses Python 3.12.14):
 
 ```powershell
 python -m unittest discover -s tools -p test_verify_checkpoint.py -v
+python -B -m unittest discover -s tools -p 'test_*.py' -v
 python tools/verify_checkpoint.py --repo .
 ```
 
-Tests use disposable local Git repositories and need no GitHub connection.
+Tests use disposable local Git repositories and public synthetic captures; they
+need no private recordings or GitHub connection.
 The read-only verifier requires an already committed, pushed checkpoint and
 network access. It checks the live branch SHA, upstream, worktree and basic state
 references; it does not run CI, test Kdenlive or validate the full product.

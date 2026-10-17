@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "observed_date": "2026-10-17",
+  "step": "S01",
+  "step_gate": "BLOCKED_ON_REAL_INPUTS",
+  "creation_build": "26.08.2 - rev. d4e87e4",
+  "build_identity_evidence": "Application --setup-report JSON plus --version dialog observed through Windows computer use",
+  "kdenlive_executable_sha256": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352",
+  "platform": {
+    "windows_nt": "10.0.26300.0",
+    "architecture": "AMD64",
+    "mlt": "7.43.0",
+    "qt6core_dll_file_product_version": "6.11.1.0",
+    "ffmpeg": "8.1.1"
+  },
+  "media_provenance": "FFmpeg testsrc2 plus generated sine waves; no recorded people or real interview data",
+  "media_manifest": "media-2/synthetic-media.json",
+  "gui_evidence_kind": "Agent-observed actual application actions and resulting saved projects; no public screenshots",
+  "raw_and_roundtrip_artifacts": "Retained in ignored local capture directory; not in public Git",
+  "failures_retained": [
+    {
+      "attempt": "ordinary_startup",
+      "result": "No targetable editing window in two launch attempts; isolated --no-welcome configuration eventually worked"
+    },
+    {
+      "attempt": "dot_root_sanitization",
+      "result": "FAIL; three missing clips; aborted without relinking; corrected by removing root attribute; final reopen PASS"
+    },
+    {
+      "attempt": "initial_video_placement",
+      "result": "Eight-frame offset found by XML inspection; corrected in native Duration dialog before final starter/grouped captures"
+    }
+  ],
+  "fixtures": [
+    {
+      "raw_capture_sha256": "4129c38b073d3f54357aa9c47105b9200ac1d5edda6fc4850b30da4fc7569749",
+      "sanitized_sha256": "f71734a2fd5a0cf1969899e1d405909d4bd1a8c81b0491b13e7809b789c55f4d",
+      "resource_references": 5,
+      "removed_properties": [
+        "kdenlive:docproperties.browserurl",
+        "kdenlive:docproperties.layout",
+        "kdenlive:docproperties.profile",
+        "kdenlive:documentnotes"
+      ],
+      "root_attribute_removed": true,
+      "manual_publication_review": "PASS; generated media, neutral labels, XML/JSON reviewed",
+      "gui_reopen_of_sanitized_copy": "PASS; no repair or missing-media prompt",
+      "fixture": "linked-input.kdenlive",
+      "creation_method": "Kdenlive GUI create/import/place/save, observed by the agent on 2026-10-17",
+      "creation_build": "26.08.2 - rev. d4e87e4",
+      "raw_capture_in_public_git": false,
+      "census": {
+        "schema_version": 1,
+        "source_sha256": "f71734a2fd5a0cf1969899e1d405909d4bd1a8c81b0491b13e7809b789c55f4d",
+        "source_bytes": 26670,
+        "document_versions": {
+          "kdenlive:docproperties.kdenliveversion": "26.08.2",
+          "kdenlive:docproperties.version": "1.1"
+        },
+        "element_counts": {
+          "producer": 1,
+          "chain": 5,
+          "playlist": 7,
+          "tractor": 5,
+          "track": 11,
+          "entry": 6,
+          "filter": 8,
+          "transition": 3
+        },
+        "resource_kinds": {
+          "empty_or_internal": 1,
+          "relative_or_unclassified": 5
+        },
+        "root_has_absolute_path": false,
+        "provenance": "unverified_requires_capture_record",
+        "compatibility": "NOT ASSESSED",
+        "gui_open_save": "NOT RUN",
+        "publication_review": "REQUIRED; counts do not sanitize or certify the source XML",
+        "scope_note": "Actual provenance and UI observations are recorded alongside this census."
+      },
+      "observed_gui_checks": {
+        "create_save_raw": "PASS",
+        "open_sanitized": "PASS",
+        "play": "NOT RUN",
+        "group_edit_undo_after_reopen": "NOT RUN",
+        "save_copy_close_reopen": "NOT RUN",
+        "gui_render": "NOT RUN"
+      }
+    },
+    {
+      "raw_capture_sha256": "7490a74a37a8b18de2c3e4ff38445a0d59c7fec4a35b17128310d49620077713",
+      "sanitized_sha256": "2c836b9a55b318483aa18f8b77c9dcf3a8152c883d2f27688b9a984da1194b08",
+      "resource_references": 6,
+      "removed_properties": [
+        "kdenlive:docproperties.browserurl",
+        "kdenlive:docproperties.layout",
+        "kdenlive:docproperties.profile",
+        "kdenlive:documentnotes"
+      ],
+      "root_attribute_removed": true,
+      "manual_publication_review": "PASS; generated media, neutral labels, XML/JSON reviewed",
+      "gui_reopen_of_sanitized_copy": "PASS; no repair or missing-media prompt",
+      "fixture": "starter-2.kdenlive",
+      "creation_method": "Kdenlive GUI create/import/place/save, observed by the agent on 2026-10-17",
+      "creation_build": "26.08.2 - rev. d4e87e4",
+      "raw_capture_in_public_git": false,
+      "census": {
+        "schema_version": 1,
+        "source_sha256": "2c836b9a55b318483aa18f8b77c9dcf3a8152c883d2f27688b9a984da1194b08",
+        "source_bytes": 27061,
+        "document_versions": {
+          "kdenlive:docproperties.kdenliveversion": "26.08.2",
+          "kdenlive:docproperties.version": "1.1"
+        },
+        "element_counts": {
+          "producer": 1,
+          "chain": 6,
+          "playlist": 7,
+          "tractor": 5,
+          "track": 11,
+          "entry": 7,
+          "filter": 8,
+          "transition": 3
+        },
+        "resource_kinds": {
+          "empty_or_internal": 1,
+          "relative_or_unclassified": 6
+        },
+        "root_has_absolute_path": false,
+        "provenance": "unverified_requires_capture_record",
+        "compatibility": "NOT ASSESSED",
+        "gui_open_save": "NOT RUN",
+        "publication_review": "REQUIRED; counts do not sanitize or certify the source XML",
+        "scope_note": "Actual provenance and UI observations are recorded alongside this census."
+      },
+      "observed_gui_checks": {
+        "create_save_raw": "PASS",
+        "open_sanitized": "PASS",
+        "play": "NOT RUN",
+        "group_edit_undo_after_reopen": "NOT RUN",
+        "save_copy_close_reopen": "NOT RUN",
+        "gui_render": "NOT RUN"
+      }
+    },
+    {
+      "raw_capture_sha256": "9b2429548d22f85ce3a47b0ff1a8172f1e793d5943eabe32ecf413497ba36c42",
+      "sanitized_sha256": "f466f340e1026ff9498db67ded313265b998513ac0f910fae3f0f6ffd1b51df2",
+      "resource_references": 6,
+      "removed_properties": [
+        "kdenlive:docproperties.browserurl",
+        "kdenlive:docproperties.layout",
+        "kdenlive:docproperties.profile",
+        "kdenlive:documentnotes"
+      ],
+      "root_attribute_removed": true,
+      "manual_publication_review": "PASS; generated media, neutral labels, XML/JSON reviewed",
+      "gui_reopen_of_sanitized_copy": "PASS; no repair or missing-media prompt",
+      "fixture": "grouped-gain.kdenlive",
+      "creation_method": "Kdenlive GUI create/import/place/save, observed by the agent on 2026-10-17",
+      "creation_build": "26.08.2 - rev. d4e87e4",
+      "raw_capture_in_public_git": false,
+      "census": {
+        "schema_version": 1,
+        "source_sha256": "f466f340e1026ff9498db67ded313265b998513ac0f910fae3f0f6ffd1b51df2",
+        "source_bytes": 29533,
+        "document_versions": {
+          "kdenlive:docproperties.kdenliveversion": "26.08.2",
+          "kdenlive:docproperties.version": "1.1"
+        },
+        "element_counts": {
+          "producer": 1,
+          "chain": 6,
+          "playlist": 7,
+          "tractor": 5,
+          "track": 11,
+          "entry": 13,
+          "filter": 8,
+          "transition": 3
+        },
+        "resource_kinds": {
+          "empty_or_internal": 1,
+          "relative_or_unclassified": 6
+        },
+        "root_has_absolute_path": false,
+        "provenance": "unverified_requires_capture_record",
+        "compatibility": "NOT ASSESSED",
+        "gui_open_save": "NOT RUN",
+        "publication_review": "REQUIRED; counts do not sanitize or certify the source XML",
+        "scope_note": "Actual provenance and UI observations are recorded alongside this census."
+      },
+      "observed_gui_checks": {
+        "create_save_raw": "PASS",
+        "open_sanitized": "PASS",
+        "play": "PASS",
+        "group_edit_undo_after_reopen": "PASS",
+        "save_copy_close_reopen": "PASS",
+        "gui_render": "PASS",
+        "moved_folder_spaces_unicode_open": "PASS"
+      },
+      "guide_frame": 100,
+      "cuts_frames": [
+        100,
+        200
+      ],
+      "native_gain_scope": "track volume, UI -6.00 dB, XML -6.00108; clip gain edges NOT RUN"
+    }
+  ],
+  "render_measurements": "render-validation.json",
+  "not_tested": [
+    "real_starter_and_private_corpus",
+    "3_6_8_participant_gui_projects",
+    "fractional_fps_gui_project",
+    "unc_paths",
+    "native_clip_gain_edges",
+    "product_exporter",
+    "speech_laughter_overlap_quality",
+    "future_kdenlive_builds"
+  ]
+}

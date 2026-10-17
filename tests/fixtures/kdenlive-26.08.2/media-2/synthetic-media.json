@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "provenance": "generated_synthetic_media_no_recorded_people",
+  "kdenlive_project_created": false,
+  "kdenlive_gui_evidence": "NOT RUN",
+  "participants": 2,
+  "fps": [
+    25,
+    1
+  ],
+  "video_frames": 300,
+  "duration_seconds": [
+    12,
+    1
+  ],
+  "audio_sample_rate": 48000,
+  "audio_samples": 576000,
+  "audio_channels": 1,
+  "audio_sample_width_bytes": 2,
+  "ffmpeg_version": "ffmpeg version 8.1.1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "ffmpeg_arguments": [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-nostdin",
+    "-n",
+    "-f",
+    "lavfi",
+    "-i",
+    "testsrc2=size=320x180:rate=25/1",
+    "-i",
+    "embedded-reference.wav",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-frames:v",
+    "300",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "veryfast",
+    "-crf",
+    "28",
+    "-pix_fmt",
+    "yuv420p",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "96k",
+    "-movflags",
+    "+faststart",
+    "zoom-source.mp4"
+  ],
+  "files": [
+    {
+      "path": "embedded-reference.wav",
+      "role": "embedded_audio_reference",
+      "tone_hz": 997,
+      "sha256": "9fad0e9be72d7e7f11844b6771f938867c6149bed938842e9f5c5e4f7a042ff9",
+      "bytes": 1152044
+    },
+    {
+      "path": "participant-01.wav",
+      "role": "synthetic_participant",
+      "tone_hz": 330,
+      "active_sample_intervals": [
+        [
+          64000,
+          136000
+        ],
+        [
+          352000,
+          424000
+        ]
+      ],
+      "sha256": "ae7636195bfae30d38192340bb9d54c5f0c2b4ebdf5698f10423e725f7abc84c",
+      "bytes": 1152044
+    },
+    {
+      "path": "participant-02.wav",
+      "role": "synthetic_participant",
+      "tone_hz": 440,
+      "active_sample_intervals": [
+        [
+          128000,
+          200000
+        ],
+        [
+          416000,
+          488000
+        ]
+      ],
+      "sha256": "a9fd3a44b32d806558ff2922d2aec3c5d2c738e6d2a55d2b21e3f5ea1196e5d7",
+      "bytes": 1152044
+    },
+    {
+      "path": "zoom-source.mp4",
+      "role": "zoom_like_video_with_contamination_tone",
+      "sha256": "188d4cf1c31da0e353babb1d8cdf673ded0074340d1b7a67b59ea9dd64011058",
+      "bytes": 395559
+    }
+  ]
+}
