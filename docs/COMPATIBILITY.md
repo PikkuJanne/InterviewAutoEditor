@@ -32,7 +32,11 @@ untested. Public hand-authored count mutations are automated structural tests,
 not GUI evidence. Future builds are untested; no all-26.x
 or future-version compatibility guarantee is made. S01's capture/intake gate is
 complete. S02's minimal exporter/native-gain proof is complete within its stated
-scope; S03 must validate offsets, drift and source-tail handling. The pending wider
+scope. S03 now inventories exact source tails and diagnoses unverified offsets
+without repairing them. Its strict plan contract refuses unresolved tails or
+unverified origins. Integer/fractional timing and fractional starter parsing have
+automated coverage; fractional-FPS GUI export remains untested. See
+[S03 contracts](project/S03_CONTRACTS.md). The pending wider
 regression matrix remains required before a broader tested compatibility claim.
 
 Do not replace this table with a blanket '26 and later' claim. Update only from actual evidence under docs/project/KDENLIVE_COMPATIBILITY.md.

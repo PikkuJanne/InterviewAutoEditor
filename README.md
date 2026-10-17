@@ -37,6 +37,13 @@ noise cleanup, model installation and the product desktop UI have not started.
 Real source offsets, drift and subframe tails remain unverified. The observed
 native one-frame sequence extent change is retained explicitly in the proof.
 
+S03 adds a read-only intake core, full video timestamp/PCM sample probing,
+explicit participant mapping, bounded offset diagnostics, rational timing and
+strict versioned analysis/edit-plan records. It reports unresolved origins and
+every source-tail difference; it never repairs alignment or drops tails. See
+[S03 contracts and command usage](docs/project/S03_CONTRACTS.md). The existing
+S02 exporter is unchanged; automatic speech analysis has not started.
+
 ## Development and continuation
 
 Execute one named step per chat and stop after its verified Git checkpoint.
@@ -55,7 +62,7 @@ provenance, environment and reuse decisions.
 
 ## Available checks
 
-With Python 3.9 or later and Git on PATH (S00 uses Python 3.12.14):
+With Python 3.12 or later and Git on PATH (S03 uses Python 3.12.14):
 
 ```powershell
 python -m unittest discover -s tools -p test_verify_checkpoint.py -v
@@ -65,6 +72,8 @@ python tools/verify_checkpoint.py --repo .
 
 Tests use disposable local Git repositories and public synthetic captures; they
 need no private recordings or GitHub connection.
+S03 real-tool tests additionally need FFmpeg/ffprobe on PATH or in
+`IAE_FFMPEG`/`IAE_FFPROBE`; absent tools are reported as skipped tests.
 The read-only verifier requires an already committed, pushed checkpoint and
 network access. It checks the live branch SHA, upstream, worktree and basic state
 references; it does not run CI, test Kdenlive or validate the full product.

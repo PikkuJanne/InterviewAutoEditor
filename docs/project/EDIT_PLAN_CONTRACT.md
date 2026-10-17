@@ -2,6 +2,13 @@
 
 The plan is versioned application data, not Kdenlive XML. Establish schema v1 in S03/S06 and validate every exported plan. Fields below are required concepts; choose an explicit machine schema and documented migrations during implementation.
 
+S03 establishes the executable typed v1 records and strict JSON codec in
+[`contracts.py`](../../interview_auto_editor/contracts.py). See
+[S03_CONTRACTS.md](S03_CONTRACTS.md) for fields, exact timing, migration rules,
+origin review and the deliberately conservative `exact_coverage` tail policy.
+S06 will implement planning against these contracts; no automatic decisions are
+implemented by defining their data types.
+
 ## Required records
 - Schema version, run ID, source project/media fingerprints, tool/model versions, settings and adapter target.
 - Project frame rate as numerator/denominator, audio sample rates, source origins and explicitly verified offsets.
