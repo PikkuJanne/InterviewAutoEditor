@@ -8,14 +8,12 @@
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
   "active_step": "S01",
-  "next_step": "S01",
-  "latest_handover": "docs/handovers/S01.md",
+  "next_step": "S02",
+  "latest_handover": "docs/handovers/S01-attempt-02.md",
   "implementation_commit": "1d81a245a4a5986ecbfe4fff7d341b84d2ebcf78",
-  "technical_gate_status": "blocked",
+  "technical_gate_status": "passed",
   "synchronization": "must_verify_live_at_each_checkpoint",
-  "blockers": [
-    "Real starter .kdenlive, source Zoom MP4, aligned cleaned participant audio and private sample locations have not been supplied; actual input assumptions and corpus access remain unchecked."
-  ],
+  "blockers": [],
   "steps": [
     {
       "id": "S00",
@@ -29,7 +27,7 @@
       "title": "Capture Kdenlive 26 reference fixtures",
       "prerequisite": "S00",
       "brief": "docs/project/steps/S01.md",
-      "status": "blocked"
+      "status": "completed"
     },
     {
       "id": "S02",
@@ -155,10 +153,11 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-17",
   "prerequisites_for_next_step": [
-    "Provide the local representative real starter/media-folder location, including the Zoom MP4 and aligned cleaned participant files.",
-    "Check real input-contract assumptions and locate private quality excerpts; populate the ignored private corpus index.",
-    "Complete remaining S01 capture evidence without duplicating the completed two-participant reference round trip.",
-    "Keep S01 active/next until its exit gate passes; verify the live Git checkpoint before any continuation."
+    "Verify live checkpoint and clean intended worktree before beginning S02 only.",
+    "Use genuine public synthetic references and the ignored private corpus index; keep real media/names/paths private.",
+    "Implement the minimal adapter and one manually specified shared interior cut; prove actual G01/G02 and native gain edges.",
+    "Account for observed native sequence extent changes; preserve source-tail/offset/drift findings for S03.",
+    "Keep product compatibility EXPERIMENTAL until required exporter and wider regression evidence exists."
   ],
   "validation_evidence": [
     {
@@ -235,9 +234,9 @@
       "applies_to_commit": "1d81a245a4a5986ecbfe4fff7d341b84d2ebcf78"
     },
     {
-      "check": "s01_real_input_contract_and_corpus",
+      "check": "s01_attempt_01_real_input_contract_and_corpus",
       "status": "blocked",
-      "reason": "No real starter/media/private sample locations supplied."
+      "reason": "At the first checkpoint no real starter/media/private sample locations were supplied; preserved historical blocked evidence."
     },
     {
       "check": "s01_checkpoint_document_consistency",
@@ -245,6 +244,40 @@
       "assertions": 66,
       "command": "python .local/S01/validate_checkpoint_docs.py",
       "applies_to": "S01 documentation checkpoint; resolve SHA from handover history"
+    },
+    {
+      "check": "s01_attempt_02_full_automated_suite",
+      "status": "passed",
+      "tests": 42,
+      "seconds": 45.408,
+      "command": "python -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "applies_to_commit": "1d81a245a4a5986ecbfe4fff7d341b84d2ebcf78",
+      "scope": "unchanged public capture/checkpoint code; this retry changes public documentation only"
+    },
+    {
+      "check": "s01_attempt_02_real_input_contract_and_corpus",
+      "status": "passed",
+      "assertions": 102,
+      "command": "python -B .local/S01/validate_private_corpus.py",
+      "scope": "initial intake/access, five unchanged original hashes, native track semantics and twelve sample-exact PCM excerpts; alignment unverified",
+      "evidence": "docs/fixtures/S01_REAL_INPUTS.md"
+    },
+    {
+      "check": "s01_attempt_02_real_native_starter",
+      "status": "passed",
+      "scope": "created in GUI, play/save/close/reopen/save-copy; no real group-edit/render or listening acceptance",
+      "whole_project_semantics_equal": false,
+      "sequence_out_changed_by_frames": 1,
+      "track_semantics_equal": true,
+      "evidence": "docs/fixtures/S01_REAL_INPUTS.md"
+    },
+    {
+      "check": "s01_attempt_02_documentation_consistency_and_privacy",
+      "status": "passed",
+      "assertions": 72,
+      "reviewed_paths": 7,
+      "command": "python -B .local/S01/validate_attempt_02_docs.py",
+      "applies_to": "S01 attempt 02 documentation checkpoint; resolve SHA from handover history"
     }
   ],
   "previous_step_implementation_commit": "32cdc719e943378e004e4759dd233109876349a0",
@@ -253,8 +286,8 @@
     "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/PROVENANCE.json",
     "render_measurements": "tests/fixtures/kdenlive-26.08.2/render-validation.json",
     "synthetic_genuine_projects": 3,
-    "real_inputs_located": false,
-    "private_corpus_index": ".local/S01/private-corpus-index.json (ignored; real locations empty)",
+    "real_inputs_located": true,
+    "private_corpus_index": ".local/S01/private-corpus-index.json (ignored; populated with real starter/media/mapping/samples)",
     "gui_reference_round_trip": "passed_for_grouped_two_participant_fixture",
     "remaining_capture_matrix": [
       "3_6_8_participant_gui_projects",
@@ -263,6 +296,15 @@
       "supported_unc_paths"
     ],
     "product_exporter": "not_implemented",
-    "s02_started": false
+    "s02_started": false,
+    "real_input_observations": "docs/fixtures/S01_REAL_INPUTS.md",
+    "real_participant_count": 4,
+    "real_starter_provenance": "agent_created_and_saved_in_actual_GUI_from_owner_supplied_media_no_existing_project_supplied",
+    "private_excerpt_sets": 3,
+    "real_alignment_certified": false,
+    "real_native_track_round_trip": "passed_with_sequence_extent_difference_recorded",
+    "remaining_capture_matrix_scope": "S02 gain-edge gate; broader GUI matrix before tested product compatibility; not claimed as S01 evidence",
+    "completion_handover": "docs/handovers/S01-attempt-02.md",
+    "first_attempt_handover": "docs/handovers/S01.md"
   }
 }

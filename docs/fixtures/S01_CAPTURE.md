@@ -1,7 +1,11 @@
 # S01 reference capture record
 
-Observed 17 October 2026. S01 remains **BLOCKED on real inputs**. These are
-synthetic references, not a production exporter or an interview quality result.
+Observed 17 October 2026. **S01 COMPLETE after attempt 02**: real example media,
+a genuine private starter and private excerpts are now located and initially
+checked. See [the intake record](S01_REAL_INPUTS.md) and
+[the completion handover](../handovers/S01-attempt-02.md). The first checkpoint
+was blocked on missing locations; that historical evidence is retained below.
+These synthetic references are not a production exporter or interview acceptance.
 
 ## Exact observed environment
 
@@ -143,7 +147,7 @@ completion in 2 seconds. See [render-validation.json](../../tests/fixtures/kdenl
 - No subjective listening, real speech/laughter/overlap, pause removal,
   microphone cleanup, real A/V drift or exporter behavior was tested.
 
-## Input contract and private corpus
+## Input contract and private corpus — first checkpoint
 
 The private index is `.local/S01/private-corpus-index.json`, with neutral IDs and
 empty locations until the owner supplies them. No real starter, Zoom MP4,
@@ -166,6 +170,36 @@ sources, speed effects, nested sequences and unknown timing-critical features
 are outside the proposed v1 intake scope. These are **documented constraints**;
 there is no implemented importer or runtime rejection behavior yet.
 
-Resume S01 to check real assumptions and index private samples. Also retain the
+At that checkpoint, S01 needed real assumptions and private samples checked. The
+second attempt below resolves that access gate. Retain the
 pending broader capture matrix (3/6/8 participants, fractional FPS, native clip
 gain edges and supported UNC paths). S02 has not started.
+
+## Attempt 02 — real example supplied, 17 October 2026
+
+The owner supplied a specific local media folder after the blocked checkpoint.
+It contains one MP4 and four cleaned WAVs, with no existing `.kdenlive` file.
+The agent created and saved a new private starter through Kdenlive 26.08.2's GUI,
+using those original sources and a matching 1280x720, 25 FPS profile. It has one
+video-only track and four named audio tracks, all clips beginning at zero.
+Actual play, close, reopen without repair/missing media, and save-copy passed.
+No XML was authored to manufacture this native project.
+
+The ignored corpus index now contains source locations/hashes, private native
+projects, source probes and three 30-second excerpt sets. All five original
+hashes remained unchanged. Twelve excerpt WAVs were verified sample-for-sample
+against the corresponding source ranges. The initial intake validation passed
+102 assertions; the public automated suite passed 42 tests in 45.408 seconds on
+unchanged capture/checkpoint code from `1d81a245a4a5986ecbfe4fff7d341b84d2ebcf78`.
+
+Real input findings include 192 kHz stereo PCM, a 4096-sample duration difference
+between participant files, native frame-grid tail rounding, a one-frame change
+in the saved sequence extent, and differing correlation peaks in limited signal
+windows. None was concealed by independently shifting audio or video. Complete
+measurements, failed checks and limits are in [S01_REAL_INPUTS.md](S01_REAL_INPUTS.md).
+
+S01's exit gate is capture, initial input inspection and corpus access. The
+broader compatibility matrix remains NOT RUN and product compatibility stays
+EXPERIMENTAL. Native clip-gain edges belong to S02's explicit gate; accurate
+offset/drift/tail contracts belong to S03; the wider matrix must be completed
+before tested compatibility is declared. No next-step implementation began.

@@ -8,9 +8,12 @@ and S01's genuine synthetic Kdenlive reference captures and capture tools.
 The installed primary target is independently verified as **Kdenlive 26.08.2,
 revision d4e87e4**. Its two-participant synthetic reference passed actual GUI
 open/play/group-edit/undo/save/reopen/render checks. Product compatibility remains
-experimental: there is no exporter yet, and S01 is blocked on a real starter
-project and private sample locations. See [the compatibility record](docs/COMPATIBILITY.md)
-and [capture evidence](docs/fixtures/S01_CAPTURE.md).
+experimental: there is no exporter yet. S01 is complete: the owner's example
+media is privately indexed, and a genuine four-participant starter was saved,
+played and reopened in Kdenlive. Initial intake exposed timing differences that
+still require S03 validation. See [the compatibility record](docs/COMPATIBILITY.md),
+[capture evidence](docs/fixtures/S01_CAPTURE.md) and
+[private-input observations](docs/fixtures/S01_REAL_INPUTS.md).
 
 ## Planned workflow
 
