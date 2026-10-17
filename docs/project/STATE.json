@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "project": "InterviewAutoEditor",
+  "repository": "PikkuJanne/InterviewAutoEditor",
+  "bundle_revision": 1,
+  "target_kdenlive_family": "26.x",
+  "production_kdenlive_build": "26.08.2",
+  "development_branch": "codex/kdenlive26-overhaul",
+  "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
+  "active_step": "S00",
+  "next_step": "S00",
+  "latest_handover": null,
+  "implementation_commit": null,
+  "technical_gate_status": "in_progress",
+  "synchronization": "must_verify_live_at_each_checkpoint",
+  "blockers": [],
+  "steps": [
+    {
+      "id": "S00",
+      "title": "Bootstrap and preserve existing work",
+      "prerequisite": null,
+      "brief": "docs/project/steps/S00.md",
+      "status": "in_progress"
+    },
+    {
+      "id": "S01",
+      "title": "Capture Kdenlive 26 reference fixtures",
+      "prerequisite": "S00",
+      "brief": "docs/project/steps/S01.md",
+      "status": "pending"
+    },
+    {
+      "id": "S02",
+      "title": "Prove editable Kdenlive 26 export",
+      "prerequisite": "S01",
+      "brief": "docs/project/steps/S02.md",
+      "status": "pending"
+    },
+    {
+      "id": "S03",
+      "title": "Validate media timing and define exact data contracts",
+      "prerequisite": "S02",
+      "brief": "docs/project/steps/S03.md",
+      "status": "pending"
+    },
+    {
+      "id": "S04",
+      "title": "Implement cached per-participant speech analysis",
+      "prerequisite": "S03",
+      "brief": "docs/project/steps/S04.md",
+      "status": "pending"
+    },
+    {
+      "id": "S05",
+      "title": "Protect laughter overlap and uncertain sounds",
+      "prerequisite": "S04",
+      "brief": "docs/project/steps/S05.md",
+      "status": "pending"
+    },
+    {
+      "id": "S06",
+      "title": "Build the shared pause-removal planner",
+      "prerequisite": "S05",
+      "brief": "docs/project/steps/S06.md",
+      "status": "pending"
+    },
+    {
+      "id": "S07",
+      "title": "Export clear speaker turns and grouped edits",
+      "prerequisite": "S06",
+      "brief": "docs/project/steps/S07.md",
+      "status": "pending"
+    },
+    {
+      "id": "S08",
+      "title": "Apply reversible idle-microphone cleanup",
+      "prerequisite": "S07",
+      "brief": "docs/project/steps/S08.md",
+      "status": "pending"
+    },
+    {
+      "id": "S09",
+      "title": "Account for recorded Zoom picture switches",
+      "prerequisite": "S08",
+      "brief": "docs/project/steps/S09.md",
+      "status": "pending"
+    },
+    {
+      "id": "S10",
+      "title": "Complete the recoverable CLI pipeline",
+      "prerequisite": "S09",
+      "brief": "docs/project/steps/S10.md",
+      "status": "pending"
+    },
+    {
+      "id": "S11",
+      "title": "Build the minimal desktop workflow",
+      "prerequisite": "S10",
+      "brief": "docs/project/steps/S11.md",
+      "status": "pending"
+    },
+    {
+      "id": "S12",
+      "title": "Validate full interviews and calibrate quality",
+      "prerequisite": "S11",
+      "brief": "docs/project/steps/S12.md",
+      "status": "pending"
+    },
+    {
+      "id": "S13",
+      "title": "Verify compatibility and prepare future upgrades",
+      "prerequisite": "S12",
+      "brief": "docs/project/steps/S13.md",
+      "status": "pending"
+    },
+    {
+      "id": "S14",
+      "title": "Package and accept the release candidate",
+      "prerequisite": "S13",
+      "brief": "docs/project/steps/S14.md",
+      "status": "pending"
+    },
+    {
+      "id": "S15",
+      "title": "Integrate publish and close the project",
+      "prerequisite": "S14",
+      "brief": "docs/project/steps/S15.md",
+      "status": "pending"
+    }
+  ],
+  "release": {
+    "tag": null,
+    "url": null,
+    "commit": null
+  },
+  "production_kdenlive_build_evidence": {
+    "source": "owner_reported",
+    "independently_verified": false,
+    "installed_executable_found": true,
+    "windows_executable_version_fields": "empty",
+    "compatibility": "not_tested",
+    "verification_step": "S01"
+  },
+  "observed_base_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
+  "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
+  "updated_date": "2026-10-17",
+  "prerequisites_for_next_step": [
+    "Independently confirm the installed Kdenlive 26.08.2 build and Windows environment.",
+    "Locate a real starter project, source Zoom MP4 and aligned cleaned participant audio; locations are not yet supplied.",
+    "Create genuine sanitized fixtures and record actual application evidence in S01."
+  ]
+}
