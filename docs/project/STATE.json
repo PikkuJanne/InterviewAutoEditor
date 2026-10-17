@@ -7,10 +7,10 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S02",
-  "next_step": "S03",
-  "latest_handover": "docs/handovers/S02.md",
-  "implementation_commit": "9ba13e40551652a267f4fba4a2f9cfde2061984b",
+  "active_step": "S03",
+  "next_step": "S04",
+  "latest_handover": "docs/handovers/S03.md",
+  "implementation_commit": "8ee7fb69ecf11e840d1094c31183fc0ceefeb93f",
   "technical_gate_status": "passed",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
@@ -41,7 +41,7 @@
       "title": "Validate media timing and define exact data contracts",
       "prerequisite": "S02",
       "brief": "docs/project/steps/S03.md",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "S04",
@@ -153,12 +153,12 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-17",
   "prerequisites_for_next_step": [
-    "Resolve the S02 handover checkpoint and verify live local/remote SHA equality and clean intended worktree before S03 only.",
-    "Implement intake/probing/file mapping, rational frame/sample timing and typed versioned contracts within the S03 brief.",
-    "Preserve S01/S02 one-frame native sequence extent changes, 192 kHz source-tail differences and uncertified real offset/drift findings.",
-    "Use the ignored private corpus index locally; never publish real media, paths, names or source hashes.",
-    "Preserve the S02 native-entry gain/group/guide/MP4-audio-exclusion proof; no silent source shifting, stretching or tail discard.",
-    "Keep product compatibility EXPERIMENTAL; GUI count/fractional/UNC and real acceptance remain pending."
+    "Resolve S03 handover checkpoint and verify live local/remote SHA equality, clean intended worktree, upstream and exact-SHA CI before S04 only.",
+    "Use strict v1 analysis contracts and propagate unverified origins and all source-tail/sequence-extent review states through non-destructive analysis.",
+    "Implement local CPU per-participant speech inference with pinned model/runtime provenance/licence, bounded stateful chunks, cache identity and uncertainty events.",
+    "Test soft speech/short acknowledgements, chunked versus unchunked boundaries and visible missing-model errors; do not claim VAD alone protects laughter.",
+    "Use the ignored private corpus locally; never publish real media, paths, names, transcripts or source hashes.",
+    "No automatic silence deletion, loudest-speaker selection, media repair, independent shifting/stretching or tail discard; keep compatibility EXPERIMENTAL."
   ],
   "validation_evidence": [
     {
@@ -344,9 +344,87 @@
       "reviewed_paths": 14,
       "command": "python -B .local/S02/check_public.py --checkpoint",
       "applies_to": "S02 documentation checkpoint; resolve SHA from handover history"
+    },
+    {
+      "check": "s03_final_full_automated_suite",
+      "status": "passed",
+      "tests": 75,
+      "new_s03_tests": 22,
+      "skipped": 0,
+      "seconds": 50.584,
+      "command": "python -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "runtime": "Python 3.12.14; FFmpeg/ffprobe 8.1.1 via IAE_FFMPEG/IAE_FFPROBE",
+      "applies_to_commit": "8ee7fb69ecf11e840d1094c31183fc0ceefeb93f"
+    },
+    {
+      "check": "s03_private_intake",
+      "status": "passed",
+      "participants": 4,
+      "video_cadence": "CFR_AUDITED",
+      "decoded_video_frames": 51092,
+      "fps": [
+        25,
+        1
+      ],
+      "sample_rate": 192000,
+      "native_sequence_extent_delta_frames": [
+        0,
+        1
+      ],
+      "audio_source_end_minus_clip_end_seconds": [
+        [
+          4,
+          375
+        ],
+        [
+          -4,
+          375
+        ]
+      ],
+      "real_alignment_certified": false,
+      "all_four_origin_diagnostics": "UNVERIFIED_INSUFFICIENT_ANCHORS",
+      "command": "python -B .local/S03/validate_private.py",
+      "scope": "Full read-only intake and diagnostic windows; final hardened reader rechecked against initial/saved native starters; no real export."
+    },
+    {
+      "check": "s03_private_corpus_preservation",
+      "status": "passed",
+      "assertions": 102,
+      "original_media_unchanged": 5,
+      "sample_exact_pcm_excerpts": 12,
+      "command": "python -B .local/S01/validate_private_corpus.py",
+      "whole_project_semantics_equal": false,
+      "sequence_extent_delta_frames": 1
+    },
+    {
+      "check": "s03_s02_gui_render_regression",
+      "status": "passed",
+      "checks": 11,
+      "video_frames": 275,
+      "picture_anchor_best_offset": 0,
+      "audio_anchor_best_lag_samples": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "mp4_marker_attenuation_db": -63.085,
+      "sequence_extent_delta_frames": 1,
+      "whole_project_semantics_equal": false,
+      "evidence": "tests/fixtures/kdenlive-26.08.2/s02-render-validation.json",
+      "scope": "Remeasurement of unchanged actual S02 GUI render; no new S03 GUI interaction or exporter changes."
+    },
+    {
+      "check": "s03_public_review_and_cli",
+      "status": "passed",
+      "reviewed_paths": 15,
+      "cli_complete_review_exit": 2,
+      "cli_no_overwrite_exit": 1,
+      "command": "python -B .local/S03/check_public.py",
+      "applies_to_commit": "8ee7fb69ecf11e840d1094c31183fc0ceefeb93f"
     }
   ],
-  "previous_step_implementation_commit": "1d81a245a4a5986ecbfe4fff7d341b84d2ebcf78",
+  "previous_step_implementation_commit": "9ba13e40551652a267f4fba4a2f9cfde2061984b",
   "s01_evidence": {
     "capture_record": "docs/fixtures/S01_CAPTURE.md",
     "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/PROVENANCE.json",
@@ -413,7 +491,31 @@
     "real_alignment_certified": false,
     "automatic_decisions_implemented": false,
     "real_export_performed": false,
-    "s03_started": false,
+    "s03_started": true,
     "completion_handover": "docs/handovers/S02.md"
+  },
+  "s03_evidence": {
+    "contracts": "docs/project/S03_CONTRACTS.md",
+    "core": "interview_auto_editor",
+    "inspect_command": "tools/s03_inspect.py",
+    "schema_version": 1,
+    "compatibility": "EXPERIMENTAL",
+    "tail_policy": "exact_coverage_only_no_implicit_repair",
+    "unverified_offsets": "null_not_asserted_zero",
+    "real_alignment_certified": false,
+    "integer_and_fractional_fps": "passed_automated",
+    "mixed_sample_rates": "passed_automated",
+    "retained_segments_in_timing_properties": 500,
+    "shifted_equal_duration_files": "detected_with_actual_decoded_synthetic_files",
+    "vfr": "detected_full_frame_timestamp_audit",
+    "truncation": "detected_physical_wav_and_source_extent",
+    "original_media_changed": false,
+    "automatic_decisions_implemented": false,
+    "real_export_performed": false,
+    "new_gui_interaction": "NOT_RUN_no_exporter_change",
+    "g01": "passed_read_only_sources_and_preserved_s02_audio_exclusion",
+    "relevant_g03": "passed_exact_map_properties_and_unchanged_s02_render_anchor_regression",
+    "completion_handover": "docs/handovers/S03.md",
+    "s04_started": false
   }
 }

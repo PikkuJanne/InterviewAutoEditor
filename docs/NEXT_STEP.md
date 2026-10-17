@@ -1,71 +1,64 @@
-# S03 next — validate timing and exact contracts
+# S04 next — cached per-participant speech analysis
 
-S02 — Prove editable Kdenlive 26 export — is **COMPLETE**. Execute **S03 only**
-in the next chat after verifying this checkpoint.
+S03 — Validate media timing and define exact data contracts — is **COMPLETE**.
+Execute **S04 only** in the next chat after verifying this checkpoint.
 
 - Branch: `codex/kdenlive26-overhaul`.
-- S02 implementation: `9ba13e40551652a267f4fba4a2f9cfde2061984b`.
-- Latest handover: [docs/handovers/S02.md](handovers/S02.md).
+- S03 implementation: `8ee7fb69ecf11e840d1094c31183fc0ceefeb93f`.
+- Latest handover: [docs/handovers/S03.md](handovers/S03.md).
 - Durable state: [docs/project/STATE.json](project/STATE.json).
-- Next brief: [docs/project/steps/S03.md](project/steps/S03.md).
-- Evidence: [S02 exporter proof](fixtures/S02_EXPORT_PROOF.md),
-  [provenance](../tests/fixtures/kdenlive-26.08.2/s02-PROVENANCE.json),
-  [render measurements](../tests/fixtures/kdenlive-26.08.2/s02-render-validation.json),
-  [S01 real timing observations](fixtures/S01_REAL_INPUTS.md).
+- Next brief: [docs/project/steps/S04.md](project/steps/S04.md).
+- Interfaces and usage: [S03_CONTRACTS.md](project/S03_CONTRACTS.md).
 
-The proof build remains Kdenlive 26.08.2 rev. d4e87e4. S02's minimal adapter
-exports a new manual shared-cut project with variable named audio tracks,
-groups, a guide and MP4 audio disabled. Actual two-participant open/play/group
-delete and move/undo/save/close/reopen/GUI render passed. Native entry Volume
-keyframes are editable; 400 ms ramps and a −60 dB plateau were measured. Derived
-PCM was not needed for this proof. No automatic speech/pause decisions.
+The new read-only core probes full video timestamps and exact WAV sample counts,
+requires explicit file/participant mapping and reports all tail/origin problems.
+Strict typed v1 analysis/edit-plan contracts use rational time and one shared map.
+75 tests passed with no skips, including integer/fractional FPS, mixed rates,
+500 retained segments, VFR, truncated files and decoded shifted equal-duration
+audio. S02's unchanged GUI render again passed all 11 measurements.
 
-All compared timeline semantics match, but whole-project equality is **false**:
-native sequence extent grows 275→276 frames while clip coverage and GUI video
-render stay 275. Preserve this finding. The real four-track starter reads with
-51092 clip frames and initial/saved extent deltas 0/1; it was not exported or cut.
-Stereo 192 kHz WAV tail differences and varying subframe correlation findings
-remain unchanged. Real alignment is uncertified; do not slide/stretch audio,
-retime video or discard source tails silently.
+The actual private four-participant corpus remains unchanged and **uncertified
+for alignment**. Full video audit: 51092 CFR frames at 25/1. Native sequence
+extent deltas remain 0/1 before/after save, separate from clip coverage. The
+stereo 192 kHz WAVs retain their exact source sample counts and ±4/375-second
+tail differences. The new bounded diagnostic windows provide insufficient
+reliable anchors; they do not replace S01's original varying correlation findings.
+No sources were shifted/stretched or tails discarded. The v1 `exact_coverage`
+plan policy refuses unresolved tails/unverified origins; non-destructive analysis
+must propagate those flags. Compatibility remains **EXPERIMENTAL**.
 
-53 public tests passed. The GUI render passed 11 checks: eight mapped picture
-anchors, four zero-lag audio windows, MP4 marker 63.085 dB down, measured native
-gain and exact 275 video frames. Private corpus recheck passed 102 assertions,
-five original hashes and twelve exact PCM excerpts. Compatibility remains
-**EXPERIMENTAL**. Subjective listening, real export/quality, subframe native gain,
-broader GUI count/fractional/UNC matrix and future builds are still unproved.
+S04 adds local CPU speech detection, pinned model/runtime provenance/licence,
+bounded stateful decode/inference chunks, cached results and conservative
+uncertainty records. Test soft speech/short acknowledgements, chunk equivalence
+and missing-model errors. No automatic cuts, source repair or loudest-speaker
+selection. Do not mistake speech detection alone for laughter protection.
 
-S03 implements intake/probing/file mapping, rational frame/sample timing,
-shared-origin validation, explicit offset diagnostics and typed versioned
-contracts. Detect VFR, truncation, shifted equal-duration audio, unsupported
-edited inputs and unresolvable paths; test integer/fractional FPS and mixed
-sample rates. Do not implement speculative universal sync or unrequested repair.
-
-At the next thread start resolve the checkpoint and verify live:
+At next-thread start resolve the checkpoint and verify live:
 
 ```powershell
-git log -1 --format=%H -- docs/handovers/S02.md
+git log -1 --format=%H -- docs/handovers/S03.md
 python tools/verify_checkpoint.py --repo .
 ```
 
-Inspect newer work, matching upstream and clean intended worktree; compare local
-HEAD to live origin. A failed synchronization must finish on S02 first. Final
-chat records the pushed SHA; this file does not embed its own containing commit.
+Recheck upstream, worktree and exact-SHA CI. Synchronization failure must be
+resolved on S03 before advancing. Final chat records the actual pushed checkpoint
+SHA; this file does not embed its own containing commit.
 
 Ready-to-paste prompt:
 
-> Execute S03 only in the existing InterviewAutoEditor checkout on
-> codex/kdenlive26-overhaul. Read AGENTS.md, docs/project/STATE.json,
-> docs/NEXT_STEP.md, docs/handovers/S02.md, execution/GitHub protocols and
-> docs/project/steps/S03.md. S02 implementation is
-> 9ba13e40551652a267f4fba4a2f9cfde2061984b; resolve the handover checkpoint from
-> Git history and verify live local/remote equality and clean intended worktree.
-> Implement probing/file mapping, rational frame/sample timing, shared-origin
-> validation, explicit offset diagnostics and typed versioned contracts. Detect
-> VFR, shifted equal-duration audio, truncation and unsafe edited structures;
-> test integer/fractional FPS and mixed sample rates. Preserve S01/S02 sequence
-> extent, source-tail and correlation findings, shared-map/MP4-audio rules and all
-> originals. Do not silently retime or discard tails. Use the ignored private
-> corpus index without publishing its data. Keep compatibility EXPERIMENTAL
-> until its required matrix passes. Complete S03 gates, commit, push, verify live
-> SHA equality/clean status and exact-SHA CI, provide a verbose handover and STOP.
+> Execute S04 only in the existing InterviewAutoEditor checkout on
+> codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md,
+> docs/handovers/S03.md, the execution/GitHub protocols,
+> docs/project/S03_CONTRACTS.md and the S04 brief. S03 implementation is
+> 8ee7fb69ecf11e840d1094c31183fc0ceefeb93f. Resolve and verify the live checkpoint
+> before editing. Implement local CPU per-participant speech analysis with pinned
+> model/runtime provenance/licence, bounded chunks/model state, cache identity
+> and conservative uncertainty events. Test soft speech, short acknowledgements,
+> chunk equivalence and visible missing-model failure. Preserve the sequence
+> extent, exact source tails and uncertified origin/correlation findings; no
+> silent shifting/stretching/truncation or automatic cuts. Keep real media,
+> names, paths and source hashes private and compatibility EXPERIMENTAL.
+> Complete S04 gates, commit/push, verify synchronization and exact-SHA CI,
+> provide a verbose handover and STOP.
+
+Paused after S03. The next thread should execute S04 only.
