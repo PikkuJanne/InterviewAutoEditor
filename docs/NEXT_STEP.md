@@ -1,28 +1,45 @@
-# Next step: S01 only
+# Resume S01 only — real inputs still required
 
-S00 — Bootstrap and preserve existing work — has passed its technical gate.
-The next chat should execute **S01 — Capture Kdenlive 26 reference fixtures**
-only, after verifying the live S00 Git checkpoint. S01 has not started.
+S01 — Capture Kdenlive 26 reference fixtures — is **BLOCKED**, with useful
+synthetic capture work preserved. Do not begin S02.
 
 - Branch: `codex/kdenlive26-overhaul`.
-- Implementation commit: `32cdc719e943378e004e4759dd233109876349a0`.
-- Latest handover: [docs/handovers/S00.md](handovers/S00.md).
+- S01 implementation commit: `1d81a245a4a5986ecbfe4fff7d341b84d2ebcf78`.
+- Latest handover: [docs/handovers/S01.md](handovers/S01.md).
 - Durable state: [docs/project/STATE.json](project/STATE.json).
 - Selected brief: [docs/project/steps/S01.md](project/steps/S01.md).
-- Public inventory: [docs/project/BOOTSTRAP_INVENTORY.md](project/BOOTSTRAP_INVENTORY.md).
+- Capture evidence: [docs/fixtures/S01_CAPTURE.md](fixtures/S01_CAPTURE.md).
 
-Read the handover's exact continuation prompt and the execution/GitHub protocols.
-Resolve the final S00 documentation checkpoint with
-`git log -1 --format=%H -- docs/handovers/S00.md`, then compare current HEAD
-with live `origin` using `python tools/verify_checkpoint.py --repo .`.
-The final chat records the actual pushed SHA; this file does not embed its own
-containing commit. A failed sync overrides this next-step selection: resume S00
-until the checkpoint is synchronized. Preserve any newer work; do not reset.
+The installed build is independently confirmed as Kdenlive 26.08.2 rev. d4e87e4.
+Three genuine GUI-created, sanitized synthetic projects and media are under
+`tests/fixtures/kdenlive-26.08.2/`. The comprehensive two-participant fixture
+passed actual open/play/group-edit/undo/save-copy/close/reopen/GUI-render checks,
+plus moved-folder opening. The semantic timeline survived; the render preserves
+300 video frames and excludes the embedded marker in the measured window. This
+is reference evidence, not a product exporter or real-interview acceptance.
 
-S01 prerequisites: independently confirm the reported Kdenlive 26.08.2 build,
-create genuine sanitized fixtures, and locate a real starter project, Zoom MP4
-and cleaned aligned participant audio. No input media locations are supplied yet.
-The executable exists but application tests remain NOT RUN. Machine-local
-paths/runtime and input availability are in ignored `.local/S00-inputs.json`.
+**Missing:** the owner's real starter `.kdenlive`, source Zoom MP4, aligned
+cleaned participant files and private sample excerpts. Supply their local
+project/media-folder location. No unrelated personal storage was searched.
+Ignored `.local/S01/private-corpus-index.json` retains capture paths and empty
+real-input slots. `.local/S00-inputs.json` records the runtime/install. Actual
+production profile, N, starter structure and synchronization assumptions remain
+unchecked. The broader GUI fixture matrix and native clip-gain edge evidence
+remain pending; see the handover.
 
-Do not reinstall the bundle or begin audio-engine/GUI implementation.
+At the next chat start, read the handover continuation prompt and execution/GitHub
+protocols. Resolve its containing checkpoint and verify live synchronization:
+
+```powershell
+git log -1 --format=%H -- docs/handovers/S01.md
+python tools/verify_checkpoint.py --repo .
+```
+
+Inspect newer work, compare local HEAD with live origin, and verify upstream and
+a clean intended worktree. Failed synchronization must be finished on S01 first.
+The final chat records the pushed documentation SHA; this file does not embed
+its own containing commit. Preserve existing work and failed-attempt evidence.
+
+Resume S01 to obtain/check real inputs and complete its exit gate. No importer,
+exporter, audio engine, models, application GUI or S02 work was started.
+Commit/push/verify/handover and STOP again at the S01 boundary.
