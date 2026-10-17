@@ -7,10 +7,10 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S01",
-  "next_step": "S02",
-  "latest_handover": "docs/handovers/S01-attempt-02.md",
-  "implementation_commit": "1d81a245a4a5986ecbfe4fff7d341b84d2ebcf78",
+  "active_step": "S02",
+  "next_step": "S03",
+  "latest_handover": "docs/handovers/S02.md",
+  "implementation_commit": "9ba13e40551652a267f4fba4a2f9cfde2061984b",
   "technical_gate_status": "passed",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
@@ -34,7 +34,7 @@
       "title": "Prove editable Kdenlive 26 export",
       "prerequisite": "S01",
       "brief": "docs/project/steps/S02.md",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "S03",
@@ -153,11 +153,12 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-17",
   "prerequisites_for_next_step": [
-    "Verify live checkpoint and clean intended worktree before beginning S02 only.",
-    "Use genuine public synthetic references and the ignored private corpus index; keep real media/names/paths private.",
-    "Implement the minimal adapter and one manually specified shared interior cut; prove actual G01/G02 and native gain edges.",
-    "Account for observed native sequence extent changes; preserve source-tail/offset/drift findings for S03.",
-    "Keep product compatibility EXPERIMENTAL until required exporter and wider regression evidence exists."
+    "Resolve the S02 handover checkpoint and verify live local/remote SHA equality and clean intended worktree before S03 only.",
+    "Implement intake/probing/file mapping, rational frame/sample timing and typed versioned contracts within the S03 brief.",
+    "Preserve S01/S02 one-frame native sequence extent changes, 192 kHz source-tail differences and uncertified real offset/drift findings.",
+    "Use the ignored private corpus index locally; never publish real media, paths, names or source hashes.",
+    "Preserve the S02 native-entry gain/group/guide/MP4-audio-exclusion proof; no silent source shifting, stretching or tail discard.",
+    "Keep product compatibility EXPERIMENTAL; GUI count/fractional/UNC and real acceptance remain pending."
   ],
   "validation_evidence": [
     {
@@ -278,9 +279,74 @@
       "reviewed_paths": 7,
       "command": "python -B .local/S01/validate_attempt_02_docs.py",
       "applies_to": "S01 attempt 02 documentation checkpoint; resolve SHA from handover history"
+    },
+    {
+      "check": "s02_full_automated_suite",
+      "status": "passed",
+      "tests": 53,
+      "seconds": 45.037,
+      "command": "python -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "applies_to_commit": "9ba13e40551652a267f4fba4a2f9cfde2061984b"
+    },
+    {
+      "check": "s02_actual_application_g01_g02",
+      "status": "passed",
+      "scope": "Two-participant synthetic adapter output: open/play/group delete and move/undo/save/close/reopen/GUI render; native entry Volume editable; sanitized copy open.",
+      "evidence": "tests/fixtures/kdenlive-26.08.2/s02-PROVENANCE.json"
+    },
+    {
+      "check": "s02_gui_render_measurements",
+      "status": "passed",
+      "checks": 11,
+      "video_frames": 275,
+      "marker_attenuation_db": -63.085,
+      "audio_anchor_best_lag_samples": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "whole_project_semantic_equal": false,
+      "timeline_semantics_equal": true,
+      "sequence_extent_delta_frames": 1,
+      "evidence": "tests/fixtures/kdenlive-26.08.2/s02-render-validation.json"
+    },
+    {
+      "check": "s02_private_corpus_preservation",
+      "status": "passed",
+      "assertions": 102,
+      "original_media_unchanged": 5,
+      "sample_exact_pcm_excerpts": 12,
+      "command": "python -B .local/S01/validate_private_corpus.py",
+      "real_alignment_certified": false
+    },
+    {
+      "check": "s02_private_reader",
+      "status": "passed",
+      "participants": 4,
+      "clip_frames": 51092,
+      "initial_and_saved_sequence_extent_delta_frames": [
+        0,
+        1
+      ],
+      "real_export": "NOT RUN"
+    },
+    {
+      "check": "s02_public_review",
+      "status": "passed",
+      "reviewed_paths": 11,
+      "command": "python -B .local/S02/check_public.py",
+      "applies_to_commit": "9ba13e40551652a267f4fba4a2f9cfde2061984b"
+    },
+    {
+      "check": "s02_checkpoint_documentation_and_privacy",
+      "status": "passed",
+      "reviewed_paths": 14,
+      "command": "python -B .local/S02/check_public.py --checkpoint",
+      "applies_to": "S02 documentation checkpoint; resolve SHA from handover history"
     }
   ],
-  "previous_step_implementation_commit": "32cdc719e943378e004e4759dd233109876349a0",
+  "previous_step_implementation_commit": "1d81a245a4a5986ecbfe4fff7d341b84d2ebcf78",
   "s01_evidence": {
     "capture_record": "docs/fixtures/S01_CAPTURE.md",
     "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/PROVENANCE.json",
@@ -295,8 +361,8 @@
       "native_clip_gain_edges",
       "supported_unc_paths"
     ],
-    "product_exporter": "not_implemented",
-    "s02_started": false,
+    "product_exporter": "not_implemented_at_S01_checkpoint; see_s02_evidence_for_current_proof",
+    "s02_started": true,
     "real_input_observations": "docs/fixtures/S01_REAL_INPUTS.md",
     "real_participant_count": 4,
     "real_starter_provenance": "agent_created_and_saved_in_actual_GUI_from_owner_supplied_media_no_existing_project_supplied",
@@ -306,5 +372,48 @@
     "remaining_capture_matrix_scope": "S02 gain-edge gate; broader GUI matrix before tested product compatibility; not claimed as S01 evidence",
     "completion_handover": "docs/handovers/S01-attempt-02.md",
     "first_attempt_handover": "docs/handovers/S01.md"
+  },
+  "s02_evidence": {
+    "proof_report": "docs/fixtures/S02_EXPORT_PROOF.md",
+    "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/s02-PROVENANCE.json",
+    "render_measurements": "tests/fixtures/kdenlive-26.08.2/s02-render-validation.json",
+    "adapter": "tools/s02_kdenlive_adapter.py",
+    "target_build": "26.08.2 rev. d4e87e4",
+    "compatibility": "EXPERIMENTAL",
+    "g01": "passed_bounded_synthetic_proof",
+    "g02": "passed_actual_application",
+    "manual_cut_source_frames": [
+      100,
+      125
+    ],
+    "retained_source_frames": [
+      [
+        0,
+        100
+      ],
+      [
+        125,
+        300
+      ]
+    ],
+    "output_frames": 275,
+    "gui_participant_count": 2,
+    "automated_mutated_count_tests": [
+      1,
+      3,
+      6,
+      8
+    ],
+    "private_reader_participants": 4,
+    "gain_representation": "native_per_entry_volume_keyframes",
+    "gain_only_pcm_fallback": "not_needed_for_S02_400ms_frame_grid_ramps; subframe_real_listening_not_proven",
+    "whole_project_semantic_equal": false,
+    "timeline_semantics_equal": true,
+    "native_sequence_extent_delta_frames": 1,
+    "real_alignment_certified": false,
+    "automatic_decisions_implemented": false,
+    "real_export_performed": false,
+    "s03_started": false,
+    "completion_handover": "docs/handovers/S02.md"
   }
 }
