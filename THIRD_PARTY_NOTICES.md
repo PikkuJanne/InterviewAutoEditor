@@ -1,4 +1,4 @@
-# S04 model and runtime provenance
+# Model and runtime provenance
 
 S04 uses **Silero VAD v5.1.2**, upstream revision
 `6478567951ae5c9979ad7b234185b5515f4be7a1`, unchanged ONNX bytes, under the
@@ -44,3 +44,55 @@ reuse contain no network calls or model download. Analysis sessions explicitly
 disable ONNX Runtime telemetry. All source media, derived analysis buffers,
 reports and caches are local. The project [MIT licence](LICENSE)
 is unchanged.
+
+## S05 YAMNet and additional CPU runtime
+
+S05 uses Google's unchanged **YAMNet classification TFLite v1**, Apache-2.0,
+4,126,810 bytes, SHA256
+`10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de`.
+Exact download/interface/licence/class-map hashes are in
+[yamnet-model.json](third_party/yamnet-model.json). The Google download URL is
+mutable; mandatory hash/size verification prevents automatic upgrades. Reference
+code and vocabulary are pinned to TensorFlow Models revision
+`a6e25e28dc8433dde6c1319186a41e6d81a03f2d`; this is separate from the prebuilt
+model's release identity. No local conversion or training was performed.
+The prebuilt classification variant uses upstream quantization and Relu6
+retraining, as documented in its
+[fixed model card](https://github.com/tensorflow/tfhub.dev/blob/81fdea8ffa53b5acbd66a012d17fb8f9602c714b/assets/docs/google/models/yamnet/classification/tflite/lite/1.md).
+The retained [Apache notice](third_party/yamnet-LICENSE) and
+[521-class map](third_party/yamnet-class-map.csv) accompany the adapter. The map
+matches all names in the model's attached label list. See the
+[official reference](https://github.com/tensorflow/models/tree/a6e25e28dc8433dde6c1319186a41e6d81a03f2d/research/audioset/yamnet).
+
+The [S05 hash lock](requirements-s05-win-py312.lock) includes the S04 runtime lock
+and six additional Windows AMD64/CPython 3.12 wheels. The
+[additional inventory](third_party/s05-runtime-inventory.json) binds exact wheel
+bytes and retained notices. YAMNet inference uses **ai-edge-litert 2.3.0**, one
+CPU thread with its builtin CPU XNNPACK backend; no external hardware delegates
+or GPU/NPU SDKs are supplied. Standalone local Interpreter inference has no
+network calls in this implementation. S04 still explicitly disables ONNX
+Runtime telemetry. No claim of a LiteRT telemetry-disable API is made.
+
+| Added component | Version | Licence / retained notice |
+|---|---|---|
+| ai-edge-litert | 2.3.0 | [Apache-2.0 wheel notice](third_party/s05-ai_edge_litert-LICENSE) |
+| backports.strenum | 1.2.8 | [MIT](third_party/s05-backports_strenum-LICENSE) |
+| colorama | 0.4.6 | [BSD-3-Clause](third_party/s05-colorama-LICENSE.txt) |
+| ml_dtypes | 0.5.3 | [Apache-2.0](third_party/s05-ml_dtypes-LICENSE); [Eigen/MPL-2.0 notice](third_party/s05-ml_dtypes-LICENSE.eigen) |
+| tqdm | 4.67.1 | [MPL-2.0 and MIT portions](third_party/s05-tqdm-LICENCE) |
+| typing_extensions | 4.15.0 | [PSF-2.0 and accompanying notice](third_party/s05-typing_extensions-LICENSE) |
+
+These are source-development dependency notices, not a completed redistribution
+audit/SBOM or clean-install release package. Review actual packaged native
+libraries and transitive notices before S14/S15 redistribution; no wheel/model
+binary is committed or distributed at this checkpoint.
+
+Supplementary model comparison uses local copies of the
+[official ESC-50 dataset](https://github.com/karolpiczak/ESC-50/tree/33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6),
+revision `33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6`, under its declared
+**CC BY-NC 3.0** terms, for noncommercial development evaluation only. Original
+per-clip attributions, hashes, audio and metadata remain ignored/local. No
+dataset audio is bundled or republished; this is not a commercially redistributable
+product fixture. Clip labels are weak category labels, not precise private Zoom
+event annotations. AudioSet/pretraining overlap is unknown. Reserved folds are
+kept separate from development and no held-out acceptance result is claimed.

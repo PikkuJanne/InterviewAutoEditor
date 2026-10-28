@@ -54,6 +54,10 @@ acceptance and laughter protection are not established by VAD.
 
 ## Development and continuation
 
+S05 adds local CPU YAMNet reaction evidence, empirical signal-floor review and
+additive speech/uncertainty protection. Private labelled-development G04 remains
+blocked; S06 has not started. See [S05 setup, evidence and limits](docs/project/S05_REACTIONS.md).
+
 Execute one named step per chat and stop after its verified Git checkpoint.
 Start with [NEXT_STEP](docs/NEXT_STEP.md), [STATE](docs/project/STATE.json),
 the latest linked handover and [AGENTS.md](AGENTS.md).

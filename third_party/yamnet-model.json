@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "model": "Google YAMNet classification TFLite v1",
+  "origin_url": "https://storage.googleapis.com/download.tensorflow.org/models/tflite/task_library/audio_classification/android/lite-model_yamnet_classification_tflite_1.tflite",
+  "origin_url_is_immutable": false,
+  "integrity_policy": "Exact size/hash mandatory; mutable URL never means automatic upgrade",
+  "bytes": 4126810,
+  "sha256": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de",
+  "licence": "Apache-2.0",
+  "licence_path": "third_party/yamnet-LICENSE",
+  "licence_sha256": "5b17814bf0de8cf65069bc6d7cc38cff19fcaa864d243423ad3ef3db01b52385",
+  "upstream_code_revision": "a6e25e28dc8433dde6c1319186a41e6d81a03f2d",
+  "upstream_code_url": "https://github.com/tensorflow/models/tree/a6e25e28dc8433dde6c1319186a41e6d81a03f2d/research/audioset/yamnet",
+  "class_map_path": "third_party/yamnet-class-map.csv",
+  "class_map_sha256": "cdf24d193e196d9e95912a2667051ae203e92a2ba09449218ccb40ef787c6df2",
+  "input": {
+    "rate": 16000,
+    "shape": [
+      15600
+    ],
+    "dtype": "float32",
+    "channels": "separate physical channels",
+    "hop_samples": 7680
+  },
+  "output": {
+    "shape": [
+      1,
+      521
+    ],
+    "dtype": "float32",
+    "scores": "uncalibrated class scores"
+  },
+  "runtime": "ai-edge-litert==2.3.0, one CPU thread; builtin CPU XNNPACK; no external accelerator delegates",
+  "model_converted_locally": false,
+  "model_binary_committed": false,
+  "upstream_model_card_url": "https://raw.githubusercontent.com/tensorflow/tfhub.dev/81fdea8ffa53b5acbd66a012d17fb8f9602c714b/assets/docs/google/models/yamnet/classification/tflite/lite/1.md",
+  "upstream_model_card_sha256": "2940917d36115abae9c8e8559029d56b767a8ced65444ff3f4b9aef75a5befd5",
+  "variant": "Official classification TFLite v1: upstream quantized, Relu6-retrained variant; not numerically equivalent to original floating-point YAMNet"
+}

@@ -45,3 +45,9 @@ Kdenlive GUI evidence. Source tails and origin/correlation reviews remain
 unresolved; no real export is authorized. See [S04 limits](project/S04_SPEECH.md).
 
 Do not replace this table with a blanket '26 and later' claim. Update only from actual evidence under docs/project/KDENLIVE_COMPATIBILITY.md.
+
+S05 adds local CPU reaction/uncertainty fusion only. It preserves all S04 and
+intake findings and does not change the exporter or the EXPERIMENTAL status.
+G04 private content labels remain an explicit blocker; supplementary clip
+detection is not Kdenlive, alignment or full content-retention evidence. See
+[S05 evidence and limits](project/S05_REACTIONS.md).
