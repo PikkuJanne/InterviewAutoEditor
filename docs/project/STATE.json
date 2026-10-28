@@ -7,13 +7,15 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S04",
+  "active_step": "S05",
   "next_step": "S05",
-  "latest_handover": "docs/handovers/S04.md",
-  "implementation_commit": "aea03cf134ea6214c972900e117b03b389f262b9",
-  "technical_gate_status": "passed",
+  "latest_handover": "docs/handovers/S05.md",
+  "implementation_commit": "7cf553449a69d4e4518875f029e8933f1bee4656",
+  "technical_gate_status": "blocked",
   "synchronization": "must_verify_live_at_each_checkpoint",
-  "blockers": [],
+  "blockers": [
+    "G04 requires independently human-confirmed sample-bound private development labels covering words, acknowledgements, laughter/chuckles, uncertainty and genuine simultaneous talk including VAD misses. Existing excerpts have position labels only. A 24-second local annotation pack is prepared; candidate descriptions and upstream clip categories are not ground truth."
+  ],
   "steps": [
     {
       "id": "S00",
@@ -55,7 +57,7 @@
       "title": "Protect laughter overlap and uncertain sounds",
       "prerequisite": "S04",
       "brief": "docs/project/steps/S05.md",
-      "status": "pending"
+      "status": "blocked"
     },
     {
       "id": "S06",
@@ -153,12 +155,13 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-28",
   "prerequisites_for_next_step": [
-    "Resolve S04 documentation checkpoint from Git and verify live local/remote SHA equality, clean worktree/upstream and exact-SHA CI before S05 only.",
-    "Use S04 speech/uncertainty and strict v1 analysis records; negative VAD is not a silence certificate. Very soft synthetic speech already required uncertainty protection.",
-    "Benchmark/integrate reaction evidence with per-track speech/noise/uncertainty using local CPU models, pinned provenance/licences and labelled private development examples; keep held-out acceptance separate.",
-    "Protect laughter/chuckles/yes/mm-hm, overlap and uncertain sounds, including VAD misses. Correlation/bleed remains supporting evidence; shared microphones remain inseparable.",
-    "Preserve native sequence extent, full exact source tails and all uncertified origin/correlation findings. No silent shifting/stretching/truncation, source separation or automatic cuts.",
-    "Keep private corpus media, names, paths, source hashes and transcripts local. Compatibility stays EXPERIMENTAL; real alignment and unequal-tail export remain refused."
+    "Resume S05 only. Resolve its handover-containing checkpoint and verify live SHA equality, clean worktree/upstream and exact-SHA CI before editing.",
+    "Obtain independent human-confirmed sample-bound private development labels; review the local 24-second annotation pack and add representative missing categories. Do not promote predictions or clip labels to G04 truth.",
+    "Measure zero lost annotated words, laughter/chuckles, acknowledgements and genuine overlap across complete protected intervals, including VAD misses. Keep held-out acceptance separate from tuning.",
+    "Retain all S04/S05 uncertainty and supporting-only floor/correlation findings. Shared microphones remain one inseparable source group.",
+    "Preserve native sequence extent, exact source tails and every uncertified origin/correlation diagnostic. No silent shifting/stretching/truncation/padding, source separation, gain changes, automatic cuts or camera dependency.",
+    "Keep all real media, names, private paths, source hashes, transcripts and labels local. Compatibility remains EXPERIMENTAL and v1 unverified-origin/unequal-tail export remains refused.",
+    "S06 remains pending until S05 genuinely passes its gate and a later thread explicitly selects S06."
   ],
   "validation_evidence": [
     {
@@ -532,9 +535,86 @@
       "dependency_check": "passed",
       "command": ".venv/Scripts/python.exe -B .local/S04/check_public.py",
       "applies_to_commit": "aea03cf134ea6214c972900e117b03b389f262b9"
+    },
+    {
+      "check": "s05_final_full_automated_suite",
+      "status": "passed",
+      "tests": 107,
+      "new_s05_tests": 17,
+      "skipped": 0,
+      "seconds": 101.871,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_*.py -v",
+      "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656",
+      "scope": "Python implementation unchanged by LF/attributes follow-up; all local optional assets enabled"
+    },
+    {
+      "check": "s05_supplementary_external_development_benchmark",
+      "status": "passed_limited_clip_detection_only",
+      "clips": 64,
+      "seconds": 12.359,
+      "laughter_clips": 16,
+      "reaction_hits": 14,
+      "speech_model_hits": 8,
+      "reaction_hits_without_speech_model": 6,
+      "held_out_opened": false,
+      "g04_private_retention": "NOT_ESTABLISHED",
+      "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656"
+    },
+    {
+      "check": "s05_generated_speech_acknowledgement_regression",
+      "status": "passed",
+      "sample_bound_regions": 16,
+      "fully_protected_regions": 16,
+      "human_interview_acceptance": false,
+      "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656"
+    },
+    {
+      "check": "s05_private_full_source_fusion",
+      "status": "passed_engineering_only",
+      "participants": 4,
+      "physical_channels": 8,
+      "cold_seconds": 355.438,
+      "reaction_cache_reuse_tracks": 4,
+      "s04_events_and_reviews_preserved": true,
+      "intake_findings_preserved": true,
+      "human_content_acceptance": "NOT_RUN",
+      "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656"
+    },
+    {
+      "check": "s05_private_corpus_and_annotation_pack_preservation",
+      "status": "passed",
+      "assertions": 102,
+      "original_media_unchanged": 5,
+      "sample_exact_original_excerpts": 12,
+      "sample_exact_new_annotation_cues": 3,
+      "annotation_labels": "PENDING",
+      "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656"
+    },
+    {
+      "check": "s05_unchanged_s02_gui_render_regression",
+      "status": "passed",
+      "checks": 11,
+      "video_frames": 275,
+      "scope": "Original S02 GUI render remeasured; no new S05 GUI interaction",
+      "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656"
+    },
+    {
+      "check": "s05_setup_dependency_resolution_and_cli",
+      "status": "passed",
+      "pinned_model_download": "verified_exact_bytes",
+      "hash_locked_wheels": 16,
+      "pip_check": "passed",
+      "cli_complete_review_exit": 2,
+      "cli_repeat_no_overwrite_exit": 1,
+      "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656"
+    },
+    {
+      "check": "s05_g04_private_labelled_content_retention",
+      "status": "blocked",
+      "reason": "Independent private sample-bound labels absent; generated speech and upstream clip hits do not close G04."
     }
   ],
-  "previous_step_implementation_commit": "8ee7fb69ecf11e840d1094c31183fc0ceefeb93f",
+  "previous_step_implementation_commit": "aea03cf134ea6214c972900e117b03b389f262b9",
   "s01_evidence": {
     "capture_record": "docs/fixtures/S01_CAPTURE.md",
     "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/PROVENANCE.json",
@@ -674,6 +754,56 @@
     "s04_development_gate": "passed_not_full_G04_acceptance",
     "relevant_g09": "passed_scoped_model_cache_decoder_cancel_no_overwrite",
     "completion_handover": "docs/handovers/S04.md",
-    "s05_started": false
+    "s05_started": true
+  },
+  "s05_evidence": {
+    "guide": "docs/project/S05_REACTIONS.md",
+    "measurements": "docs/fixtures/S05_EVENT_EVIDENCE.json",
+    "model_provenance": "third_party/yamnet-model.json",
+    "runtime_lock": "requirements-s05-win-py312.lock",
+    "notices": "THIRD_PARTY_NOTICES.md",
+    "model": "Google YAMNet classification TFLite v1, upstream quantized Relu6 variant",
+    "model_sha256": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de",
+    "model_licence": "Apache-2.0",
+    "ai_edge_litert_cpu": "2.3.0",
+    "cpu_backend": "builtin CPU XNNPACK, one thread, no external hardware delegates",
+    "numpy": "2.1.3",
+    "onnxruntime_cpu": "1.20.1",
+    "compatibility": "EXPERIMENTAL",
+    "reaction_records_are_additive": true,
+    "s04_events_and_reviews_unchanged": true,
+    "shared_microphones": "one inseparable source group",
+    "noise_floor": "empirical 10th percentile 32ms RMS histogram, supporting only",
+    "model_and_signal_floor_negative_results_certify_silence": false,
+    "development_external_clips": 64,
+    "development_laughter_clips": 16,
+    "development_laughter_reaction_hits": 14,
+    "development_laughter_speech_model_hits": 8,
+    "development_reaction_hits_without_speech_model": 6,
+    "external_annotations": "upstream clip categories only, no sample-bound retention claim",
+    "external_licence": "CC BY-NC 3.0 local noncommercial development evaluation only; no audio redistributed",
+    "reserved_external_laughter_clips": 24,
+    "reserved_external_audio_downloaded_or_opened": false,
+    "generated_sample_bound_regions": 16,
+    "generated_fully_protected_regions": 16,
+    "private_full_source_participants": 4,
+    "private_pcm_channels": 8,
+    "private_reaction_cache_reuse_tracks": 4,
+    "all_source_tail_extent_origin_and_correlation_findings_retained": true,
+    "private_annotation_pack_seconds": 24,
+    "private_annotation_pack_cues": 3,
+    "private_annotation_pack_sample_exact": true,
+    "private_human_sample_bound_labels": "MISSING",
+    "g04": "BLOCKED_missing_independent_private_development_labels",
+    "private_human_listening_acceptance": "NOT_RUN",
+    "real_alignment_certified": false,
+    "automatic_cuts_performed": false,
+    "source_repair_performed": false,
+    "original_media_changed": false,
+    "real_export_performed": false,
+    "new_gui_interaction": "NOT_RUN_analysis_only_exporter_unchanged",
+    "relevant_g09": "PASS_scoped_model_cache_decoder_cancel_no_overwrite",
+    "completion_handover": "docs/handovers/S05.md",
+    "s06_started": false
   }
 }
