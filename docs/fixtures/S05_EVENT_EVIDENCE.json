@@ -1111,8 +1111,8 @@
     "reserved_audio_downloaded_or_opened": false,
     "pretraining_audioset_overlap": "UNKNOWN"
   },
-  "private_content_labels": "NOT_AVAILABLE_POSITION_SELECTED_EXCERPTS_ONLY",
-  "private_human_listening": "NOT_RUN",
+  "private_content_labels": "PARTIAL_PHONE_REVIEW_REQUIRED_POSITIVE_CATEGORIES_INCOMPLETE",
+  "private_human_listening": "PARTIAL_PHONE_REVIEW_NOT_FULL_CONTENT_ACCEPTANCE",
   "shared_microphone": "one inseparable source group; physical channels do not identify people",
   "noise_or_correlation_can_remove_protection": false,
   "boundary_tolerance_samples": 0,
@@ -1210,8 +1210,23 @@
   "annotation_pack": {
     "cues": 3,
     "total_seconds": 24,
-    "human_labels": "PENDING",
+    "human_labels": "PARTIAL_APPROXIMATE_PHONE_OBSERVATIONS_RECORDED_LOCALLY",
     "candidate_descriptions_are_ground_truth": false,
     "source_sample_exactness": "PASS_all_three_cues_PCM_bytes_equal_original_windows"
+  },
+  "human_review_followup": {
+    "source": "direct user listening observations",
+    "private_comments_labels_and_timecodes_published": false,
+    "timing_precision": "approximate_seconds_from_phone_mp3",
+    "required_positive_category_coverage": "INCOMPLETE",
+    "coarse_windows_checked": 3,
+    "all_coarse_windows_fully_protected_on_both_channels": true,
+    "overlapping_cues_independent": false,
+    "production_code_settings_or_protection_changed": false,
+    "next_review_pack_seconds": 21,
+    "next_review_pack_human_confirmation": "PENDING",
+    "next_review_pack_provenance": "private interview speech candidate; two-source channel preview at uncertified declared origin; explicitly external pre-existing development laughter example",
+    "held_out_audio_opened": false,
+    "g04": "BLOCKED"
   }
 }

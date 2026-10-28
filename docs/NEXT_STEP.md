@@ -1,76 +1,74 @@
-# Resume S05 — private labelled G04 gate remains blocked
+# Resume S05 — partial human review recorded; G04 remains blocked
 
-S05 has implemented additive local CPU reaction/uncertainty evidence, but is
-**BLOCKED** at the required independent private labelled-development gate.
-**Resume S05 only. Do not start S06.**
+**Resume S05 only. S06 remains pending.** The first phone review supplied useful
+corrections but does not establish all required positive development categories.
+Production code, settings, protection and compatibility are unchanged.
 
 - Branch: `codex/kdenlive26-overhaul`.
 - Implementation: `7cf553449a69d4e4518875f029e8933f1bee4656`.
-- Handover: [S05.md](handovers/S05.md).
+- Latest handover: [S05-attempt-02.md](handovers/S05-attempt-02.md).
+- Original implementation evidence: [S05.md](handovers/S05.md).
 - State: [STATE.json](project/STATE.json).
 - Brief: [S05.md](project/steps/S05.md).
 - Guide: [S05_REACTIONS.md](project/S05_REACTIONS.md).
-- Evidence: [S05_EVENT_EVIDENCE.json](fixtures/S05_EVENT_EVIDENCE.json).
-- Preserved contracts/speech: [S03](project/S03_CONTRACTS.md), [S04](project/S04_SPEECH.md).
+- Measurements: [S05_EVENT_EVIDENCE.json](fixtures/S05_EVENT_EVIDENCE.json).
 
-**107 tests passed, zero skips.** On 16 supplementary human-category laughter
-clips YAMNet had 14 reaction hits versus 8 speech-model hits, including 6 reaction
-hits without speech-model evidence. Two laughter clips were missed. These are
-weak category labels, not precise event bounds or cleaned-Zoom acceptance.
-All 16 unchanged generated sample-bound speech/acknowledgement regions are
-protected. Noise is heavily overprotected; no useful pause-removal claim follows.
+Direct user observations are stored locally, separate from provisional model
+labels. Their timing is approximate; uncertain vocal identity stays uncertain.
+Some first-round cues share the same source material and are not independent.
+Every reported coarse window remains fully protected on both physical channels.
+This is useful negative/uncertainty evidence, not full content acceptance.
 
-Full-source private engineering integration passed on four WAVs/eight channels,
-with every S04 event/review and original intake finding unchanged. Four reaction
-caches reused identically. All 102 original corpus checks and three new exact
-PCM audition-cue comparisons passed. Existing S02 render remeasurement passed
-11 checks. No new GUI editing/export occurred; compatibility stays EXPERIMENTAL.
+A second private phone pack totals 21 seconds: D is an interview speech candidate;
+E presents two original microphone channels left/right at the declared origin;
+F is an explicitly external laughter example from the already downloaded
+DEVELOPMENT benchmark subset. E does not certify alignment, speaker identity or
+real simultaneity. F is not cleaned-Zoom or held-out acceptance audio. Source
+PCM/channel arrays and external attribution are retained locally. New proposals
+remain unconfirmed. No upload or manual CSV editing is required from the user.
 
-The missing evidence is independent human-confirmed sample-bound private labels
-for words, laughter/chuckles, yes/mm-hm, uncertain sounds and genuine simultaneous
-talk, including VAD misses, on agreed representative development examples.
-The local 24-second annotation pack has blank labels; two candidates were chosen
-with model assistance and one by time, so their descriptions are hypotheses.
-Add missing categories. Keep held-out labels/audio out of tuning; reserved
-external folds remain unopened. Full-source engineering inference is not held-out
-acceptance. Prefer a separate interview for acceptance.
+Still required: representative confirmed speech/words, laughter/chuckles,
+yes/mm-hm, uncertain vocal events and genuine simultaneous talk, including VAD
+misses. Human time ranges may be conservative; retain their annotation precision
+while rounding outward onto exact source grids. Add missing categories as needed.
+Keep held-out acceptance separate from development selection/tuning.
 
-Preserve all existing timing findings: 51092 CFR video frames at 25/1, native
-sequence deltas 0/1, exact stereo 192 kHz source counts and +/-4/375-second tails.
-All S03 origins stay UNVERIFIED_INSUFFICIENT_ANCHORS and S01 historical
-correlations remain uncertified. Null offsets stay null. V1 exact-coverage export
-still refuses unresolved tails/origins. No silent media repair, source separation,
-gain change, automatic cut or camera dependency. Shared microphones remain one
-source group; floor/correlation/bleed evidence cannot erase quiet overlap.
+The prior implementation's 107 tests/zero skips, 16 generated protected regions,
+four-source/eight-channel integration, four identical reaction cache hits,
+102 original preservation assertions and 11 S02 render checks remain unchanged.
+They were not rerun for this documentation/private-review continuation. No new
+Kdenlive GUI/export took place. Compatibility remains EXPERIMENTAL.
 
-Verify the containing checkpoint and exact-SHA CI live before editing:
+Preserve every S04/S05 uncertainty event, shared-microphone group, native sequence
+extent delta 0/1, exact source tail +/-4/375 s, and uncertified origin/correlation
+finding. Null offsets stay null. No shifting, stretching, truncation, padding,
+source separation, normalization, gain change, automatic cut or camera dependency.
+Existing real export refusals remain in force; private data stays local.
+
+Verify the containing checkpoint live before further repository edits:
 
 ```powershell
-git log -1 --format=%H -- docs/handovers/S05.md
+git log -1 --format=%H -- docs/handovers/S05-attempt-02.md
 python tools/verify_checkpoint.py --repo .
 ```
 
-The closing chat records the actual final SHA after normal push. No Actions
-workflows were configured; zero runs/checks/statuses are not green CI. Resolve
-any sync/CI issue on S05 before proceeding.
+The final chat records actual local/live SHA equality, clean worktree/upstream and
+exact-SHA CI. No workflows were configured; absent checks are not green CI.
 
 Ready-to-paste prompt:
 
-> Resume S05 only in the existing InterviewAutoEditor checkout on
-> codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md,
-> docs/handovers/S05.md, execution/GitHub protocols, S03_CONTRACTS.md,
-> S04_SPEECH.md, S05_REACTIONS.md and the S05 brief. Implementation is
-> 7cf553449a69d4e4518875f029e8933f1bee4656. Resolve and verify the containing checkpoint,
-> clean worktree/upstream, live SHA equality and exact-SHA CI first. S05 is blocked
-> at G04: obtain independent human-confirmed sample-bound private development
-> labels for words, laughter/chuckles, yes/mm-hm, uncertainty and genuine overlap,
-> including VAD misses. Review the local 24-second annotation pack and add missing
-> representative categories; candidate descriptions and clip categories are not
-> ground truth. Keep held-out acceptance separate. Preserve additive uncertainty,
-> shared-microphone grouping and every sequence-extent/source-tail/uncertified
-> origin/correlation finding. No source separation, silent repair, gain changes,
-> automatic cuts or camera dependency. Keep private data local and compatibility
-> EXPERIMENTAL. Complete the actual S05 gate, commit/push/verify synchronization
-> and exact-SHA CI, provide a verbose handover and STOP. Do not execute S06.
+> Resume S05 only on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json,
+> NEXT_STEP.md, docs/handovers/S05-attempt-02.md, original S05 handover, S03/S04/S05
+> guides and execution/GitHub protocols. Implementation remains
+> 7cf553449a69d4e4518875f029e8933f1bee4656. Verify the containing checkpoint,
+> live remote equality, clean worktree/upstream and exact-SHA CI first. Incorporate
+> local direct-user feedback with uncertain identity and approximate timing
+> preserved. Review the prepared D/E/F pack and obtain missing confirmed positive
+> development categories. Keep external sample provenance and held-out acceptance
+> separate. Preserve uncertainty, shared groups and every native extent/source
+> tail/uncertified origin/correlation finding. No silent repair, source separation,
+> gain changes, automatic cuts or camera dependency. Keep private data local and
+> compatibility EXPERIMENTAL. Complete the actual S05 gate, commit/push/verify,
+> provide a verbose handover and STOP. Do not execute S06.
 
 Paused with S05 blocked. The next thread must resume S05.

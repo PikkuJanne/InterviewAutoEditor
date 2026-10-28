@@ -145,13 +145,22 @@ is heavily overprotected; no aggregate accuracy, precision, disposable-silence
 or useful pause-removal result is claimed. Unchanged S04 construction labels
 measure generated words/acknowledgements only; they are not human acceptance.
 
-The owner's three existing excerpt sets have time-position labels only. A short
-ignored annotation pack is prepared for independent human labelling, with
-candidate selection explicitly marked as model-assisted, **not ground truth**.
+The owner's three original excerpt sets have time-position labels only. A short
+ignored annotation pack received initial phone listening feedback. The user
+corrected provisional sound descriptions; approximate review windows and the
+uncertain vocal origin remain explicit in local records. Those windows are fully
+protected, but required positive speech/reaction/overlap categories are incomplete.
+Candidate selection is explicitly model-assisted, **not ground truth**. A second
+21-second private review pack provides an interview speech candidate, a two-source
+microphone preview and an explicitly external development laughter example. Each
+source channel in the microphone preview remains sample-exact; its declared
+common origin remains uncertified. No gain or source-media change is applied.
 The end excerpt is reserved from label-based tuning; full-source engineering
 inference does not make it an independent interview or constitute acceptance.
-Human-confirmed sample bounds for words, laughter/chuckles, acknowledgements,
+Human-confirmed conservative bounds for words, laughter/chuckles, acknowledgements,
 uncertain vocal sounds and simultaneous talk are still required on agreed
-development examples. Held-out listening/acceptance must stay separate, with a
+development examples. Human timing precision must be recorded honestly; converting
+seconds outward onto exact source samples does not make the original annotation
+sample-precise. Held-out listening/acceptance must stay separate, with a
 distinct interview preferred. Until those labels exist and zero loss is measured,
 **G04 and S05 completion remain blocked**. Resume S05; do not start S06.
