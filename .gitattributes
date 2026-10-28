@@ -1,0 +1,5 @@
+# S05 upstream files retain exact bytes used in provenance hashes.
+# Recognize their original CRLF terminators without hiding textual diffs.
+third_party/s05-ml_dtypes-LICENSE -text whitespace=cr-at-eol
+third_party/s05-ml_dtypes-LICENSE.eigen -text whitespace=cr-at-eol
+third_party/yamnet-class-map.csv -text whitespace=cr-at-eol
