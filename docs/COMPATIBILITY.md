@@ -39,4 +39,9 @@ automated coverage; fractional-FPS GUI export remains untested. See
 [S03 contracts](project/S03_CONTRACTS.md). The pending wider
 regression matrix remains required before a broader tested compatibility claim.
 
+S04 local speech analysis does not change the exporter or compatibility status.
+Its new CPU/model, cache and sample-grid tests are analysis evidence, not new
+Kdenlive GUI evidence. Source tails and origin/correlation reviews remain
+unresolved; no real export is authorized. See [S04 limits](project/S04_SPEECH.md).
+
 Do not replace this table with a blanket '26 and later' claim. Update only from actual evidence under docs/project/KDENLIVE_COMPATIBILITY.md.

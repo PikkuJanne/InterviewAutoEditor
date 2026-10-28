@@ -32,8 +32,8 @@ native gain-edge measurements, GUI evidence and recovery instructions.
   their own evidence and are never automatically claimed compatible.
 
 These are the full product requirements. The S02 proof implements only simple
-starter import and manual shared-cut export. Automatic analysis/planning, idle
-noise cleanup, model installation and the product desktop UI have not started.
+starter import and manual shared-cut export. Automatic planning, idle
+noise cleanup and the product desktop UI have not started.
 Real source offsets, drift and subframe tails remain unverified. The observed
 native one-frame sequence extent change is retained explicitly in the proof.
 
@@ -42,7 +42,15 @@ explicit participant mapping, bounded offset diagnostics, rational timing and
 strict versioned analysis/edit-plan records. It reports unresolved origins and
 every source-tail difference; it never repairs alignment or drops tails. See
 [S03 contracts and command usage](docs/project/S03_CONTRACTS.md). The existing
-S02 exporter is unchanged; automatic speech analysis has not started.
+S02 exporter is unchanged.
+
+S04 adds offline CPU speech evidence per participant and physical PCM channel,
+with a pinned Silero ONNX model/runtime, bounded stateful processing, local
+caches and conservative uncertainty protection. It preserves every intake
+tail/origin review and creates no cuts, gain changes or editable project.
+See [S04 setup, commands and limits](docs/project/S04_SPEECH.md) and
+[model/runtime licences](THIRD_PARTY_NOTICES.md). Real interview content
+acceptance and laughter protection are not established by VAD.
 
 ## Development and continuation
 
@@ -74,6 +82,8 @@ Tests use disposable local Git repositories and public synthetic captures; they
 need no private recordings or GitHub connection.
 S03 real-tool tests additionally need FFmpeg/ffprobe on PATH or in
 `IAE_FFMPEG`/`IAE_FFPROBE`; absent tools are reported as skipped tests.
+S04 CPU integration tests also need the locked runtime, explicit local model
+and generated development fixture; see the S04 guide. No tests download models.
 The read-only verifier requires an already committed, pushed checkpoint and
 network access. It checks the live branch SHA, upstream, worktree and basic state
 references; it does not run CI, test Kdenlive or validate the full product.
