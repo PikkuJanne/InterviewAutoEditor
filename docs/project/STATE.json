@@ -7,10 +7,10 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S03",
-  "next_step": "S04",
-  "latest_handover": "docs/handovers/S03.md",
-  "implementation_commit": "8ee7fb69ecf11e840d1094c31183fc0ceefeb93f",
+  "active_step": "S04",
+  "next_step": "S05",
+  "latest_handover": "docs/handovers/S04.md",
+  "implementation_commit": "aea03cf134ea6214c972900e117b03b389f262b9",
   "technical_gate_status": "passed",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
@@ -48,7 +48,7 @@
       "title": "Implement cached per-participant speech analysis",
       "prerequisite": "S03",
       "brief": "docs/project/steps/S04.md",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "S05",
@@ -151,14 +151,14 @@
   },
   "observed_base_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
-  "updated_date": "2026-10-17",
+  "updated_date": "2026-10-28",
   "prerequisites_for_next_step": [
-    "Resolve S03 handover checkpoint and verify live local/remote SHA equality, clean intended worktree, upstream and exact-SHA CI before S04 only.",
-    "Use strict v1 analysis contracts and propagate unverified origins and all source-tail/sequence-extent review states through non-destructive analysis.",
-    "Implement local CPU per-participant speech inference with pinned model/runtime provenance/licence, bounded stateful chunks, cache identity and uncertainty events.",
-    "Test soft speech/short acknowledgements, chunked versus unchunked boundaries and visible missing-model errors; do not claim VAD alone protects laughter.",
-    "Use the ignored private corpus locally; never publish real media, paths, names, transcripts or source hashes.",
-    "No automatic silence deletion, loudest-speaker selection, media repair, independent shifting/stretching or tail discard; keep compatibility EXPERIMENTAL."
+    "Resolve S04 documentation checkpoint from Git and verify live local/remote SHA equality, clean worktree/upstream and exact-SHA CI before S05 only.",
+    "Use S04 speech/uncertainty and strict v1 analysis records; negative VAD is not a silence certificate. Very soft synthetic speech already required uncertainty protection.",
+    "Benchmark/integrate reaction evidence with per-track speech/noise/uncertainty using local CPU models, pinned provenance/licences and labelled private development examples; keep held-out acceptance separate.",
+    "Protect laughter/chuckles/yes/mm-hm, overlap and uncertain sounds, including VAD misses. Correlation/bleed remains supporting evidence; shared microphones remain inseparable.",
+    "Preserve native sequence extent, full exact source tails and all uncertified origin/correlation findings. No silent shifting/stretching/truncation, source separation or automatic cuts.",
+    "Keep private corpus media, names, paths, source hashes and transcripts local. Compatibility stays EXPERIMENTAL; real alignment and unequal-tail export remain refused."
   ],
   "validation_evidence": [
     {
@@ -422,9 +422,119 @@
       "cli_no_overwrite_exit": 1,
       "command": "python -B .local/S03/check_public.py",
       "applies_to_commit": "8ee7fb69ecf11e840d1094c31183fc0ceefeb93f"
+    },
+    {
+      "check": "s04_final_full_automated_suite",
+      "status": "passed",
+      "tests": 90,
+      "new_s04_tests": 15,
+      "skipped": 0,
+      "seconds": 91.639,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "applies_to_commit": "aea03cf134ea6214c972900e117b03b389f262b9"
+    },
+    {
+      "check": "s04_known_generated_speech",
+      "status": "passed",
+      "annotated_regions": 16,
+      "protected_regions": 16,
+      "channel_cases": 10,
+      "boundary_tolerance_samples": 0,
+      "io_chunk_samples": [
+        1,
+        733,
+        8192,
+        65536
+      ],
+      "sample_grid_rates": [
+        16000,
+        44100,
+        48000,
+        96000,
+        192000
+      ],
+      "evidence": "docs/fixtures/S04_SPEECH_EVIDENCE.json",
+      "real_content_acceptance": false,
+      "applies_to_commit": "aea03cf134ea6214c972900e117b03b389f262b9"
+    },
+    {
+      "check": "s04_private_full_source_analysis_and_cache",
+      "status": "passed",
+      "participants": 4,
+      "pcm_channels": 8,
+      "initial_cold_seconds": 239.078,
+      "final_code_elapsed_seconds": 214.187,
+      "timing_scope": "concurrent_validation_not_standalone_benchmark",
+      "cache_reused_tracks": 4,
+      "speech_events": 2204,
+      "uncertainty_events": 3116,
+      "source_sample_counts": [
+        392384512,
+        392384512,
+        392384512,
+        392388608
+      ],
+      "decoded_samples_per_channel": [
+        32698710,
+        32698710,
+        32698710,
+        32699051
+      ],
+      "original_intake_findings_unchanged": true,
+      "native_sequence_extent_deltas": [
+        0,
+        1
+      ],
+      "source_tail_seconds": [
+        "-4/375",
+        "+4/375"
+      ],
+      "real_alignment_certified": false,
+      "command": ".venv/Scripts/python.exe -B .local/S04/validate_private.py",
+      "applies_to_commit": "aea03cf134ea6214c972900e117b03b389f262b9"
+    },
+    {
+      "check": "s04_private_corpus_preservation",
+      "status": "passed",
+      "assertions": 102,
+      "original_media_unchanged": 5,
+      "sample_exact_pcm_excerpts": 12,
+      "whole_project_semantics_equal": false,
+      "sequence_extent_delta_frames": 1,
+      "command": ".venv/Scripts/python.exe -B .local/S01/validate_private_corpus.py",
+      "applies_to_commit": "aea03cf134ea6214c972900e117b03b389f262b9"
+    },
+    {
+      "check": "s04_s02_gui_render_regression",
+      "status": "passed",
+      "checks": 11,
+      "video_frames": 275,
+      "picture_anchor_best_offset": 0,
+      "audio_anchor_best_lag_samples": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "mp4_marker_attenuation_db": -63.085,
+      "native_sequence_extent_delta_frames": 1,
+      "whole_project_semantics_equal": false,
+      "scope": "remeasurement_of_unchanged_S02_GUI_render_no_new_S04_GUI",
+      "applies_to_commit": "aea03cf134ea6214c972900e117b03b389f262b9"
+    },
+    {
+      "check": "s04_public_review_setup_and_cli",
+      "status": "passed",
+      "implementation_paths": 29,
+      "cli_complete_review_exit": 2,
+      "cli_no_overwrite_exit": 1,
+      "explicit_pinned_model_setup": "passed",
+      "dependency_check": "passed",
+      "command": ".venv/Scripts/python.exe -B .local/S04/check_public.py",
+      "applies_to_commit": "aea03cf134ea6214c972900e117b03b389f262b9"
     }
   ],
-  "previous_step_implementation_commit": "9ba13e40551652a267f4fba4a2f9cfde2061984b",
+  "previous_step_implementation_commit": "8ee7fb69ecf11e840d1094c31183fc0ceefeb93f",
   "s01_evidence": {
     "capture_record": "docs/fixtures/S01_CAPTURE.md",
     "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/PROVENANCE.json",
@@ -516,6 +626,54 @@
     "g01": "passed_read_only_sources_and_preserved_s02_audio_exclusion",
     "relevant_g03": "passed_exact_map_properties_and_unchanged_s02_render_anchor_regression",
     "completion_handover": "docs/handovers/S03.md",
-    "s04_started": false
+    "s04_started": true
+  },
+  "s04_evidence": {
+    "guide": "docs/project/S04_SPEECH.md",
+    "measurements": "docs/fixtures/S04_SPEECH_EVIDENCE.json",
+    "model_provenance": "third_party/silero-vad-model.json",
+    "runtime_lock": "requirements-s04-win-py312.lock",
+    "notices": "THIRD_PARTY_NOTICES.md",
+    "model": "Silero VAD v5.1.2",
+    "model_revision": "6478567951ae5c9979ad7b234185b5515f4be7a1",
+    "model_sha256": "2623a2953f6ff3d2c1e61740c6cdb7168133479b267dfef114a4a3cc5bdd788f",
+    "model_license": "MIT",
+    "onnxruntime_cpu": "1.20.1",
+    "numpy": "2.1.3",
+    "python": "3.12.14",
+    "ffmpeg": "8.1.1",
+    "runtime_telemetry_disabled": true,
+    "schema_version": 1,
+    "compatibility": "EXPERIMENTAL",
+    "physical_channels_analyzed_independently": true,
+    "stateful_window_samples": 512,
+    "context_samples": 64,
+    "analysis_sample_rate": 16000,
+    "io_chunk_samples_bounds": [
+      1,
+      65536
+    ],
+    "queue_blocks": 2,
+    "boundary_equivalence_tolerance_samples": 0,
+    "development_channel_cases": 10,
+    "annotated_speech_regions": 16,
+    "protected_speech_regions": 16,
+    "very_soft_speech_protected_by": "uncertainty_not_positive_vad",
+    "negative_vad_certifies_silence": false,
+    "laughter_protection_validated": false,
+    "real_participants_analyzed": 4,
+    "real_pcm_channels_analyzed": 8,
+    "all_source_tail_and_origin_diagnostics_retained": true,
+    "real_alignment_certified": false,
+    "real_content_listening_acceptance": "NOT_RUN",
+    "automatic_cuts_performed": false,
+    "source_repair_performed": false,
+    "original_media_changed": false,
+    "real_export_performed": false,
+    "new_gui_interaction": "NOT_RUN_analysis_only_exporter_unchanged",
+    "s04_development_gate": "passed_not_full_G04_acceptance",
+    "relevant_g09": "passed_scoped_model_cache_decoder_cancel_no_overwrite",
+    "completion_handover": "docs/handovers/S04.md",
+    "s05_started": false
   }
 }
