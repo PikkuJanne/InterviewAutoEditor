@@ -1228,5 +1228,19 @@
     "next_review_pack_provenance": "private interview speech candidate; two-source channel preview at uncertified declared origin; explicitly external pre-existing development laughter example",
     "held_out_audio_opened": false,
     "g04": "BLOCKED"
+  },
+  "listening_review_delivery_followup": {
+    "status": "PAUSED_BY_EXPLICIT_USER_REQUEST",
+    "phone_delivery": "FAILED_USER_REPORTED_UNUSABLE",
+    "new_connection": "DECLINED",
+    "maximum_future_human_review_audio_files": 1,
+    "single_private_preview_prepared_seconds": 23,
+    "single_private_preview_phone_access_verified": false,
+    "source_cues_unchanged": true,
+    "production_analysis_changed": false,
+    "additional_listening_requires_user_resume": true,
+    "new_content_acceptance": false,
+    "held_out_audio_opened": false,
+    "g04": "BLOCKED"
   }
 }

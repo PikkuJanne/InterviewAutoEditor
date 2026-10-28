@@ -1,74 +1,70 @@
-# Resume S05 — partial human review recorded; G04 remains blocked
+# S05 blocked — human listening paused by the user
 
-**Resume S05 only. S06 remains pending.** The first phone review supplied useful
-corrections but does not establish all required positive development categories.
-Production code, settings, protection and compatibility are unchanged.
+**Human listening is PAUSED. S05 remains blocked at G04; S06 is pending.**
+The user reported that audio/Page downloads were unusable on their phone,
+limited any future review to **ONE audio file maximum**, and explicitly chose
+**no new connection and pause listening**. Do not send more clips, request
+review, or seek setup until the user explicitly resumes.
 
 - Branch: `codex/kdenlive26-overhaul`.
-- Implementation: `7cf553449a69d4e4518875f029e8933f1bee4656`.
-- Latest handover: [S05-attempt-02.md](handovers/S05-attempt-02.md).
-- Original implementation evidence: [S05.md](handovers/S05.md).
+- Implementation: `7cf553449a69d4e4518875f029e8933f1bee4656` (unchanged).
+- Latest handover: [S05-attempt-03.md](handovers/S05-attempt-03.md).
+- Earlier review: [S05-attempt-02.md](handovers/S05-attempt-02.md).
+- Full implementation evidence: [S05.md](handovers/S05.md).
 - State: [STATE.json](project/STATE.json).
 - Brief: [S05.md](project/steps/S05.md).
 - Guide: [S05_REACTIONS.md](project/S05_REACTIONS.md).
-- Measurements: [S05_EVENT_EVIDENCE.json](fixtures/S05_EVENT_EVIDENCE.json).
+- Aggregate evidence: [S05_EVENT_EVIDENCE.json](fixtures/S05_EVENT_EVIDENCE.json).
 
-Direct user observations are stored locally, separate from provisional model
-labels. Their timing is approximate; uncertain vocal identity stays uncertain.
-Some first-round cues share the same source material and are not independent.
-Every reported coarse window remains fully protected on both physical channels.
-This is useful negative/uncertainty evidence, not full content acceptance.
+Successful file uploads and Page read-back did not establish phone access. Do
+not repeat that claim or the old D/E/F multi-file request. A single 23-second
+private audition MP3 is prepared locally, but usable phone delivery is unverified.
+A public development sample was checked at the HTTP level only; this did not
+produce phone playback or a new listening result. No new file-service connection
+was confirmed or used. No listening action is requested now.
 
-A second private phone pack totals 21 seconds: D is an interview speech candidate;
-E presents two original microphone channels left/right at the declared origin;
-F is an explicitly external laughter example from the already downloaded
-DEVELOPMENT benchmark subset. E does not certify alignment, speaker identity or
-real simultaneity. F is not cleaned-Zoom or held-out acceptance audio. Source
-PCM/channel arrays and external attribution are retained locally. New proposals
-remain unconfirmed. No upload or manual CSV editing is required from the user.
+Existing direct-user observations remain local, with approximate timing and
+uncertain sound identity retained. All reviewed coarse windows remain protected.
+Required positive development categories remain incomplete. The one-file limit
+and listening pause do not waive G04. If one future file leaves categories
+unvalidated, record that limitation without asking for additional files.
 
-Still required: representative confirmed speech/words, laughter/chuckles,
-yes/mm-hm, uncertain vocal events and genuine simultaneous talk, including VAD
-misses. Human time ranges may be conservative; retain their annotation precision
-while rounding outward onto exact source grids. Add missing categories as needed.
-Keep held-out acceptance separate from development selection/tuning.
+Production code, settings, models, locks, canonical events, adapters and original
+media are unchanged. Prior 107-test/zero-skip and full-source/cache/preservation/
+render results are inherited, not rerun for this documentation-only change.
+No new Kdenlive GUI/export took place. Compatibility remains EXPERIMENTAL.
 
-The prior implementation's 107 tests/zero skips, 16 generated protected regions,
-four-source/eight-channel integration, four identical reaction cache hits,
-102 original preservation assertions and 11 S02 render checks remain unchanged.
-They were not rerun for this documentation/private-review continuation. No new
-Kdenlive GUI/export took place. Compatibility remains EXPERIMENTAL.
-
-Preserve every S04/S05 uncertainty event, shared-microphone group, native sequence
-extent delta 0/1, exact source tail +/-4/375 s, and uncertified origin/correlation
-finding. Null offsets stay null. No shifting, stretching, truncation, padding,
-source separation, normalization, gain change, automatic cut or camera dependency.
-Existing real export refusals remain in force; private data stays local.
+Preserve every speech/reaction/uncertainty event, shared microphone group,
+native sequence extent delta 0/1, exact source tail and uncertified S01/S03
+origin/correlation finding. Null offsets stay null. No automatic cuts, source
+separation, gain changes, silent repair or camera dependency. Keep private
+media, paths, fingerprints, labels and upload receipts local. No held-out audio
+is opened or used for tuning.
 
 Verify the containing checkpoint live before further repository edits:
 
 ```powershell
-git log -1 --format=%H -- docs/handovers/S05-attempt-02.md
+git log -1 --format=%H -- docs/handovers/S05-attempt-03.md
 python tools/verify_checkpoint.py --repo .
 ```
 
-The final chat records actual local/live SHA equality, clean worktree/upstream and
+The final chat records actual local/live equality, clean worktree/upstream and
 exact-SHA CI. No workflows were configured; absent checks are not green CI.
 
-Ready-to-paste prompt:
+Ready-to-paste prompt, only when continuing authorized S05 work:
 
-> Resume S05 only on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json,
-> NEXT_STEP.md, docs/handovers/S05-attempt-02.md, original S05 handover, S03/S04/S05
-> guides and execution/GitHub protocols. Implementation remains
+> Continue S05 only on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json,
+> NEXT_STEP.md, docs/handovers/S05-attempt-03.md and prior S05 evidence, plus
+> execution/GitHub protocols and S03/S04/S05 guides. Implementation remains
 > 7cf553449a69d4e4518875f029e8933f1bee4656. Verify the containing checkpoint,
-> live remote equality, clean worktree/upstream and exact-SHA CI first. Incorporate
-> local direct-user feedback with uncertain identity and approximate timing
-> preserved. Review the prepared D/E/F pack and obtain missing confirmed positive
-> development categories. Keep external sample provenance and held-out acceptance
-> separate. Preserve uncertainty, shared groups and every native extent/source
-> tail/uncertified origin/correlation finding. No silent repair, source separation,
-> gain changes, automatic cuts or camera dependency. Keep private data local and
-> compatibility EXPERIMENTAL. Complete the actual S05 gate, commit/push/verify,
-> provide a verbose handover and STOP. Do not execute S06.
+> live remote equality, clean worktree/upstream and exact-SHA CI first. Human
+> listening is explicitly PAUSED and no new connection was authorized. Do not
+> deliver audio, request review or seek setup until the user explicitly resumes.
+> Any later review is limited to ONE audio file with usable delivery established
+> first. Retain all observations, uncertainty, grouping and native extent/exact
+> tail/uncertified origin/correlation findings. Keep private data local and
+> compatibility EXPERIMENTAL. Do not waive G04 or begin S06. Checkpoint authorized
+> S05 work normally, provide a handover and STOP.
 
+Listening is paused at the user's request.
 Paused with S05 blocked. The next thread must resume S05.

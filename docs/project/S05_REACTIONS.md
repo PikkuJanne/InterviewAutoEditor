@@ -164,3 +164,23 @@ seconds outward onto exact source samples does not make the original annotation
 sample-precise. Held-out listening/acceptance must stay separate, with a
 distinct interview preferred. Until those labels exist and zero loss is measured,
 **G04 and S05 completion remain blocked**. Resume S05; do not start S06.
+
+## Listening review paused by the user
+
+The user reported that inline audio, local references and the private Page file
+links were unusable on their phone. Successful upload receipts and Page read-back
+did not establish phone accessibility. Do not repeat those delivery claims.
+
+The user now permits **one audio file maximum** for any future listening check
+and explicitly selected **no new connection and pause listening**. Do not send
+additional audio, request another review, seek an account connection, or resume
+listening without a new explicit user request. No file-service connection was
+confirmed. Keep the existing private assets and observations for recovery.
+
+A single 23-second private audition composite was prepared locally, with the
+three development sections separated by one-second silence. Its source cues
+remain unchanged; it is a review aid, not an edited interview or timing repair.
+A direct public development sample URL was also checked at the HTTP level, but
+neither route was verified on the user's phone and no new listening result
+followed. Existing G04 category coverage remains incomplete. The user's review
+limit and pause do not waive the content-preservation gate or authorize S06.
