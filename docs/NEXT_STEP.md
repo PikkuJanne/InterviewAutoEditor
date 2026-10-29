@@ -1,38 +1,61 @@
-# Next: S09 - account for recorded Zoom picture switches
+# Next: S10 - complete the recoverable CLI pipeline
 
-**S08 is COMPLETE on applicable synthetic and retained bounded development fixtures, including the direct user listening pass. S09 remains pending and was not started.** Compatibility remains EXPERIMENTAL.
+**S09 is COMPLETE for applicable synthetic and retained bounded development
+fixtures. S10 remains pending and was not implemented.** Compatibility remains
+EXPERIMENTAL. Execute one named step per chat.
 
 - Branch: `codex/kdenlive26-overhaul`.
-- S08 implementation/evidence: `d95514fb6654171efea05980828dedd6b42d998a`.
-- Prior blocked checkpoint: `86cfb215ed32333475d79c80e6916fd5e5bc1a10`; listening blocker now resolved.
-- Handover: [S08.md](handovers/S08.md), including its dated completion follow-up.
+- S09 implementation: `8e31359b0e20941d4fd81e35429d83776e4f47c5`.
+- Starting S08 completion checkpoint: `ba9a638257a36534430db626b5d992afad3da327`.
+- Handover: [S09.md](handovers/S09.md).
 - State: [STATE.json](project/STATE.json).
-- Next brief: [S09.md](project/steps/S09.md).
-- Cleanup guide: [S08_CLEANUP.md](project/S08_CLEANUP.md).
-- Evidence: [S08_CLEANUP_EVIDENCE.json](fixtures/S08_CLEANUP_EVIDENCE.json).
-- Actual provenance: [PROVENANCE.json](../tests/fixtures/s08-cleanup-26.08.2/PROVENANCE.json).
+- Next brief: [S10.md](project/steps/S10.md).
+- Picture policy/commands: [S09_PICTURE.md](project/S09_PICTURE.md).
+- Evidence: [S09_PICTURE_EVIDENCE.json](fixtures/S09_PICTURE_EVIDENCE.json).
+- Actual provenance: [PROVENANCE.json](../tests/fixtures/s09-picture-26.08.2/PROVENANCE.json).
 
-The user confirmed the existing 24.5-second synthetic TTS A/B: **"Pass: quieter noise, speech intact, no new clicks"**. This closes the required bounded S08 listening gate. The sample-evaluated speech comparison is separate from actual GUI tone/noise evidence and is not real-interview, alignment, held-out or full-interview acceptance. No further S08 user action or additional listening file is needed.
+S09 keeps recorded-picture observations separate from speech protection and
+silence approvals. A stable switch may narrow an existing approved shared
+deletion, restoring time across every track. Unknown/gallery/pinned/camera-off,
+ambiguous/brief transitions and insufficient seam coverage restore the affected
+handover deletion. No picture identity is asserted. The 12.00 s speech / 12.45 s
+picture example preserves all opening speech and the original .45 s lag.
 
-Existing validation remains unchanged: **159 broad tests, zero skips, 126.573 s**, then **20 final focused S08 tests, zero skips, 9.630 s**. The final focused run included one additional mixed-grid test and final restoration assertion. Actual **Kdenlive 26.08.2 rev. d4e87e4**, MLT 7.43.0, Qt 6.11.1 passed open/play/group movement/undo/save/close/reopen/render and native interval restoration. Eleven cleanup/five restoration measurements pass. Four noise probes are 31.7-43.8 dB down, eight protected probes within 0.1 dB, thirteen exact picture anchors and five zero-lag audio anchors. Output remains six groups/233 frames; peak 0.476731 and native extent delta zero. Earlier one-frame findings remain distinct.
+S08 cleanup must bind the **refined** S06 result. Stale cleanup refuses. All
+protected events/overlap/shared microphones/Keep/audible overrides, full exterior
+handles, grouping, full bin originals, canonical v1 gain refusal and conservative
+headroom survive. Real origins remain unverified/null, exact tails unequal and
+planning/export refused. No source repair, normalization/denoising, fake footage,
+freezes, per-track deletion or independent audio/video timing changes.
 
-S08 uses separate result-bound idle approvals with protected-event/overlap vetoes, shared-mic unity, all-track Keep/audible restoration, full exterior handles and group-edge unity margins. Canonical v1 protected-source gain refusal remains intact. Fixed -36 dB native ramps last at least 200 ms. Conservative PCM headroom checks give no phase-cancellation credit and never renormalize. One unchanged shared map governs all tracks; no new deletion authority.
+Final validation: **180 tests, zero skips, 145.749 s**; **20 focused S09 tests,
+zero skips, 21.355 s**. Actual **26.08.2 rev. d4e87e4 / MLT 7.43.0 / Qt 6.11.1**
+open/play/group move/undo/save/reopen/render and sanitized native open pass.
+Twelve render checks pass: 267 mapped pictures, one switch at output 105, four
+zero-lag audio anchors, eight protected probes within 0.1 dB, over 30 dB noise
+reduction and peak 0.476731. Native extent delta is zero. The separate exact
+20-FPS delayed-switch decode is automated evidence, not a GUI support claim.
 
-For S09, inspect probable picture boundaries near handovers with conservative confidence/layout fallbacks. Refine seams only inside shared eligible silence. Preserve original picture/audio timing during speech and flag uncertain/unavoidable Zoom delays; the 12.00 speech/12.45 picture case must retain the full opening speech. No fake footage, freeze frames, independent video/audio shifts or facial identity requirement.
+Private originals and retained bounded overlap remain unchanged; held-out/full
+interview acceptance and private picture/layout calibration are NOT RUN. Keep
+private media/labels/names/fingerprints local. No new listening is required for
+S09; preserve the one-file/no-new-connection preference and bounded S08 pass.
+Current picture support has explicit frame/decoder/stream bounds; read the guide.
 
-Keep all protected speech/reactions/uncertainty/overlap, shared microphones, overrides, global approvals, shared map/groups/handles/bin originals and S08 gain safeguards. Original real origins remain unverified/null, tails unequal and real planning/export refused. Keep private data local, held-out/full-interview acceptance separate and one-file/no-new-connection preferences. No source repair, normalization/denoising, per-track removal or camera retiming.
-
-Before editing:
+Before editing, resolve the containing checkpoint and verify live:
 
 ```powershell
-git log -1 --format=%H -- docs/handovers/S08.md
+git log -1 --format=%H -- docs/handovers/S09.md
 python tools/verify_checkpoint.py --repo .
 ```
 
-The completion chat records actual local/live/upstream equality and final exact-SHA CI. Reverify on the next thread. Initial checks again found zero workflows/runs/checks/statuses: **CI not configured**. Failed synchronization overrides continuation.
+The closing chat records actual local/live/upstream equality and exact-SHA CI.
+Reverify at the next thread start. Initial queries found zero workflows/runs/
+checks/statuses: **CI not configured**, not green CI. Failed synchronization or
+configured failing CI overrides continuation and requires resuming S09.
 
 Ready-to-paste next-thread prompt:
 
-> Execute S09 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md, docs/handovers/S08.md including the completion follow-up, execution/GitHub protocols, S03-S08 contracts/guides and the S09 brief. S08 implementation is d95514fb6654171efea05980828dedd6b42d998a; direct user listening feedback closed its bounded synthetic gate. Verify the containing completion checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI first. Implement picture-boundary analysis near handovers and safe shared-silence seam rules within S09. Preserve the full 12.00 speech/12.45 picture opening, original picture/audio timing during speech, all protection/overlap/shared mics/overrides/global approvals/shared map/groups/handles/bin originals, S08 gain/headroom safeguards and real-origin/tail refusals. Use conservative gallery/pinned/camera-off/uncertain fallbacks. No invented footage, freezes, independent retiming or facial identity requirement. Keep private data local, held-out acceptance separate and compatibility EXPERIMENTAL. Complete applicable G08 and actual Kdenlive regressions if export changes, update state/NEXT_STEP/S09 handover, commit/push/verify, provide a verbose handover and STOP. No S10.
+> Execute S10 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md, docs/handovers/S09.md, execution/GitHub protocols, S03-S09 guides and the S10 brief. S09 implementation is 8e31359b0e20941d4fd81e35429d83776e4f47c5. Verify the containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI first. Connect inspect/analyze/plan/export/run/report and compatibility probing through one recoverable application service. Add manifests/reports, cancellation, atomic finalization, cache invalidation/reuse, missing-asset and repeat-run recovery, preserving source-time overrides and every S03-S09 safeguard. Picture observations cannot authorize new deletion or independent retiming; S08 cleanup binds the refined S06 result. Preserve full 12.00/12.45 opening speech, real origin/exact-tail refusals, all protected content/overlap/shared mics/overrides/handles/groups/bin originals and headroom. Keep private data local, held-out acceptance separate and compatibility EXPERIMENTAL. Run applicable G01/G03/G09 and actual Kdenlive regressions if export changes, update state/NEXT_STEP and S10 handover, commit/push/verify, provide a verbose handover and STOP. No S11.
 
-Paused after S08. The next thread should execute S09 only.
+Paused after S09. The next thread should execute S10 only.

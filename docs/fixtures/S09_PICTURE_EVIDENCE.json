@@ -4,7 +4,7 @@
   "date": "2026-10-29",
   "status": "PASS_applicable_synthetic_and_retained_bounded_development",
   "starting_checkpoint": "ba9a638257a36534430db626b5d992afad3da327",
-  "implementation_commit": null,
+  "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
   "compatibility": "EXPERIMENTAL",
   "algorithms": [
     "s09-recorded-picture-1",
@@ -174,5 +174,19 @@
     "Automatic layout/face identity verification",
     "Two-hour picture stress and expanded decode budgets"
   ],
-  "s10_started": false
+  "s10_started": false,
+  "checkpoint_documentation_review": {
+    "passed": true,
+    "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
+    "documentation_and_evidence_files": 4,
+    "implementation_tests_and_artifacts_unchanged": true,
+    "state_next_step_handover_evidence_consistent": true,
+    "private_source_tokens_found": 0,
+    "reviewed_text_files": 34,
+    "generated_media_files": 4,
+    "valid_local_links": 62,
+    "provenance_artifact_hashes_verified": 22,
+    "s09_status": "completed",
+    "s10_status": "pending_not_started"
+  }
 }

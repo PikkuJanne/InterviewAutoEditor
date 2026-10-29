@@ -7,11 +7,11 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S08",
-  "next_step": "S09",
-  "latest_handover": "docs/handovers/S08.md",
-  "implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
-  "technical_gate_status": "passed_applicable_s08_g02_g03_g04_g06_g07",
+  "active_step": "S09",
+  "next_step": "S10",
+  "latest_handover": "docs/handovers/S09.md",
+  "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
+  "technical_gate_status": "passed_applicable_s09_g01_g02_g03_g04_g05_g06_g07_g08_g09",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
   "steps": [
@@ -83,7 +83,7 @@
       "title": "Account for recorded Zoom picture switches",
       "prerequisite": "S08",
       "brief": "docs/project/steps/S09.md",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "S10",
@@ -153,13 +153,14 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-29",
   "prerequisites_for_next_step": [
-    "S08 is complete on applicable synthetic and retained bounded development fixtures after direct-user listening pass. S09 remains pending and must run only in a later explicitly selected thread.",
-    "Read AGENTS, STATE/NEXT_STEP, the complete S08 handover including dated completion follow-up, execution/GitHub protocols, S03-S08 contracts/guides and S09 brief. Verify containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI first.",
-    "Keep strict canonical v1 protected-source gain refusal unchanged. S08 separate result-bound idle approvals/native frame spans require independent labels, protected content/overlap vetoes, all-track Keep/audible restoration, shared-mic unity and full exterior handles.",
-    "Retain one shared map, explicit global gap approvals, grouped edits and full bin originals. Picture seams may refine only shared eligible silence; never advance video or slide audio during speech, invent footage/freeze frames or lose the 12.00 speech/12.45 picture opening.",
-    "Actual Kdenlive 26.08.2 rev. d4e87e4 passed S08 open/play/group move/undo/save/close/reopen/render and native interval restoration. Changed export needs actual application regression. Product compatibility remains EXPERIMENTAL.",
-    "User listening pass applies only to the existing 24.5-second synthetic TTS A/B. Original origins remain unverified/null, tails unequal and real planning/export refused; prior native sequence findings remain distinct. Held-out/full-interview acceptance stays separate.",
-    "Keep private media/labels/names/fingerprints local. Preserve one-audio-file maximum/no-new-connection preference. No normalization/denoising, source repair, per-track time removal or camera retiming."
+    "S09 is complete for applicable synthetic and retained bounded development fixtures. Execute S10 only in a later explicitly selected thread; no S10 implementation was performed.",
+    "Read AGENTS, STATE/NEXT_STEP, complete S09 handover, execution/GitHub protocols, S03-S09 guides and S10 brief. Verify the containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI first.",
+    "Keep picture observations separate from audio protection and silence approvals. S09 only restores shared time by narrowing existing approved S06 deletions. Preserve original speech/picture timing, the full 12.00/12.45 opening, conservative layout/flash fallbacks and exact source/output/null review locations.",
+    "S09 PictureAnalysis binds unchanged analysis/video/implementation/decoder observations. Export recomputes refinement from the base result; S08 cleanup must bind the refined S06 result. Stale cleanup refuses. Canonical v1 protected-source gain refusal, all protected content/overlap/shared mics/overrides/handles and conservative headroom remain unchanged.",
+    "Actual Kdenlive 26.08.2 rev. d4e87e4 passes S09 open/play/group move/undo/save/reopen/render and sanitized-native open. Changed export needs actual application regression. Compatibility remains EXPERIMENTAL; no future-build or broader GUI matrix guarantee.",
+    "S09 passes 180 tests with zero skips and 12 actual GUI-render measurements. The separate exact 20-FPS 12.00/12.45 decoder/math example is not a GUI compatibility claim. Layout confidence is heuristic and identity unverified; current window/decode/stream bounds are explicit.",
+    "Original real origins remain unverified/null, exact tails unequal and real planning/export refused. Retained overlap stays 200/200 frames at unity with no idle approvals. Keep private media/labels/names/fingerprints local; held-out/full interview acceptance remains separate.",
+    "Preserve the one-audio-file maximum/no-new-connection preference and bounded S08 human pass. No new listening required for S09. No source repair, renormalization/denoising, per-track time removal, fake footage/freezes or camera retiming."
   ],
   "validation_evidence": [
     {
@@ -881,9 +882,95 @@
       "s09_status": "pending_not_started",
       "human_listening": "PASS_bounded_synthetic_only",
       "private_source_tokens_found": 0
+    },
+    {
+      "check": "s09_final_full_suite",
+      "status": "PASS",
+      "tests": 180,
+      "skipped": 0,
+      "seconds": 145.749,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_*.py -v",
+      "assets": "Existing local pinned S04/S05 models, generated development fixture, FFmpeg/ffprobe; no downloads; no private interview needed for public tests",
+      "applies_to_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5"
+    },
+    {
+      "check": "s09_final_focused_suite",
+      "status": "PASS",
+      "tests": 20,
+      "skipped": 0,
+      "seconds": 21.355,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s09_picture.py -v",
+      "applies_to_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5"
+    },
+    {
+      "check": "s09_actual_application_and_g08",
+      "status": "passed_applicable_synthetic",
+      "build": "26.08.2 rev. d4e87e4",
+      "render_checks": 12,
+      "video_frames": 267,
+      "source_picture_frames_measured": 267,
+      "audio_anchor_lag_samples": 0,
+      "native_extent_delta_frames": 0,
+      "evidence": "tests/fixtures/s09-picture-26.08.2/PROVENANCE.json",
+      "applies_to_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5"
+    },
+    {
+      "check": "s09_exact_delayed_switch",
+      "status": "passed_constructed_20fps_decoder_and_sample_timing",
+      "speech_onset_seconds": "12",
+      "picture_onset_seconds": "249/20",
+      "fps": "20",
+      "preserved_delay_seconds": "9/20",
+      "fully_retained_source_speech_seconds": [
+        "12",
+        "15"
+      ],
+      "audio_sample_grids": [
+        48000,
+        44100
+      ],
+      "speech_interval_samples_checked": 276300,
+      "picture_boundary_frame": 249,
+      "actual_decoder_used": true,
+      "kdenlive_gui_20fps": false,
+      "scope": "Constructed timing/content envelopes, not human words or face identity",
+      "applies_to_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5"
+    },
+    {
+      "check": "s09_private_preservation",
+      "status": "passed",
+      "assertions": 102,
+      "unchanged_original_files": 5,
+      "sample_exact_excerpts": 12,
+      "retained_confirmed_overlap_frames": 200,
+      "idle_approvals": 0,
+      "gain_spans": 0,
+      "real_origins_verified": false,
+      "unverified_offsets": null,
+      "unequal_tails_unchanged": true,
+      "real_planning_export_refused": true,
+      "held_out_opened": false,
+      "new_listening": false,
+      "applies_to_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5"
+    },
+    {
+      "check": "s09_checkpoint_documentation_privacy",
+      "status": "passed",
+      "passed": true,
+      "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
+      "documentation_and_evidence_files": 4,
+      "implementation_tests_and_artifacts_unchanged": true,
+      "state_next_step_handover_evidence_consistent": true,
+      "private_source_tokens_found": 0,
+      "reviewed_text_files": 34,
+      "generated_media_files": 4,
+      "valid_local_links": 62,
+      "provenance_artifact_hashes_verified": 22,
+      "s09_status": "completed",
+      "s10_status": "pending_not_started"
     }
   ],
-  "previous_step_implementation_commit": "7cf553449a69d4e4518875f029e8933f1bee4656",
+  "previous_step_implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
   "s01_evidence": {
     "capture_record": "docs/fixtures/S01_CAPTURE.md",
     "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/PROVENANCE.json",
@@ -1198,7 +1285,7 @@
     "held_out_opened": false,
     "compatibility": "EXPERIMENTAL",
     "handover": "docs/handovers/S08.md",
-    "s09_started": false,
+    "s09_started": true,
     "human_listening_feedback": {
       "date": "2026-10-29",
       "source": "Direct user reply to the S08 listening question in this chat",
@@ -1226,6 +1313,50 @@
       "s09_status": "pending_not_started",
       "human_listening": "PASS_bounded_synthetic_only",
       "private_source_tokens_found": 0
+    }
+  },
+  "s09_evidence": {
+    "guide": "docs/project/S09_PICTURE.md",
+    "measurements": "docs/fixtures/S09_PICTURE_EVIDENCE.json",
+    "actual_provenance": "tests/fixtures/s09-picture-26.08.2/PROVENANCE.json",
+    "render_measurements": "tests/fixtures/s09-picture-26.08.2/render-validation.json",
+    "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
+    "full_suite_tests": 180,
+    "full_suite_skipped": 0,
+    "focused_tests": 20,
+    "algorithms": [
+      "s09-recorded-picture-1",
+      "s09-restore-only-seams-1"
+    ],
+    "g08": "PASS_applicable_constructed_delay_silence_speech_flash_layout_fallbacks",
+    "single_shared_time_map": true,
+    "new_deletion_authority": false,
+    "camera_retiming": false,
+    "real_export_created": false,
+    "private_picture_calibration": "NOT_RUN",
+    "held_out_opened": false,
+    "real_alignment_certified": false,
+    "source_tails_repaired": false,
+    "compatibility": "EXPERIMENTAL",
+    "new_listening_requested": false,
+    "completion_handover": "docs/handovers/S09.md",
+    "s10_started": false,
+    "output_frames": 267,
+    "gui_render_checks": 12,
+    "native_sequence_extent_delta_frames": 0,
+    "checkpoint_documentation_review": {
+      "passed": true,
+      "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
+      "documentation_and_evidence_files": 4,
+      "implementation_tests_and_artifacts_unchanged": true,
+      "state_next_step_handover_evidence_consistent": true,
+      "private_source_tokens_found": 0,
+      "reviewed_text_files": 34,
+      "generated_media_files": 4,
+      "valid_local_links": 62,
+      "provenance_artifact_hashes_verified": 22,
+      "s09_status": "completed",
+      "s10_status": "pending_not_started"
     }
   }
 }
