@@ -1,0 +1,481 @@
+{
+  "schema_version": 1,
+  "algorithm": "s06-shared-pauses-1",
+  "request": {
+    "schema_version": 1,
+    "analysis_sha256": "bb65a25433d87ac5917e8f8eedb0e598287dafc65f30d2dfe42a401a941ca6eb",
+    "preset": "tight",
+    "approvals": [
+      {
+        "approval_id": "label-0",
+        "start": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "end": {
+          "numerator": 6,
+          "denominator": 1
+        },
+        "basis": "construction_label",
+        "evidence": "Construction-labelled global interval, not model-negative silence"
+      },
+      {
+        "approval_id": "label-1",
+        "start": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "end": {
+          "numerator": 10,
+          "denominator": 1
+        },
+        "basis": "construction_label",
+        "evidence": "Construction-labelled global interval, not model-negative silence"
+      },
+      {
+        "approval_id": "label-2",
+        "start": {
+          "numerator": 21,
+          "denominator": 2
+        },
+        "end": {
+          "numerator": 13,
+          "denominator": 1
+        },
+        "basis": "construction_label",
+        "evidence": "Construction-labelled global interval, not model-negative silence"
+      },
+      {
+        "approval_id": "label-3",
+        "start": {
+          "numerator": 53,
+          "denominator": 4
+        },
+        "end": {
+          "numerator": 16,
+          "denominator": 1
+        },
+        "basis": "construction_label",
+        "evidence": "Construction-labelled global interval, not model-negative silence"
+      },
+      {
+        "approval_id": "label-4",
+        "start": {
+          "numerator": 17,
+          "denominator": 1
+        },
+        "end": {
+          "numerator": 21,
+          "denominator": 1
+        },
+        "basis": "construction_label",
+        "evidence": "Construction-labelled global interval, not model-negative silence"
+      }
+    ],
+    "overrides": []
+  },
+  "plan": {
+    "analysis": {
+      "header": {
+        "schema_version": 1,
+        "run_id": "S06-construction",
+        "project_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "tool_version": "0.6.0",
+        "adapter_target": "experimental",
+        "settings": [],
+        "model_versions": []
+      },
+      "fps": {
+        "numerator": 25,
+        "denominator": 1
+      },
+      "sources": [
+        {
+          "source_id": "video",
+          "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+          "kind": "video",
+          "sample_rate": 0,
+          "sample_count": 0,
+          "duration": {
+            "numerator": 30,
+            "denominator": 1
+          },
+          "origin": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "verified_offset": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "origin_status": "verified",
+          "channel_labels": []
+        },
+        {
+          "source_id": "p0",
+          "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+          "kind": "participant_audio",
+          "sample_rate": 48000,
+          "sample_count": 1440000,
+          "duration": {
+            "numerator": 30,
+            "denominator": 1
+          },
+          "origin": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "verified_offset": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "origin_status": "verified",
+          "channel_labels": [
+            "participant0"
+          ]
+        },
+        {
+          "source_id": "p1",
+          "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+          "kind": "participant_audio",
+          "sample_rate": 44100,
+          "sample_count": 1323000,
+          "duration": {
+            "numerator": 30,
+            "denominator": 1
+          },
+          "origin": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "verified_offset": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "origin_status": "verified",
+          "channel_labels": [
+            "participant1"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "event_id": "speech-a",
+          "source_id": "p0",
+          "kind": "speech",
+          "start_sample": 96000,
+          "end_sample": 144000,
+          "protected_start": {
+            "numerator": 47,
+            "denominator": 25
+          },
+          "protected_end": {
+            "numerator": 16,
+            "denominator": 5
+          },
+          "confidence": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "evidence": "constructed source-time label",
+          "uncertainty_reason": "",
+          "channel_labels": [
+            "participant0"
+          ]
+        },
+        {
+          "event_id": "speech-b",
+          "source_id": "p1",
+          "kind": "speech",
+          "start_sample": 264600,
+          "end_sample": 308700,
+          "protected_start": {
+            "numerator": 147,
+            "denominator": 25
+          },
+          "protected_end": {
+            "numerator": 36,
+            "denominator": 5
+          },
+          "confidence": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "evidence": "constructed source-time label",
+          "uncertainty_reason": "",
+          "channel_labels": [
+            "participant1"
+          ]
+        },
+        {
+          "event_id": "reaction",
+          "source_id": "p0",
+          "kind": "reaction",
+          "start_sample": 480000,
+          "end_sample": 504000,
+          "protected_start": {
+            "numerator": 247,
+            "denominator": 25
+          },
+          "protected_end": {
+            "numerator": 107,
+            "denominator": 10
+          },
+          "confidence": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "evidence": "constructed source-time label",
+          "uncertainty_reason": "",
+          "channel_labels": [
+            "participant0"
+          ]
+        },
+        {
+          "event_id": "uncertain",
+          "source_id": "p1",
+          "kind": "uncertainty",
+          "start_sample": 573300,
+          "end_sample": 584325,
+          "protected_start": {
+            "numerator": 322,
+            "denominator": 25
+          },
+          "protected_end": {
+            "numerator": 269,
+            "denominator": 20
+          },
+          "confidence": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "evidence": "constructed source-time label",
+          "uncertainty_reason": "preserve uncertain sound",
+          "channel_labels": [
+            "participant1"
+          ]
+        },
+        {
+          "event_id": "speech-c",
+          "source_id": "p0",
+          "kind": "speech",
+          "start_sample": 768000,
+          "end_sample": 816000,
+          "protected_start": {
+            "numerator": 397,
+            "denominator": 25
+          },
+          "protected_end": {
+            "numerator": 86,
+            "denominator": 5
+          },
+          "confidence": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "evidence": "constructed source-time label",
+          "uncertainty_reason": "",
+          "channel_labels": [
+            "participant0"
+          ]
+        },
+        {
+          "event_id": "speech-d",
+          "source_id": "p1",
+          "kind": "speech",
+          "start_sample": 926100,
+          "end_sample": 970200,
+          "protected_start": {
+            "numerator": 522,
+            "denominator": 25
+          },
+          "protected_end": {
+            "numerator": 111,
+            "denominator": 5
+          },
+          "confidence": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "evidence": "constructed source-time label",
+          "uncertainty_reason": "",
+          "channel_labels": [
+            "participant1"
+          ]
+        },
+        {
+          "event_id": "overlap",
+          "source_id": "p0",
+          "kind": "overlap",
+          "start_sample": 1032000,
+          "end_sample": 1065600,
+          "protected_start": {
+            "numerator": 1069,
+            "denominator": 50
+          },
+          "protected_end": {
+            "numerator": 112,
+            "denominator": 5
+          },
+          "confidence": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "evidence": "constructed source-time label",
+          "uncertainty_reason": "",
+          "channel_labels": [
+            "participant0"
+          ]
+        }
+      ],
+      "shots": [],
+      "reviews": []
+    },
+    "time_map": {
+      "fps": {
+        "numerator": 25,
+        "denominator": 1
+      },
+      "source_frames": 750,
+      "retained": [
+        {
+          "start": 0,
+          "end": 80
+        },
+        {
+          "start": 147,
+          "end": 430
+        },
+        {
+          "start": 522,
+          "end": 750
+        }
+      ]
+    },
+    "removed_reasons": [
+      "tight_different_approved_pause;approval=label-0",
+      "tight_different_approved_pause;approval=label-4"
+    ],
+    "gains": [],
+    "edit_units": [
+      0,
+      80,
+      363,
+      591
+    ],
+    "overrides": [],
+    "reviews": [],
+    "tail_policy": "exact_coverage"
+  },
+  "decisions": [
+    {
+      "source_start": {
+        "numerator": 3,
+        "denominator": 1
+      },
+      "source_end": {
+        "numerator": 6,
+        "denominator": 1
+      },
+      "rule": "different",
+      "outcome": "removed",
+      "reason": "tight_different_approved_pause",
+      "residual_target": {
+        "numerator": 8,
+        "denominator": 25
+      },
+      "removed": [
+        {
+          "start": 80,
+          "end": 147
+        }
+      ],
+      "approval_ids": [
+        "label-0"
+      ]
+    },
+    {
+      "source_start": {
+        "numerator": 7,
+        "denominator": 1
+      },
+      "source_end": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "rule": "uncertain",
+      "outcome": "kept",
+      "reason": "uncertain_boundary_preserved",
+      "residual_target": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "removed": [],
+      "approval_ids": []
+    },
+    {
+      "source_start": {
+        "numerator": 21,
+        "denominator": 2
+      },
+      "source_end": {
+        "numerator": 13,
+        "denominator": 1
+      },
+      "rule": "uncertain",
+      "outcome": "kept",
+      "reason": "uncertain_boundary_preserved",
+      "residual_target": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "removed": [],
+      "approval_ids": []
+    },
+    {
+      "source_start": {
+        "numerator": 53,
+        "denominator": 4
+      },
+      "source_end": {
+        "numerator": 16,
+        "denominator": 1
+      },
+      "rule": "uncertain",
+      "outcome": "kept",
+      "reason": "uncertain_boundary_preserved",
+      "residual_target": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "removed": [],
+      "approval_ids": []
+    },
+    {
+      "source_start": {
+        "numerator": 17,
+        "denominator": 1
+      },
+      "source_end": {
+        "numerator": 21,
+        "denominator": 1
+      },
+      "rule": "different",
+      "outcome": "removed",
+      "reason": "tight_different_approved_pause",
+      "residual_target": {
+        "numerator": 8,
+        "denominator": 25
+      },
+      "removed": [
+        {
+          "start": 430,
+          "end": 522
+        }
+      ],
+      "approval_ids": [
+        "label-4"
+      ]
+    }
+  ]
+}
