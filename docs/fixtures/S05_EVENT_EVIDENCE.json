@@ -3,7 +3,7 @@
   "step": "S05",
   "date": "2026-10-29",
   "compatibility": "EXPERIMENTAL",
-  "g04_status": "BLOCKED_UNCONFIRMED_SIMULTANEOUS_TALK_AND_INCOMPLETE_SOURCE_BOUND_LABELS",
+  "g04_status": "PASS_BOUNDED_S05_DEVELOPMENT_SHARED_REMOVAL_NO_ATTENUATION",
   "model_manifest": "third_party/yamnet-model.json",
   "runtime_lock": "requirements-s05-win-py312.lock",
   "settings_fixed_before_supplementary_benchmark": true,
@@ -1111,8 +1111,8 @@
     "reserved_audio_downloaded_or_opened": false,
     "pretraining_audioset_overlap": "UNKNOWN"
   },
-  "private_content_labels": "PARTIAL_DIRECT_USER_COARSE_DEVELOPMENT_OBSERVATIONS",
-  "private_human_listening": "RESUMED_EXISTING_CLIPS; NOT_FULL_CONTENT_OR_HELD_OUT_ACCEPTANCE",
+  "private_content_labels": "COARSE_HUMAN_DEVELOPMENT_ENVELOPES_WITH_CONFIRMED_PREVIEW_OVERLAP",
+  "private_human_listening": "BOUNDED_DEVELOPMENT_PRESERVATION_ONLY; HELD_OUT_ACCEPTANCE_NOT_RUN",
   "shared_microphone": "one inseparable source group; physical channels do not identify people",
   "noise_or_correlation_can_remove_protection": false,
   "boundary_tolerance_samples": 0,
@@ -1227,7 +1227,8 @@
     "next_review_pack_human_confirmation": "RECEIVED_COARSE_DIRECT_USER_FEEDBACK; SEE_HUMAN_REVIEW_ROUND2",
     "next_review_pack_provenance": "private interview speech candidate; two-source channel preview at uncertified declared origin; explicitly external pre-existing development laughter example",
     "held_out_audio_opened": false,
-    "g04": "BLOCKED"
+    "g04": "BLOCKED",
+    "scope": "HISTORICAL_ATTEMPT02; SEE_BOUNDED_DEVELOPMENT_GATE_FOR_CURRENT_VERDICT"
   },
   "listening_review_delivery_followup": {
     "status": "PAUSED_BY_EXPLICIT_USER_REQUEST",
@@ -1268,6 +1269,42 @@
     "phone_access_success_inferred": false,
     "production_code_settings_events_or_media_changed": false,
     "held_out_audio_opened": false,
-    "g04": "BLOCKED"
+    "g04": "BLOCKED",
+    "scope": "HISTORICAL_ATTEMPT04_BEFORE_DIRECT_USER_OVERLAP_CONFIRMATION; DIAGNOSTIC_METRICS_RETAINED"
+  },
+  "bounded_development_gate": {
+    "status": "PASS_BOUNDED_S05_DEVELOPMENT_SHARED_REMOVAL_NO_ATTENUATION",
+    "human_confirmation_source": "direct user clarification of already reviewed development preview",
+    "private_comments_labels_source_timecodes_published": false,
+    "human_confirmed_preview_overlap": true,
+    "exact_overlap_word_laughter_onset_boundaries_known": false,
+    "annotation_envelope_method": "entire preview chosen independently of detector boundaries; no inferred silence or source attribution",
+    "whole_overlap_preview_shared_protected_fraction": "1",
+    "whole_overlap_preview_individual_source_protection_fractions": [
+      "1027/1600",
+      "1"
+    ],
+    "individual_source_detection_complete": false,
+    "group_preservation_reason": "one shared removal map must retain the union of all protected events; current contract refuses attenuation on protected sources",
+    "synthetic_contract_harness_interior_single_frame_cuts_refused": 198,
+    "synthetic_contract_harness_protected_source_attenuations_refused": 4,
+    "synthetic_contract_harness_neutral_gain_controls_accepted": 2,
+    "synthetic_contract_harness_is_real_origin_acceptance": false,
+    "earlier_coarse_observation_channel_checks_fully_protected": 6,
+    "new_speech_external_vocal_channel_envelopes_fully_protected": 4,
+    "whole_overlap_preview_group_checks_fully_protected": 1,
+    "generated_construction_sample_bound_regions_fully_protected": 16,
+    "denominator_warning": "different observation/channel/group/construction units, reported separately; no pooled accuracy score",
+    "gasp_onset_unspecified": true,
+    "reaction_without_positive_vad_human_reviewed": true,
+    "model_settings_fitted_to_human_labels": false,
+    "production_code_events_sources_or_origins_changed": false,
+    "held_out_audio_opened": false,
+    "full_interview_held_out_and_gain_acceptance": "NOT_RUN",
+    "new_audio_files_requested_or_delivered": 0,
+    "further_s05_listening_required": false,
+    "maximum_future_human_review_audio_files": 1,
+    "new_connection_authorized": false,
+    "s06_started": false
   }
 }

@@ -48,6 +48,8 @@ Do not replace this table with a blanket '26 and later' claim. Update only from 
 
 S05 adds local CPU reaction/uncertainty fusion only. It preserves all S04 and
 intake findings and does not change the exporter or the EXPERIMENTAL status.
-G04 private content labels remain an explicit blocker; supplementary clip
-detection is not Kdenlive, alignment or full content-retention evidence. See
+S05's bounded labelled-development G04 passes with direct-human preview overlap
+confirmation, whole-preview shared protection and protected-source attenuation
+refusal. Per-microphone detection gaps and uncertain exact annotations remain;
+this is not Kdenlive, alignment, full-interview or gain-policy acceptance. See
 [S05 evidence and limits](project/S05_REACTIONS.md).

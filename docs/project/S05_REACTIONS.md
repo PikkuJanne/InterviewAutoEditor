@@ -1,6 +1,7 @@
 # S05 local reaction and uncertainty evidence
 
-**EXPERIMENTAL. S05 is blocked at the private labelled-development G04 gate.**
+**EXPERIMENTAL. S05 passes G04 on the agreed bounded development examples,
+under one shared removal map and the current protected-source attenuation refusal.**
 The implemented CPU event path adds positive reaction evidence and uncertainty
 to S04. It does not certify silence, alignment, speaker identity or readiness to
 edit. No cuts, gain changes, source separation, normalization, denoising, media
@@ -121,7 +122,7 @@ Cancellation and source changes cannot publish an incomplete current entry;
 completed entries survive. Decoder termination/reaping and private-safe errors
 reuse S04. Strict final v1 analysis validation/8 MiB bounds remain mandatory.
 
-## Development evidence and the remaining gate
+## Development evidence and gate scope
 
 [S05_EVENT_EVIDENCE.json](../fixtures/S05_EVENT_EVIDENCE.json) records measured
 results with explicit denominators. The benchmark command accepts only a
@@ -160,8 +161,10 @@ inference does not make it an independent interview or constitute acceptance.
 Human timing precision must be recorded honestly; converting
 seconds outward onto exact source samples does not make the original annotation
 sample-precise. Held-out listening/acceptance must stay separate, with a
-distinct interview preferred. The new observations below improve the evidence,
-but **G04 and S05 completion remain blocked**. Resume S05; do not start S06.
+distinct interview preferred. The new observations and explicit overlap
+confirmation below close the bounded S05 development gate. Full-interview,
+held-out and later gain-policy acceptance remain untested. Do not start S06
+in this thread.
 
 ## Phone delivery history and resumed development review
 
@@ -199,14 +202,48 @@ coverage measurement, not a precise gasp-duration or classification score.
 The two-source preview's combined timeline envelope is fully protected. One
 source's broad observation envelope includes an uncovered opening; no vocal
 content was labelled there, so no lost speech is established. The private
-laughter's exact onset/source and genuine simultaneous talk remain unconfirmed.
-Two distinct voices may take turns. A text clarification of the existing overlap
-observation is pending; no additional clip is needed or asked for. Do not fit
-labels to detector boundaries or certify original alignment.
+laughter's exact onset/source remain unknown. The user then explicitly confirmed
+that the two voices overlap in the reviewed preview. No precise overlap bounds
+or original-alignment certificate follows from that answer. No additional clip
+is needed or asked for. Do not fit labels to detector boundaries.
 
 Four private preview-channel mappings were rechecked sample-exact, the external
 file matches its pinned development source, and all 102 original corpus
 assertions pass again. Production code, settings, event protection and media
-remain unchanged. Generated acknowledgements, external model hits and aggregate
-coverage do not fill the missing private source-bound/overlap evidence. Keep
-held-out acceptance unopened and separate; do not begin S06.
+remain unchanged. Keep held-out acceptance unopened and separate.
+
+## Bounded S05 G04 completion
+
+Evaluate the **entire** already reviewed two-source preview as a conservative
+group envelope, chosen independently of model predictions. Its protected union
+covers every instant. One shared removal map therefore preserves all samples
+on both sources throughout the envelope, including the human-confirmed overlap
+and laughter wherever they occur. The existing contract also refuses attenuation
+on either protected source. This proves bounded preservation without inventing
+word boundaries or assigning the laughter to a particular microphone.
+
+An explicitly derived contract harness crops the existing event coordinates
+into an eight-second test domain. It is not a new planner/export or a repaired
+real inventory. All **198** possible interior one-frame deletions at 25 FPS are
+rejected specifically for intersecting protected content. Both mute and half-gain
+attempts on each source are rejected (**4** refusals); two unity-gain controls
+are accepted. Synthetic verified-zero origins exist only inside that harness;
+every actual source origin, null offset, tail and review stays unchanged.
+
+The individual-source full-preview protected fractions remain `1027/1600` and
+`1`; the earlier five-of-six channel-envelope diagnostic remains intact. Shared
+timeline protection with no attenuation is the preservation guarantee. No
+per-microphone completeness, detector precision or useful silence-removal rate
+is claimed. A later gain policy must independently retain the confirmed content.
+
+Reported separately: six earlier uncertainty/noise channel observations, four
+new speech/external-vocal channel envelopes and one whole-preview overlap group
+envelope are fully protected. All sixteen construction-labelled S04 speech/
+acknowledgement regions remain protected in the existing benchmark. These are
+different units, not a pooled accuracy score. External laughter/end-vocal
+protection includes an example without a positive speech-VAD hit.
+
+**S05 COMPLETE for this bounded labelled-development gate.** Exact human timing,
+per-voice attribution, full interviews, held-out acceptance, later gains and
+actual edited output remain separate limitations/gates. No further S05 listening
+is required. S06 remains pending for a later explicitly selected thread.

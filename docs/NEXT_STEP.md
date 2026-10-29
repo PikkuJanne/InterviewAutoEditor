@@ -1,77 +1,85 @@
-# S05 — development feedback received; G04 still incomplete
+# Next: S06 — build the shared pause-removal planner
 
-**Continue S05 only. S06 remains pending.** On 29 October 2026 the user returned
-to the computer and supplied feedback on the three existing development clips.
-This resumes review of those clips. Keep the **ONE audio file maximum** and
-**no new connection** preference. No new audio is requested or delivered.
+**S05 is complete for the agreed bounded development examples. S06 is pending
+and was not started in the S05 thread.** A later thread must explicitly select
+S06. Compatibility remains EXPERIMENTAL.
 
 - Branch: `codex/kdenlive26-overhaul`.
-- Implementation: `7cf553449a69d4e4518875f029e8933f1bee4656` (unchanged).
-- Latest handover: [S05-attempt-04.md](handovers/S05-attempt-04.md).
-- Prior delivery/pause history: [S05-attempt-03.md](handovers/S05-attempt-03.md).
-- Earlier corrections: [S05-attempt-02.md](handovers/S05-attempt-02.md).
-- Full implementation: [S05.md](handovers/S05.md).
+- S05 implementation: `7cf553449a69d4e4518875f029e8933f1bee4656` (unchanged).
+- Completion handover: [S05-attempt-05.md](handovers/S05-attempt-05.md).
+- Earlier review diagnostics: [S05-attempt-04.md](handovers/S05-attempt-04.md).
+- Delivery/pause history: [S05-attempt-03.md](handovers/S05-attempt-03.md).
+- Full S05 implementation evidence: [S05.md](handovers/S05.md).
 - State: [STATE.json](project/STATE.json).
-- Brief: [S05.md](project/steps/S05.md).
-- Guide: [S05_REACTIONS.md](project/S05_REACTIONS.md).
+- Next brief: [S06.md](project/steps/S06.md).
+- S05 guide: [S05_REACTIONS.md](project/S05_REACTIONS.md).
 - Evidence: [S05_EVENT_EVIDENCE.json](fixtures/S05_EVENT_EVIDENCE.json).
 
-Direct-user feedback confirms speech, two distinct voices with laughter, and
-external development laughter with an end vocal event. Raw comments, mappings
-and approximate bounds remain local. The speech envelope is protected on both
-channels. Both external vocal envelopes are fully protected without a positive
-speech-VAD hit. The conservative end-vocal envelope has S04 coverage `59/75`
-and fused coverage `1`; its unknown event onset prevents interpreting this as
-a precise gasp-duration metric.
+The user explicitly confirmed simultaneous talk in the existing two-source
+preview. Its entire envelope is protected by the union of current events. One
+shared time map retains that time on all sources; the current contract also
+refuses attenuation on protected sources. A derived contract harness rejected
+198/198 possible interior one-frame cuts and 4/4 mute/half-gain attempts, with
+2/2 unity-gain controls accepted. Its synthetic origins are never real alignment
+certificates. No actual plan, project or media was changed/exported.
 
-The two-microphone combined timeline envelope is fully protected. One source
-has an uncovered opening in a deliberately broad envelope, with no independently
-labelled vocal content there: this is **not demonstrated lost speech**. Distinct
-voices alone do not confirm simultaneous talk; exact source-bound vocal spans
-and private acknowledgement content remain unspecified. One text clarification
-about the existing overlap observation is pending. Do not require another file,
-infer an answer, fit labels to model boundaries or waive G04.
+This closes bounded S05 G04 preservation without inventing exact human timings:
+six earlier uncertainty/noise channel observations, four new speech/external-
+vocal channel envelopes, one full overlap group envelope and sixteen generated
+construction-labelled speech/acknowledgement regions are protected. These are
+different denominators; do not pool them into an accuracy score. External vocal
+protection includes a human-reviewed reaction without a positive speech-VAD hit.
 
-All four private preview channel mappings compare sample-exact with originals.
-The existing 102 corpus assertions pass again: five originals unchanged, twelve
-sample-exact excerpts, native sequence delta still one frame on the saved copy.
-Earlier 107-test/zero-skip and full-source/cache/render results are inherited;
-production code/settings/models/events are unchanged. No new Kdenlive GUI/export
-occurred. Compatibility remains EXPERIMENTAL.
+The individual-source full-preview protection fractions remain `1027/1600` and
+`1`. The previous five-of-six broad channel-envelope diagnostic is retained.
+Shared timeline protection plus current gain refusal proves preservation here;
+it does not establish per-microphone detection completeness, safe gain policy,
+useful pause removal, full-interview or held-out acceptance. Conservative noise
+overprotection and unknown precise overlap/vocal boundaries remain explicit.
 
-Preserve speech/reaction/uncertainty evidence, shared microphone groups, native
-sequence deltas 0/1, exact tails and all uncertified S01/S03 origins/correlations.
-Null offsets stay null. No cuts, source separation, gain changes, silent repair
-or camera dependency. Private media, paths, fingerprints, transcripts, labels
-and receipts stay local. Held-out acceptance audio stays unopened. Later computer
-feedback does not prove the failed phone delivery worked.
+No more S05 listening is required. No new file was requested/delivered. Keep the
+one-audio-file maximum and no-new-connection preference for any later explicitly
+requested review. Phone delivery failures remain historical failures; returning
+to the computer did not prove those routes worked. All private comments, source
+mappings, fingerprints, timecodes, recordings, transcripts and labels stay local.
+Held-out acceptance audio remains unopened and separate.
 
-Verify the containing checkpoint live before further edits:
+Preserve every S04/S05 speech/reaction/uncertainty/review event and shared
+microphone group. Native sequence deltas stay 0/1, exact source tails survive,
+and all S01/S03 origins/correlations remain uncertified with null offsets.
+Real v1 export remains refused for unresolved origins/unequal tails. No silent
+shifting, stretching, truncation, padding, gain changes or camera-dependent cuts.
+
+Production code/settings/models/locks/events/exporter are unchanged. The earlier
+107-test/zero-skip suite, full-source/cache integration, source preservation and
+S02 render checks remain inherited evidence. No new GUI operation took place;
+actual editability evidence remains S01/S02 on Kdenlive 26.08.2 rev. d4e87e4.
+
+Verify the containing checkpoint before further edits:
 
 ```powershell
-git log -1 --format=%H -- docs/handovers/S05-attempt-04.md
+git log -1 --format=%H -- docs/handovers/S05-attempt-05.md
 python tools/verify_checkpoint.py --repo .
 ```
 
 The final chat records local/live equality, clean worktree/upstream and exact-SHA
-CI. Absent workflows/checks are **CI not configured**, never green CI.
+CI. Absent workflows/checks mean **CI not configured**, never green CI.
 
-Ready-to-paste continuation prompt:
+Ready-to-paste next-thread prompt:
 
-> Continue S05 only on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json,
-> NEXT_STEP.md, docs/handovers/S05-attempt-04.md and earlier S05 evidence, plus
-> execution/GitHub protocols and S03/S04/S05 guides. Implementation remains
+> Execute S06 only in the existing InterviewAutoEditor checkout on
+> codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md,
+> docs/handovers/S05-attempt-05.md, execution/GitHub protocols, S03/S04/S05
+> guides/contracts and the S06 brief. S05 implementation remains
 > 7cf553449a69d4e4518875f029e8933f1bee4656. Verify the containing checkpoint,
-> live remote equality, clean worktree/upstream and exact-SHA CI first. The user
-> resumed with feedback on existing development clips. Keep coarse labels local
-> and resolve any direct-user clarification of simultaneous talk/source-bound
-> content without fitting annotations to model predictions. The one-file maximum
-> and no-new-connection preference remain; no new audio review is requested.
-> Five of six coarse channel envelopes and the combined two-source timeline
-> envelope are fully protected; the remaining source opening is not confirmed
-> vocal loss. Keep held-out acceptance separate. Preserve uncertainty, shared
-> groups, native extent, exact tails and uncertified origins/correlations. Keep
-> private data local and compatibility EXPERIMENTAL. Do not waive G04 or begin
-> S06. Commit/push/verify, provide a verbose handover and STOP.
+> live SHA equality, clean worktree/upstream and exact-SHA CI first. Build one
+> shared pause-removal map from every protected event; preserve words,
+> acknowledgements, reactions, uncertainty and simultaneous talk on all tracks.
+> Keep full leading/trailing sections, shared groups, native extent, exact tails
+> and uncertified origins/correlations. No silent media repair, per-source time
+> removal, gain changes or camera-dependent deletion. Keep private data/labels
+> local, held-out acceptance separate and compatibility EXPERIMENTAL. Preserve
+> current real-export refusals. Complete S06 gates, commit/push/verify exact-SHA
+> CI, provide a verbose handover and STOP.
 
-Paused with S05 blocked. The next thread must resume S05.
+Paused after S05. The next thread should execute S06 only.

@@ -8,14 +8,12 @@
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
   "active_step": "S05",
-  "next_step": "S05",
-  "latest_handover": "docs/handovers/S05-attempt-04.md",
+  "next_step": "S06",
+  "latest_handover": "docs/handovers/S05-attempt-05.md",
   "implementation_commit": "7cf553449a69d4e4518875f029e8933f1bee4656",
-  "technical_gate_status": "blocked",
+  "technical_gate_status": "passed",
   "synchronization": "must_verify_live_at_each_checkpoint",
-  "blockers": [
-    "G04 remains incomplete after direct-user development feedback resumed. Speech and external laughter/end-vocal-event envelopes are protected. Two distinct voices do not confirm simultaneous talk; source-specific speech/laughter boundaries in the two-microphone preview remain unspecified. One source has an uncovered opening inside a deliberately broad test envelope, with no confirmed vocal loss there. Clarify existing observations without requiring new files. No S06 work."
-  ],
+  "blockers": [],
   "steps": [
     {
       "id": "S00",
@@ -57,7 +55,7 @@
       "title": "Protect laughter overlap and uncertain sounds",
       "prerequisite": "S04",
       "brief": "docs/project/steps/S05.md",
-      "status": "blocked"
+      "status": "completed"
     },
     {
       "id": "S06",
@@ -155,13 +153,13 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-29",
   "prerequisites_for_next_step": [
-    "Continue S05 only. Read attempt-04 and prior evidence, then verify the containing checkpoint, live SHA equality, clean worktree/upstream and exact-SHA CI.",
-    "The user resumed by supplying feedback on existing development clips after returning to the computer. Record any further clarification of those clips; no new audio review is requested. Keep the ONE-audio-file maximum and no-new-connection preference for any future delivery.",
-    "G04 is still incomplete: distinct voices alone do not confirm overlap, and broad observation envelopes are not exact per-source word/laughter labels. Do not report an uncovered envelope opening as proven lost speech. Do not waive the gate or use held-out acceptance data to fill the gap.",
-    "Retain all S04/S05 uncertainty and supporting-only floor/correlation findings. Shared microphones remain one inseparable source group.",
-    "Preserve native sequence extent, exact source tails and every uncertified origin/correlation diagnostic. No silent shifting/stretching/truncation/padding, source separation, gain changes, automatic cuts or camera dependency.",
-    "Keep all real media, names, private paths, source hashes, transcripts and labels local. Compatibility remains EXPERIMENTAL and v1 unverified-origin/unequal-tail export remains refused.",
-    "S06 remains pending until S05 genuinely passes its gate and a later thread explicitly selects S06."
+    "S05 is complete for the agreed bounded development examples. Execute S06 only in a later explicitly selected thread; it remains pending and was not started here.",
+    "Read attempt-05 and prior S05 implementation/evidence, STATE/NEXT_STEP and the selected brief/protocols. Verify the containing checkpoint, live SHA equality, clean worktree/upstream and exact-SHA CI first.",
+    "Use the union of every protected speech/reaction/uncertainty/overlap event for one shared removal map across all tracks. Do not reinterpret a per-microphone detection gap as global removable silence or authorize source attenuation from this development result.",
+    "Human confirmation establishes overlap in the reviewed two-source preview, with no exact overlap boundaries or original-alignment certificate. Whole-preview protection proves bounded shared-removal preservation; individual-source detection remains incomplete and conservative overprotection is retained.",
+    "Retain all S04/S05 evidence, shared microphone groups and supporting-only floor/correlation diagnostics. Preserve native extent deltas, exact source tails and all uncertified source origins; offsets remain null. Existing v1 real-export refusal is unchanged.",
+    "No automatic source repair, shifting, stretching, truncation, padding, gain changes or camera dependency. Keep private media, source fingerprints, paths, transcripts and human labels local; compatibility remains EXPERIMENTAL.",
+    "Held-out acceptance remains unopened and separate. No further listening is required for S05; keep the one-audio-file maximum and no-new-connection preference for any later explicitly requested review."
   ],
   "validation_evidence": [
     {
@@ -665,6 +663,26 @@
       "sequence_extent_delta_frames": 1,
       "command": ".venv/Scripts/python.exe -B .local/S01/validate_private_corpus.py",
       "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656"
+    },
+    {
+      "check": "s05_attempt05_bounded_development_g04_closure",
+      "status": "passed_bounded_shared_removal_and_current_no_attenuation_contract",
+      "human_confirmed_preview_overlap": true,
+      "exact_overlap_boundaries_known": false,
+      "whole_overlap_preview_shared_protected_fraction": "1",
+      "derived_contract_harness_interior_single_frame_cuts_refused": 198,
+      "derived_contract_harness_source_attenuations_refused": 4,
+      "derived_contract_harness_neutral_gain_controls_accepted": 2,
+      "original_source_origins_certified": false,
+      "earlier_coarse_observation_channel_checks_fully_protected": 6,
+      "new_speech_external_vocal_channel_envelopes_fully_protected": 4,
+      "group_overlap_preview_checks_fully_protected": 1,
+      "generated_construction_sample_bound_regions_fully_protected": 16,
+      "production_analysis_changed": false,
+      "held_out_audio_opened": false,
+      "command": ".venv/Scripts/python.exe -B .local/S05/validate_overlap_gate.py",
+      "applies_to_commit": "7cf553449a69d4e4518875f029e8933f1bee4656",
+      "limitations": "Preservation only; individual-source gaps and unknown exact human timing retained. No full-interview, held-out, gain-policy, alignment or actual export acceptance."
     }
   ],
   "previous_step_implementation_commit": "aea03cf134ea6214c972900e117b03b389f262b9",
@@ -846,9 +864,9 @@
     "private_annotation_pack_seconds": 24,
     "private_annotation_pack_cues": 3,
     "private_annotation_pack_sample_exact": true,
-    "private_human_sample_bound_labels": "DIRECT_USER_COARSE_OBSERVATIONS; NOT_EXACT_WORD_OR_OVERLAP_BOUNDS",
-    "g04": "BLOCKED_UNCONFIRMED_SIMULTANEOUS_TALK_AND_INCOMPLETE_SOURCE_BOUND_LABELS",
-    "private_human_listening_acceptance": "PARTIAL_DEVELOPMENT_ONLY; NOT_HELD_OUT_ACCEPTANCE",
+    "private_human_sample_bound_labels": "COARSE_HUMAN_ENVELOPES; NOT_SAMPLE_PRECISE_WORD_OR_OVERLAP_BOUNDS",
+    "g04": "PASS_BOUNDED_S05_DEVELOPMENT_SHARED_REMOVAL_NO_ATTENUATION",
+    "private_human_listening_acceptance": "BOUNDED_DEVELOPMENT_ONLY; HELD_OUT_ACCEPTANCE_NOT_RUN",
     "real_alignment_certified": false,
     "automatic_cuts_performed": false,
     "source_repair_performed": false,
@@ -856,12 +874,12 @@
     "real_export_performed": false,
     "new_gui_interaction": "NOT_RUN_analysis_only_exporter_unchanged",
     "relevant_g09": "PASS_scoped_model_cache_decoder_cancel_no_overwrite",
-    "completion_handover": "docs/handovers/S05-attempt-04.md",
+    "completion_handover": "docs/handovers/S05-attempt-05.md",
     "s06_started": false,
     "private_human_listening_review": "earlier phone corrections and new direct-user development feedback retained locally",
     "private_followup_review_cues": 3,
     "private_followup_review_seconds": 21,
-    "private_followup_human_confirmation": "THREE_EXISTING_CLIPS_REVIEWED; COARSE_TIMING_AND_UNSPECIFIED_SOURCE_ATTRIBUTION",
+    "private_followup_human_confirmation": "THREE_EXISTING_CLIPS_PLUS_EXPLICIT_PREVIEW_OVERLAP_CONFIRMATION",
     "listening_state": "RESUMED_BY_USER_WITH_EXISTING_CLIP_FEEDBACK; NO_NEW_AUDIO_REQUESTED",
     "maximum_future_human_review_audio_files": 1,
     "new_connection_preference": "DECLINED_BY_USER",
@@ -874,8 +892,20 @@
     "fully_protected_coarse_channel_envelopes": 5,
     "combined_two_source_timeline_envelope_fully_protected": true,
     "confirmed_vocal_content_loss": false,
-    "simultaneous_talk_human_confirmation": "PENDING_CLARIFICATION",
+    "simultaneous_talk_human_confirmation": "CONFIRMED_IN_REVIEWED_PREVIEW; EXACT_BOUNDS_AND_ORIGINAL_ALIGNMENT_UNCERTIFIED",
     "human_reviewed_external_reaction_without_positive_vad": true,
-    "production_code_settings_events_changed_in_followup": false
+    "production_code_settings_events_changed_in_followup": false,
+    "whole_overlap_preview_shared_protection_fraction": "1",
+    "whole_overlap_preview_individual_source_protection_fractions": [
+      "1027/1600",
+      "1"
+    ],
+    "synthetic_contract_harness_single_frame_cut_refusals": 198,
+    "synthetic_contract_harness_protected_source_gain_refusals": 4,
+    "contract_harness_certifies_real_origins": false,
+    "per_source_detection_gaps_remain": true,
+    "all_annotated_development_content_preserved_under_current_shared_map_and_no_gain_rules": true,
+    "held_out_full_interview_and_gain_acceptance": "NOT_RUN",
+    "further_s05_listening_required": false
   }
 }
