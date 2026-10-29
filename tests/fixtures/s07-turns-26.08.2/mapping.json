@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "participants": [
+    {
+      "resource": "media/participant-01.wav",
+      "source_id": "p0",
+      "display_name": "Participant 01",
+      "channel_labels": [
+        "participant0"
+      ]
+    },
+    {
+      "resource": "media/participant-02.wav",
+      "source_id": "p1",
+      "display_name": "Participant 02",
+      "channel_labels": [
+        "participant1"
+      ]
+    }
+  ],
+  "relocations": []
+}
