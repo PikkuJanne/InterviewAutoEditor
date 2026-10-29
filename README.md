@@ -8,6 +8,13 @@ editable project, exact plans, private manifests and review reports. See the
 [S10 quick start and recovery guide](docs/project/S10_CLI.md). Unverified real
 origins and unequal exact tails still refuse planning/export.
 
+**S11 adds a minimal local desktop** over that same service: double-click
+[`InterviewAutoEditor.pyw`](InterviewAutoEditor.pyw) in the prepared checkout.
+Pick a starter, confirm participant mapping, choose Tight/Gentle, run/cancel,
+review source-time Keep/Restore and open an editable copy in Kdenlive.
+See the [desktop guide](docs/project/S11_DESKTOP.md). This is a source/packaging
+entry point; bundled-runtime and clean-install release checks remain later work.
+
 The installed primary target is independently verified as **Kdenlive 26.08.2,
 revision d4e87e4**. Its two-participant synthetic reference passed actual GUI
 open/play/group-edit/undo/save/reopen/render checks. Product compatibility remains
@@ -36,8 +43,8 @@ native gain-edge measurements, GUI evidence and recovery instructions.
 
 These are the full product requirements. S06-S10 connect conservative approved
 pause planning, grouped export, idle cleanup and picture review. Scoped actual
-Kdenlive synthetic round trips pass; the product desktop UI and full-interview
-acceptance remain later work.
+Kdenlive synthetic round trips pass; the desktop uses the same contracts and
+recovery rules. Full-interview acceptance remains later work.
 Real source offsets, drift and subframe tails remain unverified. The observed
 native one-frame sequence extent change is retained explicitly in the proof.
 

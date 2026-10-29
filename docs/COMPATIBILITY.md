@@ -107,3 +107,13 @@ measured anchor lag. See [S10 usage](project/S10_CLI.md) and
 The structural compatibility-probe command does not verify an installed binary
 or certify future versions. Compatibility remains EXPERIMENTAL; wider build,
 track/FPS, full-interview and held-out acceptance claims are unchanged.
+
+S11 adds a Tkinter desktop over the unchanged shared service/policies/exporter.
+Its new synthetic workflow creates an immutable run and opens a sibling editable
+copy in actual **26.08.2 rev. d4e87e4** without repair or missing media; visible
+playback reaches the output end. No new full group-edit/save/reopen/render cycle
+is claimed. The existing genuine S10 full regression and render remain separate
+and are remeasured by the full suite. The installed executable SHA256 still
+matches the recorded primary build. Desktop row scaling is not a wider native
+Kdenlive track/build acceptance claim. See [desktop use](project/S11_DESKTOP.md)
+and [focused workflow recording](fixtures/S11_WORKFLOW.md).
