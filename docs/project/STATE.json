@@ -7,11 +7,11 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S09",
-  "next_step": "S10",
-  "latest_handover": "docs/handovers/S09.md",
-  "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
-  "technical_gate_status": "passed_applicable_s09_g01_g02_g03_g04_g05_g06_g07_g08_g09",
+  "active_step": "S10",
+  "next_step": "S11",
+  "latest_handover": "docs/handovers/S10.md",
+  "implementation_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94",
+  "technical_gate_status": "passed_applicable_s10_g01_g03_g09_and_actual_kdenlive_regression",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
   "steps": [
@@ -90,7 +90,7 @@
       "title": "Complete the recoverable CLI pipeline",
       "prerequisite": "S09",
       "brief": "docs/project/steps/S10.md",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "S11",
@@ -153,14 +153,16 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-29",
   "prerequisites_for_next_step": [
-    "S09 is complete for applicable synthetic and retained bounded development fixtures. Execute S10 only in a later explicitly selected thread; no S10 implementation was performed.",
-    "Read AGENTS, STATE/NEXT_STEP, complete S09 handover, execution/GitHub protocols, S03-S09 guides and S10 brief. Verify the containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI first.",
-    "Keep picture observations separate from audio protection and silence approvals. S09 only restores shared time by narrowing existing approved S06 deletions. Preserve original speech/picture timing, the full 12.00/12.45 opening, conservative layout/flash fallbacks and exact source/output/null review locations.",
-    "S09 PictureAnalysis binds unchanged analysis/video/implementation/decoder observations. Export recomputes refinement from the base result; S08 cleanup must bind the refined S06 result. Stale cleanup refuses. Canonical v1 protected-source gain refusal, all protected content/overlap/shared mics/overrides/handles and conservative headroom remain unchanged.",
-    "Actual Kdenlive 26.08.2 rev. d4e87e4 passes S09 open/play/group move/undo/save/reopen/render and sanitized-native open. Changed export needs actual application regression. Compatibility remains EXPERIMENTAL; no future-build or broader GUI matrix guarantee.",
-    "S09 passes 180 tests with zero skips and 12 actual GUI-render measurements. The separate exact 20-FPS 12.00/12.45 decoder/math example is not a GUI compatibility claim. Layout confidence is heuristic and identity unverified; current window/decode/stream bounds are explicit.",
-    "Original real origins remain unverified/null, exact tails unequal and real planning/export refused. Retained overlap stays 200/200 frames at unity with no idle approvals. Keep private media/labels/names/fingerprints local; held-out/full interview acceptance remains separate.",
-    "Preserve the one-audio-file maximum/no-new-connection preference and bounded S08 human pass. No new listening required for S09. No source repair, renormalization/denoising, per-track time removal, fake footage/freezes or camera retiming."
+    "S10 is complete for supported synthetic/recovery scope. Execute S11 only in a later explicitly selected thread; no S11 implementation.",
+    "Read AGENTS, STATE/NEXT_STEP, complete S10 handover, execution/GitHub protocols, S03-S10 guides and S11 brief. Resolve containing checkpoint; verify live/local/upstream equality, clean worktree and exact-SHA CI first.",
+    "Build the thin desktop workflow over the shared Application service. Do not duplicate timing/inference rules in UI. Keep source-time Keep/Restore, clear review/error states and explicit participant mapping.",
+    "Preserve exclusive recoverable run staging, manifests/artifact validation, explicit same-input resume, OS advisory locks, atomic new final folders, cancellation and cache validation. Full runs/reports/cache remain private. Corruption fails closed; no automatic deletion/repair.",
+    "Picture observations only restore time by narrowing approved shared deletions. S08 cleanup binds the refined S06 result and stale requests refuse; never silently rebind. Preserve original 12.00/12.45 opening/picture lag and all source-time overrides.",
+    "Preserve S03-S09 protected content, uncertainty/laughter/overlap/shared mics/exterior handles, grouping, bin originals, canonical v1 gain refusal and conservative headroom. No source repair, normalization, denoising, per-track deletion, camera advance or invented footage.",
+    "Original real origins remain unverified/null and exact tails unequal; planning/export still refuse. Saved reviewed analysis is explicit supplied data, never an automatic origin certificate. Keep held-out/full interview acceptance separate.",
+    "Final S10 suite: 206 tests, zero skips, 182.595 seconds, including 26 S10 tests. Seven actual CLI modes return review exit 2. New actual Kdenlive 26.08.2 rev. d4e87e4 regression and 12 render checks pass. Compatibility remains EXPERIMENTAL.",
+    "Windows/NTFS finalization tested; Linux/network filesystem paths not run. Pure planning cancellation occurs at stage boundaries; atomic visibility is not a power-loss durability promise. Incomplete runs with changed paths/code/settings require a new run.",
+    "No new listening or connection is needed. Preserve one-audio-file maximum/no-new-connection preference, S08 bounded human pass and unchanged private corpus. Actual Kdenlive regression is required if export changes."
   ],
   "validation_evidence": [
     {
@@ -968,6 +970,77 @@
       "provenance_artifact_hashes_verified": 22,
       "s09_status": "completed",
       "s10_status": "pending_not_started"
+    },
+    {
+      "check": "s10_final_full_suite",
+      "status": "passed",
+      "tests": 206,
+      "new_s10_tests": 26,
+      "skipped": 0,
+      "seconds": 182.595,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "applies_to_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94"
+    },
+    {
+      "check": "s10_actual_cli_modes",
+      "status": "passed",
+      "modes": 7,
+      "complete_exit_code": 2,
+      "repeat_exit_code": 1,
+      "cancel_exit_code": 130,
+      "private_safe_console": true,
+      "command": ".venv/Scripts/python.exe -B .local/S10/verify_cli.py",
+      "applies_to_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94"
+    },
+    {
+      "check": "s10_actual_application_regression",
+      "status": "passed",
+      "scope": "Integrated synthetic CLI output: open/play/three-member group move 25 frames/undo/save/close/reopen/full GUI render and sanitized public native open",
+      "build": "26.08.2 rev. d4e87e4",
+      "evidence": "tests/fixtures/s10-cli-26.08.2/PROVENANCE.json",
+      "applies_to_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94"
+    },
+    {
+      "check": "s10_actual_gui_render_measurements",
+      "status": "passed",
+      "checks": 12,
+      "video_frames": 267,
+      "audio_anchor_lags_samples": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximum_protected_probe_absolute_db": 0.091,
+      "native_sequence_extent_delta_frames": 0,
+      "evidence": "tests/fixtures/s10-cli-26.08.2/render-validation.json",
+      "applies_to_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94"
+    },
+    {
+      "check": "s10_retained_private_development_and_corpus",
+      "status": "passed",
+      "corpus_assertions": 102,
+      "unchanged_original_sources": 5,
+      "sample_exact_excerpts": 12,
+      "retained_overlap_frames": 200,
+      "gain_spans": 0,
+      "idle_approvals": 0,
+      "real_export_created": false,
+      "held_out_opened": false,
+      "applies_to_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94"
+    },
+    {
+      "check": "s10_checkpoint_documentation_privacy",
+      "status": "passed",
+      "command": ".venv/Scripts/python.exe -B .local/S10/validate_checkpoint.py",
+      "applies_to": "S10 documentation checkpoint; resolve containing commit from handover history",
+      "reviewed_text_files": 22,
+      "generated_media_files": 4,
+      "valid_local_links": 66,
+      "private_source_tokens_found": 0,
+      "artifact_hashes_verified": 9,
+      "legacy_contracts_policy_models_adapter_unchanged": true,
+      "shared_probe_and_peak_changes": "cancellation checkpoints only"
     }
   ],
   "previous_step_implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
@@ -1340,7 +1413,7 @@
     "compatibility": "EXPERIMENTAL",
     "new_listening_requested": false,
     "completion_handover": "docs/handovers/S09.md",
-    "s10_started": false,
+    "s10_started": true,
     "output_frames": 267,
     "gui_render_checks": 12,
     "native_sequence_extent_delta_frames": 0,
@@ -1357,6 +1430,43 @@
       "provenance_artifact_hashes_verified": 22,
       "s09_status": "completed",
       "s10_status": "pending_not_started"
+    }
+  },
+  "s10_evidence": {
+    "implementation_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94",
+    "guide": "docs/project/S10_CLI.md",
+    "measurements": "docs/fixtures/S10_CLI_EVIDENCE.json",
+    "actual_provenance": "tests/fixtures/s10-cli-26.08.2/PROVENANCE.json",
+    "render_measurements": "tests/fixtures/s10-cli-26.08.2/render-validation.json",
+    "full_suite_tests": 206,
+    "full_suite_skipped": 0,
+    "new_s10_tests": 26,
+    "service": "s10-recoverable-cli-1",
+    "actual_cli_modes": 7,
+    "gui_render_checks": 12,
+    "output_frames": 267,
+    "compatibility": "EXPERIMENTAL",
+    "real_export_created": false,
+    "real_alignment_certified": false,
+    "held_out_opened": false,
+    "new_listening_requested": false,
+    "s11_started": false,
+    "completion_handover": "docs/handovers/S10.md",
+    "checkpoint_documentation_review": {
+      "status": "passed",
+      "metadata_files": 4,
+      "implementation_tests_and_artifacts_unchanged_since": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94",
+      "state_next_step_handover_consistent": true,
+      "full_tests": 206,
+      "s10_tests": 26,
+      "s11_status": "pending_not_started",
+      "reviewed_text_files": 22,
+      "generated_media_files": 4,
+      "valid_local_links": 66,
+      "private_source_tokens_found": 0,
+      "artifact_hashes_verified": 9,
+      "legacy_contracts_policy_models_adapter_unchanged": true,
+      "shared_probe_and_peak_changes": "cancellation checkpoints only"
     }
   }
 }

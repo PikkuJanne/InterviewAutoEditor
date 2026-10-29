@@ -1,61 +1,65 @@
-# Next: S10 - complete the recoverable CLI pipeline
+# Next: S11 - build the minimal desktop workflow
 
-**S09 is COMPLETE for applicable synthetic and retained bounded development
-fixtures. S10 remains pending and was not implemented.** Compatibility remains
-EXPERIMENTAL. Execute one named step per chat.
+**S10 COMPLETE for applicable supported synthetic/recovery scope. S11 is pending
+and was not implemented.** Execute one named step per chat. Compatibility remains
+EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4.
 
 - Branch: `codex/kdenlive26-overhaul`.
-- S09 implementation: `8e31359b0e20941d4fd81e35429d83776e4f47c5`.
-- Starting S08 completion checkpoint: `ba9a638257a36534430db626b5d992afad3da327`.
-- Handover: [S09.md](handovers/S09.md).
+- S10 implementation: `00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94`.
+- Starting S09 completion checkpoint: `8431f9743fb4783505951b0e9bd66e9f80850273`.
+- Handover: [S10.md](handovers/S10.md).
 - State: [STATE.json](project/STATE.json).
-- Next brief: [S10.md](project/steps/S10.md).
-- Picture policy/commands: [S09_PICTURE.md](project/S09_PICTURE.md).
-- Evidence: [S09_PICTURE_EVIDENCE.json](fixtures/S09_PICTURE_EVIDENCE.json).
-- Actual provenance: [PROVENANCE.json](../tests/fixtures/s09-picture-26.08.2/PROVENANCE.json).
+- Next brief: [S11.md](project/steps/S11.md).
+- CLI and recovery: [S10_CLI.md](project/S10_CLI.md).
+- Evidence: [S10_CLI_EVIDENCE.json](fixtures/S10_CLI_EVIDENCE.json).
+- Actual capture: [PROVENANCE.json](../tests/fixtures/s10-cli-26.08.2/PROVENANCE.json).
 
-S09 keeps recorded-picture observations separate from speech protection and
-silence approvals. A stable switch may narrow an existing approved shared
-deletion, restoring time across every track. Unknown/gallery/pinned/camera-off,
-ambiguous/brief transitions and insufficient seam coverage restore the affected
-handover deletion. No picture identity is asserted. The 12.00 s speech / 12.45 s
-picture example preserves all opening speech and the original .45 s lag.
+One shared Application service now connects inspect/analyze/plan/export/run/report
+and structural compatibility probing. It publishes complete validated run bundles
+atomically, preserves failed/cancelled staging and valid per-source caches, verifies
+explicit resume and refuses existing completed destinations, changed inputs or
+corrupt artifacts. Full manifests/reports/cache are PRIVATE for real material.
+The structural probe does not certify an installed application or future builds.
 
-S08 cleanup must bind the **refined** S06 result. Stale cleanup refuses. All
-protected events/overlap/shared microphones/Keep/audible overrides, full exterior
-handles, grouping, full bin originals, canonical v1 gain refusal and conservative
-headroom survive. Real origins remain unverified/null, exact tails unequal and
-planning/export refused. No source repair, normalization/denoising, fake footage,
-freezes, per-track deletion or independent audio/video timing changes.
+All S03-S09 safeguards remain. Pictures only narrow existing approved shared
+deletions, restoring time; original 12.00/12.45 speech/picture timing survives.
+Cleanup must bind the refined result; stale requests refuse without silent
+rebinding. Keep source-time overrides, protected content/uncertainty/laughter/
+overlap/shared mics, full handles, groups/bin originals and conservative headroom.
+Original real origins remain unverified/null, tails unequal and export refused.
+No normalization/denoising, source repair, independent removal or camera retiming.
 
-Final validation: **180 tests, zero skips, 145.749 s**; **20 focused S09 tests,
-zero skips, 21.355 s**. Actual **26.08.2 rev. d4e87e4 / MLT 7.43.0 / Qt 6.11.1**
-open/play/group move/undo/save/reopen/render and sanitized native open pass.
-Twelve render checks pass: 267 mapped pictures, one switch at output 105, four
-zero-lag audio anchors, eight protected probes within 0.1 dB, over 30 dB noise
-reduction and peak 0.476731. Native extent delta is zero. The separate exact
-20-FPS delayed-switch decode is automated evidence, not a GUI support claim.
+Final suite: **206 tests, zero skips, 182.595 s**, including 26 S10 tests. Seven
+actual CLI modes returned review exit 2; repeat-run refusal 1/cancellation 130.
+Actual **26.08.2 rev. d4e87e4 / MLT 7.43.0 / Qt 6.11.1** open/play/group move/
+undo/save/reopen/render and sanitized native open pass. Twelve render checks pass:
+267 mapped pictures, one switch at output 105, zero measured audio-anchor lags,
+eight protected probes within 0.091 dB, idle-noise reduction and peak 0.476731.
+Native extent delta is zero. Existing 20-FPS delay math is separate from GUI evidence.
 
-Private originals and retained bounded overlap remain unchanged; held-out/full
-interview acceptance and private picture/layout calibration are NOT RUN. Keep
-private media/labels/names/fingerprints local. No new listening is required for
-S09; preserve the one-file/no-new-connection preference and bounded S08 pass.
-Current picture support has explicit frame/decoder/stream bounds; read the guide.
+Private preservation remains 102 assertions/five unchanged originals/twelve exact
+excerpts; retained bounded overlap is 200/200 frames at unity with zero idle
+approvals. No held-out/full interview acceptance, new listening or connection.
+Preserve one-file/no-new-connection preferences and bounded S08 human acceptance.
+Windows/NTFS finalization is tested; Linux/network filesystems, two-hour stress,
+broader GUI/build matrices and packaging are NOT RUN. Atomic visibility does not
+guarantee power-loss durability. Partial relocation/input/code changes require a
+fresh run; corrupt derived data fails closed.
 
 Before editing, resolve the containing checkpoint and verify live:
 
 ```powershell
-git log -1 --format=%H -- docs/handovers/S09.md
+git log -1 --format=%H -- docs/handovers/S10.md
 python tools/verify_checkpoint.py --repo .
 ```
 
-The closing chat records actual local/live/upstream equality and exact-SHA CI.
-Reverify at the next thread start. Initial queries found zero workflows/runs/
+The final chat records actual local/live/upstream equality, clean worktree and
+exact-SHA CI. Reverify at thread start. Initial queries found zero workflows/runs/
 checks/statuses: **CI not configured**, not green CI. Failed synchronization or
-configured failing CI overrides continuation and requires resuming S09.
+configured failing CI requires resuming S10 before S11.
 
 Ready-to-paste next-thread prompt:
 
-> Execute S10 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md, docs/handovers/S09.md, execution/GitHub protocols, S03-S09 guides and the S10 brief. S09 implementation is 8e31359b0e20941d4fd81e35429d83776e4f47c5. Verify the containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI first. Connect inspect/analyze/plan/export/run/report and compatibility probing through one recoverable application service. Add manifests/reports, cancellation, atomic finalization, cache invalidation/reuse, missing-asset and repeat-run recovery, preserving source-time overrides and every S03-S09 safeguard. Picture observations cannot authorize new deletion or independent retiming; S08 cleanup binds the refined S06 result. Preserve full 12.00/12.45 opening speech, real origin/exact-tail refusals, all protected content/overlap/shared mics/overrides/handles/groups/bin originals and headroom. Keep private data local, held-out acceptance separate and compatibility EXPERIMENTAL. Run applicable G01/G03/G09 and actual Kdenlive regressions if export changes, update state/NEXT_STEP and S10 handover, commit/push/verify, provide a verbose handover and STOP. No S11.
+> Execute S11 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md, docs/handovers/S10.md, execution/GitHub protocols, S03-S10 guides and the S11 brief. S10 implementation is 00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94. Resolve the containing completion checkpoint; verify live/local/upstream SHA equality, a clean worktree and exact-SHA CI first. Build the minimal desktop workflow over the shared S10 Application service: project picker, explicit participant mapping, Tight/Gentle, progress/cancel, understandable errors, Open in Kdenlive and source-time Keep/Restore review. Preserve S03-S10 contracts, private-data boundaries, recoverable run transaction/cache rules, refined-result cleanup binding, original picture/audio timing and real-origin/exact-tail refusals. No timing/inference logic in the UI, account/cloud workflow or new listening requirement. Run applicable UI/core gates and actual Kdenlive regression if export changes; update state/NEXT_STEP and S11 handover, commit/push/verify, provide a verbose handover and STOP. No S12.
 
-Paused after S09. The next thread should execute S10 only.
+Paused after S10. The next thread should execute S11 only.

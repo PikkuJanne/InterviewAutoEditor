@@ -3,7 +3,7 @@
   "step": "S10",
   "date": "2026-10-29",
   "status": "COMPLETE_APPLICABLE_SCOPE",
-  "implementation_commit": null,
+  "implementation_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94",
   "starting_checkpoint": "8431f9743fb4783505951b0e9bd66e9f80850273",
   "compatibility": "EXPERIMENTAL",
   "service": "s10-recoverable-cli-1",
@@ -160,5 +160,21 @@
     "Full manifests/reports/cache are private; neutral summaries still require review"
   ],
   "s11_started": false,
-  "synchronization": "must_verify_live_at_each_checkpoint"
+  "synchronization": "must_verify_live_at_each_checkpoint",
+  "checkpoint_documentation_review": {
+    "status": "passed",
+    "metadata_files": 4,
+    "implementation_tests_and_artifacts_unchanged_since": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94",
+    "state_next_step_handover_consistent": true,
+    "full_tests": 206,
+    "s10_tests": 26,
+    "s11_status": "pending_not_started",
+    "reviewed_text_files": 22,
+    "generated_media_files": 4,
+    "valid_local_links": 66,
+    "private_source_tokens_found": 0,
+    "artifact_hashes_verified": 9,
+    "legacy_contracts_policy_models_adapter_unchanged": true,
+    "shared_probe_and_peak_changes": "cancellation checkpoints only"
+  }
 }
