@@ -24,6 +24,7 @@ from test_s02_adapter import semantics
 ROOT = Path(__file__).resolve().parents[1]
 FIX = ROOT / 'tests/fixtures/kdenlive-26.08.2'
 FFPROBE = os.environ.get('IAE_FFPROBE') or shutil.which('ffprobe')
+FFMPEG = os.environ.get('IAE_FFMPEG') or shutil.which('ffmpeg')
 
 
 def synthetic_result(project=FIX / 'starter-2.kdenlive'):
@@ -246,6 +247,33 @@ class ExportTests(unittest.TestCase):
             nodes={n.get('id'):n for n in exported if n.get('id')}
             resources={next(p.text for p in nodes[e.get('producer')].findall('property') if p.get('name')=='resource') for e in nodes['main_bin'].findall('entry') if nodes[e.get('producer')].tag=='chain'}
             self.assertTrue(all(any(Path(value).name==p.name for value in resources) for p in binding.values()))
+
+
+class NativeEvidenceTests(unittest.TestCase):
+    def test_actual_native_save_and_gui_render_hashes(self):
+        import json
+        from s02_validate_render import semantic
+        bundle=ROOT/'tests/fixtures/s07-turns-26.08.2'
+        provenance=json.loads((bundle/'PROVENANCE.json').read_text())
+        self.assertEqual(provenance['sanitized_native_gui_reopen'],'PASS')
+        for artifact in provenance['artifacts']:
+            self.assertEqual(fingerprint(bundle/artifact['path']),artifact['sha256'])
+        report=json.loads((bundle/'render-validation.json').read_text())
+        self.assertTrue(report['passed'])
+        for key,name in (('project_sha256','after.kdenlive'),('native_sha256','native-roundtrip.kdenlive'),('extracted_sha256','ripple-extracted.kdenlive'),('gui_render_sha256','gui-render.mp4')):
+            self.assertEqual(report[key],fingerprint(bundle/name))
+        self.assertEqual(semantic(bundle/'after.kdenlive'),semantic(bundle/'native-roundtrip.kdenlive'))
+        for path in ('before.kdenlive','after.kdenlive'):
+            self.assertNotIn('kdenlive:file_hash',(bundle/path).read_text())
+
+    @unittest.skipUnless(FFMPEG,'Set IAE_FFMPEG for GUI-render remeasurement.')
+    def test_actual_gui_render_remeasurement(self):
+        from s07_validate_render import validate
+        bundle=ROOT/'tests/fixtures/s07-turns-26.08.2'
+        result=validate(bundle,bundle/'native-roundtrip.kdenlive',bundle/'ripple-extracted.kdenlive',bundle/'gui-render.mp4',FFMPEG)
+        self.assertTrue(result['passed'],result['checks'])
+        self.assertEqual(result['video_frames'],233)
+        self.assertEqual([a['best_lag_samples_grid_48'] for a in result['audio_anchors']],[0]*7)
 
 
 if __name__=='__main__':unittest.main()

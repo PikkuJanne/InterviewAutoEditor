@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "checks": {
+    "timeline_semantics_equal": true,
+    "native_extent_delta_reported": true,
+    "ripple_extracted_25_frames_from_every_track": true,
+    "ripple_retains_five_groups": true,
+    "exact_233_video_frames": true,
+    "picture_anchors_exact_shared_map": true,
+    "audio_anchors_within_one_frame": true,
+    "both_sources_present_in_both_overlaps": true,
+    "embedded_997hz_at_least_50db_down": true,
+    "audio_padding_at_most_one_frame": true
+  },
+  "project_sha256": "8e74609303344130a6a6b7a7d843da455a313b101795199637aebf91d602d5e9",
+  "native_sha256": "b9bcdb6ffbe006b9a9fe40e4647215e6ea08c99f4c61361170402304981d5397",
+  "extracted_sha256": "113c23311c7b00b6e7c0199da30aeff89d9ae991fe6e2780bd1f18ee675bb29b",
+  "gui_render_sha256": "e41e374b33d80de055561270e288d5939fc5450eb1073e49da7bd5beabf39bc7",
+  "video_frames": 233,
+  "audio_samples_48000hz": 447488,
+  "whole_project_semantic_equal": true,
+  "native_sequence_extent_delta_frames": 0,
+  "picture_anchors": [
+    {
+      "output_frame": 0,
+      "source_frame": 0,
+      "best_offset": 0,
+      "rgb_mae": 1.615203
+    },
+    {
+      "output_frame": 49,
+      "source_frame": 49,
+      "best_offset": 0,
+      "rgb_mae": 2.12647
+    },
+    {
+      "output_frame": 50,
+      "source_frame": 50,
+      "best_offset": 0,
+      "rgb_mae": 2.424844
+    },
+    {
+      "output_frame": 74,
+      "source_frame": 74,
+      "best_offset": 0,
+      "rgb_mae": 2.623837
+    },
+    {
+      "output_frame": 75,
+      "source_frame": 75,
+      "best_offset": 0,
+      "rgb_mae": 2.14886
+    },
+    {
+      "output_frame": 104,
+      "source_frame": 104,
+      "best_offset": 0,
+      "rgb_mae": 2.756198
+    },
+    {
+      "output_frame": 105,
+      "source_frame": 172,
+      "best_offset": 0,
+      "rgb_mae": 2.525081
+    },
+    {
+      "output_frame": 106,
+      "source_frame": 173,
+      "best_offset": 0,
+      "rgb_mae": 2.529219
+    },
+    {
+      "output_frame": 132,
+      "source_frame": 199,
+      "best_offset": 0,
+      "rgb_mae": 2.505226
+    },
+    {
+      "output_frame": 133,
+      "source_frame": 200,
+      "best_offset": 0,
+      "rgb_mae": 2.63456
+    },
+    {
+      "output_frame": 157,
+      "source_frame": 224,
+      "best_offset": 0,
+      "rgb_mae": 2.528484
+    },
+    {
+      "output_frame": 158,
+      "source_frame": 225,
+      "best_offset": 0,
+      "rgb_mae": 2.482141
+    },
+    {
+      "output_frame": 232,
+      "source_frame": 299,
+      "best_offset": 0,
+      "rgb_mae": 2.334595
+    }
+  ],
+  "audio_anchors": [
+    {
+      "output_seconds": 0.85,
+      "source_seconds": 0.85,
+      "best_lag_samples_grid_48": 0,
+      "mse_at_zero_lag": 3.4e-08
+    },
+    {
+      "output_seconds": 1.85,
+      "source_seconds": 1.85,
+      "best_lag_samples_grid_48": 0,
+      "mse_at_zero_lag": 4.7e-08
+    },
+    {
+      "output_seconds": 2.85,
+      "source_seconds": 2.85,
+      "best_lag_samples_grid_48": 0,
+      "mse_at_zero_lag": 4e-08
+    },
+    {
+      "output_seconds": 4.25,
+      "source_seconds": 6.93,
+      "best_lag_samples_grid_48": 0,
+      "mse_at_zero_lag": 4.8e-08
+    },
+    {
+      "output_seconds": 5.15,
+      "source_seconds": 7.83,
+      "best_lag_samples_grid_48": 0,
+      "mse_at_zero_lag": 4.9e-08
+    },
+    {
+      "output_seconds": 6.15,
+      "source_seconds": 8.83,
+      "best_lag_samples_grid_48": 0,
+      "mse_at_zero_lag": 3.8e-08
+    },
+    {
+      "output_seconds": 7.15,
+      "source_seconds": 9.83,
+      "best_lag_samples_grid_48": 0,
+      "mse_at_zero_lag": 1.4e-08
+    }
+  ],
+  "overlap_amplitudes": [
+    {
+      "output_seconds": 2.2,
+      "p0_330hz": 0.24410831126740634,
+      "p1_440hz": 0.24409659284250626
+    },
+    {
+      "output_seconds": 5.52,
+      "p0_330hz": 0.24404376326956623,
+      "p1_440hz": 0.2441322162673619
+    }
+  ],
+  "embedded_997hz_attenuation_db": -227.746,
+  "scope": "Synthetic S07 actual GUI render and native saves; not private alignment, human accuracy or held-out acceptance"
+}

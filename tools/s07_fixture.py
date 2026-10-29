@@ -36,6 +36,12 @@ def generate(output, ffprobe):
         resource = props(chain).get('resource')
         if resource:
             put(chain, 'resource', 'media/' + Path(resource).name)
+            # These are newly constructed sources, not the S01 WAV bytes.
+            # Drop native cached hashes so Kdenlive computes its own metadata.
+            # Canonical source binding below still uses actual SHA256 probes.
+            for prop in list(chain.findall('property')):
+                if prop.get('name') in ('kdenlive:file_hash', 'kdenlive:file_size'):
+                    chain.remove(prop)
     before = folder / 'before.kdenlive'
     ET.indent(root, space=' ')
     before.write_text(ET.tostring(root, encoding='unicode', xml_declaration=True)+'\n', encoding='utf-8', newline='\n')

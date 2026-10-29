@@ -3,7 +3,7 @@
   "algorithm": "s06-shared-pauses-1",
   "request": {
     "schema_version": 1,
-    "analysis_sha256": "cc03212af9e19d47c0c1f6e81f9d830cc5fe572e974fda135824c616de14c2ef",
+    "analysis_sha256": "8c75f8aa8a7348322a449ec9772ba64a90705fe1b88adf65f77046b4c5907655",
     "preset": "tight",
     "approvals": [
       {
@@ -27,7 +27,7 @@
       "header": {
         "schema_version": 1,
         "run_id": "intake",
-        "project_sha256": "abc6bfa5519506c75de1be3c32d788cfd7834276c1bca2580627e0c0ef95d4b5",
+        "project_sha256": "5108e78584a47ce7e009194bdda052f33be669b70561a85877ab3b33dc7d3865",
         "tool_version": "0.4.0",
         "adapter_target": "kdenlive-26.08.2-experimental",
         "settings": [],

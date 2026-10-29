@@ -23,8 +23,6 @@
   <property name="kdenlive:control_uuid">{6f42789e-e1e0-4607-ac9d-7612393992e3}</property>
   <property name="kdenlive:id">6</property>
   <property name="kdenlive:clip_type">1</property>
-  <property name="kdenlive:file_size">1152044</property>
-  <property name="kdenlive:file_hash">969a3b0a02f6e7150a69249e4cf3c267</property>
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:record_start_frame">-1</property>
   <property name="kdenlive:kextractor">1</property>
@@ -98,8 +96,6 @@
   <property name="kdenlive:control_uuid">{945a1dfc-43d2-4f5a-8aff-91d4c7933e24}</property>
   <property name="kdenlive:id">5</property>
   <property name="kdenlive:clip_type">1</property>
-  <property name="kdenlive:file_size">1152044</property>
-  <property name="kdenlive:file_hash">2d48c549567273e56e92cea3d0ecc21b</property>
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:record_start_frame">-1</property>
   <property name="kdenlive:kextractor">1</property>
@@ -174,8 +170,6 @@
   <property name="kdenlive:control_uuid">{6127ab71-e018-402a-b2b9-ce4329ddb791}</property>
   <property name="kdenlive:id">4</property>
   <property name="kdenlive:clip_type">0</property>
-  <property name="kdenlive:file_size">395559</property>
-  <property name="kdenlive:file_hash">9878b11ef361f99dee20768f6ddec398</property>
   <property name="kdenlive:folderid">-1</property>
   <property name="meta.media.nb_streams">2</property>
   <property name="meta.media.0.stream.type">video</property>
@@ -387,8 +381,6 @@
   <property name="kdenlive:control_uuid">{6127ab71-e018-402a-b2b9-ce4329ddb791}</property>
   <property name="kdenlive:id">4</property>
   <property name="kdenlive:clip_type">0</property>
-  <property name="kdenlive:file_size">395559</property>
-  <property name="kdenlive:file_hash">9878b11ef361f99dee20768f6ddec398</property>
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:monitorPosition">0</property>
   <property name="kdenlive:kextractor">1</property>
@@ -414,8 +406,6 @@
   <property name="kdenlive:control_uuid">{945a1dfc-43d2-4f5a-8aff-91d4c7933e24}</property>
   <property name="kdenlive:id">5</property>
   <property name="kdenlive:clip_type">1</property>
-  <property name="kdenlive:file_size">1152044</property>
-  <property name="kdenlive:file_hash">2d48c549567273e56e92cea3d0ecc21b</property>
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:record_start_frame">-1</property>
   <property name="kdenlive:kextractor">1</property>
@@ -443,8 +433,6 @@
   <property name="kdenlive:control_uuid">{6f42789e-e1e0-4607-ac9d-7612393992e3}</property>
   <property name="kdenlive:id">6</property>
   <property name="kdenlive:clip_type">1</property>
-  <property name="kdenlive:file_size">1152044</property>
-  <property name="kdenlive:file_hash">969a3b0a02f6e7150a69249e4cf3c267</property>
   <property name="kdenlive:folderid">-1</property>
   <property name="kdenlive:record_start_frame">-1</property>
   <property name="kdenlive:kextractor">1</property>

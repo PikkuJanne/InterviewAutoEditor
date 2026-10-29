@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "application": "Kdenlive 26.08.2 rev. d4e87e4",
+  "mlt": "7.43.0",
+  "qt": "6.11.1",
+  "version_observed": "Actual About/Components dialogs",
+  "operator": "Codex computer-use skill, direct observed Windows GUI actions",
+  "provenance": "Generated tones/test-picture only; raw native saves captured from actual application, sanitized copies retain semantics",
+  "artifacts": [
+    {
+      "path": "native-roundtrip.kdenlive",
+      "raw_capture_sha256": "14f3fa950d2022b19d6dc48f79c11ddbc19bad1fe71ff69b946b1224335edd2b",
+      "sha256": "b9bcdb6ffbe006b9a9fe40e4647215e6ea08c99f4c61361170402304981d5397",
+      "semantics_unchanged_by_sanitization": true
+    },
+    {
+      "path": "ripple-extracted.kdenlive",
+      "raw_capture_sha256": "2efeb4aa7450be52b3b0fd5e3285c2a20cb51231e1a0a6889e12ef3c79b02f42",
+      "sha256": "113c23311c7b00b6e7c0199da30aeff89d9ae991fe6e2780bd1f18ee675bb29b",
+      "semantics_unchanged_by_sanitization": true
+    },
+    {
+      "path": "gui-render.mp4",
+      "sha256": "e41e374b33d80de055561270e288d5939fc5450eb1073e49da7bd5beabf39bc7",
+      "origin": "Kdenlive GUI full-project MP4-H264/AAC; completed in 2 seconds"
+    }
+  ],
+  "observations": [
+    "Initial automatic launches exposed no targetable window. User opened the application and explicitly reported Kdenlive started.",
+    "First generated fixture open displayed Clip Problems/Reload for two WAVs because relinked construction inherited stale S01 cached hashes. Aborted without applying repair. Fixture generator now drops cached file_hash/file_size for new construction sources; canonical measured SHA256 remains mandatory. Initial implementation commit retains failure history.",
+    "Corrected adapter output opened without repair or missing-media warning; one video, two named audio tracks, six aligned sections and guides visible.",
+    "Playback observed output 00:00:03:00/source frame 74 with active meters on both channels; playback reached output 00:00:09:07/source frame 299.",
+    "Clicking first overlap video selected three items. Native Extract Clip removed the 25-frame group and ripple-shifted all later video/audio clips together. Saved actual five-group ripple-extracted project.",
+    "Undo restored six groups. Edit Duration moved final group from 00:00:06:08 to 00:00:07:08; all three clips moved one second, source bounds unchanged. Undo restored it.",
+    "Save As native-roundtrip, open construction before project to close it, reopen saved native copy without warning; select overlap video again selected three items, guides/cuts persisted.",
+    "GUI full-project MP4-H264/AAC render showed length 00:00:09:08 and completed in 00:00:02.",
+    "About dialog showed version 26.08.2; Components showed revision d4e87e4, MLT 7.43.0, Qt using/built against 6.11.1.",
+    "Sanitized public native-roundtrip copy opened without repair/missing-media warning; six aligned groups and guides visible. Unsaved task render preferences were not written over the original raw native capture."
+  ],
+  "sanitized_native_gui_reopen": "PASS",
+  "human_listening_acceptance": "NOT_RUN; visual playback/measurement only",
+  "private_alignment_or_held_out_acceptance": "NOT_RUN"
+}

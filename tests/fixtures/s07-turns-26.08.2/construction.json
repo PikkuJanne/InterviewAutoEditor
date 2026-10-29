@@ -53,11 +53,11 @@
   "files": [
     {
       "path": "after.kdenlive",
-      "sha256": "7e4616178a7e7e0f69c25a1bb6f038fac9ba62c48e1bb4a9a608465336b87923"
+      "sha256": "8e74609303344130a6a6b7a7d843da455a313b101795199637aebf91d602d5e9"
     },
     {
       "path": "before.kdenlive",
-      "sha256": "abc6bfa5519506c75de1be3c32d788cfd7834276c1bca2580627e0c0ef95d4b5"
+      "sha256": "5108e78584a47ce7e009194bdda052f33be669b70561a85877ab3b33dc7d3865"
     },
     {
       "path": "mapping.json",
@@ -77,7 +77,7 @@
     },
     {
       "path": "planning-result.json",
-      "sha256": "0a8bdd4c1e898de10a1984c08f285cad17342b816b95f40482f51ebc4b976e4c"
+      "sha256": "fcb3e0dbb89362d2fc0a7083d0783de7ef226982af82fc53ee653eca69460920"
     }
   ]
 }
