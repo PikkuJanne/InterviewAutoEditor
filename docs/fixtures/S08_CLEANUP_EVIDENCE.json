@@ -2,7 +2,7 @@
   "schema_version": 1,
   "date": "2026-10-29",
   "step": "S08",
-  "status": "BLOCKED_only_required_human_listening_feedback",
+  "status": "COMPLETE_applicable_synthetic_and_retained_bounded_development",
   "implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
   "initial_work_commit": "61085b5ab4b0532da4033a7d842e91a2112240ae",
   "scope": "Independent generated/construction-labelled cleanup and retained bounded human development; no real-origin/tail or held-out acceptance",
@@ -87,13 +87,25 @@
       20.7
     ],
     "protected_sample_count": 187474,
-    "independent_listening": "PENDING",
+    "independent_listening": "PASS_direct_user_feedback",
     "envelope_spans": 1,
     "measured_noise_plateau_db": -36.0128099033179,
     "peak_before": 0.83282470703125,
     "peak_after": 0.83282470703125,
     "maximum_adjacent_delta_before": 0.47943115234375,
-    "maximum_adjacent_delta_after": 0.47943115234375
+    "maximum_adjacent_delta_after": 0.47943115234375,
+    "previous_independent_listening": "PENDING",
+    "human_feedback": {
+      "date": "2026-10-29",
+      "source": "Direct user reply to the S08 listening question in this chat",
+      "exact_feedback": "Pass: quieter noise, speech intact, no new clicks",
+      "result": "PASS",
+      "scope": "Existing one-file 24.5-second local synthetic System.Speech A/B; before 0-12 s, after 12.5-24.5 s; noise 6.6-8.2 versus 19.1-20.7 s",
+      "original_recordings_or_held_out_acceptance": false,
+      "new_audio_or_connection_required": false,
+      "policy_or_media_changed_after_feedback": false,
+      "supersedes": "Pending listening gate at checkpoint 86cfb215ed32333475d79c80e6916fd5e5bc1a10"
+    }
   },
   "private_preservation": {
     "check": "s08_private_preservation",
@@ -133,5 +145,46 @@
     "private_source_tokens_found": 0,
     "implementation_unchanged_since_work_commit": true,
     "command": ".venv/Scripts/python.exe -B .local/S08/validate_checkpoint.py"
+  },
+  "previous_checkpoint_status": {
+    "checkpoint": "86cfb215ed32333475d79c80e6916fd5e5bc1a10",
+    "status": "BLOCKED_only_required_human_listening_feedback",
+    "resolution": "Closed by direct user listening feedback on 2026-10-29"
+  },
+  "completion_followup": {
+    "date": "2026-10-29",
+    "type": "Documentation/evidence-only gate closure; implementation and all media unchanged",
+    "starting_checkpoint": "86cfb215ed32333475d79c80e6916fd5e5bc1a10",
+    "feedback": {
+      "date": "2026-10-29",
+      "source": "Direct user reply to the S08 listening question in this chat",
+      "exact_feedback": "Pass: quieter noise, speech intact, no new clicks",
+      "result": "PASS",
+      "scope": "Existing one-file 24.5-second local synthetic System.Speech A/B; before 0-12 s, after 12.5-24.5 s; noise 6.6-8.2 versus 19.1-20.7 s",
+      "original_recordings_or_held_out_acceptance": false,
+      "new_audio_or_connection_required": false,
+      "policy_or_media_changed_after_feedback": false,
+      "supersedes": "Pending listening gate at checkpoint 86cfb215ed32333475d79c80e6916fd5e5bc1a10"
+    },
+    "new_gui_interaction": false,
+    "new_models_or_media": false,
+    "new_full_or_held_out_acceptance": false,
+    "s09_started": false,
+    "validation": {
+      "check": "s08_completion_documentation_privacy",
+      "status": "passed",
+      "date": "2026-10-29",
+      "command": ".venv/Scripts/python.exe -B .local/S08/validate_completion.py",
+      "passed": true,
+      "changed_document_and_evidence_files": 6,
+      "valid_local_links_in_changed_files": 15,
+      "native_project_and_media_artifact_hashes_verified": 5,
+      "all_fixture_files_except_listening_provenance_unchanged": 20,
+      "implementation_and_tests_unchanged": true,
+      "s08_status": "completed",
+      "s09_status": "pending_not_started",
+      "human_listening": "PASS_bounded_synthetic_only",
+      "private_source_tokens_found": 0
+    }
   }
 }

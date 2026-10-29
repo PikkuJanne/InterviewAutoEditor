@@ -49,7 +49,24 @@
   "actual_public_native_reopen": true,
   "actual_playback": "PASS: reopened public native copy played from source frame 0, observed source frame 254 and reached full final frame 299; no warnings",
   "actual_about_dialog_this_session": "PASS: observed About Version 26.08.2 and Components revision d4e87e4, MLT 7.43.0, Qt using/built against 6.11.1",
-  "human_speech_listening": "PENDING; separate local TTS A/B, not tone GUI render",
+  "human_speech_listening": "PASS: direct user feedback for separate local 24.5-second synthetic TTS A/B; not tone GUI render or held-out acceptance",
   "held_out_or_original_alignment_acceptance": "NOT_RUN",
-  "prior_failures": "One accessibility action on a modal index was unavailable; refreshed screenshot and used observed coordinates. No production/gate waiver."
+  "prior_failures": "One accessibility action on a modal index was unavailable; refreshed screenshot and used observed coordinates. No production/gate waiver.",
+  "human_speech_listening_history": [
+    {
+      "checkpoint": "86cfb215ed32333475d79c80e6916fd5e5bc1a10",
+      "status": "PENDING; separate local TTS A/B, not tone GUI render"
+    }
+  ],
+  "human_speech_listening_feedback": {
+    "date": "2026-10-29",
+    "source": "Direct user reply to the S08 listening question in this chat",
+    "exact_feedback": "Pass: quieter noise, speech intact, no new clicks",
+    "result": "PASS",
+    "scope": "Existing one-file 24.5-second local synthetic System.Speech A/B; before 0-12 s, after 12.5-24.5 s; noise 6.6-8.2 versus 19.1-20.7 s",
+    "original_recordings_or_held_out_acceptance": false,
+    "new_audio_or_connection_required": false,
+    "policy_or_media_changed_after_feedback": false,
+    "supersedes": "Pending listening gate at checkpoint 86cfb215ed32333475d79c80e6916fd5e5bc1a10"
+  }
 }

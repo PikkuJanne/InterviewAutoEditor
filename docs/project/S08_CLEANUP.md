@@ -131,8 +131,9 @@ sample discontinuity. Tone measurements cannot certify syllable naturalness.
 The one local 24.5-second TTS A/B comparison separately preserves **187474/187474**
 samples in three constructed utterances, including quiet acknowledgements, with
 sample-evaluated policy envelopes. That speech file is not an actual GUI render,
-real interview or held-out acceptance. Its human listening status must be read
-from the current handover/evidence; measurements cannot substitute for feedback.
+real interview or held-out acceptance. On 29 October 2026 the user confirmed:
+"Pass: quieter noise, speech intact, no new clicks". This closes the bounded
+S08 listening gate; it does not extend acceptance to private or held-out media.
 
 The retained eight-second human-confirmed development overlap stays at unity
 because it has no independently approved idle labels. This independently checks

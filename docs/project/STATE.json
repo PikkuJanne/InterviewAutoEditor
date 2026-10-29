@@ -8,14 +8,12 @@
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
   "active_step": "S08",
-  "next_step": "S08",
+  "next_step": "S09",
   "latest_handover": "docs/handovers/S08.md",
   "implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
-  "technical_gate_status": "s08_measured_g04_g06_and_actual_g02_g03_g07_pass_listening_pending",
+  "technical_gate_status": "passed_applicable_s08_g02_g03_g04_g06_g07",
   "synchronization": "must_verify_live_at_each_checkpoint",
-  "blockers": [
-    "S08 required human listening comparison is pending. One 24.5-second local synthetic A/B file is prepared and presented; no pass or waiver is inferred from absent feedback. Resume S08 only."
-  ],
+  "blockers": [],
   "steps": [
     {
       "id": "S00",
@@ -78,7 +76,7 @@
       "title": "Apply reversible idle-microphone cleanup",
       "prerequisite": "S07",
       "brief": "docs/project/steps/S08.md",
-      "status": "blocked"
+      "status": "completed"
     },
     {
       "id": "S09",
@@ -155,12 +153,13 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-29",
   "prerequisites_for_next_step": [
-    "Resume S08 only. Implementation and actual Kdenlive evidence are complete; do not begin S09 until the required bounded listening comparison is reviewed and the S08 checkpoint is updated.",
-    "Read AGENTS, STATE/NEXT_STEP, S08 handover, execution/GitHub protocols and S03-S08 guides. Verify containing checkpoint, live branch SHA equality, clean upstream/worktree and exact-SHA CI before editing.",
-    "One 24.5-second local System.Speech synthetic A/B is prepared; before 0-12 s, after 12.5-24.5 s, noise at 6.6-8.2 versus 19.1-20.7 s. Three utterances/187474 samples are exact under the policy; human no-click/syllable feedback remains missing. Use this existing file; no new connection or additional audio needed.",
-    "Keep strict canonical v1 protected-source gain refusal unchanged. S08 uses separate result-bound idle approvals and validated native-frame spans. No negative model or correlation result authorizes cleanup.",
-    "Preserve protected content/overlap/shared microphones, global gap approvals, all-track Keep/audible restoration, one shared map, grouped edits, full exterior handles/bin originals and original unverified origins/unequal-tail refusals.",
-    "Actual 26.08.2 rev. d4e87e4 open/play/group movement/undo/save/close/reopen/render and native interval restoration passed. Compatibility stays EXPERIMENTAL; no held-out or full-interview acceptance, source repair, normalization/denoising, per-track removal or camera retiming."
+    "S08 is complete on applicable synthetic and retained bounded development fixtures after direct-user listening pass. S09 remains pending and must run only in a later explicitly selected thread.",
+    "Read AGENTS, STATE/NEXT_STEP, the complete S08 handover including dated completion follow-up, execution/GitHub protocols, S03-S08 contracts/guides and S09 brief. Verify containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI first.",
+    "Keep strict canonical v1 protected-source gain refusal unchanged. S08 separate result-bound idle approvals/native frame spans require independent labels, protected content/overlap vetoes, all-track Keep/audible restoration, shared-mic unity and full exterior handles.",
+    "Retain one shared map, explicit global gap approvals, grouped edits and full bin originals. Picture seams may refine only shared eligible silence; never advance video or slide audio during speech, invent footage/freeze frames or lose the 12.00 speech/12.45 picture opening.",
+    "Actual Kdenlive 26.08.2 rev. d4e87e4 passed S08 open/play/group move/undo/save/close/reopen/render and native interval restoration. Changed export needs actual application regression. Product compatibility remains EXPERIMENTAL.",
+    "User listening pass applies only to the existing 24.5-second synthetic TTS A/B. Original origins remain unverified/null, tails unequal and real planning/export refused; prior native sequence findings remain distinct. Held-out/full-interview acceptance stays separate.",
+    "Keep private media/labels/names/fingerprints local. Preserve one-audio-file maximum/no-new-connection preference. No normalization/denoising, source repair, per-track time removal or camera retiming."
   ],
   "validation_evidence": [
     {
@@ -854,6 +853,34 @@
       "private_source_tokens_found": 0,
       "implementation_unchanged_since_work_commit": true,
       "command": ".venv/Scripts/python.exe -B .local/S08/validate_checkpoint.py"
+    },
+    {
+      "check": "s08_required_bounded_synthetic_listening",
+      "status": "passed",
+      "date": "2026-10-29",
+      "source": "Direct user feedback",
+      "exact_feedback": "Pass: quieter noise, speech intact, no new clicks",
+      "seconds": 24.5,
+      "scope": "Existing one-file 24.5-second local synthetic System.Speech A/B; before 0-12 s, after 12.5-24.5 s; noise 6.6-8.2 versus 19.1-20.7 s",
+      "original_or_held_out_acceptance": false,
+      "implementation_unchanged": true,
+      "supersedes_check": "s08_synthetic_speech_comparison human_listening_pending"
+    },
+    {
+      "check": "s08_completion_documentation_privacy",
+      "status": "passed",
+      "date": "2026-10-29",
+      "command": ".venv/Scripts/python.exe -B .local/S08/validate_completion.py",
+      "passed": true,
+      "changed_document_and_evidence_files": 6,
+      "valid_local_links_in_changed_files": 15,
+      "native_project_and_media_artifact_hashes_verified": 5,
+      "all_fixture_files_except_listening_provenance_unchanged": 20,
+      "implementation_and_tests_unchanged": true,
+      "s08_status": "completed",
+      "s09_status": "pending_not_started",
+      "human_listening": "PASS_bounded_synthetic_only",
+      "private_source_tokens_found": 0
     }
   ],
   "previous_step_implementation_commit": "7cf553449a69d4e4518875f029e8933f1bee4656",
@@ -1156,7 +1183,7 @@
     "g02": "PASS_actual_synthetic",
     "g03": "PASS_measured_synthetic",
     "g04": "PASS_scoped_construction_and_retained_bounded_development",
-    "g06": "measured_noise_edges_peaks_restore_PASS_human_listening_PENDING",
+    "g06": "PASS_applicable_measured_synthetic_plus_direct_user_listening",
     "g07": "PASS_actual_synchronized_group_move_undo",
     "full_suite_tests": 159,
     "full_suite_skipped": 0,
@@ -1166,11 +1193,39 @@
     "render_peak": 0.47673100233078003,
     "native_extent_delta_frames": 0,
     "one_local_listening_file_seconds": 24.5,
-    "human_listening": "PENDING",
+    "human_listening": "PASS_direct_user_bounded_synthetic_AB",
     "real_export_created": false,
     "held_out_opened": false,
     "compatibility": "EXPERIMENTAL",
     "handover": "docs/handovers/S08.md",
-    "s09_started": false
+    "s09_started": false,
+    "human_listening_feedback": {
+      "date": "2026-10-29",
+      "source": "Direct user reply to the S08 listening question in this chat",
+      "exact_feedback": "Pass: quieter noise, speech intact, no new clicks",
+      "result": "PASS",
+      "scope": "Existing one-file 24.5-second local synthetic System.Speech A/B; before 0-12 s, after 12.5-24.5 s; noise 6.6-8.2 versus 19.1-20.7 s",
+      "original_recordings_or_held_out_acceptance": false,
+      "new_audio_or_connection_required": false,
+      "policy_or_media_changed_after_feedback": false,
+      "supersedes": "Pending listening gate at checkpoint 86cfb215ed32333475d79c80e6916fd5e5bc1a10"
+    },
+    "completion_handover": "docs/handovers/S08.md",
+    "completion_documentation_review": {
+      "check": "s08_completion_documentation_privacy",
+      "status": "passed",
+      "date": "2026-10-29",
+      "command": ".venv/Scripts/python.exe -B .local/S08/validate_completion.py",
+      "passed": true,
+      "changed_document_and_evidence_files": 6,
+      "valid_local_links_in_changed_files": 15,
+      "native_project_and_media_artifact_hashes_verified": 5,
+      "all_fixture_files_except_listening_provenance_unchanged": 20,
+      "implementation_and_tests_unchanged": true,
+      "s08_status": "completed",
+      "s09_status": "pending_not_started",
+      "human_listening": "PASS_bounded_synthetic_only",
+      "private_source_tokens_found": 0
+    }
   }
 }
