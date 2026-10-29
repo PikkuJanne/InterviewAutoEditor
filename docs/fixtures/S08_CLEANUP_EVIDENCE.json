@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "step": "S08",
+  "status": "BLOCKED_only_required_human_listening_feedback",
+  "implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
+  "initial_work_commit": "61085b5ab4b0532da4033a7d842e91a2112240ae",
+  "scope": "Independent generated/construction-labelled cleanup and retained bounded human development; no real-origin/tail or held-out acceptance",
+  "broad_suite": {
+    "check": "s08_broad_automated_suite",
+    "status": "passed",
+    "tests": 159,
+    "skipped": 0,
+    "seconds": 126.573,
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+    "scope": "Final algorithm tree and 19 S08 tests before one additional mixed-grid test and final restoration remeasurement assertion; full legacy suite included. Final focused run follows."
+  },
+  "final_focused_suite": {
+    "check": "s08_final_focused_suite",
+    "status": "passed",
+    "tests": 20,
+    "skipped": 0,
+    "seconds": 9.63,
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s08_cleanup.py -v",
+    "applies_to_commit": "d95514fb6654171efea05980828dedd6b42d998a",
+    "scope": "All final S08 tests/code/artifacts; evidence-only LF normalization after the run does not change parsed data."
+  },
+  "actual_application": {
+    "provenance": "tests/fixtures/s08-cleanup-26.08.2/PROVENANCE.json",
+    "build": "26.08.2 rev. d4e87e4",
+    "mlt": "7.43.0",
+    "qt": "6.11.1",
+    "open_play_group_move_undo_save_close_reopen_render": "PASS",
+    "sanitized_native_reopen": "PASS",
+    "gui_render_checks": {
+      "native_timing_groups_guides_and_gain_equal": true,
+      "four_noise_probes_at_least_30db_down": true,
+      "eight_protected_source_probes_within_half_db": true,
+      "five_audio_anchors_within_one_frame": true,
+      "sixteen_native_gain_edges_without_large_discontinuity": true,
+      "decoded_mix_peak_below_safety_ceiling": true,
+      "exact_233_video_frames": true,
+      "thirteen_picture_anchors_exact_source_map": true,
+      "mp4_marker_at_least_50db_down": true,
+      "encoded_padding_bounded_one_frame": true,
+      "all_three_group_members_move_25_frames_source_bounds_and_gains_unchanged": true
+    },
+    "restoration_checks": {
+      "exactly_one_native_clip_effect_bypassed": true,
+      "timing_groups_and_gain_keys_unchanged": true,
+      "restored_plateau_within_half_db_of_original": true,
+      "other_cleanup_interval_still_suppressed": true,
+      "restored_mix_peak_below_ceiling": true
+    },
+    "video_frames": 233,
+    "audio_samples": 447488,
+    "decoded_peak": 0.47673100233078003,
+    "noise_probe_db": [
+      -31.689,
+      -43.794,
+      -33.858,
+      -33.842
+    ],
+    "restored_interval_db": -0.087,
+    "native_sequence_extent_delta_frames": 0
+  },
+  "synthetic_listening": {
+    "scope": "Local System.Speech TTS development A/B, no real people or held-out input; sample-evaluated native policy, not GUI-generated speech audio",
+    "seconds": 24.5,
+    "before_seconds": [
+      0,
+      12
+    ],
+    "after_seconds": [
+      12.5,
+      24.5
+    ],
+    "labelled_utterances": 3,
+    "sample_exact_utterances_preserved": 3,
+    "quiet_acknowledgement_gain": ".03 in construction before cleanup; unchanged by policy",
+    "noise_before_seconds": [
+      6.6,
+      8.2
+    ],
+    "noise_after_seconds": [
+      19.1,
+      20.7
+    ],
+    "protected_sample_count": 187474,
+    "independent_listening": "PENDING",
+    "envelope_spans": 1,
+    "measured_noise_plateau_db": -36.0128099033179,
+    "peak_before": 0.83282470703125,
+    "peak_after": 0.83282470703125,
+    "maximum_adjacent_delta_before": 0.47943115234375,
+    "maximum_adjacent_delta_after": 0.47943115234375
+  },
+  "private_preservation": {
+    "check": "s08_private_preservation",
+    "status": "passed",
+    "assertions": 102,
+    "original_files_unchanged": 5,
+    "sample_exact_excerpts": 12,
+    "bounded_overlap_retained_frames": 200,
+    "bounded_overlap_gain_spans": 0,
+    "real_export_created": false,
+    "held_out_opened": false
+  },
+  "policy_limits": [
+    "Explicit source-bound construction/human idle approval required; no automatic idle certifier",
+    "Shared microphones and no-activity recordings stay unity; Keep/audible restore all tracks",
+    "Native gain is frame-based; at least 200 ms ramps and unity margins at every group seam",
+    "Headroom bound can refuse a safe phase-cancelling mix; no automatic master reduction/normalization",
+    "Correlation uses the first physical channel on equal-rate grids and never authorizes suppression",
+    "Sample headroom is not an intersample/codec true-peak proof",
+    "Private overlap preview has no idle label: new policy preserves unity; no per-source model completeness claim",
+    "Original real origins/tails unresolved; held-out/full-interview/wider GUI matrix remain separate"
+  ],
+  "failures_and_corrections": [
+    "Local sanitizer refused relative native resources and native render path; helper corrected, all public metadata sanitized and semantics checked",
+    "One modal accessibility index unavailable; refreshed and used observed screenshot coordinates",
+    "Initial work commit captured CRLF in three evidence reports despite staged whitespace warnings; follow-up commit normalized LF and final whitespace check passes"
+  ],
+  "s09_started": false,
+  "synchronization": "verify_live_at_checkpoint",
+  "ci": "check_exact_checkpoint_SHA; initial workflows/runs/checks/statuses absent, CI not configured",
+  "checkpoint_documentation_privacy": {
+    "check": "s08_checkpoint_documentation_privacy",
+    "status": "passed",
+    "reviewed_text_files": 32,
+    "generated_media_files": 5,
+    "valid_local_links": 54,
+    "private_source_tokens_found": 0,
+    "implementation_unchanged_since_work_commit": true,
+    "command": ".venv/Scripts/python.exe -B .local/S08/validate_checkpoint.py"
+  }
+}

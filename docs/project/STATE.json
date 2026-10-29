@@ -7,13 +7,15 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S07",
+  "active_step": "S08",
   "next_step": "S08",
-  "latest_handover": "docs/handovers/S07.md",
-  "implementation_commit": "ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912",
-  "technical_gate_status": "passed_applicable_s07_g02_g03_g07",
+  "latest_handover": "docs/handovers/S08.md",
+  "implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
+  "technical_gate_status": "s08_measured_g04_g06_and_actual_g02_g03_g07_pass_listening_pending",
   "synchronization": "must_verify_live_at_each_checkpoint",
-  "blockers": [],
+  "blockers": [
+    "S08 required human listening comparison is pending. One 24.5-second local synthetic A/B file is prepared and presented; no pass or waiver is inferred from absent feedback. Resume S08 only."
+  ],
   "steps": [
     {
       "id": "S00",
@@ -76,7 +78,7 @@
       "title": "Apply reversible idle-microphone cleanup",
       "prerequisite": "S07",
       "brief": "docs/project/steps/S08.md",
-      "status": "pending"
+      "status": "blocked"
     },
     {
       "id": "S09",
@@ -153,13 +155,12 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-29",
   "prerequisites_for_next_step": [
-    "S07 is complete on applicable synthetic and retained bounded development fixtures; S08 remains pending and must run only in a later explicitly selected thread.",
-    "Read S07 handover, STATE/NEXT_STEP, execution/GitHub protocols, S03-S07 contracts/guides and S08 brief. Verify containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI before editing.",
-    "S07 derives source-group turns/cues separately from S06 pause approval. Keep strict v1 contracts, exact reproducibility, one shared map, explicit global gap approvals, all protected content and source-time Keep/audible overrides.",
-    "S08 attenuation must independently preserve speech/reactions/uncertainty/overlap, shared microphones and user audible overrides. Current protected-source attenuation refusal cannot be silently weakened. No per-track time removal, normalization/denoising, camera retiming or source repair.",
-    "Actual 26.08.2 rev. d4e87e4 passed S07 open/play/group ripple extraction/movement/undo/save/close/reopen/render. Any changed export still needs actual application regression. Product compatibility stays EXPERIMENTAL.",
-    "Original real origins remain unverified/null, exact tails unequal and native sequence findings distinct. Existing real planning/export refusal remains. S07 synthetic native extent delta is zero, not a replacement for earlier one-frame findings.",
-    "Private media/labels/names/fingerprints stay local; held-out/full-interview acceptance remains separate. Preserve one-audio-file maximum and no-new-connection preference for later explicitly requested listening."
+    "Resume S08 only. Implementation and actual Kdenlive evidence are complete; do not begin S09 until the required bounded listening comparison is reviewed and the S08 checkpoint is updated.",
+    "Read AGENTS, STATE/NEXT_STEP, S08 handover, execution/GitHub protocols and S03-S08 guides. Verify containing checkpoint, live branch SHA equality, clean upstream/worktree and exact-SHA CI before editing.",
+    "One 24.5-second local System.Speech synthetic A/B is prepared; before 0-12 s, after 12.5-24.5 s, noise at 6.6-8.2 versus 19.1-20.7 s. Three utterances/187474 samples are exact under the policy; human no-click/syllable feedback remains missing. Use this existing file; no new connection or additional audio needed.",
+    "Keep strict canonical v1 protected-source gain refusal unchanged. S08 uses separate result-bound idle approvals and validated native-frame spans. No negative model or correlation result authorizes cleanup.",
+    "Preserve protected content/overlap/shared microphones, global gap approvals, all-track Keep/audible restoration, one shared map, grouped edits, full exterior handles/bin originals and original unverified origins/unequal-tail refusals.",
+    "Actual 26.08.2 rev. d4e87e4 open/play/group movement/undo/save/close/reopen/render and native interval restoration passed. Compatibility stays EXPERIMENTAL; no held-out or full-interview acceptance, source repair, normalization/denoising, per-track removal or camera retiming."
   ],
   "validation_evidence": [
     {
@@ -795,6 +796,64 @@
       "valid_local_links": 52,
       "private_tokens_found": 0,
       "scope": "Final documentation checkpoint; implementation tree unchanged since the 140-test run"
+    },
+    {
+      "check": "s08_broad_automated_suite",
+      "status": "passed",
+      "tests": 159,
+      "skipped": 0,
+      "seconds": 126.573,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "scope": "Final algorithm tree and 19 S08 tests before one additional mixed-grid test and final restoration remeasurement assertion; full legacy suite included. Final focused run follows."
+    },
+    {
+      "check": "s08_final_focused_suite",
+      "status": "passed",
+      "tests": 20,
+      "skipped": 0,
+      "seconds": 9.63,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s08_cleanup.py -v",
+      "applies_to_commit": "d95514fb6654171efea05980828dedd6b42d998a",
+      "scope": "All final S08 tests/code/artifacts; evidence-only LF normalization after the run does not change parsed data."
+    },
+    {
+      "check": "s08_actual_application",
+      "status": "passed",
+      "build": "26.08.2 rev. d4e87e4",
+      "evidence": "tests/fixtures/s08-cleanup-26.08.2/PROVENANCE.json",
+      "render_checks": 11,
+      "native_restoration_checks": 5
+    },
+    {
+      "check": "s08_private_preservation",
+      "status": "passed",
+      "assertions": 102,
+      "original_files_unchanged": 5,
+      "sample_exact_excerpts": 12,
+      "bounded_overlap_retained_frames": 200,
+      "bounded_overlap_gain_spans": 0,
+      "real_export_created": false,
+      "held_out_opened": false
+    },
+    {
+      "check": "s08_synthetic_speech_comparison",
+      "status": "human_listening_pending",
+      "seconds": 24.5,
+      "utterances": 3,
+      "protected_samples": 187474,
+      "exact_preserved_samples": 187474,
+      "noise_plateau_db": -36.0128099033179,
+      "human_pass_inferred": false
+    },
+    {
+      "check": "s08_checkpoint_documentation_privacy",
+      "status": "passed",
+      "reviewed_text_files": 32,
+      "generated_media_files": 5,
+      "valid_local_links": 54,
+      "private_source_tokens_found": 0,
+      "implementation_unchanged_since_work_commit": true,
+      "command": ".venv/Scripts/python.exe -B .local/S08/validate_checkpoint.py"
     }
   ],
   "previous_step_implementation_commit": "7cf553449a69d4e4518875f029e8933f1bee4656",
@@ -1070,11 +1129,48 @@
     "held_out_opened": false,
     "compatibility": "EXPERIMENTAL",
     "completion_handover": "docs/handovers/S07.md",
-    "s08_started": false,
+    "s08_started": true,
     "focused_tests": 16,
     "actual_provenance": "tests/fixtures/s07-turns-26.08.2/PROVENANCE.json",
     "render_measurements": "tests/fixtures/s07-turns-26.08.2/render-validation.json",
     "render_video_frames": 233,
     "native_sequence_extent_delta_frames": 0
+  },
+  "s08_evidence": {
+    "guide": "docs/project/S08_CLEANUP.md",
+    "measurements": "docs/fixtures/S08_CLEANUP_EVIDENCE.json",
+    "fixtures": "tests/fixtures/s08-cleanup-26.08.2",
+    "implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
+    "algorithm": "s08-approved-idle-1",
+    "canonical_v1_gain_refusal_unchanged": true,
+    "explicit_idle_approval_required": true,
+    "global_map_unchanged": true,
+    "shared_microphones_unity": true,
+    "all_track_keep_audible_restore": true,
+    "full_exterior_handles_unity": true,
+    "fixed_native_plateau_db": -36,
+    "minimum_ramp_seconds": "1/5",
+    "peak_method": "conservative retained-frame sum of original physical-channel maxima; no cancellation credit",
+    "peak_ceiling": 0.95,
+    "automatic_normalization": false,
+    "g02": "PASS_actual_synthetic",
+    "g03": "PASS_measured_synthetic",
+    "g04": "PASS_scoped_construction_and_retained_bounded_development",
+    "g06": "measured_noise_edges_peaks_restore_PASS_human_listening_PENDING",
+    "g07": "PASS_actual_synchronized_group_move_undo",
+    "full_suite_tests": 159,
+    "full_suite_skipped": 0,
+    "final_focused_tests": 20,
+    "actual_gui_render_checks": 11,
+    "native_restoration_checks": 5,
+    "render_peak": 0.47673100233078003,
+    "native_extent_delta_frames": 0,
+    "one_local_listening_file_seconds": 24.5,
+    "human_listening": "PENDING",
+    "real_export_created": false,
+    "held_out_opened": false,
+    "compatibility": "EXPERIMENTAL",
+    "handover": "docs/handovers/S08.md",
+    "s09_started": false
   }
 }
