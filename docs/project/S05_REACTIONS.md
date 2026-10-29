@@ -151,36 +151,62 @@ corrected provisional sound descriptions; approximate review windows and the
 uncertain vocal origin remain explicit in local records. Those windows are fully
 protected, but required positive speech/reaction/overlap categories are incomplete.
 Candidate selection is explicitly model-assisted, **not ground truth**. A second
-21-second private review pack provides an interview speech candidate, a two-source
+21-second development review pack provided an interview speech candidate, a two-source
 microphone preview and an explicitly external development laughter example. Each
 source channel in the microphone preview remains sample-exact; its declared
 common origin remains uncertified. No gain or source-media change is applied.
 The end excerpt is reserved from label-based tuning; full-source engineering
 inference does not make it an independent interview or constitute acceptance.
-Human-confirmed conservative bounds for words, laughter/chuckles, acknowledgements,
-uncertain vocal sounds and simultaneous talk are still required on agreed
-development examples. Human timing precision must be recorded honestly; converting
+Human timing precision must be recorded honestly; converting
 seconds outward onto exact source samples does not make the original annotation
 sample-precise. Held-out listening/acceptance must stay separate, with a
-distinct interview preferred. Until those labels exist and zero loss is measured,
-**G04 and S05 completion remain blocked**. Resume S05; do not start S06.
+distinct interview preferred. The new observations below improve the evidence,
+but **G04 and S05 completion remain blocked**. Resume S05; do not start S06.
 
-## Listening review paused by the user
+## Phone delivery history and resumed development review
 
 The user reported that inline audio, local references and the private Page file
 links were unusable on their phone. Successful upload receipts and Page read-back
 did not establish phone accessibility. Do not repeat those delivery claims.
 
-The user now permits **one audio file maximum** for any future listening check
-and explicitly selected **no new connection and pause listening**. Do not send
-additional audio, request another review, seek an account connection, or resume
-listening without a new explicit user request. No file-service connection was
-confirmed. Keep the existing private assets and observations for recovery.
+The user limited future listening checks to **one audio file maximum**, selected
+**no new connection and pause listening**, and later resumed by returning to
+the computer and supplying feedback on the existing clips on 29 October 2026.
+That feedback supersedes the listening pause for this review. The one-file and
+no-new-connection preferences remain. No new audio is requested or delivered;
+keep the existing private assets and observations for recovery.
 
 A single 23-second private audition composite was prepared locally, with the
 three development sections separated by one-second silence. Its source cues
 remain unchanged; it is a review aid, not an edited interview or timing repair.
 A direct public development sample URL was also checked at the HTTP level, but
-neither route was verified on the user's phone and no new listening result
-followed. Existing G04 category coverage remains incomplete. The user's review
-limit and pause do not waive the content-preservation gate or authorize S06.
+neither route was verified on the user's phone. Later computer feedback does
+not retroactively establish successful phone delivery.
+
+The new direct-user observations confirm private speech, two distinct voices
+with laughter, and external development laughter plus an end vocal event. Raw
+comments and source-bound mappings remain ignored/local. Exact word,
+laughter-onset, gasp-onset and overlap boundaries were not supplied; no transcript
+or individual speaker identity is inferred.
+
+Five of six conservative observation/channel envelopes are fully inside current
+protection. The speech envelope covers the entire preview on both channels.
+Both external vocal envelopes are fully protected without a positive speech-VAD
+hit. The conservative suffix containing the end vocal event has S04 protection
+`59/75` and fused protection `1`. Its unspecified onset means this is an envelope
+coverage measurement, not a precise gasp-duration or classification score.
+
+The two-source preview's combined timeline envelope is fully protected. One
+source's broad observation envelope includes an uncovered opening; no vocal
+content was labelled there, so no lost speech is established. The private
+laughter's exact onset/source and genuine simultaneous talk remain unconfirmed.
+Two distinct voices may take turns. A text clarification of the existing overlap
+observation is pending; no additional clip is needed or asked for. Do not fit
+labels to detector boundaries or certify original alignment.
+
+Four private preview-channel mappings were rechecked sample-exact, the external
+file matches its pinned development source, and all 102 original corpus
+assertions pass again. Production code, settings, event protection and media
+remain unchanged. Generated acknowledgements, external model hits and aggregate
+coverage do not fill the missing private source-bound/overlap evidence. Keep
+held-out acceptance unopened and separate; do not begin S06.
