@@ -14,10 +14,12 @@ Compatibility remains EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4.
 - Actual matrix/results: [S12_ACCEPTANCE.md](fixtures/S12_ACCEPTANCE.md).
 - Aggregate evidence: [S12_ACCEPTANCE.json](fixtures/S12_ACCEPTANCE.json).
 
-The owner confirms no complete two-person interview is available at present and
-describes supplied files as raw Zoom files. Obtain missing material when it
-exists; no repeat question, new connection or broad listening request is needed.
-That provenance statement does not certify alignment, cleaning history or tails.
+The owner can provide the complete two-person interview next time on this machine;
+it is unavailable now. No immediate repeat question, new connection or broad
+listening request is needed. The owner corrected the raw-file description:
+supplied audio has the same volume leveling treatment intended for actual
+projects. Preserve that treatment; do not level, normalize or denoise it again.
+This processing provenance does not certify waveform alignment or exact tails.
 There is one registered complete band recording. Fresh intake retains four
 unverified origins/null offsets, with three exact tails -4/375 second and one
 +4/375 second relative to the video. Both direct planning and a fresh Application
@@ -72,6 +74,6 @@ failing CI must be resolved in S12.
 
 Ready-to-paste continuation prompt:
 
-> Resume S12 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, docs/project/STATE.json, docs/NEXT_STEP.md, docs/handovers/S12.md, execution/GitHub protocols, S03-S12 guides and the S12 brief. S12 implementation is f73cd9247abd2c1b71ab9d1bc80398b7afd729c3; resolve its containing blocked checkpoint from Git history and verify live/local/upstream equality, clean worktree and exact-SHA CI first. Review docs/fixtures/S12_ACCEPTANCE.md and JSON. The owner says a complete two-person interview is unavailable and the supplied files are raw Zoom files; this does not certify cleaning/alignment/tails. Preserve pending private origin/tail review and failed Application staging. Obtain missing material/evidence when available, keep genuine held-out acceptance separate from development and resolve origins/unequal exact tails only through explicit reviewed supported contracts, preserving v1 refusals and every original sample. Complete the real two-person/band/held-out and full two-hour processing matrix, actual retention/approval/noise/sync/editability/performance/correction-effort metrics and focused owner acceptance, at most one audio file and no new connection. Preserve independent approvals, protected content, original picture timing, shared maps, refined cleanup bindings and immutable recoverable jobs. Do not relabel synthetic metadata checks or historical GUI artifacts as full/held-out/utility acceptance. Run applicable gates, update state/NEXT_STEP/S12 handover, commit/push/verify, provide a verbose handover and STOP. No S13.
+> Resume S12 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, docs/project/STATE.json, docs/NEXT_STEP.md, docs/handovers/S12.md, execution/GitHub protocols, S03-S12 guides and the S12 brief. S12 implementation is f73cd9247abd2c1b71ab9d1bc80398b7afd729c3; resolve its containing blocked checkpoint from Git history and verify live/local/upstream equality, clean worktree and exact-SHA CI first. Review docs/fixtures/S12_ACCEPTANCE.md and JSON. The owner can provide the two-person interview next time on this machine and confirms supplied audio already has the production volume leveling treatment. Do not level, normalize or denoise it again; waveform alignment and exact tails remain unverified. Preserve pending private origin/tail review and failed Application staging. Obtain missing material/evidence when available, keep genuine held-out acceptance separate from development and resolve origins/unequal exact tails only through explicit reviewed supported contracts, preserving v1 refusals and every original sample. Complete the real two-person/band/held-out and full two-hour processing matrix, actual retention/approval/noise/sync/editability/performance/correction-effort metrics and focused owner acceptance, at most one audio file and no new connection. Preserve independent approvals, protected content, original picture timing, shared maps, refined cleanup bindings and immutable recoverable jobs. Do not relabel synthetic metadata checks or historical GUI artifacts as full/held-out/utility acceptance. Run applicable gates, update state/NEXT_STEP/S12 handover, commit/push/verify, provide a verbose handover and STOP. No S13.
 
 Paused with S12 blocked. The next thread must resume S12.

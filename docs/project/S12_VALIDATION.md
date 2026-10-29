@@ -9,12 +9,14 @@ the [handover](../handovers/S12.md) for the checkpoint and continuation.
 ## Corpus and review requirements
 
 The recorded local corpus contains one complete interview with four participant
-audio files. The owner confirmed that a complete two-person interview is
-unavailable at present and described the supplied files as raw files from Zoom.
-Record that provenance statement separately from earlier cleaned-input
-assumptions. It does not establish a cleaning history, zero waveform offset,
-equal tails, annotation accuracy or owner acceptance of edited output. Do not
-apply denoising or normalization to resolve the ambiguity.
+audio files. The owner corrected the earlier raw-file description: these audio
+files have received the same volume leveling treatment intended for actual
+projects. Treat them as already leveled inputs; do not level, normalize or
+denoise them again. This confirms the intended processing provenance, while
+waveform alignment, equal tails, annotation accuracy and edited-output acceptance
+still need their own evidence. A complete two-person interview is unavailable
+now; the owner can provide it next time on this machine. No immediate repeat
+request or scheduled follow-up is needed.
 
 Required before acceptance:
 
@@ -45,7 +47,7 @@ review and approval-entry time; never substitute generated-tone processing time.
 An ignored S12 draft review record retains the original fingerprints, measured
 sample counts, exact ends, unverified statuses and null offsets. It is a pending
 evidence checklist, **not** an Analysis record, accepted contract or certificate.
-Neither this record nor the owner's Zoom provenance statement is loaded into
+Neither this record nor the owner's volume leveling provenance statement is loaded into
 Application as approval.
 
 For each audio file, obtain evidence tied to the actual source bytes: export

@@ -14,8 +14,8 @@
   "technical_gate_status": "blocked_s12_full_interview_heldout_origin_tail_owner_acceptance_engineering_checks_passed",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [
-    "A complete two-person interview is unavailable at present, explicitly confirmed by the owner.",
-    "Existing four-audio-file band input retains four unverified/null origins and unequal exact tails. Owner Zoom provenance does not certify alignment or coverage. Genuine reviewed origins and a supported explicit tail contract are missing.",
+    "A complete two-person interview is unavailable now; the owner can provide it next time on this machine.",
+    "Existing four-audio-file band input retains four unverified/null origins and unequal exact tails. Owner confirms production volume leveling was applied; this does not certify waveform alignment or coverage. Genuine reviewed origins and a supported explicit tail contract remain missing.",
     "No distinct independently labelled held-out acceptance corpus is registered. Existing reserved development end excerpts are not an independent unseen interview.",
     "Actual complete-interview/held-out exports, full two-hour media processing, retention/approval/noise/rendered-sync/editability/performance/correction-effort metrics and focused owner utility acceptance are NOT RUN."
   ],
@@ -160,7 +160,7 @@
   "prerequisites_for_next_step": [
     "Resume S12 only. Full-interview/held-out/utility acceptance remains blocked; S13-S15 stay pending.",
     "Read AGENTS, STATE/NEXT_STEP, complete S12 handover, execution/GitHub protocols, S03-S12 guides and S12 brief. Resolve containing checkpoint; verify live/local/upstream equality, clean worktree and exact-SHA CI first.",
-    "Owner confirms complete two-person material is unavailable and supplied files are raw Zoom files. Do not equate provenance with cleaning, alignment, exact-tail reconciliation or edited-output acceptance.",
+    "Owner corrects initial raw-file description: supplied audio has already received the same volume leveling treatment intended for actual projects. Do not level, normalize or denoise again. Two-person material can be supplied next time on this machine; no repeat question is needed now. Waveform alignment, exact-tail reconciliation and edited-output acceptance remain unverified.",
     "Obtain missing complete two-person material and a distinct independently labelled held-out corpus when available. Keep reserved development excerpts and historical exposure separate; freeze development calibration before acceptance.",
     "Resolve genuine source-bound origin/tail evidence explicitly. Current originals retain unverified/null origins and -4/375 or +4/375 second exact-tail differences; v1 identity planning/export still refuse. Pending private review draft is not a certificate or loadable Analysis.",
     "No source repair, padding, trimming, shifting, speed changes, normalization, denoising, camera advance, invented footage or implicit certification. Supporting unequal ends needs an explicitly reviewed/versioned/tested preserving policy, not edited duration fields.",
@@ -1175,6 +1175,22 @@
       "production_core_adapter_desktop_policies_licences_fixtures_unchanged": true,
       "implementation_unchanged_since": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
       "new_media_or_gui_operations_in_documentation_review": false
+    },
+    {
+      "check": "s12_owner_provenance_correction",
+      "status": "recorded",
+      "date": "2026-10-29",
+      "starting_checkpoint": "3624bb3de6e0bcc67fd85341dd2811b2412c8b09",
+      "owner_statement": "Audio files have been modified with the volume leveling treatment that files in actual projects will also have. Two-person interview can be provided next time on this machine.",
+      "supersedes_initial_raw_audio_description": true,
+      "processing_provenance": "owner_confirmed_production_volume_leveling_already_applied",
+      "additional_leveling_normalization_denoising_authorized": false,
+      "alignment_or_tail_acceptance_granted": false,
+      "two_person_material_available_now": false,
+      "two_person_material_expected": "owner_next_visit_on_this_machine",
+      "media_code_approvals_origins_tails_calibration_changed": false,
+      "new_media_tests_or_gui_operations": false,
+      "scope": "documentation_correction_only_S12_remains_blocked"
     }
   ],
   "previous_step_implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
@@ -1676,7 +1692,7 @@
     "real_export_created": false,
     "new_verified_real_origins": 0,
     "tail_policy_extended": false,
-    "owner_input_provenance": "raw files from Zoom; alignment/cleaning/tail evidence unverified",
+    "owner_input_provenance": "Owner confirms supplied Zoom audio has the same volume leveling treatment intended for actual projects; no further leveling, normalization or denoising. Alignment and exact tails remain unverified.",
     "complete_two_person_available": false,
     "distinct_held_out_registered": false,
     "held_out_opened": false,
@@ -1698,6 +1714,21 @@
       "production_core_adapter_desktop_policies_licences_fixtures_unchanged": true,
       "implementation_unchanged_since": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
       "new_media_or_gui_operations_in_documentation_review": false
+    },
+    "two_person_material_expected": "owner_next_visit_on_this_machine",
+    "owner_provenance_correction": {
+      "date": "2026-10-29",
+      "starting_checkpoint": "3624bb3de6e0bcc67fd85341dd2811b2412c8b09",
+      "owner_statement": "Audio files have been modified with the volume leveling treatment that files in actual projects will also have. Two-person interview can be provided next time on this machine.",
+      "supersedes_initial_raw_audio_description": true,
+      "processing_provenance": "owner_confirmed_production_volume_leveling_already_applied",
+      "additional_leveling_normalization_denoising_authorized": false,
+      "alignment_or_tail_acceptance_granted": false,
+      "two_person_material_available_now": false,
+      "two_person_material_expected": "owner_next_visit_on_this_machine",
+      "media_code_approvals_origins_tails_calibration_changed": false,
+      "new_media_tests_or_gui_operations": false,
+      "scope": "documentation_correction_only_S12_remains_blocked"
     }
   }
 }

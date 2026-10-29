@@ -16,17 +16,20 @@ in ignored storage.
 
 | Corpus role | Available evidence | Acceptance status |
 |---|---|---|
-| Complete two-person interview | Owner says unavailable at present | NOT RUN |
+| Complete two-person interview | Unavailable now; owner can provide it next time on this machine | NOT RUN |
 | Complete band interview | One registered 34-minute recording, one video/four audio files; fresh read-only intake and saved-analysis planning refusal | BLOCKED: four unverified origins and unequal exact tails |
 | Development content | Existing construction labels and bounded owner-reviewed overlap/TTS examples | Retained bounded evidence; no whole-interview claim |
 | Independent held-out excerpts | No distinct registered/independently labelled acceptance corpus supplied | NOT RUN; no held-out audio opened or tuned |
 | Long timing fixture | Eight generated source contracts, five sample rates, 599 cuts at each of two FPS | PASS for metadata/timing only |
 | Full two-hour processing fixture | No two-hour source media decode/inference/picture/export/native run | NOT RUN |
 
-The owner now describes supplied files as raw files from Zoom. This records
-provenance, not a verified cleaning history or alignment/tail certificate. Earlier
-cleaned-input assumptions remain historical. No denoising, normalization,
-trimming, resampling of original media or status upgrade was performed.
+The owner corrected the earlier raw-file description: supplied audio has received
+the same volume leveling treatment intended for actual projects. This confirms
+the intended processing provenance; do not level, normalize or denoise these
+files again. Alignment and exact-tail evidence remain separate and unresolved.
+The initial raw-file statement remains historical, superseded evidence. No media
+processing, trimming, resampling or origin/status upgrade accompanied this
+documentation correction.
 
 ## Actual denominators and limits
 
