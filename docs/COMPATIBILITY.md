@@ -96,3 +96,14 @@ compatibility claim. Layout confidence remains heuristic; unknown/gallery/pinned
 camera-off handover seams restore time. Real origin/tail refusals and
 EXPERIMENTAL status remain. See [S09 rules](project/S09_PICTURE.md) and
 [actual provenance](../tests/fixtures/s09-picture-26.08.2/PROVENANCE.json).
+
+S10 connects the same exporter through a recoverable application service. Its
+integrated output is byte-identical to direct S09 export at matching resource
+depth. A new actual **26.08.2 rev. d4e87e4 / MLT 7.43.0 / Qt 6.11.1**
+open/play/group move/undo/save/reopen/render regression and sanitized native open
+pass. All twelve render measurements pass with 267 mapped pictures and no
+measured anchor lag. See [S10 usage](project/S10_CLI.md) and
+[new provenance](../tests/fixtures/s10-cli-26.08.2/PROVENANCE.json).
+The structural compatibility-probe command does not verify an installed binary
+or certify future versions. Compatibility remains EXPERIMENTAL; wider build,
+track/FPS, full-interview and held-out acceptance claims are unchanged.

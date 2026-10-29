@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "checks": {
+    "native_profile_timing_routing_groups_guides_gain_equal": true,
+    "undo_restores_native_semantics": true,
+    "group_move_all_tracks_25_frames_source_and_gain_unchanged": true,
+    "exact_267_video_frames": true,
+    "every_rendered_picture_matches_shared_source_frame": true,
+    "one_existing_switch_at_output105_no_short_accidental_flash": true,
+    "eight_protected_source_probes_within_half_db": true,
+    "four_audio_onset_anchors_within_one_frame": true,
+    "four_s08_noise_probes_more_than_30db_down": true,
+    "mix_peak_below_safety_ceiling": true,
+    "mp4_marker_at_least_50db_down": true,
+    "encoded_padding_at_most_one_frame": true
+  },
+  "scope": "Actual GUI synthetic tone/noise/luma output; no real/held-out or subjective word acceptance",
+  "video_frames": 267,
+  "picture_frames_measured": 267,
+  "maximum_picture_rgb_mae": 0.0,
+  "observed_output_switch_frames": [
+    105
+  ],
+  "protected_probes": [
+    {
+      "source": 0,
+      "source_seconds": 1.9,
+      "output_seconds": 1.9,
+      "relative_db": 0.028
+    },
+    {
+      "source": 0,
+      "source_seconds": 2.3,
+      "output_seconds": 2.3,
+      "relative_db": 0.089
+    },
+    {
+      "source": 0,
+      "source_seconds": 7.9,
+      "output_seconds": 6.58,
+      "relative_db": 0.028
+    },
+    {
+      "source": 0,
+      "source_seconds": 8.3,
+      "output_seconds": 6.98,
+      "relative_db": 0.091
+    },
+    {
+      "source": 1,
+      "source_seconds": 2.3,
+      "output_seconds": 2.3,
+      "relative_db": 0.088
+    },
+    {
+      "source": 1,
+      "source_seconds": 3.5,
+      "output_seconds": 3.5,
+      "relative_db": -0.002
+    },
+    {
+      "source": 1,
+      "source_seconds": 8.3,
+      "output_seconds": 6.98,
+      "relative_db": 0.086
+    },
+    {
+      "source": 1,
+      "source_seconds": 9.5,
+      "output_seconds": 8.18,
+      "relative_db": -0.003
+    }
+  ],
+  "audio_anchors": [
+    {
+      "source_seconds": 1.99,
+      "output_seconds": 1.99,
+      "best_lag_samples_grid48": 0,
+      "mse_at_zero": 5.213550306920153e-08
+    },
+    {
+      "source_seconds": 2.99,
+      "output_seconds": 2.99,
+      "best_lag_samples_grid48": 0,
+      "mse_at_zero": 4.413021959015777e-08
+    },
+    {
+      "source_seconds": 7.99,
+      "output_seconds": 6.67,
+      "best_lag_samples_grid48": 0,
+      "mse_at_zero": 4.9639774217144685e-08
+    },
+    {
+      "source_seconds": 8.99,
+      "output_seconds": 7.67,
+      "best_lag_samples_grid48": 0,
+      "mse_at_zero": 3.5835505777872524e-08
+    }
+  ],
+  "noise_relative_db": [
+    -31.689,
+    -43.766,
+    -33.858,
+    -33.836
+  ],
+  "decoded_audio_samples_48000hz": 513024,
+  "decoded_peak": 0.47673100233078003,
+  "embedded_marker_db": -227.711,
+  "native_sequence_extent_delta_frames": 0,
+  "files": [
+    {
+      "path": "picture-cleaned.kdenlive",
+      "sha256": "3f08a1175030aae767aa76c1493bbd84182a59ae55f9353c940ed561cc244153"
+    },
+    {
+      "path": "native-roundtrip.kdenlive",
+      "sha256": "f6b9ba7b859214fec4711c64e65b50249772ec380279f12dce8a17317da257c4"
+    },
+    {
+      "path": "group-moved.kdenlive",
+      "sha256": "e67b6e463560911d1af7a1649a3490ed4be9c5e26fc44d3691d6488d01a1fa0a"
+    },
+    {
+      "path": "native-undone.kdenlive",
+      "sha256": "f6b9ba7b859214fec4711c64e65b50249772ec380279f12dce8a17317da257c4"
+    },
+    {
+      "path": "gui-render.mp4",
+      "sha256": "0605ca23eb8e9357e98b22dcab1ff2773f46d17a8bfb97eedb88807b2bdda591"
+    }
+  ]
+}

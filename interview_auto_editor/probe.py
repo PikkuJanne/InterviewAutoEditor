@@ -13,12 +13,14 @@ import time
 import wave
 
 from .adapters.kdenlive import IntakeError
+from .cancellation import checkpoint
 
 
 def fingerprint(path):
     digest = hashlib.sha256()
     with Path(path).open('rb') as source:
         for block in iter(lambda: source.read(1024 * 1024), b''):
+            checkpoint()
             digest.update(block)
     return digest.hexdigest()
 
@@ -32,6 +34,7 @@ def run_bounded(args, timeout=120, limit=64 * 1024 * 1024):
             try:
                 deadline = time.monotonic() + timeout
                 while process.poll() is None:
+                    checkpoint()
                     if time.monotonic() > deadline or os.fstat(out.fileno()).st_size > limit or os.fstat(err.fileno()).st_size > limit:
                         raise IntakeError('PROBE_TIME_OR_OUTPUT_LIMIT')
                     time.sleep(0.02)

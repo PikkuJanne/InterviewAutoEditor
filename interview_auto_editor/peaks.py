@@ -7,6 +7,7 @@ import wave
 from .cleanup import db_at, validate_cleanup
 from .probe import fingerprint, probe_wav
 from .timing import ceil
+from .cancellation import checkpoint
 
 
 def pcm_values(raw, width):
@@ -42,6 +43,7 @@ def measure_peaks(result, cleanup, bindings):
             rows.append((s, p, stack.enter_context(wave.open(str(bindings[s.source_id]), 'rb'))))
         for retained in plan.time_map.retained:
             for f in range(retained.start, retained.end):
+                checkpoint()
                 bounds, signals = [], []
                 for s, p, wav in rows:
                     lo, hi = ceil(F(f, 1)/plan.time_map.fps*p.sample_rate), ceil(F(f+1, 1)/plan.time_map.fps*p.sample_rate)

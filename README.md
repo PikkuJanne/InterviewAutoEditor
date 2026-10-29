@@ -1,18 +1,21 @@
 # InterviewAutoEditor
 
 InterviewAutoEditor is a planned local Windows tool for turning a Zoom interview
-starter project into a new, editable Kdenlive project. **There is no automatic
-interview editor yet.** S02 adds an experimental minimal adapter that exports one
-manually specified shared interior cut, with named participant tracks, groups,
-a guide and MP4 audio disabled. Its editable output passed actual GUI checks.
+starter project into a new, editable Kdenlive project. **S10 provides a recoverable
+experimental CLI** for inspection, local CPU evidence, approved shared pause
+plans, reversible cleanup and recorded-picture review. Run folders contain an
+editable project, exact plans, private manifests and review reports. See the
+[S10 quick start and recovery guide](docs/project/S10_CLI.md). Unverified real
+origins and unequal exact tails still refuse planning/export.
 
 The installed primary target is independently verified as **Kdenlive 26.08.2,
 revision d4e87e4**. Its two-participant synthetic reference passed actual GUI
 open/play/group-edit/undo/save/reopen/render checks. Product compatibility remains
 experimental: the exporter is a bounded synthetic proof. S01 is complete: the
 owner's example media is privately indexed, and a genuine four-participant starter was saved,
-played and reopened in Kdenlive. Initial intake exposed timing differences that
-still require S03 validation. See [the compatibility record](docs/COMPATIBILITY.md),
+played and reopened in Kdenlive. Read-only validation retains unverified origins
+and exact tail differences, so those real inputs still refuse export. See
+[the compatibility record](docs/COMPATIBILITY.md),
 [capture evidence](docs/fixtures/S01_CAPTURE.md) and
 [private-input observations](docs/fixtures/S01_REAL_INPUTS.md). See the
 [S02 export proof](docs/fixtures/S02_EXPORT_PROOF.md) for exact limits, usage,
@@ -31,11 +34,10 @@ native gain-edge measurements, GUI evidence and recovery instructions.
 - Isolate Kdenlive format details in replaceable adapters. Future versions require
   their own evidence and are never automatically claimed compatible.
 
-These are the full product requirements. The S02 proof implements only simple
-starter import and manual shared-cut export. S06 adds conservative shared pause
-planning. S07 implements grouped export from that plan, with a passing actual
-Kdenlive synthetic round trip. Idle noise cleanup and the product desktop UI
-remain later work.
+These are the full product requirements. S06-S10 connect conservative approved
+pause planning, grouped export, idle cleanup and picture review. Scoped actual
+Kdenlive synthetic round trips pass; the product desktop UI and full-interview
+acceptance remain later work.
 Real source offsets, drift and subframe tails remain unverified. The observed
 native one-frame sequence extent change is retained explicitly in the proof.
 

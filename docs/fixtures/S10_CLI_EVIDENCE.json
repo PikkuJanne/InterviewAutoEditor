@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "step": "S10",
+  "date": "2026-10-29",
+  "status": "COMPLETE_APPLICABLE_SCOPE",
+  "implementation_commit": null,
+  "starting_checkpoint": "8431f9743fb4783505951b0e9bd66e9f80850273",
+  "compatibility": "EXPERIMENTAL",
+  "service": "s10-recoverable-cli-1",
+  "runtime": {
+    "python": "3.12.14",
+    "ffmpeg": "8.1.1",
+    "ffprobe": "8.1.1",
+    "platform": "Windows AMD64"
+  },
+  "full_suite": {
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+    "tests": 206,
+    "skipped": 0,
+    "seconds": 182.595,
+    "s10_tests": 26
+  },
+  "earlier_runs": [
+    {
+      "scope": "Initial focused suite",
+      "tests": 19,
+      "seconds": 31.382,
+      "result": "FAILED_one_orphan_test_fixture_used_Windows_CRLF_instead_of_writer_LF"
+    },
+    {
+      "scope": "Focused after correction, before final crash/summary tests",
+      "tests": 23,
+      "seconds": 41.952,
+      "result": "PASS"
+    },
+    {
+      "scope": "Full before two further crash tests",
+      "tests": 203,
+      "seconds": 185.81,
+      "result": "PASS_zero_skips"
+    },
+    {
+      "scope": "Full before final orphan-summary validation",
+      "tests": 205,
+      "seconds": 180.851,
+      "result": "PASS_zero_skips"
+    }
+  ],
+  "cli_validation": [
+    {
+      "command": "inspect",
+      "exit": 2,
+      "private_safe_console": true
+    },
+    {
+      "command": "analyze",
+      "exit": 2,
+      "private_safe_console": true
+    },
+    {
+      "command": "plan",
+      "exit": 2,
+      "private_safe_console": true
+    },
+    {
+      "command": "export",
+      "exit": 2,
+      "private_safe_console": true
+    },
+    {
+      "command": "run",
+      "exit": 2,
+      "private_safe_console": true
+    },
+    {
+      "command": "report",
+      "exit": 2,
+      "private_safe_console": true
+    },
+    {
+      "command": "compatibility-probe",
+      "exit": 2,
+      "private_safe_console": true
+    }
+  ],
+  "recovery_coverage": [
+    "Atomic new directory, including existing empty-target refusal",
+    "OS advisory lock, conflicting-user-file refusal and process-death release",
+    "Explicit resume, immutable repeat run and changed-input/settings refusal",
+    "Cancellation at all six stages, inside export, in bounded child and between CPU models",
+    "Completed speech/reaction caches validated/reused; corrupt or missing models/cache fail",
+    "Deterministic orphan adoption; corrupt/tampered artifacts and summaries refuse",
+    "Abrupt os._exit before rename leaves incomplete staged journal and safely resumes",
+    "Saved picture observations reuse with request/decoder binding",
+    "Source-time audible restores globally with no inference",
+    "Stale base-bound cleanup refuses after picture refinement",
+    "Moved Unicode/space package resolves and reproduces project bytes",
+    "Original unverified origins and unequal exact tails remain refused"
+  ],
+  "gates": {
+    "G01": "PASS_applicable_synthetic_and_original_corpus_preservation",
+    "G03": "PASS_full_shared_timing_suite_and_actual_GUI_render",
+    "G09": "PASS_recovery_integration_and_manual_CLI_paths",
+    "G02_G07_regression": "PASS_actual_26.08.2_open_play_group_move_undo_save_reopen_render"
+  },
+  "actual_application": {
+    "provenance": "tests/fixtures/s10-cli-26.08.2/PROVENANCE.json",
+    "render_measurements": "tests/fixtures/s10-cli-26.08.2/render-validation.json",
+    "checks": 12,
+    "all_passed": true,
+    "output_frames": 267,
+    "maximum_picture_rgb_mae": 0.0,
+    "source_switch_frame": 138,
+    "output_switch_frames": [
+      105
+    ],
+    "maximum_protected_probe_absolute_db": 0.091,
+    "audio_anchor_lags_samples": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "noise_relative_db": [
+      -31.689,
+      -43.766,
+      -33.858,
+      -33.836
+    ],
+    "decoded_peak": 0.47673100233078003,
+    "embedded_marker_db": -227.711,
+    "native_sequence_extent_delta_frames": 0
+  },
+  "private_preservation": {
+    "corpus_assertions": 102,
+    "original_sources_unchanged": 5,
+    "sample_exact_excerpts": 12,
+    "retained_development_overlap_frames": 200,
+    "gain_spans": 0,
+    "idle_approvals": 0,
+    "new_listening_or_connection": false,
+    "real_alignment_certified": false,
+    "real_export_created": false,
+    "held_out_opened": false
+  },
+  "unchanged_policy": [
+    "S03-S09 canonical contracts, planner, turns, cleanup, picture, source-media and model/runtime locks",
+    "Adapter XML/group/gain serialization unchanged; only shared probe/hash/peak cancellation hooks added",
+    "Picture is restore-only; S08 binds refined planning result; no silent rebinding",
+    "Original picture/audio timing, full exterior handles, protected events, overlap and shared microphones",
+    "No source repair, normalization, denoising, independent retiming or MP4-audio output"
+  ],
+  "limitations": [
+    "Origin acceptance remains explicit supplied reviewed data; raw inference does not certify alignment",
+    "Windows/NTFS tested; Linux renameat2 path and network filesystems not run",
+    "Pure planning cancellation at stage boundaries; atomic visibility is not a power-loss durability promise",
+    "Abrupt process death may leave ignored private scratch beside run; never published in final bundle",
+    "Corrupt derived data fails closed; no automatic deletion or repair",
+    "Full interviews, held-out acceptance, two-hour stress, wider GUI matrix and clean-install packaging not run",
+    "Full manifests/reports/cache are private; neutral summaries still require review"
+  ],
+  "s11_started": false,
+  "synchronization": "must_verify_live_at_each_checkpoint"
+}
