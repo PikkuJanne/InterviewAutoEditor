@@ -1,74 +1,77 @@
-# Next: S12 - validate full interviews and calibrate quality
+# Resume S12 - full-interview acceptance blocked
 
-**S11 COMPLETE for supported synthetic desktop/recovery scope. S12 is pending
-and has not started.** Execute one named step per thread. Compatibility remains
-EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4.
+**S12 BLOCKED. Resume S12 only; no S13.** Engineering checks pass within their
+documented scope. Full-interview, held-out and utility acceptance remain NOT RUN.
+Compatibility remains EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4.
 
 - Branch: `codex/kdenlive26-overhaul`.
-- S11 implementation: `7d8d06dd4142f12e6da436a206964a894905d0bb`.
-- Starting S10 checkpoint: `e88e138a891078c3a04e9fb8f9117273dd0651d3`.
-- Handover: [S11.md](handovers/S11.md).
+- S12 implementation: `f73cd9247abd2c1b71ab9d1bc80398b7afd729c3`.
+- Starting S11 completion checkpoint: `cd6da241f805c94511d6c51b150b399d5bbe5061`.
+- Handover: [S12.md](handovers/S12.md).
 - State: [STATE.json](project/STATE.json).
-- Next brief: [S12.md](project/steps/S12.md).
-- Desktop: [S11_DESKTOP.md](project/S11_DESKTOP.md).
-- Evidence: [S11_DESKTOP_EVIDENCE.json](fixtures/S11_DESKTOP_EVIDENCE.json).
-- Visible workflow: [S11_WORKFLOW.md](fixtures/S11_WORKFLOW.md).
+- Selected brief: [S12.md](project/steps/S12.md).
+- Procedure: [S12_VALIDATION.md](project/S12_VALIDATION.md).
+- Actual matrix/results: [S12_ACCEPTANCE.md](fixtures/S12_ACCEPTANCE.md).
+- Aggregate evidence: [S12_ACCEPTANCE.json](fixtures/S12_ACCEPTANCE.json).
 
-The minimal desktop now handles starter selection, explicit participant mapping,
-Tight/Gentle, service modes, progress/cancel, private review, source-time
-Keep/Restore and opening a separate editable copy in Kdenlive. Double-click
-`InterviewAutoEditor.pyw` in the prepared checkout; no installation/download occurs.
-Bundled runtime/clean-install/release work remains S14/S15.
+The owner confirms no complete two-person interview is available at present and
+describes supplied files as raw Zoom files. Obtain missing material when it
+exists; no repeat question, new connection or broad listening request is needed.
+That provenance statement does not certify alignment, cleaning history or tails.
+There is one registered complete band recording. Fresh intake retains four
+unverified origins/null offsets, with three exact tails -4/375 second and one
++4/375 second relative to the video. Both direct planning and a fresh Application
+saved-analysis run refuse; failed staging/inputs/analysis remain private and
+recoverable. No final real project is created. A pending private review draft
+retains authoritative records; it is not an accepted contract or certificate.
 
-Application, CLI, policies, contracts, adapters, assets/locks/licences and prior
-fixtures are unchanged. Desktop jobs/mappings/requests are exclusive private
-snapshots beside the run. Resume explicitly picks the original job and applies
-its original options; form edits are excluded. The service still verifies full
-inputs/code/artifacts/cache and atomically publishes a NEW validated folder.
-Corruption refuses; no deletion/repair or implicit approval rebinding occurs.
+Resolve genuine reviewed origins and a supported exact-tail contract. Approving
+origins cannot make unequal physical ends equal. Do not repair media or edit
+duration/status fields to bypass v1 refusal. A different genuinely exact-coverage
+source set or an explicitly reviewed/versioned/tested preserving tail policy is
+required; no such extension is implemented here. Preserve every original sample.
 
-Keep/audible restores original source time on ALL tracks for a NEW run. Picture
-observations only narrow approved deletions. Cleanup must bind the refined result;
-changed pacing/overrides can require explicitly reviewed rebinding or unity gain.
-Keep protected content/uncertainty/laughter/overlap/shared mics, full exterior
-handles, groups/bin originals, canonical gain refusal, conservative headroom and
-the original 12.00/12.45 speech/picture lag. Original real origins remain
-unverified/null, exact tails unequal and planning/export refused. No source repair,
-retiming, normalization/denoising or invented footage is authorized.
+No distinct independently labelled held-out corpus is supplied. Keep development
+and held-out material separate, preserve reserved excerpts/exposure history and
+freeze calibration before actual acceptance. Defaults/models/policies did not
+change and no tuning occurred. Independent measurement records now reject stale
+analysis/configuration/split/source bindings; unknown denominators remain null.
+They cannot establish full acceptance from a plan or planned gain coverage.
 
-Final full suite: **224 tests, zero skips, 200.744 s**, including 18 S11 tests.
-Focused suite: **18 tests, zero skips, 22.426 s**, no ignored Tcl cleanup errors.
-New actual visible desktop synthetic run/open-copy/Keep plus Kdenlive open/play
-pass. Synthetic output remains 267 frames/six groups/four gains; explicit
-restoration without cleanup yields 300 frames/unity. The exporter did not change:
-no new full group-edit/save/reopen/render was run. Genuine S10 full native/render
-evidence remains separate and is remeasured by the full suite.
+Final full suite: **231 tests, zero skips, 206.030 s**, including seven S12
+tests. Focused final: **seven tests, zero skips, 0.936 s**. Two long metadata-only
+cases retain 600/600 generated intervals through 599 shared cuts/eight sources,
+with 9600 sample-grid endpoint checks per case and zero cumulative map drift.
+This is not full two-hour decode/inference/export/native acceptance. Original
+preservation passes 102 assertions/five unchanged sources/twelve exact excerpts;
+the bounded human overlap retains 200/200 frames at unity. Nine historical run
+manifests verify unchanged. Actual retained S10 native/render artifacts pass
+12/12 remeasured checks; **new S12 GUI operations: NOT RUN**.
 
-Private preservation passes 102 assertions/five unchanged originals/twelve exact
-excerpts. The bounded overlap stays 200/200 frames at unity. No new listening,
-connection, private full export, tuning or held-out access. Preserve one-file and
-no-new-connection preferences and bounded S08 human acceptance.
+Complete two-person/band/held-out output, real retention/approval/noise/rendered
+sync/editability/performance/correction-effort and focused owner utility checks
+remain required. 90% handover and 70% effort targets are unmeasured. Preserve
+all explicit independent approvals, protected content/exterior handles/shared
+microphones, original 12.00/12.45 picture timing, one shared map, source-time
+overrides, picture-refined cleanup bindings, headroom and immutable recoverable
+Application/desktop jobs. New inputs/code/policies need new runs; no hash repair.
+Keep at most one listening file/no-new-connection preferences and the historical
+bounded S08 listening scope. No new listening file or connection was made.
 
-8/64-row Tk tests are presentation scaling; core media export tests cover
-1/2/3/6/8 audio tracks. Full/held-out interview acceptance, long stress, wider
-native track/FPS/build/screen-reader coverage and clean-install packaging remain
-unaccepted. Linux/network publication remains untested; atomic visibility is not
-a power-loss durability promise. Partial input/code/path changes require a new run.
-
-Before editing, resolve this handover's containing checkpoint and verify live:
+Before editing, resolve the blocked checkpoint and verify live:
 
 ```powershell
-git log -1 --format=%H -- docs/handovers/S11.md
+git log -1 --format=%H -- docs/handovers/S12.md
 python tools/verify_checkpoint.py --repo .
 ```
 
 Final chat records actual local/live/upstream equality, clean worktree and exact
-CI state. Reverify at thread start. Starting exact-SHA queries found zero
-workflows/runs/checks/statuses: **CI not configured**, not green CI. Failed sync
-or configured failing CI requires resuming S11 before S12.
+CI state. Starting queries found zero workflows/runs/checks/statuses: CI not
+configured, not green CI. Reverify at every checkpoint. Failed sync/configured
+failing CI must be resolved in S12.
 
-Ready-to-paste next-thread prompt:
+Ready-to-paste continuation prompt:
 
-> Execute S12 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md, docs/handovers/S11.md, execution/GitHub protocols, S03-S11 guides and the S12 brief. S11 implementation is 7d8d06dd4142f12e6da436a206964a894905d0bb. Resolve the containing completion checkpoint and verify live/local/upstream equality, clean worktree and exact-SHA CI first. Validate full interviews and calibrate quality within S12: scenario matrix, complete two-person and band interviews, distinct held-out excerpts and long timing fixture, actual retention/approval/noise/sync/editability/performance/correction-effort metrics and focused owner acceptance. Preserve all origin/exact-tail refusals, explicit independent approvals, protected content, original picture timing, shared maps, refined cleanup bindings, private data and recoverable Application/desktop jobs. Resolve missing origin/tail evidence through explicit reviewed contracts; never repair or certify it implicitly. Keep held-out acceptance separate from tuning and preserve one-audio-file/no-new-connection preferences. Do not claim unrun full-interview/held-out or utility acceptance. Run applicable gates, update state/NEXT_STEP/S12 handover, commit/push/verify, give a verbose handover and STOP. No S13.
+> Resume S12 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, docs/project/STATE.json, docs/NEXT_STEP.md, docs/handovers/S12.md, execution/GitHub protocols, S03-S12 guides and the S12 brief. S12 implementation is f73cd9247abd2c1b71ab9d1bc80398b7afd729c3; resolve its containing blocked checkpoint from Git history and verify live/local/upstream equality, clean worktree and exact-SHA CI first. Review docs/fixtures/S12_ACCEPTANCE.md and JSON. The owner says a complete two-person interview is unavailable and the supplied files are raw Zoom files; this does not certify cleaning/alignment/tails. Preserve pending private origin/tail review and failed Application staging. Obtain missing material/evidence when available, keep genuine held-out acceptance separate from development and resolve origins/unequal exact tails only through explicit reviewed supported contracts, preserving v1 refusals and every original sample. Complete the real two-person/band/held-out and full two-hour processing matrix, actual retention/approval/noise/sync/editability/performance/correction-effort metrics and focused owner acceptance, at most one audio file and no new connection. Preserve independent approvals, protected content, original picture timing, shared maps, refined cleanup bindings and immutable recoverable jobs. Do not relabel synthetic metadata checks or historical GUI artifacts as full/held-out/utility acceptance. Run applicable gates, update state/NEXT_STEP/S12 handover, commit/push/verify, provide a verbose handover and STOP. No S13.
 
-Paused after S11. The next thread should execute S12 only.
+Paused with S12 blocked. The next thread must resume S12.

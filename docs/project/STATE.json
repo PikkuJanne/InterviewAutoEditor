@@ -7,13 +7,18 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S11",
+  "active_step": "S12",
   "next_step": "S12",
-  "latest_handover": "docs/handovers/S11.md",
-  "implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
-  "technical_gate_status": "passed_applicable_s11_g01_g03_g09_desktop_smoke_and_actual_kdenlive_open_play",
+  "latest_handover": "docs/handovers/S12.md",
+  "implementation_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
+  "technical_gate_status": "blocked_s12_full_interview_heldout_origin_tail_owner_acceptance_engineering_checks_passed",
   "synchronization": "must_verify_live_at_each_checkpoint",
-  "blockers": [],
+  "blockers": [
+    "A complete two-person interview is unavailable at present, explicitly confirmed by the owner.",
+    "Existing four-audio-file band input retains four unverified/null origins and unequal exact tails. Owner Zoom provenance does not certify alignment or coverage. Genuine reviewed origins and a supported explicit tail contract are missing.",
+    "No distinct independently labelled held-out acceptance corpus is registered. Existing reserved development end excerpts are not an independent unseen interview.",
+    "Actual complete-interview/held-out exports, full two-hour media processing, retention/approval/noise/rendered-sync/editability/performance/correction-effort metrics and focused owner utility acceptance are NOT RUN."
+  ],
   "steps": [
     {
       "id": "S00",
@@ -104,7 +109,7 @@
       "title": "Validate full interviews and calibrate quality",
       "prerequisite": "S11",
       "brief": "docs/project/steps/S12.md",
-      "status": "pending"
+      "status": "blocked"
     },
     {
       "id": "S13",
@@ -153,16 +158,17 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-29",
   "prerequisites_for_next_step": [
-    "S11 is complete for supported synthetic desktop/recovery scope. Execute S12 only in a later explicitly selected thread; no S12 implementation or acceptance has begun.",
-    "Read AGENTS, STATE/NEXT_STEP, complete S11 handover, execution/GitHub protocols, S03-S11 guides and S12 brief. Resolve containing checkpoint; verify live/local/upstream equality, clean worktree and exact-SHA CI first.",
-    "S11 desktop is a thin Tkinter interface over unchanged Application/CLI/policies/adapters. Preserve strict private desktop job/mapping/request snapshots beside runs, explicit original-options resume, source-time Keep/audible and separate immutable-run editable copies.",
-    "Preserve exclusive recoverable staging, manifests/artifact/source/tool/code validation, OS advisory locks, atomic new final folders, cancellation and cache checks. Corruption fails closed; no automatic deletion, repair or approval rebinding.",
-    "Picture observations only narrow approved shared deletions. S08 cleanup binds the refined S06 result; pacing/override changes require explicit reviewed rebinding or unity cleanup. Preserve all source-time overrides and original 12.00/12.45 speech/picture lag.",
-    "All protected words/laughter/acknowledgements/uncertainty/overlap/shared mics, full exterior handles, groups/bin originals, canonical gain refusal and conservative headroom remain mandatory. No source repair, normalization, denoising, per-track deletion, camera advance or invented footage.",
-    "Original real origins remain unverified/null and exact tails unequal; planning/export still refuse. Saved reviewed data is explicit supplied evidence, never automatic certification. S12 must resolve genuine origin/tail acceptance requirements without silently changing media or policy.",
-    "Final suite: 224 tests, zero skips, 200.744 seconds; focused 18 tests, 22.426 seconds. New visible desktop fresh run/open-copy/actual Kdenlive open/play/Keep passes. Exporter unchanged; prior genuine full S10 native/render regression remains separate and is remeasured. Compatibility remains EXPERIMENTAL for 26.08.2 rev. d4e87e4.",
-    "Tk table scaling at 8/64 rows is presentation evidence; existing core media export covers 1/2/3/6/8 tracks. Full/held-out interviews, long stress, wider native build/FPS/track matrix, screen readers and bundled clean-install packaging remain unaccepted.",
-    "Preserve the one-audio-file maximum/no-new-connection preference, bounded S08 human pass and private corpus. Target focused S12 owner review only when essential. Actual full Kdenlive regression is required if export changes. No S13 work."
+    "Resume S12 only. Full-interview/held-out/utility acceptance remains blocked; S13-S15 stay pending.",
+    "Read AGENTS, STATE/NEXT_STEP, complete S12 handover, execution/GitHub protocols, S03-S12 guides and S12 brief. Resolve containing checkpoint; verify live/local/upstream equality, clean worktree and exact-SHA CI first.",
+    "Owner confirms complete two-person material is unavailable and supplied files are raw Zoom files. Do not equate provenance with cleaning, alignment, exact-tail reconciliation or edited-output acceptance.",
+    "Obtain missing complete two-person material and a distinct independently labelled held-out corpus when available. Keep reserved development excerpts and historical exposure separate; freeze development calibration before acceptance.",
+    "Resolve genuine source-bound origin/tail evidence explicitly. Current originals retain unverified/null origins and -4/375 or +4/375 second exact-tail differences; v1 identity planning/export still refuse. Pending private review draft is not a certificate or loadable Analysis.",
+    "No source repair, padding, trimming, shifting, speed changes, normalization, denoising, camera advance, invented footage or implicit certification. Supporting unequal ends needs an explicitly reviewed/versioned/tested preserving policy, not edited duration fields.",
+    "Preserve explicit global and independent idle approvals, protected content/overlap/shared microphones/full exterior handles, source-clock Keep/audible, original 12.00/12.45 picture delay and cleanup bound to the exact picture-refined plan. Stale bindings refuse or use unity after explicit removal.",
+    "Preserve immutable/recoverable Application and desktop jobs, full input/code/tool hashes, locks, atomic exclusive publication and corruption refusals. New private failed S12 plan staging remains intact; changed code/input/policy needs a new run.",
+    "Final full suite 231 tests/zero skips; seven focused S12 tests. Long 599-cut/eight-source cases are metadata-only. Historical actual S10 render/native package passes 12 remeasured checks; no new actual S12 GUI operation, real output or full long-media processing was run.",
+    "Complete actual full-interview/held-out retention/approval/noise/sync/editability/performance/correction-effort and focused owner acceptance. 90%/70% remain unmeasured targets. At most one new listening file, no new connection; do not repeat bounded S08 listening.",
+    "Run applicable gates, update S12 evidence/state/NEXT_STEP/handover, commit/push/verify and STOP. Do not begin S13."
   ],
   "validation_evidence": [
     {
@@ -1091,9 +1097,87 @@
       "private_source_tokens_found": 0,
       "prior_provenance_hashes_verified": 9,
       "application_cli_contracts_policy_models_adapter_fixtures_unchanged": true
+    },
+    {
+      "check": "s12_final_full_automated_suite",
+      "status": "passed",
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "tests": 231,
+      "s12_tests": 7,
+      "skipped": 0,
+      "seconds": 206.03,
+      "result": "PASS",
+      "applies_to_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3"
+    },
+    {
+      "check": "s12_focused_independent_measurements",
+      "status": "passed",
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s12_quality.py -v",
+      "tests": 7,
+      "skipped": 0,
+      "seconds": 0.936,
+      "result": "PASS",
+      "applies_to_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3"
+    },
+    {
+      "check": "s12_long_contract_timing",
+      "status": "passed",
+      "cases": 2,
+      "audio_sources_per_case": 8,
+      "cuts_per_case": 599,
+      "retained_labels_per_case": 600,
+      "denominator_labels_per_case": 600,
+      "sample_grid_checks_per_case": 9600,
+      "cumulative_map_drift_frames": 0,
+      "actual_media_processing": false,
+      "applies_to_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3"
+    },
+    {
+      "check": "s12_private_originals_and_expected_refusals",
+      "status": "passed",
+      "original_assertions": 102,
+      "unchanged_source_files": 5,
+      "sample_exact_pcm_excerpts": 12,
+      "retained_overlap_frames": 200,
+      "fresh_application_plan_refused": true,
+      "final_real_project_created": false,
+      "new_verified_origins": 0
+    },
+    {
+      "check": "s12_retained_actual_s10_artifact_remeasurement",
+      "status": "passed",
+      "checks": 12,
+      "new_gui_operation": false,
+      "real_or_held_out_acceptance": false
+    },
+    {
+      "check": "s12_full_interview_heldout_utility_acceptance",
+      "status": "blocked",
+      "blockers": [
+        "A complete two-person interview is unavailable at present, explicitly confirmed by the owner.",
+        "Existing four-audio-file band input retains four unverified/null origins and unequal exact tails. Owner Zoom provenance does not certify alignment or coverage. Genuine reviewed origins and a supported explicit tail contract are missing.",
+        "No distinct independently labelled held-out acceptance corpus is registered. Existing reserved development end excerpts are not an independent unseen interview.",
+        "Actual complete-interview/held-out exports, full two-hour media processing, retention/approval/noise/rendered-sync/editability/performance/correction-effort metrics and focused owner utility acceptance are NOT RUN."
+      ]
+    },
+    {
+      "check": "s12_checkpoint_documentation_privacy",
+      "status": "passed",
+      "command": ".venv/Scripts/python.exe -B .local/S12/validate_checkpoint.py",
+      "applies_to": "S12 blocked documentation checkpoint; resolve containing commit from handover history",
+      "reviewed_text_files": 9,
+      "valid_local_links": 24,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "state_next_step_handover_consistent": true,
+      "s12_remains_blocked": true,
+      "s13_pending": true,
+      "production_core_adapter_desktop_policies_licences_fixtures_unchanged": true,
+      "implementation_unchanged_since": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
+      "new_media_or_gui_operations_in_documentation_review": false
     }
   ],
-  "previous_step_implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
+  "previous_step_implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
   "s01_evidence": {
     "capture_record": "docs/fixtures/S01_CAPTURE.md",
     "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/PROVENANCE.json",
@@ -1553,7 +1637,7 @@
     "new_listening_requested": false,
     "new_connection": false,
     "compatibility": "EXPERIMENTAL",
-    "s12_started": false,
+    "s12_started": true,
     "checkpoint_documentation_review": {
       "status": "passed",
       "metadata_files": 4,
@@ -1568,6 +1652,52 @@
       "private_source_tokens_found": 0,
       "prior_provenance_hashes_verified": 9,
       "application_cli_contracts_policy_models_adapter_fixtures_unchanged": true
+    }
+  },
+  "s12_evidence": {
+    "implementation_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
+    "guide": "docs/project/S12_VALIDATION.md",
+    "measurements": "docs/fixtures/S12_ACCEPTANCE.json",
+    "acceptance_report": "docs/fixtures/S12_ACCEPTANCE.md",
+    "completion_handover": "docs/handovers/S12.md",
+    "status": "blocked",
+    "full_suite_tests": 231,
+    "full_suite_skipped": 0,
+    "full_suite_seconds": 206.03,
+    "focused_tests": 7,
+    "focused_seconds": 0.936,
+    "long_timing_cases": 2,
+    "long_timing_cuts_per_case": 599,
+    "long_timing_labels_per_case": 600,
+    "long_timing_is_metadata_only": true,
+    "historical_run_manifests_verified": 9,
+    "new_actual_kdenlive_operations": false,
+    "retained_s10_actual_artifact_checks": 12,
+    "real_export_created": false,
+    "new_verified_real_origins": 0,
+    "tail_policy_extended": false,
+    "owner_input_provenance": "raw files from Zoom; alignment/cleaning/tail evidence unverified",
+    "complete_two_person_available": false,
+    "distinct_held_out_registered": false,
+    "held_out_opened": false,
+    "calibration_changed": false,
+    "real_content_utility_acceptance": false,
+    "new_listening_files": 0,
+    "new_connection": false,
+    "production_core_unchanged": true,
+    "s13_started": false,
+    "checkpoint_documentation_review": {
+      "status": "passed",
+      "reviewed_text_files": 9,
+      "valid_local_links": 24,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "state_next_step_handover_consistent": true,
+      "s12_remains_blocked": true,
+      "s13_pending": true,
+      "production_core_adapter_desktop_policies_licences_fixtures_unchanged": true,
+      "implementation_unchanged_since": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
+      "new_media_or_gui_operations_in_documentation_review": false
     }
   }
 }

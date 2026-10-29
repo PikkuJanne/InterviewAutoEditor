@@ -1,0 +1,434 @@
+{
+  "schema_version": 1,
+  "step": "S12",
+  "attempt": 1,
+  "date": "2026-10-29",
+  "status": "BLOCKED_FULL_INTERVIEW_ACCEPTANCE",
+  "implementation_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
+  "starting_checkpoint": "cd6da241f805c94511d6c51b150b399d5bbe5061",
+  "compatibility": "EXPERIMENTAL",
+  "production_build": "26.08.2 rev. d4e87e4",
+  "runtime": {
+    "python": "3.12.14",
+    "tk": "8.6",
+    "ffmpeg": "8.1.1",
+    "ffprobe": "8.1.1",
+    "platform": "Windows AMD64"
+  },
+  "full_suite": {
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+    "tests": 231,
+    "s12_tests": 7,
+    "skipped": 0,
+    "seconds": 206.03,
+    "result": "PASS",
+    "applies_to_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3"
+  },
+  "focused_suite": {
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s12_quality.py -v",
+    "tests": 7,
+    "skipped": 0,
+    "seconds": 0.936,
+    "result": "PASS"
+  },
+  "earlier_full_pass": {
+    "tests": 231,
+    "seconds": 214.168,
+    "skipped": 0,
+    "scope": "before final evaluator provenance fields; final full suite also tests those fields"
+  },
+  "long_timing": [
+    {
+      "status": "passed",
+      "scope": "generated_contract_timing_only_no_media_decode_export_or_GUI",
+      "fps": "25",
+      "duration_seconds": "7200",
+      "audio_sources": 8,
+      "sample_rates": [
+        16000,
+        44100,
+        48000,
+        96000,
+        192000,
+        44100,
+        48000,
+        192000
+      ],
+      "source_frames": 180000,
+      "output_frames": 20067,
+      "removed_frames": 159933,
+      "cuts": 599,
+      "protected_labels_retained": 600,
+      "protected_label_denominator": 600,
+      "sample_grid_endpoint_checks": 9600,
+      "maximum_output_grid_rounding_seconds": "0",
+      "cumulative_map_drift_frames": 0,
+      "origin_tail_refusals": 2,
+      "planning_seconds": 3.905233,
+      "total_seconds": 18.043987,
+      "peak_process_working_set_bytes": 39776256,
+      "serialized_planning_bytes": 972605,
+      "actual_render_sync": "NOT_RUN",
+      "actual_native_editability": "NOT_RUN",
+      "full_interview_acceptance": "NOT_RUN"
+    },
+    {
+      "status": "passed",
+      "scope": "generated_contract_timing_only_no_media_decode_export_or_GUI",
+      "fps": "30000/1001",
+      "duration_seconds": "36036/5",
+      "audio_sources": 8,
+      "sample_rates": [
+        16000,
+        44100,
+        48000,
+        96000,
+        192000,
+        44100,
+        48000,
+        192000
+      ],
+      "source_frames": 216000,
+      "output_frames": 24869,
+      "removed_frames": 191131,
+      "cuts": 599,
+      "protected_labels_retained": 600,
+      "protected_label_denominator": 600,
+      "sample_grid_endpoint_checks": 9600,
+      "maximum_output_grid_rounding_seconds": "7/120000",
+      "cumulative_map_drift_frames": 0,
+      "origin_tail_refusals": 2,
+      "planning_seconds": 4.129377,
+      "total_seconds": 19.216787,
+      "peak_process_working_set_bytes": 40132608,
+      "serialized_planning_bytes": 972941,
+      "actual_render_sync": "NOT_RUN",
+      "actual_native_editability": "NOT_RUN",
+      "full_interview_acceptance": "NOT_RUN"
+    }
+  ],
+  "private_original_preservation": {
+    "passed": true,
+    "assertions": 102,
+    "source_files_unchanged": 5,
+    "sample_exact_pcm_excerpts": 12,
+    "track_semantics_roundtrip_equal": true,
+    "whole_project_semantics_equal": false,
+    "sequence_out_changed_by_frames": 1
+  },
+  "retained_human_development_overlap": {
+    "retained_frames": 200,
+    "denominator_frames": 200,
+    "gain_spans": 0,
+    "independent_idle_approvals": 0,
+    "new_listening": false
+  },
+  "private_input_audit": {
+    "status": "passed_expected_refusals",
+    "complete_private_interviews_registered": 1,
+    "audio_files": 4,
+    "measured_video_frames": 51092,
+    "source_seconds": "51092/25",
+    "audio_sample_rate": 192000,
+    "audio_origins_unverified": 4,
+    "verified_offsets_null": 4,
+    "audio_end_minus_video_end_seconds": [
+      "-4/375",
+      "-4/375",
+      "-4/375",
+      "4/375"
+    ],
+    "direct_plan_refusals": 2,
+    "fresh_application_plan": "REFUSED_EXPECTED",
+    "failed_staging_retained": true,
+    "final_project_created": false,
+    "original_source_records_unchanged": true,
+    "owner_provenance_clarification": "raw files from Zoom; not an alignment or cleaning certificate",
+    "new_inference_performed": false,
+    "held_out_opened": false,
+    "complete_two_person_interview": "UNAVAILABLE_OWNER_CONFIRMED",
+    "independent_held_out_corpus": "NOT_SUPPLIED",
+    "actual_full_interview_acceptance": "NOT_RUN",
+    "actual_owner_utility_acceptance": "NOT_RUN",
+    "audit_elapsed_seconds": 172.118,
+    "audit_time_is_not_full_processing_throughput": true
+  },
+  "historical_runs": {
+    "historical_run_manifests_verified": 9,
+    "historical_runs_modified": false
+  },
+  "retained_s10_actual_artifact_remeasurement": {
+    "command": ".venv/Scripts/python.exe -B tools/s09_validate_render.py --bundle tests/fixtures/s10-cli-26.08.2 --ffmpeg <existing-local-ffmpeg> --report <new-private-report>",
+    "status": "PASS",
+    "checks": 12,
+    "new_gui_operation": false,
+    "scope": "Actual GUI synthetic tone/noise/luma output; no real/held-out or subjective word acceptance",
+    "video_frames": 267,
+    "picture_frames_measured": 267,
+    "observed_output_switch_frames": [
+      105
+    ],
+    "protected_probes": [
+      {
+        "source": 0,
+        "source_seconds": 1.9,
+        "output_seconds": 1.9,
+        "relative_db": 0.028
+      },
+      {
+        "source": 0,
+        "source_seconds": 2.3,
+        "output_seconds": 2.3,
+        "relative_db": 0.089
+      },
+      {
+        "source": 0,
+        "source_seconds": 7.9,
+        "output_seconds": 6.58,
+        "relative_db": 0.028
+      },
+      {
+        "source": 0,
+        "source_seconds": 8.3,
+        "output_seconds": 6.98,
+        "relative_db": 0.091
+      },
+      {
+        "source": 1,
+        "source_seconds": 2.3,
+        "output_seconds": 2.3,
+        "relative_db": 0.088
+      },
+      {
+        "source": 1,
+        "source_seconds": 3.5,
+        "output_seconds": 3.5,
+        "relative_db": -0.002
+      },
+      {
+        "source": 1,
+        "source_seconds": 8.3,
+        "output_seconds": 6.98,
+        "relative_db": 0.086
+      },
+      {
+        "source": 1,
+        "source_seconds": 9.5,
+        "output_seconds": 8.18,
+        "relative_db": -0.003
+      }
+    ],
+    "audio_anchors": [
+      {
+        "source_seconds": 1.99,
+        "output_seconds": 1.99,
+        "best_lag_samples_grid48": 0,
+        "mse_at_zero": 5.213550306920153e-08
+      },
+      {
+        "source_seconds": 2.99,
+        "output_seconds": 2.99,
+        "best_lag_samples_grid48": 0,
+        "mse_at_zero": 4.413021959015777e-08
+      },
+      {
+        "source_seconds": 7.99,
+        "output_seconds": 6.67,
+        "best_lag_samples_grid48": 0,
+        "mse_at_zero": 4.9639774217144685e-08
+      },
+      {
+        "source_seconds": 8.99,
+        "output_seconds": 7.67,
+        "best_lag_samples_grid48": 0,
+        "mse_at_zero": 3.5835505777872524e-08
+      }
+    ],
+    "noise_relative_db": [
+      -31.689,
+      -43.766,
+      -33.858,
+      -33.836
+    ],
+    "decoded_audio_samples_48000hz": 513024,
+    "decoded_peak": 0.47673100233078003,
+    "embedded_marker_db": -227.711,
+    "native_sequence_extent_delta_frames": 0,
+    "codec_padding_samples_48000hz": 384
+  },
+  "calibration": {
+    "changed": false,
+    "held_out_configuration_frozen": false,
+    "held_out_acceptance_executed": false,
+    "presets": {
+      "tight": {
+        "different_threshold": {
+          "numerator": 4,
+          "denominator": 5
+        },
+        "different_residual": {
+          "numerator": 1,
+          "denominator": 4
+        },
+        "same_threshold": {
+          "numerator": 3,
+          "denominator": 2
+        },
+        "same_residual": {
+          "numerator": 1,
+          "denominator": 2
+        },
+        "onset": {
+          "numerator": 3,
+          "denominator": 25
+        },
+        "tail": {
+          "numerator": 1,
+          "denominator": 5
+        },
+        "confidence": {
+          "numerator": 9,
+          "denominator": 10
+        }
+      },
+      "gentle": {
+        "different_threshold": {
+          "numerator": 6,
+          "denominator": 5
+        },
+        "different_residual": {
+          "numerator": 1,
+          "denominator": 2
+        },
+        "same_threshold": {
+          "numerator": 5,
+          "denominator": 2
+        },
+        "same_residual": {
+          "numerator": 9,
+          "denominator": 10
+        },
+        "onset": {
+          "numerator": 3,
+          "denominator": 25
+        },
+        "tail": {
+          "numerator": 1,
+          "denominator": 5
+        },
+        "confidence": {
+          "numerator": 9,
+          "denominator": 10
+        }
+      }
+    },
+    "speech_settings": {
+      "speech_threshold": {
+        "numerator": 1,
+        "denominator": 2
+      },
+      "uncertain_threshold": {
+        "numerator": 3,
+        "denominator": 20
+      },
+      "signal_peak": {
+        "numerator": 1,
+        "denominator": 10000
+      },
+      "onset": {
+        "numerator": 3,
+        "denominator": 25
+      },
+      "tail": {
+        "numerator": 1,
+        "denominator": 5
+      },
+      "merge_samples": 1600
+    },
+    "reaction_settings": {
+      "reaction_threshold": {
+        "numerator": 1,
+        "denominator": 10
+      },
+      "vocal_uncertainty": {
+        "numerator": 3,
+        "denominator": 100
+      },
+      "signal_minimum": {
+        "numerator": 1,
+        "denominator": 1000000
+      },
+      "floor_ratio": {
+        "numerator": 4,
+        "denominator": 1
+      },
+      "onset": {
+        "numerator": 3,
+        "denominator": 25
+      },
+      "tail": {
+        "numerator": 1,
+        "denominator": 5
+      }
+    },
+    "cleanup_db": -36,
+    "minimum_cleanup_ramp_seconds": "1/5",
+    "content_preservation_overrides_candidate_targets": true
+  },
+  "actual_acceptance": {
+    "complete_two_person": "NOT_RUN_UNAVAILABLE",
+    "complete_band": "NOT_RUN_ORIGIN_TAIL_REFUSED",
+    "distinct_held_out": "NOT_RUN_NOT_SUPPLIED",
+    "full_two_hour_media_processing": "NOT_RUN",
+    "annotated_words_acknowledgements_laughter": null,
+    "acceptance_deletion_precision": null,
+    "excessive_handover_gap_coverage": null,
+    "actual_idle_noise_reduction_db": null,
+    "actual_rendered_sync": "NOT_RUN",
+    "actual_full_native_editability": "NOT_RUN",
+    "full_processing_seconds": null,
+    "full_processing_peak_memory_bytes": null,
+    "manual_baseline_seconds": null,
+    "assisted_correction_seconds": null,
+    "effort_reduction": null,
+    "owner_listening": "NOT_RUN",
+    "owner_utility_acceptance": "NOT_RUN"
+  },
+  "origin_tail_review": {
+    "draft_private": true,
+    "draft_accepted": false,
+    "new_verified_origins": 0,
+    "tail_contract_extended": false,
+    "media_repaired": false,
+    "v1_refusals_preserved": true
+  },
+  "preferences": {
+    "maximum_new_listening_files": 1,
+    "new_listening_files_created": 0,
+    "new_connection": false
+  },
+  "production_core_application_desktop_adapter_models_licences_fixtures_unchanged": true,
+  "new_actual_kdenlive_operations": "NOT_RUN",
+  "g01_g09_full_interview_exit_gate": "BLOCKED",
+  "blockers": [
+    "A complete two-person interview is unavailable at present, explicitly confirmed by the owner.",
+    "Existing four-audio-file band input retains four unverified/null origins and unequal exact tails. Owner Zoom provenance does not certify alignment or coverage. Genuine reviewed origins and a supported explicit tail contract are missing.",
+    "No distinct independently labelled held-out acceptance corpus is registered. Existing reserved development end excerpts are not an independent unseen interview.",
+    "Actual complete-interview/held-out exports, full two-hour media processing, retention/approval/noise/rendered-sync/editability/performance/correction-effort metrics and focused owner utility acceptance are NOT RUN."
+  ],
+  "s13_started": false,
+  "synchronization": "must_verify_live_at_each_checkpoint",
+  "checkpoint_documentation_review": {
+    "status": "passed",
+    "reviewed_text_files": 9,
+    "valid_local_links": 24,
+    "private_source_tokens_found": 0,
+    "retained_provenance_hashes_verified": 9,
+    "state_next_step_handover_consistent": true,
+    "s12_remains_blocked": true,
+    "s13_pending": true,
+    "production_core_adapter_desktop_policies_licences_fixtures_unchanged": true,
+    "implementation_unchanged_since": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
+    "new_media_or_gui_operations_in_documentation_review": false
+  }
+}
