@@ -7,11 +7,11 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S10",
-  "next_step": "S11",
-  "latest_handover": "docs/handovers/S10.md",
-  "implementation_commit": "00c16d9aa08ae7c7ea9114dd22d6db07d69fbd94",
-  "technical_gate_status": "passed_applicable_s10_g01_g03_g09_and_actual_kdenlive_regression",
+  "active_step": "S11",
+  "next_step": "S12",
+  "latest_handover": "docs/handovers/S11.md",
+  "implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
+  "technical_gate_status": "passed_applicable_s11_g01_g03_g09_desktop_smoke_and_actual_kdenlive_open_play",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
   "steps": [
@@ -97,7 +97,7 @@
       "title": "Build the minimal desktop workflow",
       "prerequisite": "S10",
       "brief": "docs/project/steps/S11.md",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "S12",
@@ -153,16 +153,16 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-29",
   "prerequisites_for_next_step": [
-    "S10 is complete for supported synthetic/recovery scope. Execute S11 only in a later explicitly selected thread; no S11 implementation.",
-    "Read AGENTS, STATE/NEXT_STEP, complete S10 handover, execution/GitHub protocols, S03-S10 guides and S11 brief. Resolve containing checkpoint; verify live/local/upstream equality, clean worktree and exact-SHA CI first.",
-    "Build the thin desktop workflow over the shared Application service. Do not duplicate timing/inference rules in UI. Keep source-time Keep/Restore, clear review/error states and explicit participant mapping.",
-    "Preserve exclusive recoverable run staging, manifests/artifact validation, explicit same-input resume, OS advisory locks, atomic new final folders, cancellation and cache validation. Full runs/reports/cache remain private. Corruption fails closed; no automatic deletion/repair.",
-    "Picture observations only restore time by narrowing approved shared deletions. S08 cleanup binds the refined S06 result and stale requests refuse; never silently rebind. Preserve original 12.00/12.45 opening/picture lag and all source-time overrides.",
-    "Preserve S03-S09 protected content, uncertainty/laughter/overlap/shared mics/exterior handles, grouping, bin originals, canonical v1 gain refusal and conservative headroom. No source repair, normalization, denoising, per-track deletion, camera advance or invented footage.",
-    "Original real origins remain unverified/null and exact tails unequal; planning/export still refuse. Saved reviewed analysis is explicit supplied data, never an automatic origin certificate. Keep held-out/full interview acceptance separate.",
-    "Final S10 suite: 206 tests, zero skips, 182.595 seconds, including 26 S10 tests. Seven actual CLI modes return review exit 2. New actual Kdenlive 26.08.2 rev. d4e87e4 regression and 12 render checks pass. Compatibility remains EXPERIMENTAL.",
-    "Windows/NTFS finalization tested; Linux/network filesystem paths not run. Pure planning cancellation occurs at stage boundaries; atomic visibility is not a power-loss durability promise. Incomplete runs with changed paths/code/settings require a new run.",
-    "No new listening or connection is needed. Preserve one-audio-file maximum/no-new-connection preference, S08 bounded human pass and unchanged private corpus. Actual Kdenlive regression is required if export changes."
+    "S11 is complete for supported synthetic desktop/recovery scope. Execute S12 only in a later explicitly selected thread; no S12 implementation or acceptance has begun.",
+    "Read AGENTS, STATE/NEXT_STEP, complete S11 handover, execution/GitHub protocols, S03-S11 guides and S12 brief. Resolve containing checkpoint; verify live/local/upstream equality, clean worktree and exact-SHA CI first.",
+    "S11 desktop is a thin Tkinter interface over unchanged Application/CLI/policies/adapters. Preserve strict private desktop job/mapping/request snapshots beside runs, explicit original-options resume, source-time Keep/audible and separate immutable-run editable copies.",
+    "Preserve exclusive recoverable staging, manifests/artifact/source/tool/code validation, OS advisory locks, atomic new final folders, cancellation and cache checks. Corruption fails closed; no automatic deletion, repair or approval rebinding.",
+    "Picture observations only narrow approved shared deletions. S08 cleanup binds the refined S06 result; pacing/override changes require explicit reviewed rebinding or unity cleanup. Preserve all source-time overrides and original 12.00/12.45 speech/picture lag.",
+    "All protected words/laughter/acknowledgements/uncertainty/overlap/shared mics, full exterior handles, groups/bin originals, canonical gain refusal and conservative headroom remain mandatory. No source repair, normalization, denoising, per-track deletion, camera advance or invented footage.",
+    "Original real origins remain unverified/null and exact tails unequal; planning/export still refuse. Saved reviewed data is explicit supplied evidence, never automatic certification. S12 must resolve genuine origin/tail acceptance requirements without silently changing media or policy.",
+    "Final suite: 224 tests, zero skips, 200.744 seconds; focused 18 tests, 22.426 seconds. New visible desktop fresh run/open-copy/actual Kdenlive open/play/Keep passes. Exporter unchanged; prior genuine full S10 native/render regression remains separate and is remeasured. Compatibility remains EXPERIMENTAL for 26.08.2 rev. d4e87e4.",
+    "Tk table scaling at 8/64 rows is presentation evidence; existing core media export covers 1/2/3/6/8 tracks. Full/held-out interviews, long stress, wider native build/FPS/track matrix, screen readers and bundled clean-install packaging remain unaccepted.",
+    "Preserve the one-audio-file maximum/no-new-connection preference, bounded S08 human pass and private corpus. Target focused S12 owner review only when essential. Actual full Kdenlive regression is required if export changes. No S13 work."
   ],
   "validation_evidence": [
     {
@@ -1041,6 +1041,56 @@
       "artifact_hashes_verified": 9,
       "legacy_contracts_policy_models_adapter_unchanged": true,
       "shared_probe_and_peak_changes": "cancellation checkpoints only"
+    },
+    {
+      "check": "s11_final_full_automated_suite",
+      "status": "passed",
+      "tests": 224,
+      "s11_tests": 18,
+      "skipped": 0,
+      "seconds": 200.744,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "applies_to_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb"
+    },
+    {
+      "check": "s11_focused_desktop_workflow",
+      "status": "passed",
+      "tests": 18,
+      "skipped": 0,
+      "seconds": 22.426,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s11_desktop.py -v",
+      "applies_to_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
+      "ignored_Tcl_exceptions": 0
+    },
+    {
+      "check": "s11_visible_desktop_and_kdenlive_open_play",
+      "status": "passed",
+      "recording": "docs/fixtures/S11_WORKFLOW.md",
+      "scope": "Fresh synthetic desktop job, explicit mapping/experimental opt-ins, run/review/open edit copy, actual Kdenlive open/play, pending Keep [4,7). Pre-final presentation refinements are explicit; final-code Tk smoke separately passes.",
+      "new_full_native_edit_save_reopen_render": false
+    },
+    {
+      "check": "s11_retained_private_development_and_originals",
+      "status": "passed",
+      "original_assertions": 102,
+      "unchanged_sources": 5,
+      "sample_exact_excerpts": 12,
+      "bounded_overlap_retained_frames": 200,
+      "gain_spans": 0,
+      "new_listening_requested": false,
+      "held_out_opened": false
+    },
+    {
+      "check": "s11_checkpoint_documentation_privacy",
+      "status": "passed",
+      "command": ".venv/Scripts/python.exe -B .local/S11/validate_checkpoint.py",
+      "applies_to": "S11 documentation checkpoint; resolve containing commit from handover history",
+      "reviewed_text_files": 12,
+      "generated_media_files": 0,
+      "valid_local_links": 70,
+      "private_source_tokens_found": 0,
+      "prior_provenance_hashes_verified": 9,
+      "application_cli_contracts_policy_models_adapter_fixtures_unchanged": true
     }
   ],
   "previous_step_implementation_commit": "d95514fb6654171efea05980828dedd6b42d998a",
@@ -1450,7 +1500,7 @@
     "real_alignment_certified": false,
     "held_out_opened": false,
     "new_listening_requested": false,
-    "s11_started": false,
+    "s11_started": true,
     "completion_handover": "docs/handovers/S10.md",
     "checkpoint_documentation_review": {
       "status": "passed",
@@ -1467,6 +1517,57 @@
       "artifact_hashes_verified": 9,
       "legacy_contracts_policy_models_adapter_unchanged": true,
       "shared_probe_and_peak_changes": "cancellation checkpoints only"
+    }
+  },
+  "s11_evidence": {
+    "implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
+    "guide": "docs/project/S11_DESKTOP.md",
+    "measurements": "docs/fixtures/S11_DESKTOP_EVIDENCE.json",
+    "workflow_recording": "docs/fixtures/S11_WORKFLOW.md",
+    "completion_handover": "docs/handovers/S11.md",
+    "full_suite_tests": 224,
+    "full_suite_skipped": 0,
+    "full_suite_seconds": 200.744,
+    "focused_tests": 18,
+    "focused_seconds": 22.426,
+    "service": "s10-recoverable-cli-1",
+    "packaging_entry_point": "InterviewAutoEditor.pyw",
+    "new_dependencies": false,
+    "application_cli_policy_adapter_unchanged": true,
+    "fresh_terminal_free_synthetic_run": "PASS",
+    "new_actual_kdenlive_evidence": "open_play_only",
+    "retained_full_native_render_regression": "S10_remeasured_in_full_suite",
+    "output_frames": 267,
+    "groups": 6,
+    "gain_spans": 4,
+    "restore_output_frames": 300,
+    "restore_gain_spans": 0,
+    "cleanup_silently_rebound": false,
+    "mapping_row_smoke_counts": [
+      8,
+      64
+    ],
+    "real_export_created": false,
+    "real_alignment_certified": false,
+    "held_out_opened": false,
+    "new_listening_requested": false,
+    "new_connection": false,
+    "compatibility": "EXPERIMENTAL",
+    "s12_started": false,
+    "checkpoint_documentation_review": {
+      "status": "passed",
+      "metadata_files": 4,
+      "implementation_tests_and_artifacts_unchanged_since": "7d8d06dd4142f12e6da436a206964a894905d0bb",
+      "state_next_step_handover_consistent": true,
+      "full_tests": 224,
+      "s11_tests": 18,
+      "s12_status": "pending_not_started",
+      "reviewed_text_files": 12,
+      "generated_media_files": 0,
+      "valid_local_links": 70,
+      "private_source_tokens_found": 0,
+      "prior_provenance_hashes_verified": 9,
+      "application_cli_contracts_policy_models_adapter_fixtures_unchanged": true
     }
   }
 }
