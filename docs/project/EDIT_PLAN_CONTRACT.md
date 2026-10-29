@@ -11,7 +11,11 @@ Its separate v1 request/result records bind explicit removable-gap approvals to
 the complete analysis and explain every shared deletion. See
 [S06_PLANNER.md](S06_PLANNER.md) for fields, preset semantics, source-time
 overrides, exact mapping and migration policy. This does not connect the S02
-exporter to automatic plans yet.
+exporter to automatic plans yet. S07's separate integration now derives v1
+`edit_units` from a reproducible approved S06 result and exports synchronized
+groups. It preserves the analysis/request/map and adds no deletion authority.
+The changed export passes its scoped synthetic actual-application gate; see
+[S07 export](S07_EXPORT.md).
 
 ## Required records
 - Schema version, run ID, source project/media fingerprints, tool/model versions, settings and adapter target.

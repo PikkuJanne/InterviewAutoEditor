@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "step": "S07",
+  "date": "2026-10-29",
+  "implementation_commit": "ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912",
+  "status": "COMPLETE_APPLICABLE_SYNTHETIC_AND_RETAINED_BOUNDED_DEVELOPMENT",
+  "compatibility": "EXPERIMENTAL",
+  "algorithms": {
+    "pauses": "s06-shared-pauses-1",
+    "turns": "s07-source-group-turns-1"
+  },
+  "full_suite": {
+    "status": "PASS",
+    "tests": 140,
+    "skipped": 0,
+    "seconds": 113.045,
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+    "assets": "Explicit existing local S04/S05 models/development directory and FFmpeg/ffprobe; no downloads",
+    "applies_to_commit": "ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912"
+  },
+  "focused_s07_tests": 16,
+  "runtime": {
+    "python": "3.12.14",
+    "ffmpeg_ffprobe": "8.1.1",
+    "new_dependencies_or_models": false
+  },
+  "fixture": {
+    "path": "tests/fixtures/s07-turns-26.08.2",
+    "origin": "Generated tone/test-picture media; hand-relinked S01 native starter and S07 adapter output, NOT new Kdenlive-authored projects",
+    "source_frames": 300,
+    "fps": "25",
+    "removed_source_frames": [
+      [
+        105,
+        172
+      ]
+    ],
+    "independent_global_gap_seconds": [
+      "4",
+      "7"
+    ],
+    "output_frames": 233,
+    "output_seconds": "233/25",
+    "groups": 6,
+    "group_output_boundaries": [
+      0,
+      50,
+      75,
+      105,
+      133,
+      158,
+      233
+    ],
+    "overlaps_seconds": [
+      [
+        "2",
+        "3"
+      ],
+      [
+        "8",
+        "9"
+      ]
+    ],
+    "all_protected_events_retained": 4,
+    "exterior_handles_complete": true,
+    "moved_package_reproduction": "PASS byte-exact"
+  },
+  "automated_counts": [
+    1,
+    2,
+    3,
+    6,
+    8
+  ],
+  "structural_turn_stress": {
+    "turns": 500,
+    "fps": [
+      "25",
+      "30000/1001"
+    ],
+    "duration_conservation": true
+  },
+  "retained_bounded_human_development": {
+    "scope": "Retained bounded human-confirmed development overlap; derived coordinate harness, not original alignment or held-out acceptance",
+    "retained_frames": 200,
+    "source_frames": 200,
+    "original_analysis_unchanged": true,
+    "new_original_export": false,
+    "new_listening": false,
+    "held_out_opened": false,
+    "all_groups_use_shared_map": true
+  },
+  "original_corpus": {
+    "status": "PASS",
+    "assertions": 102,
+    "unchanged_originals": 5,
+    "sample_exact_excerpts": 12,
+    "native_sequence_extent_delta_frames": 1,
+    "whole_project_semantics_equal": false,
+    "original_alignment_certified": false
+  },
+  "gates": {
+    "G01": "PASS scoped unchanged originals, references, MP4 audio routing and GUI-render marker exclusion",
+    "G02": "PASS actual 26.08.2 rev. d4e87e4 synthetic round trip",
+    "G03": "PASS exact timing and actual GUI-render source/output anchors",
+    "G04": "PASS construction and retained bounded development preservation only",
+    "G05": "PASS independent construction global-gap label only",
+    "G07": "PASS actual grouped ripple extraction/movement/undo/reopen and synthetic overlaps",
+    "G11": "VERIFY_LIVE_AT_CHECKPOINT"
+  },
+  "actual_application": {
+    "required": "26.08.2 rev. d4e87e4",
+    "installed_executable_sha256": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352",
+    "matches_prior_verified_binary": true,
+    "targetable_window_exposed": true,
+    "task_started_processes_stopped": true,
+    "project_opened": true,
+    "play": "PASS visual playback",
+    "group_edit": "PASS native 25-frame ripple extraction and one-second group move, undo",
+    "save_reopen": "PASS native and sanitized copy",
+    "gui_render": "PASS full-project MP4-H264/AAC completed in 2 seconds",
+    "required_action": null,
+    "version_dialog_observed": "26.08.2",
+    "components_observed": {
+      "revision": "d4e87e4",
+      "mlt": "7.43.0",
+      "qt_using_and_built_against": "6.11.1"
+    },
+    "startup_resolution": "User opened installed application and explicitly reported it started; continued S07 in the same thread",
+    "provenance": "tests/fixtures/s07-turns-26.08.2/PROVENANCE.json",
+    "automatic_startup_attempts": 2,
+    "user_started_session": true
+  },
+  "preservation": {
+    "analysis_request_approvals_overrides_retained": true,
+    "one_shared_map": true,
+    "full_bin_sources": true,
+    "mp4_audio_disabled_all_chains": true,
+    "gain_changes": false,
+    "camera_retiming": false,
+    "original_real_plan_export_refused": true,
+    "held_out_opened": false,
+    "new_human_listening_requested": false
+  },
+  "failed_attempts_retained": [
+    "Initial focused fixtures used an incorrect adapter target and orphan test tractors; corrected test construction and exact source-derived tone labels.",
+    "Initial broad run: 133 tests, 11 errors from IAE_S04_DEVELOPMENT pointing at JSON instead of its directory. Corrected invocation; later full suite 137 PASS, final 138 PASS.",
+    "Two initial automatic launches had no targetable window; resolved after direct user startup. Initial inherited cached source hashes caused Clip Problems/Reload, aborted without repair; fixed construction metadata and repeated every actual gate successfully."
+  ],
+  "checkpoint_review": {
+    "reviewed_text_paths": 23,
+    "reviewed_generated_media_paths": 4,
+    "valid_local_links": 52,
+    "private_tokens_found": 0,
+    "s07_status": "complete_applicable_gates",
+    "state_evidence_links_fixture_consistency": "PASS",
+    "existing_contracts_models_instructions_licence_preserved": true,
+    "implementation_unchanged_since_full_suite": true
+  },
+  "initial_implementation_commit": "24f29902a255269bfd98bdb8adaca6d2e3909b37",
+  "gui_render_measurements": {
+    "report": "tests/fixtures/s07-turns-26.08.2/render-validation.json",
+    "checks": 10,
+    "video_frames": 233,
+    "picture_anchors": 13,
+    "picture_best_offsets": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "audio_best_lags_samples_grid_48": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "audio_samples_48000hz": 447488,
+    "aac_padding_samples": 128,
+    "embedded_997hz_attenuation_db": -227.746,
+    "native_sequence_extent_delta_frames": 0,
+    "whole_project_semantic_equal": true
+  }
+}

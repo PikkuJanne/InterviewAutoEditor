@@ -61,3 +61,18 @@ render was remeasured successfully with all eleven checks, preserving the
 recorded native one-frame extent delta. No new GUI round trip or real export
 was performed. Real source origins/tails remain unresolved and their v1
 refusals remain in force. See [S06 evidence and limits](project/S06_PLANNER.md).
+
+S07 adds a separate production adapter integration for approved plans, aligned
+turn/overlap groups and cue guides. Its generated 25-FPS six-group fixture has
+automated timing, routing, recovery and N-track coverage. **S07 scoped G02/G03/G07
+PASS in actual 26.08.2 rev. d4e87e4.** Open/play/group ripple extraction and
+move/undo/save/close/reopen/GUI render passed. Sanitized native evidence also
+opened. Native timeline/groups/guides match with zero sequence extent change
+for this capture; historical S01/S02's one-frame deltas remain recorded.
+The GUI render has 233 frames, 13 exact picture anchors, seven zero-lag audio
+anchors and both overlap sources. Initial startup trouble was resolved when
+the user opened the application; inherited construction-source cache hashes
+were removed after an initial reload warning. Neither failure is hidden.
+Product compatibility remains EXPERIMENTAL. See [S07 details](project/S07_EXPORT.md),
+[actual provenance](../tests/fixtures/s07-turns-26.08.2/PROVENANCE.json) and
+[measurements](../tests/fixtures/s07-turns-26.08.2/render-validation.json).

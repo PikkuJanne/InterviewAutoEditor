@@ -7,11 +7,11 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S06",
-  "next_step": "S07",
-  "latest_handover": "docs/handovers/S06.md",
-  "implementation_commit": "9a9299d88c132d1d4e5fdfbd6d97f9d4fff9e9bd",
-  "technical_gate_status": "passed",
+  "active_step": "S07",
+  "next_step": "S08",
+  "latest_handover": "docs/handovers/S07.md",
+  "implementation_commit": "ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912",
+  "technical_gate_status": "passed_applicable_s07_g02_g03_g07",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
   "steps": [
@@ -69,7 +69,7 @@
       "title": "Export clear speaker turns and grouped edits",
       "prerequisite": "S06",
       "brief": "docs/project/steps/S07.md",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "S08",
@@ -153,14 +153,13 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-29",
   "prerequisites_for_next_step": [
-    "S06 is complete on applicable exact/synthetic and retained bounded development fixtures. S07 remains pending; execute it only in a later explicitly selected thread.",
-    "Read S06 handover, STATE/NEXT_STEP, execution/GitHub protocols, S03/S04/S05/S06 contracts/guides and the S07 brief. Verify containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI before editing.",
-    "PlanningResult/request are separate strict v1 records; canonical Analysis/EditPlan remain unchanged v1. Preserve source-time overrides, decision/approval provenance and the one shared time map.",
-    "Every deletion requires an explicit all-track removable-gap approval bound to the complete analysis. Negative VAD/reaction/noise-floor/correlation results are not silence certificates. Unknown/shared/reaction boundary speaker rules preserve time.",
-    "Preserve every protected speech/reaction/uncertainty/overlap event, shared microphone group, full exterior handle, native extent delta and exact source tail. No per-track removal, gain changes, camera-dependent cuts or silent repair.",
-    "Original real origins remain unverified with null offsets and unequal tails; v1 planning/export refusal remains. Derived validation origins are not original-media certificates.",
-    "S07 must obtain actual Kdenlive 26.08.2 rev. d4e87e4 editability evidence for any changed export. S06 adds no new GUI round trip or automatic editable-project output; compatibility remains EXPERIMENTAL.",
-    "Keep private recordings/transcripts/names/source hashes/labels local and held-out acceptance separate. No new listening is needed for S06; retain one-audio-file maximum and no-new-connection preference for later explicitly requested review."
+    "S07 is complete on applicable synthetic and retained bounded development fixtures; S08 remains pending and must run only in a later explicitly selected thread.",
+    "Read S07 handover, STATE/NEXT_STEP, execution/GitHub protocols, S03-S07 contracts/guides and S08 brief. Verify containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA CI before editing.",
+    "S07 derives source-group turns/cues separately from S06 pause approval. Keep strict v1 contracts, exact reproducibility, one shared map, explicit global gap approvals, all protected content and source-time Keep/audible overrides.",
+    "S08 attenuation must independently preserve speech/reactions/uncertainty/overlap, shared microphones and user audible overrides. Current protected-source attenuation refusal cannot be silently weakened. No per-track time removal, normalization/denoising, camera retiming or source repair.",
+    "Actual 26.08.2 rev. d4e87e4 passed S07 open/play/group ripple extraction/movement/undo/save/close/reopen/render. Any changed export still needs actual application regression. Product compatibility stays EXPERIMENTAL.",
+    "Original real origins remain unverified/null, exact tails unequal and native sequence findings distinct. Existing real planning/export refusal remains. S07 synthetic native extent delta is zero, not a replacement for earlier one-frame findings.",
+    "Private media/labels/names/fingerprints stay local; held-out/full-interview acceptance remains separate. Preserve one-audio-file maximum and no-new-connection preference for later explicitly requested listening."
   ],
   "validation_evidence": [
     {
@@ -737,6 +736,65 @@
       "new_gui_interaction": false,
       "applies_to_commit": "9a9299d88c132d1d4e5fdfbd6d97f9d4fff9e9bd",
       "evidence": "docs/fixtures/S06_PLANNER_EVIDENCE.json"
+    },
+    {
+      "check": "s07_initial_full_suite",
+      "status": "PASS",
+      "tests": 138,
+      "skipped": 0,
+      "seconds": 98.374,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "assets": "Explicit existing local S04/S05 models/development directory and FFmpeg/ffprobe; no downloads",
+      "applies_to_commit": "24f29902a255269bfd98bdb8adaca6d2e3909b37"
+    },
+    {
+      "check": "s07_initial_automatic_gui_startup",
+      "status": "NOT_TARGETABLE_THEN_RESOLVED_BY_USER_STARTUP",
+      "evidence": "docs/fixtures/S07_EXPORT_EVIDENCE.json",
+      "applies_to_commit": "24f29902a255269bfd98bdb8adaca6d2e3909b37",
+      "scope": "Historical initial attempt only; later actual successful gate recorded below"
+    },
+    {
+      "check": "s07_retained_bounded_overlap_and_originals",
+      "status": "PASS",
+      "retained_preview_frames": 200,
+      "original_corpus_assertions": 102,
+      "unchanged_originals": 5,
+      "sample_exact_excerpts": 12,
+      "real_alignment_certified": false,
+      "applies_to_commit": "24f29902a255269bfd98bdb8adaca6d2e3909b37"
+    },
+    {
+      "check": "s07_final_full_suite",
+      "status": "PASS",
+      "tests": 140,
+      "skipped": 0,
+      "seconds": 113.045,
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "assets": "Explicit existing local S04/S05 models/development directory and FFmpeg/ffprobe; no downloads",
+      "applies_to_commit": "ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912"
+    },
+    {
+      "check": "s07_actual_g02_g03_g07",
+      "status": "PASS_applicable_synthetic",
+      "checks": 10,
+      "video_frames": 233,
+      "picture_anchors": 13,
+      "audio_anchors": 7,
+      "audio_lag_samples": 0,
+      "native_extent_delta_frames": 0,
+      "evidence": "tests/fixtures/s07-turns-26.08.2/PROVENANCE.json",
+      "measurements": "tests/fixtures/s07-turns-26.08.2/render-validation.json",
+      "applies_to_commit": "ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912"
+    },
+    {
+      "check": "s07_checkpoint_privacy_and_consistency",
+      "status": "PASS",
+      "reviewed_text_paths": 23,
+      "reviewed_generated_media_paths": 4,
+      "valid_local_links": 52,
+      "private_tokens_found": 0,
+      "scope": "Final documentation checkpoint; implementation tree unchanged since the 140-test run"
     }
   ],
   "previous_step_implementation_commit": "7cf553449a69d4e4518875f029e8933f1bee4656",
@@ -994,6 +1052,29 @@
     "new_gui_interaction": false,
     "compatibility": "EXPERIMENTAL",
     "completion_handover": "docs/handovers/S06.md",
-    "s07_started": false
+    "s07_started": true
+  },
+  "s07_evidence": {
+    "guide": "docs/project/S07_EXPORT.md",
+    "measurements": "docs/fixtures/S07_EXPORT_EVIDENCE.json",
+    "fixtures": "tests/fixtures/s07-turns-26.08.2",
+    "implementation_commit": "ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912",
+    "full_suite_tests": 140,
+    "full_suite_skipped": 0,
+    "algorithm": "s07-source-group-turns-1",
+    "g02": "PASS_actual_synthetic",
+    "g03": "PASS_math_and_actual_GUI_render",
+    "g07": "PASS_actual_group_edit_and_reopen",
+    "new_gui_project_open": true,
+    "real_export_created": false,
+    "held_out_opened": false,
+    "compatibility": "EXPERIMENTAL",
+    "completion_handover": "docs/handovers/S07.md",
+    "s08_started": false,
+    "focused_tests": 16,
+    "actual_provenance": "tests/fixtures/s07-turns-26.08.2/PROVENANCE.json",
+    "render_measurements": "tests/fixtures/s07-turns-26.08.2/render-validation.json",
+    "render_video_frames": 233,
+    "native_sequence_extent_delta_frames": 0
   }
 }

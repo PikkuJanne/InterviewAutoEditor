@@ -1,84 +1,89 @@
-# Next: S07 — export clear speaker turns and grouped edits
+# Next: S08 — apply reversible idle-microphone cleanup
 
-**S06 is complete on applicable exact/synthetic and retained bounded development
-fixtures. S07 remains pending and was not started.** Compatibility is EXPERIMENTAL.
+**S07 is complete on applicable synthetic and retained bounded development
+fixtures. S08 remains pending and was not started.** Compatibility is EXPERIMENTAL.
 
 - Branch: `codex/kdenlive26-overhaul`.
-- S06 implementation: `9a9299d88c132d1d4e5fdfbd6d97f9d4fff9e9bd`.
-- Handover: [S06.md](handovers/S06.md).
+- S07 implementation/evidence: `ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912`.
+- Initial S07 core: `24f29902a255269bfd98bdb8adaca6d2e3909b37`.
+- Handover: [S07.md](handovers/S07.md).
 - State: [STATE.json](project/STATE.json).
-- Next brief: [S07.md](project/steps/S07.md).
-- Planner/schema/usage: [S06_PLANNER.md](project/S06_PLANNER.md).
-- Measurements: [S06_PLANNER_EVIDENCE.json](fixtures/S06_PLANNER_EVIDENCE.json).
-- Prior human-development gate: [S05-attempt-05.md](handovers/S05-attempt-05.md).
+- Next brief: [S08.md](project/steps/S08.md).
+- Export guide: [S07_EXPORT.md](project/S07_EXPORT.md).
+- Evidence: [S07_EXPORT_EVIDENCE.json](fixtures/S07_EXPORT_EVIDENCE.json).
+- Actual GUI provenance: [PROVENANCE.json](../tests/fixtures/s07-turns-26.08.2/PROVENANCE.json).
+- Render measurements: [render-validation.json](../tests/fixtures/s07-turns-26.08.2/render-validation.json).
 
-S06 produces one shared frame-quantized map from all protected events. It adds
-Tight/Gentle pacing, confident different/same source-group rules, protection-aware
-residuals, source-time Keep overrides and exact source/output explanations.
-Canonical Analysis/EditPlan remain v1; separate strict v1 request/result records
-retain approval and decision provenance. Every deletion requires an explicit
-all-track removable-gap approval bound to the complete analysis. Negative
-VAD/reaction/noise-floor/correlation results never certify removable silence.
-Unknown, shared-microphone or reaction boundaries preserve gaps. No activity or
-no approvals preserves the recording, including complete exterior sections.
+S07 derives substantial recording-source turns and overlap boundaries while
+retaining brief backchannels as cues. Every edit unit is one native group with
+one video and all N audio clips. One unchanged S06 map controls every track.
+Strict reproducibility, explicit all-track gap approvals, source-time Keep and
+audible overrides, protected content, shared microphones, full exterior handles
+and original bin sources remain intact. Canonical contracts stay v1.
 
-Final full suite: **124 tests, zero skips, 92.131 seconds**, with local CPU
-models/FFmpeg. After LF-only wire-fixture cleanup the final S06 suite passed
-**17 tests, zero skips, 8.891 seconds**. Tests cover 500 planned cuts each at
-25 and 30000/1001 FPS, five sample grids and exact duration conservation.
-Public synthetic 30-second fixtures retain 7/7 protected events and place 2/2
-deletions inside independent construction labels in each preset: Tight 591
-frames, Gentle 603. These are mathematical fixtures, not human accuracy or
-Kdenlive-authored project evidence.
+Final full implementation suite: **140 tests, zero skips, 113.045 seconds** with
+existing local CPU models, development assets and FFmpeg/ffprobe. Coverage includes
+1/2/3/6/8 audio tracks, 500 turns at integer/fractional FPS, recovery, provenance,
+exclusive output, relocation and actual-GUI-render remeasurement.
 
-The production planner preserves the entire eight-second human-confirmed overlap
-preview in a separate derived-coordinate harness. Synthetic harness origins
-never certify originals. Actual real analysis still refuses planning/export for
-unverified origins; null offsets, unequal exact tails and native sequence deltas
-remain untouched. Source checks pass 102 assertions: five unchanged originals
-and twelve sample-exact excerpts. All eleven existing S02 GUI-render measurements
-pass. No new GUI operation or automatic editable-project export occurred.
+Actual **Kdenlive 26.08.2 rev. d4e87e4**, MLT 7.43.0, Qt 6.11.1 passed open/play/
+group ripple extraction and movement/undo/save/close/reopen/GUI render. The
+sanitized native copy also opened. Removing a 25-frame overlap group shifted all
+later video/audio clips together. Native timing/groups/guides match, with zero
+sequence extent change in this capture. Prior S01/S02 one-frame findings remain.
 
-Retain all S04/S05 events/reviews, shared microphone groups, full handles, native
-extent and exact tails. No silent shifting, stretching, padding, truncation,
-gain change, per-track removal or camera retiming. S07 must obtain actual
-Kdenlive **26.08.2 rev. d4e87e4** evidence for changed export; XML/MLT-only tests
-cannot replace open/play/group-edit/save/reopen/render evidence.
+The synthetic output has six groups and 233 frames. All ten render checks pass:
+13 picture anchors map to exact source frames; seven audio anchors have zero
+measured lag; both sources remain in both one-second overlaps; the embedded
+MP4 marker is about -227.746 dB in the silent probe. AAC adds 128 padding samples.
+These are measured synthetic/visual GUI checks, not subjective real-interview
+listening, original-alignment certification or held-out acceptance.
 
-Real useful-removal rate, natural pace, full-interview/held-out acceptance and
-gain policy remain unaccepted. Held-out audio stays separate and unopened.
-No new listening is needed for S06. Preserve the user's one-audio-file maximum
-and no-new-connection preference for later explicitly requested review.
-Private media, labels, source fingerprints and paths stay local.
+Retained human-confirmed development overlap survives 200/200 frames. The
+original corpus again passes 102 assertions: five unchanged originals and twelve
+sample-exact excerpts. Actual original origins remain unverified/null and tails
+unequal; real planning/export still refuses. No gains, normalization/denoising,
+source repair, per-track removal or camera retiming was introduced.
+
+Initial automatic GUI launches were not targetable; the user opened the app and
+S07 continued. A first construction open warned about inherited stale native
+WAV cache hashes. It was aborted, construction metadata corrected, and all GUI
+checks repeated successfully. Both failures are retained in provenance/handover.
+No current S07 blocker or further user action remains.
+
+S08 must independently validate any attenuation policy against protected speech,
+reactions, uncertainty, shared microphones and overlap. Current protected-source
+attenuation refusal is not permission to weaken protection silently. Preserve
+source-time audible overrides and exact full coverage. Keep private data local,
+held-out/full-interview acceptance separate, the one-audio-file maximum and
+no-new-connection preference. Changed export needs actual Kdenlive regression.
 
 Verify the containing checkpoint before editing:
 
 ```powershell
-git log -1 --format=%H -- docs/handovers/S06.md
+git log -1 --format=%H -- docs/handovers/S07.md
 python tools/verify_checkpoint.py --repo .
 ```
 
-The closing chat records actual local/live equality, clean upstream/worktree and
-exact-SHA CI after normal push. Absent workflows/checks mean **CI not configured**,
-never green CI. Failed synchronization requires resuming S06 before advancing.
+The closing chat records final local/live equality, clean upstream/worktree and
+exact-SHA CI after normal push. Absent workflows/checks means **CI not configured**.
+A failed sync overrides continuation and requires resuming S07.
 
 Ready-to-paste next-thread prompt:
 
-> Execute S07 only in the existing InterviewAutoEditor checkout on
-> codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md,
-> docs/handovers/S06.md, execution/GitHub protocols, S03/S04/S05/S06
-> contracts/guides and the S07 brief. S06 implementation is
-> 9a9299d88c132d1d4e5fdfbd6d97f9d4fff9e9bd. Verify the containing checkpoint,
-> live local/remote SHA equality, clean upstream/worktree and exact-SHA CI first.
-> Export meaningful speaker turns and synchronized grouped edits using the one
-> shared map. Preserve protected content, overlap, shared microphones, source-time
-> overrides, explicit all-track gap approvals and complete exterior handles.
-> Keep original unverified/null origins, native extent deltas and unequal exact
-> tails; preserve current real-planning/export refusals. No silent media repair,
-> per-track removal, gain changes or camera retiming. Keep private data local,
-> held-out acceptance separate and compatibility EXPERIMENTAL. Obtain actual
-> Kdenlive 26.08.2 rev. d4e87e4 evidence for changed export; do not substitute
-> XML/MLT tests. Complete S07 gates, commit/push/verify exact-SHA CI, provide a
-> verbose handover and STOP.
+> Execute S08 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read
+> AGENTS.md, STATE.json, NEXT_STEP.md, docs/handovers/S07.md, execution/GitHub
+> protocols, S03–S07 contracts/guides and the S08 brief. S07 implementation and
+> actual GUI evidence are ffb83e1a3ce07edabe99ce3ed8bdbe500d46c912. Verify the
+> containing checkpoint, live SHA equality, clean upstream/worktree and exact-SHA
+> CI first. Implement reversible idle-microphone cleanup within S08, preserving
+> all speech/reactions/uncertainty/overlap, shared microphones, source-time audible
+> and Keep overrides, explicit global gap approvals, the one shared map, grouped
+> edits, full exterior handles/bin originals and existing real-origin/tail
+> refusals. Do not renormalize/denoise, repair sources, remove time per track or
+> retime the camera. Validate any new gain policy independently; obtain actual
+> Kdenlive 26.08.2 rev. d4e87e4 evidence for changed export. Keep private data
+> local, held-out acceptance separate and compatibility EXPERIMENTAL. Complete
+> S08 gates, commit/push/verify, provide a verbose handover and STOP. No S09.
 
-Paused after S06. The next thread should execute S07 only.
+Paused after S07. The next thread should execute S08 only.

@@ -32,9 +32,10 @@ native gain-edge measurements, GUI evidence and recovery instructions.
   their own evidence and are never automatically claimed compatible.
 
 These are the full product requirements. The S02 proof implements only simple
-starter import and manual shared-cut export. S06 now adds conservative shared
-pause planning as a separate callable core; automatic grouped export, idle
-noise cleanup and the product desktop UI remain later work.
+starter import and manual shared-cut export. S06 adds conservative shared pause
+planning. S07 implements grouped export from that plan, with a passing actual
+Kdenlive synthetic round trip. Idle noise cleanup and the product desktop UI
+remain later work.
 Real source offsets, drift and subframe tails remain unverified. The observed
 native one-frame sequence extent change is retained explicitly in the proof.
 
@@ -68,6 +69,13 @@ authorize a cut. Full exterior handles, protected content and uncertainty
 survive. Real unverified origins/unequal tails still refuse planning/export.
 See [S06 contracts, usage and limits](docs/project/S06_PLANNER.md). S06 exports
 plan data only; it does not yet create an automatically edited Kdenlive project.
+
+S07 derives meaningful source-group turns and overlap boundaries, keeps minor
+backchannels as guides, and exports N+1 synchronized clips per edit group using
+the same approved shared map. Synthetic before/after projects, actual native
+saves and the GUI render pass the scoped Kdenlive 26.08.2 rev. d4e87e4 gates.
+Real source origin/tail refusals and EXPERIMENTAL compatibility remain. See
+[S07 usage, recovery and limits](docs/project/S07_EXPORT.md).
 
 Execute one named step per chat and stop after its verified Git checkpoint.
 Start with [NEXT_STEP](docs/NEXT_STEP.md), [STATE](docs/project/STATE.json),
