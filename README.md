@@ -85,6 +85,12 @@ See [S08 policy, evidence and restoration](docs/project/S08_CLEANUP.md) and the
 current handover for its listening gate status. Real origin/tail refusals and
 EXPERIMENTAL compatibility remain.
 
+S09 observes probable recorded-picture boundaries near substantial source-group
+handovers. Safe seams only narrow existing approved shared-silence deletions;
+uncertain layouts restore time and retain review markers. Speech and original
+picture/audio timing survive, including the 12.00/12.45 delay case. S08 cleanup
+must be rebound to the refined map. See [S09 usage and limits](docs/project/S09_PICTURE.md).
+
 Execute one named step per chat and stop after its verified Git checkpoint.
 Start with [NEXT_STEP](docs/NEXT_STEP.md), [STATE](docs/project/STATE.json),
 the latest linked handover and [AGENTS.md](AGENTS.md).

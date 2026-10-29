@@ -85,3 +85,14 @@ were removed after an initial reload warning. Neither failure is hidden.
 Product compatibility remains EXPERIMENTAL. See [S07 details](project/S07_EXPORT.md),
 [actual provenance](../tests/fixtures/s07-turns-26.08.2/PROVENANCE.json) and
 [measurements](../tests/fixtures/s07-turns-26.08.2/render-validation.json).
+
+S09's recorded-picture integration passes applicable synthetic G02/G03/G07/G08
+in actual **26.08.2 rev. d4e87e4 / MLT 7.43.0 / Qt 6.11.1**. The 267-frame GUI
+render matches every source picture under the shared map, with one existing
+switch at output 105, zero measured audio-anchor lag and retained S08 gain.
+Native group movement/undo/save/reopen preserve semantics with zero extent delta.
+The exact 20-FPS 12.00/12.45 example is separate decoder/math evidence, not a GUI
+compatibility claim. Layout confidence remains heuristic; unknown/gallery/pinned/
+camera-off handover seams restore time. Real origin/tail refusals and
+EXPERIMENTAL status remain. See [S09 rules](project/S09_PICTURE.md) and
+[actual provenance](../tests/fixtures/s09-picture-26.08.2/PROVENANCE.json).

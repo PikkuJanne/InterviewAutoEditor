@@ -18,7 +18,7 @@ def put(node, name, value):
     prop.text = str(value)
 
 
-def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False, cleanup=None):
+def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False, cleanup=None, picture=None):
     """Bindings map every canonical source ID to its explicit local resource.
 
     Validate strict contracts, reproducibility, starter/media fingerprints and
@@ -27,6 +27,11 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     """
     if not experimental:
         raise IntakeError('EXPERIMENTAL_EXPORT_REQUIRES_OPT_IN')
+    refinement = None
+    if picture is not None:
+        from ..picture import refine_picture_seams
+        refinement = refine_picture_seams(result, picture)
+        result = refinement.result
     layout = build_turns(result)
     plan = layout.plan
     peak_report = None
@@ -170,6 +175,16 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
         guides.setdefault(pos, []).append(f'{cue.kind}: {", ".join(cue.source_ids)}; source [{cue.source_start},{cue.source_end}) s')
     for _, out in list(plan.time_map.segments())[1:]:
         guides.setdefault(out.start, []).append('Approved shared pause seam')
+    if refinement is not None:
+        for marker in refinement.markers:
+            output_time = marker.output_time
+            if output_time is None:
+                # Removed-source markers remain explicit; place their guide on
+                # the following shared seam rather than invent a mapped time.
+                output_time = next(out.start / starter.fps for src, out in plan.time_map.segments()
+                                   if src.start / starter.fps > marker.source_time)
+            pos = min(end - 1, int(output_time * starter.fps))
+            guides.setdefault(pos, []).append(f'{marker.kind}; source {marker.source_time} s; output {marker.output_time} s; confidence {marker.confidence}; {marker.reason}')
     guide = [{'comment': ' | '.join(comments), 'duration': 0, 'pos': pos, 'type': 0} for pos, comments in sorted(guides.items())]
     for key, value in {'groups': json.dumps([{'children': g, 'type': 'Normal'} for g in groups]), 'guides': json.dumps(guide), 'tracksCount': len(kept), 'zonein': 0, 'zoneout': end, 'position': 0, 'activeTrack': 0, 'audioTarget': 0, 'videoTarget': len(kept)-1}.items():
         put(seq, 'kdenlive:sequenceproperties.' + key, value)
@@ -194,4 +209,5 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
             'participants': len(audios), 'groups': len(groups), 'output_frames': end,
             'edit_units': list(plan.edit_units), 'input_sequence_extent_delta_frames': starter.sequence_frames - starter.clip_frames,
             'excluded_mp4_audio_tracks': starter.excluded_mp4_audio,
+            **({'picture_algorithm': refinement.algorithm, 'picture_review_markers': len(refinement.markers)} if refinement is not None else {}),
             **({'cleanup_algorithm': cleanup.algorithm, 'gain_spans': len(cleanup.spans), 'peak_report': peak_report} if cleanup is not None else {})}

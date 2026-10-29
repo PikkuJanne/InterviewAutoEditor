@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "algorithm": "s09-recorded-picture-1",
+  "request": {
+    "schema_version": 1,
+    "analysis_sha256": "29696215ebda5b6227d7823483845dd58387cf62482e54a8c0802b1ad38808f6",
+    "layout": "speaker_view",
+    "basis": "construction_label",
+    "evidence": "Independent generated full-picture luma switch at frame 138 inside all-track silence [4,7)"
+  },
+  "video_sha256": "6fb07d023d11f6ae66a354b98c65e01b6237705cf750d65852b17ba4c4a49e7a",
+  "implementation_sha256": "746b9bc7d23f1b8766c2f9d3803b37cc2cfb8b52743922b1d6b73c942fd6ebce",
+  "decoder_sha256": "53e4776af8baba16312049d4d788b754e153028e76d5d528646659ab118176c1",
+  "decoder_version": "8.1.1",
+  "windows": [
+    {
+      "handover": {
+        "numerator": 2,
+        "denominator": 1
+      },
+      "frames": {
+        "start": 12,
+        "end": 88
+      },
+      "boundaries": []
+    },
+    {
+      "handover": {
+        "numerator": 7,
+        "denominator": 1
+      },
+      "frames": {
+        "start": 87,
+        "end": 213
+      },
+      "boundaries": [
+        {
+          "source_frame": 138,
+          "mean_difference": {
+            "numerator": 176,
+            "denominator": 255
+          },
+          "changed_fraction": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "stable_before": 51,
+          "stable_after": 75
+        }
+      ]
+    },
+    {
+      "handover": {
+        "numerator": 8,
+        "denominator": 1
+      },
+      "frames": {
+        "start": 162,
+        "end": 238
+      },
+      "boundaries": []
+    }
+  ]
+}

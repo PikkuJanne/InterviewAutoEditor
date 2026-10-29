@@ -23,6 +23,13 @@ intervals, is bound to a reproducible complete S06 result, and is independently
 validated before native export. It never changes the shared plan or weakens
 event/override protection. See [S08 cleanup](S08_CLEANUP.md).
 
+S09 keeps picture observations in separate strict v1 records bound to unchanged
+audio analysis/video/implementation hashes. Its seam refinement can only narrow
+existing approved S06 deletions, restoring time globally, then exactly reproduces
+S06 and requires S08 cleanup rebinding. Source/output picture reviews remain
+separate from speech protection and silence authority. See
+[S09 picture rules](S09_PICTURE.md). No canonical schema migration is introduced.
+
 ## Required records
 - Schema version, run ID, source project/media fingerprints, tool/model versions, settings and adapter target.
 - Project frame rate as numerator/denominator, audio sample rates, source origins and explicitly verified offsets.
