@@ -6,8 +6,12 @@ S03 establishes the executable typed v1 records and strict JSON codec in
 [`contracts.py`](../../interview_auto_editor/contracts.py). See
 [S03_CONTRACTS.md](S03_CONTRACTS.md) for fields, exact timing, migration rules,
 origin review and the deliberately conservative `exact_coverage` tail policy.
-S06 will implement planning against these contracts; no automatic decisions are
-implemented by defining their data types.
+S06 implements conservative pause planning against these unchanged v1 contracts.
+Its separate v1 request/result records bind explicit removable-gap approvals to
+the complete analysis and explain every shared deletion. See
+[S06_PLANNER.md](S06_PLANNER.md) for fields, preset semantics, source-time
+overrides, exact mapping and migration policy. This does not connect the S02
+exporter to automatic plans yet.
 
 ## Required records
 - Schema version, run ID, source project/media fingerprints, tool/model versions, settings and adapter target.

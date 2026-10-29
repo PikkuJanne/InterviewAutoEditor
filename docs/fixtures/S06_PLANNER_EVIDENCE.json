@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "step": "S06",
+  "date": "2026-10-29",
+  "implementation_commit": "9a9299d88c132d1d4e5fdfbd6d97f9d4fff9e9bd",
+  "algorithm": "s06-shared-pauses-1",
+  "compatibility": "EXPERIMENTAL",
+  "scope": "Exact/synthetic planning plus retained bounded development preservation; not held-out/full-interview or Kdenlive automatic export acceptance",
+  "runtime": {
+    "python": "3.12.14",
+    "ffmpeg_ffprobe": "8.1.1",
+    "kdenlive_prior_actual_gui": "26.08.2 rev. d4e87e4",
+    "mlt_prior_actual_gui": "7.43.0",
+    "new_dependency_or_model_changes": false
+  },
+  "automated_suite": {
+    "status": "PASS",
+    "tests": 124,
+    "skipped": 0,
+    "seconds": 92.131,
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+    "assets": "Explicit local S04/S05 models, generated development fixture and Kdenlive-bundled FFmpeg/ffprobe enabled",
+    "applies_to": "Final implementation code; followed by LF-only JSON fixture cleanup and final focused suite"
+  },
+  "final_focused_suite": {
+    "status": "PASS",
+    "tests": 17,
+    "skipped": 0,
+    "seconds": 8.891,
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s06_planner.py -v",
+    "applies_to_commit": "9a9299d88c132d1d4e5fdfbd6d97f9d4fff9e9bd"
+  },
+  "g03": {
+    "status": "PASS_applicable_exact_and_synthetic_fixtures",
+    "fps": [
+      "25",
+      "30000/1001"
+    ],
+    "shared_cuts_per_fps": 500,
+    "sample_grid_rates": [
+      16000,
+      44100,
+      48000,
+      96000,
+      192000
+    ],
+    "duration_conservation": "exact integer frames and rational times",
+    "accumulation_drift": "0",
+    "off_frame_seeded_cases": 50,
+    "zero_activity": "identity map",
+    "full_exterior_handles": true
+  },
+  "g04": {
+    "status": "PASS_applicable_construction_and_bounded_development_preservation",
+    "all_protected_kinds_retained": [
+      "speech",
+      "reaction",
+      "uncertainty",
+      "overlap",
+      "turn"
+    ],
+    "synthetic_pcm": "All labelled activity samples unchanged at 48000 and 44100 Hz; construction PCM, not speech or a Kdenlive render",
+    "derived_human_overlap_preview": {
+      "retained_frames": 200,
+      "source_frames": 200,
+      "new_listening": false,
+      "original_alignment_certified": false,
+      "new_original_plan_or_export": false,
+      "real_analysis_plan_refused": true,
+      "original_analysis_unchanged": true
+    },
+    "human_word_boundary_accuracy": "NOT_ESTABLISHED",
+    "full_interview_or_held_out_acceptance": "NOT_RUN"
+  },
+  "g05": {
+    "status": "PASS_construction_labelled_applicable_fixtures_only",
+    "fixture_provenance": "Mathematical activity and removable-gap labels; no Kdenlive-authored project or real silence certification",
+    "fixtures": [
+      {
+        "preset": "tight",
+        "source_frames": 750,
+        "output_frames": 591,
+        "approved_deletions": 2,
+        "deletions_within_independent_labels": 2,
+        "protected_events": 7,
+        "fully_retained_protected_events": 7,
+        "removed_source_frames": [
+          [
+            80,
+            147
+          ],
+          [
+            430,
+            522
+          ]
+        ],
+        "leading_trailing_handles_complete": true
+      },
+      {
+        "preset": "gentle",
+        "source_frames": 750,
+        "output_frames": 603,
+        "approved_deletions": 2,
+        "deletions_within_independent_labels": 2,
+        "protected_events": 7,
+        "fully_retained_protected_events": 7,
+        "removed_source_frames": [
+          [
+            83,
+            144
+          ],
+          [
+            433,
+            519
+          ]
+        ],
+        "leading_trailing_handles_complete": true
+      }
+    ],
+    "held_out_acceptance": "NOT_RUN",
+    "no_negative_model_silence_certificate": true,
+    "unapproved_removal_refused": true
+  },
+  "recovery_and_boundaries": {
+    "stale_analysis_approval_refused": true,
+    "source_time_keep_restores_shared_interval": true,
+    "existing_output_not_overwritten": true,
+    "invalid_request_leaves_no_result": true,
+    "unverified_origins_offsets_and_unequal_tails_refused": true,
+    "gain_changes": false,
+    "camera_dependency": false
+  },
+  "original_corpus_recheck": {
+    "status": "PASS",
+    "command": ".venv/Scripts/python.exe -B .local/S01/validate_private_corpus.py",
+    "assertions": 102,
+    "original_files_unchanged": 5,
+    "sample_exact_excerpts": 12,
+    "native_sequence_extent_delta_frames": 1,
+    "whole_project_semantic_equal": false,
+    "real_alignment_certified": false
+  },
+  "existing_s02_gui_render_remeasurement": {
+    "status": "PASS",
+    "checks": 11,
+    "video_frames": 275,
+    "audio_anchor_best_lag_samples": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "picture_anchor_best_offsets": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "embedded_mp4_marker_attenuation_db": -63.085,
+    "native_sequence_extent_delta_frames": 1,
+    "whole_project_semantic_equal": false,
+    "new_gui_interaction": false,
+    "command": ".venv/Scripts/python.exe -B tools/s02_validate_render.py --project tests/fixtures/kdenlive-26.08.2/s02-manual-cut.kdenlive --roundtrip tests/fixtures/kdenlive-26.08.2/s02-native-roundtrip.kdenlive --render tests/fixtures/kdenlive-26.08.2/s02-gui-render.mp4 --media tests/fixtures/kdenlive-26.08.2/media-2 --ffmpeg <local ffmpeg> --report <new local report>"
+  },
+  "not_run": [
+    "new Kdenlive GUI round trip",
+    "automatic editable-project export",
+    "real interview pause shortening",
+    "held-out/full-interview content or pace acceptance",
+    "gain-policy acceptance",
+    "wider GUI matrix",
+    "packaging"
+  ],
+  "initial_failures_and_corrections": [
+    "One off-frame random test used times not on its audio sample grid; corrected construction labels to exact 44100 Hz samples.",
+    "A PCM regression initially expected removal beside reaction boundaries; added a separate confident speech gap, preserving conservative reaction handling.",
+    "Generated wire fixtures initially used Windows CRLF; normalized only the two new JSON fixtures to LF, then reran all 17 S06 tests."
+  ],
+  "held_out_audio_opened": false,
+  "new_listening_requested": false,
+  "real_plan_or_export_created": false
+}

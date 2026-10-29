@@ -53,3 +53,11 @@ confirmation, whole-preview shared protection and protected-source attenuation
 refusal. Per-microphone detection gaps and uncertain exact annotations remain;
 this is not Kdenlive, alignment, full-interview or gain-policy acceptance. See
 [S05 evidence and limits](project/S05_REACTIONS.md).
+
+S06 shared pause planning adds no Kdenlive format mutation or adapter changes.
+Its exact frame/sample tests and construction-labelled v1 JSON fixtures are
+planner evidence, not application-generated projects. The existing S02 GUI
+render was remeasured successfully with all eleven checks, preserving the
+recorded native one-frame extent delta. No new GUI round trip or real export
+was performed. Real source origins/tails remain unresolved and their v1
+refusals remain in force. See [S06 evidence and limits](project/S06_PLANNER.md).

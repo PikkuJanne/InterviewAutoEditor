@@ -32,8 +32,9 @@ native gain-edge measurements, GUI evidence and recovery instructions.
   their own evidence and are never automatically claimed compatible.
 
 These are the full product requirements. The S02 proof implements only simple
-starter import and manual shared-cut export. Automatic planning, idle
-noise cleanup and the product desktop UI have not started.
+starter import and manual shared-cut export. S06 now adds conservative shared
+pause planning as a separate callable core; automatic grouped export, idle
+noise cleanup and the product desktop UI remain later work.
 Real source offsets, drift and subframe tails remain unverified. The observed
 native one-frame sequence extent change is retained explicitly in the proof.
 
@@ -57,8 +58,16 @@ acceptance and laughter protection are not established by VAD.
 S05 adds local CPU YAMNet reaction evidence, empirical signal-floor review and
 additive speech/uncertainty protection. S05's bounded labelled-development G04
 passes under shared-removal and current no-attenuation rules. Full-interview,
-held-out and gain-policy acceptance remain untested; S06 has not started.
+held-out and gain-policy acceptance remain untested.
 See [S05 setup, evidence and limits](docs/project/S05_REACTIONS.md).
+
+S06 adds Tight/Gentle shared pause plans, exact source/output mapping and
+source-time Keep overrides. Every deletion requires an explicit global
+removable-gap label bound to the analysis; negative model results alone never
+authorize a cut. Full exterior handles, protected content and uncertainty
+survive. Real unverified origins/unequal tails still refuse planning/export.
+See [S06 contracts, usage and limits](docs/project/S06_PLANNER.md). S06 exports
+plan data only; it does not yet create an automatically edited Kdenlive project.
 
 Execute one named step per chat and stop after its verified Git checkpoint.
 Start with [NEXT_STEP](docs/NEXT_STEP.md), [STATE](docs/project/STATE.json),
