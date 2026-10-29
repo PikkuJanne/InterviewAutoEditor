@@ -18,16 +18,22 @@ def put(node, name, value):
     prop.text = str(value)
 
 
-def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False):
+def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False, cleanup=None):
     """Bindings map every canonical source ID to its explicit local resource.
 
     Validate strict contracts, reproducibility, starter/media fingerprints and
-    actual complete media grids before writing a new file atomically. No gains.
+    actual complete media grids before writing a new file atomically. Optional
+    S08 cleanup is separately reproduced; the canonical v1 plan stays unchanged.
     """
     if not experimental:
         raise IntakeError('EXPERIMENTAL_EXPORT_REQUIRES_OPT_IN')
     layout = build_turns(result)
     plan = layout.plan
+    peak_report = None
+    if cleanup is not None:
+        from ..cleanup import validate_cleanup, native_keys
+        from ..peaks import measure_peaks
+        cleanup = validate_cleanup(result, cleanup)
     project, output = Path(project).resolve(), Path(output).resolve()
     starter = read_starter(project)
     if fingerprint(project) != plan.analysis.header.project_sha256:
@@ -56,6 +62,10 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
                 raise IntakeError('PLAN_VIDEO_GRID_MISMATCH')
     if output == project or output in paths.values() or output.exists():
         raise FileExistsError('Export requires a new destination.')
+    if cleanup is not None:
+        peak_report = measure_peaks(result, cleanup, paths)
+        if not peak_report['export_safe']:
+            raise IntakeError('MIX_HEADROOM_REVIEW_REQUIRED_NO_AUTOMATIC_NORMALIZATION')
     with project.open('rb') as stream:
         raw = stream.read(MAX_XML + 1)
     if len(raw) > MAX_XML or hashlib.sha256(raw).hexdigest() != plan.analysis.header.project_sha256:
@@ -133,6 +143,16 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
             root.insert(list(root).index(playlist), copy)
             entry = ET.SubElement(playlist, 'entry', producer=copy.get('id'), **{'in': str(a), 'out': str(b - 1)})
             put(entry, 'kdenlive:id', props(copy)['kdenlive:id'])
+            if audio and cleanup is not None:
+                keys = native_keys(cleanup, identity, a, b)
+                if keys:
+                    put(entry, 'kdenlive:activeeffect', 0)
+                    effect = ET.SubElement(entry, 'filter', id=unique('s08filter'))
+                    for key, value in {'window': 75, 'max_gain': '20dB', 'channel_mask': -1,
+                                       'mlt_service': 'volume', 'kdenlive_id': 'volume',
+                                       'kdenlive:collapsed': 0,
+                                       'level': ';'.join(f'{frame}={float(db):.9g}' for frame, db in keys)}.items():
+                        put(effect, key, value)
             groups[unit].append({'data': f'{index}:{position}:-1', 'leaf': 'clip', 'type': 'Leaf'})
         node.set('out', str(end - 1))
         last = seq.findall('track')[-1]
@@ -173,4 +193,5 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     return {'compatibility': 'EXPERIMENTAL', 'adapter': '26.08.2', 'turn_algorithm': layout.algorithm,
             'participants': len(audios), 'groups': len(groups), 'output_frames': end,
             'edit_units': list(plan.edit_units), 'input_sequence_extent_delta_frames': starter.sequence_frames - starter.clip_frames,
-            'excluded_mp4_audio_tracks': starter.excluded_mp4_audio}
+            'excluded_mp4_audio_tracks': starter.excluded_mp4_audio,
+            **({'cleanup_algorithm': cleanup.algorithm, 'gain_spans': len(cleanup.spans), 'peak_report': peak_report} if cleanup is not None else {})}

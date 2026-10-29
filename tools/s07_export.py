@@ -11,6 +11,7 @@ from interview_auto_editor.adapters.kdenlive import read_starter, resolve_resour
 from interview_auto_editor.contracts import loads
 from interview_auto_editor.intake import MappingManifest
 from interview_auto_editor.planner import PlanningResult
+from interview_auto_editor.cleanup import CleanupResult
 
 
 def main():
@@ -18,6 +19,7 @@ def main():
     for name in ('project','mapping','result','output','ffprobe'):
         parser.add_argument('--'+name,required=True,type=Path)
     parser.add_argument('--experimental',action='store_true')
+    parser.add_argument('--cleanup',type=Path,help='Optional separately validated S08 cleanup result')
     args=parser.parse_args()
     try:
         result=loads(PlanningResult,args.result.read_text(encoding='utf-8'))
@@ -28,7 +30,8 @@ def main():
         video=next(s.source_id for s in result.plan.analysis.sources if s.kind=='video')
         bindings={p.source_id:resolve_resource(p.resource,args.mapping.resolve().parent) for p in mapping.participants}
         bindings[video]=next(t.resource for t in starter.tracks if not t.audio)
-        report=export_project(result,args.project,bindings,{p.source_id:p.display_name for p in mapping.participants},args.output,args.ffprobe,experimental=args.experimental)
+        cleanup=loads(CleanupResult,args.cleanup.read_text(encoding='utf-8')) if args.cleanup else None
+        report=export_project(result,args.project,bindings,{p.source_id:p.display_name for p in mapping.participants},args.output,args.ffprobe,experimental=args.experimental,cleanup=cleanup)
     except KeyboardInterrupt:
         return 130
     except (OSError,ValueError,TypeError,KeyError,StopIteration):

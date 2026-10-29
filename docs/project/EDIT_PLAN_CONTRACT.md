@@ -17,6 +17,12 @@ groups. It preserves the analysis/request/map and adds no deletion authority.
 The changed export passes its scoped synthetic actual-application gate; see
 [S07 export](S07_EXPORT.md).
 
+S08 preserves the canonical v1 gain-point refusal unchanged. Its separate strict
+v1 CleanupRequest/CleanupResult authorizes only independently labelled idle
+intervals, is bound to a reproducible complete S06 result, and is independently
+validated before native export. It never changes the shared plan or weakens
+event/override protection. See [S08 cleanup](S08_CLEANUP.md).
+
 ## Required records
 - Schema version, run ID, source project/media fingerprints, tool/model versions, settings and adapter target.
 - Project frame rate as numerator/denominator, audio sample rates, source origins and explicitly verified offsets.

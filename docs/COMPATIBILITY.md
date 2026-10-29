@@ -46,6 +46,15 @@ unresolved; no real export is authorized. See [S04 limits](project/S04_SPEECH.md
 
 Do not replace this table with a blanket '26 and later' claim. Update only from actual evidence under docs/project/KDENLIVE_COMPATIBILITY.md.
 
+S08's separate approved-idle policy adds native Volume curves on multiple clips,
+including nonzero source in-points after a shared deletion. Actual 26.08.2 rev.
+d4e87e4 open/save/render and synchronized group movement pass; native key curves
+and source bounds survive. Four synthetic noise probes measure over 30 dB of
+suppression, and protected source probes remain within 0.1 dB. Native restoration
+and the listening gate are recorded separately in the
+[S08 guide](project/S08_CLEANUP.md) and current handover. No broader build, track
+count, intersample-peak or held-out quality claim is added.
+
 S05 adds local CPU reaction/uncertainty fusion only. It preserves all S04 and
 intake findings and does not change the exporter or the EXPERIMENTAL status.
 S05's bounded labelled-development G04 passes with direct-human preview overlap

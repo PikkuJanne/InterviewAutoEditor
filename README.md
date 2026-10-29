@@ -77,6 +77,14 @@ saves and the GUI render pass the scoped Kdenlive 26.08.2 rev. d4e87e4 gates.
 Real source origin/tail refusals and EXPERIMENTAL compatibility remain. See
 [S07 usage, recovery and limits](docs/project/S07_EXPORT.md).
 
+S08 adds explicitly approved, reversible idle-microphone gain automation. It
+retains protected content, shared microphones, full handles and source-time
+overrides, audits conservative mix headroom, and exports editable native Volume
+effects. Missing model activity or correlation never authorizes suppression.
+See [S08 policy, evidence and restoration](docs/project/S08_CLEANUP.md) and the
+current handover for its listening gate status. Real origin/tail refusals and
+EXPERIMENTAL compatibility remain.
+
 Execute one named step per chat and stop after its verified Git checkpoint.
 Start with [NEXT_STEP](docs/NEXT_STEP.md), [STATE](docs/project/STATE.json),
 the latest linked handover and [AGENTS.md](AGENTS.md).

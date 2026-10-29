@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "application": "Kdenlive 26.08.2 rev. d4e87e4",
+  "mlt": "7.43.0",
+  "qt": "6.11.1",
+  "executable_sha256": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352",
+  "operator": "Codex computer-use skill; observed actual Windows GUI",
+  "origin": "Generated tone/noise construction only. Native files are actual application saves sanitized without semantic changes. Renders are actual GUI renders.",
+  "artifacts": [
+    {
+      "path": "native-roundtrip.kdenlive",
+      "raw_capture_sha256": "ec50ce3a907d13f139fb6ef975dd4da0eb591686533599d0228b909d52115645",
+      "sha256": "eeeb7db32713e0f7cbf80d7d1c486b3a3c9952f4978ce758bcb196b5f5fae0c6",
+      "sanitization_preserves_semantics": true
+    },
+    {
+      "path": "group-moved.kdenlive",
+      "raw_capture_sha256": "a57be20bb3c11f68329b882ff50d8b380125131d30d21991e341fa7267b7794e",
+      "sha256": "e5b384da7fbdd177aa4cfc5670310c9820044b3a50dd0ae2f584fb522464f26e",
+      "sanitization_preserves_semantics": true
+    },
+    {
+      "path": "native-interval-restored.kdenlive",
+      "raw_capture_sha256": "ad558fa4fa83261cea2db52bc64c64766cc37216cab60ef53ee18c9ec82fea3e",
+      "sha256": "ba4e6d24201a0ee919abd4f13220d4d61955aa2fd51eab0643088c1339f02223",
+      "sanitization_preserves_semantics": true
+    },
+    {
+      "path": "gui-render.mp4",
+      "sha256": "bd2f983683f1ef6f7c95bcf0411f82fde3083f12953a4b473a64c29339fd1a7f",
+      "origin": "Actual Kdenlive GUI full-project H264/AAC render"
+    },
+    {
+      "path": "gui-restored.mp4",
+      "sha256": "6e41c9cfd3bfda262b82f157c9ceb3adf705f8be21240dbcd34cb1c3676ba871",
+      "origin": "Actual Kdenlive GUI full-project H264/AAC render"
+    }
+  ],
+  "observations": [
+    "Changed cleaned export opened without missing-media or repair warning, with two named audio tracks and native editable Volume curves.",
+    "Save As native-roundtrip captured native serialization. Full-project H264/AAC render length 00:00:09:08 completed in two seconds.",
+    "Selecting one overlap clip selected three items. Selecting final cleanup clip also selected three; native Edit Duration changed position from 00:00:06:08 to 00:00:07:08. Actual group-moved save proves all three members moved exactly 25 frames, with source bounds and gain keys unchanged. Undo restored the original position.",
+    "Native Effects enabled toggle on the final participant clip became Effects disabled. Saved interval-restoration project; full-project H264/AAC restoration render completed in nine seconds.",
+    "Restoration measured the formerly suppressed 880 Hz interval at source 9.6/output 6.92 seconds at -0.087 dB relative to original, versus -43.794 dB in the cleaned render.",
+    "Closed restoration project by opening the sanitized public native-roundtrip. It opened without warnings and retains six groups, guides and four Volume curves.",
+    "Local sanitization initially refused relative resource resolution and a native render-destination path. Helper corrected; no file with private metadata published. Production export and sources were unchanged by this helper correction."
+  ],
+  "actual_public_native_reopen": true,
+  "actual_playback": "PASS: reopened public native copy played from source frame 0, observed source frame 254 and reached full final frame 299; no warnings",
+  "actual_about_dialog_this_session": "PASS: observed About Version 26.08.2 and Components revision d4e87e4, MLT 7.43.0, Qt using/built against 6.11.1",
+  "human_speech_listening": "PENDING; separate local TTS A/B, not tone GUI render",
+  "held_out_or_original_alignment_acceptance": "NOT_RUN",
+  "prior_failures": "One accessibility action on a modal index was unavailable; refreshed screenshot and used observed coordinates. No production/gate waiver."
+}

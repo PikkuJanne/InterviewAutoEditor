@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "scope": "S08 generated tones/noise; construction labels, no recorded people",
+  "project_origin": "Hand-relinked S01 native starter and production exports, not new Kdenlive saves",
+  "gui_evidence": "NOT_RUN",
+  "source_frames": 300,
+  "output_frames": 233,
+  "noise_labels_seconds": {
+    "p0": [
+      [
+        "16/5",
+        "4"
+      ],
+      [
+        "46/5",
+        "51/5"
+      ]
+    ],
+    "p1": [
+      [
+        "22/25",
+        "47/25"
+      ],
+      [
+        "7",
+        "197/25"
+      ]
+    ]
+  },
+  "vocal_surrogate_labels_seconds": {
+    "p0": [
+      [
+        1,
+        3
+      ],
+      [
+        7,
+        9
+      ]
+    ],
+    "p1": [
+      [
+        2,
+        4
+      ],
+      [
+        8,
+        10
+      ]
+    ]
+  },
+  "independent_global_gap_seconds": [
+    4,
+    7
+  ],
+  "exports": {
+    "baseline": {
+      "compatibility": "EXPERIMENTAL",
+      "adapter": "26.08.2",
+      "turn_algorithm": "s07-source-group-turns-1",
+      "participants": 2,
+      "groups": 6,
+      "output_frames": 233,
+      "edit_units": [
+        0,
+        50,
+        75,
+        105,
+        133,
+        158,
+        233
+      ],
+      "input_sequence_extent_delta_frames": 0,
+      "excluded_mp4_audio_tracks": 0
+    },
+    "cleaned": {
+      "compatibility": "EXPERIMENTAL",
+      "adapter": "26.08.2",
+      "turn_algorithm": "s07-source-group-turns-1",
+      "participants": 2,
+      "groups": 6,
+      "output_frames": 233,
+      "edit_units": [
+        0,
+        50,
+        75,
+        105,
+        133,
+        158,
+        233
+      ],
+      "input_sequence_extent_delta_frames": 0,
+      "excluded_mp4_audio_tracks": 0,
+      "cleanup_algorithm": "s08-approved-idle-1",
+      "gain_spans": 4,
+      "peak_report": {
+        "schema_version": 1,
+        "method": "retained-frame sum of physical-channel maxima; no cancellation credit",
+        "retained_frames_audited": 233,
+        "original_sum_bound": 0.48828125,
+        "attenuated_sum_bound": 0.48828125,
+        "export_safe": true,
+        "safety_ceiling": 0.95,
+        "gain_reduction_applied": false,
+        "correlation_frame_pairs": 134,
+        "max_absolute_correlation": 0.06292745972144348,
+        "bleed_diagnosis": "Possible correlation only; never a speaker/idle label or suppression authority",
+        "intersample_and_encoded_peak_proof": false
+      }
+    },
+    "restored": {
+      "compatibility": "EXPERIMENTAL",
+      "adapter": "26.08.2",
+      "turn_algorithm": "s07-source-group-turns-1",
+      "participants": 2,
+      "groups": 6,
+      "output_frames": 233,
+      "edit_units": [
+        0,
+        50,
+        75,
+        105,
+        133,
+        158,
+        233
+      ],
+      "input_sequence_extent_delta_frames": 0,
+      "excluded_mp4_audio_tracks": 0,
+      "cleanup_algorithm": "s08-approved-idle-1",
+      "gain_spans": 0,
+      "peak_report": {
+        "schema_version": 1,
+        "method": "retained-frame sum of physical-channel maxima; no cancellation credit",
+        "retained_frames_audited": 233,
+        "original_sum_bound": 0.48828125,
+        "attenuated_sum_bound": 0.48828125,
+        "export_safe": true,
+        "safety_ceiling": 0.95,
+        "gain_reduction_applied": false,
+        "correlation_frame_pairs": 134,
+        "max_absolute_correlation": 0.06292745972144348,
+        "bleed_diagnosis": "Possible correlation only; never a speaker/idle label or suppression authority",
+        "intersample_and_encoded_peak_proof": false
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "baseline.kdenlive",
+      "sha256": "8e74609303344130a6a6b7a7d843da455a313b101795199637aebf91d602d5e9"
+    },
+    {
+      "path": "before.kdenlive",
+      "sha256": "5108e78584a47ce7e009194bdda052f33be669b70561a85877ab3b33dc7d3865"
+    },
+    {
+      "path": "cleaned.kdenlive",
+      "sha256": "5bbbcc01971991c33d4bb0f0b53d71c9c39168e05f9c1d0623a5ae8afade0508"
+    },
+    {
+      "path": "cleanup-request.json",
+      "sha256": "976d3838faa240db16504c19561bc46d42507df230e5b007e9e7a73ee31e4f69"
+    },
+    {
+      "path": "cleanup-result.json",
+      "sha256": "f66ee1bc94b3be22974788769bb68561967c2440807d0431f4d105d8bbc95c31"
+    },
+    {
+      "path": "mapping.json",
+      "sha256": "1d38c0e4be749927f56438f51aafb0f98f78c145ebe27042104c8430a18822e1"
+    },
+    {
+      "path": "media/participant-01.wav",
+      "sha256": "bd03e7381d265fea94793a5758645a2a38090c6154273a6f0a504c2c6488ae7b"
+    },
+    {
+      "path": "media/participant-02.wav",
+      "sha256": "e4ec27a74d0c6923eee3d4560ca332f6e20cdb708895a9648c8d2723d2b8cd65"
+    },
+    {
+      "path": "media/zoom-source.mp4",
+      "sha256": "188d4cf1c31da0e353babb1d8cdf673ded0074340d1b7a67b59ea9dd64011058"
+    },
+    {
+      "path": "planning-result.json",
+      "sha256": "d79e8021532b32b6a2dabe9350951fabc8739a2a62d488881b0fa0991d9e8708"
+    },
+    {
+      "path": "restored.kdenlive",
+      "sha256": "8e74609303344130a6a6b7a7d843da455a313b101795199637aebf91d602d5e9"
+    }
+  ]
+}
