@@ -1,3 +1,5 @@
+**Historical evidence retained. Current continuation: [attempt 04 sync review](S12_SYNC_REVIEW.md); one local review prepared, playback/feedback and real acceptance pending.**
+
 # S12 attempt 03 — reviewed empty-ending preference and native EOF proof
 
 **S12 BLOCKED; no S13.** Implementation `645f5c784b9ce9cb903590919873b7fe969f4b73`. This continuation records

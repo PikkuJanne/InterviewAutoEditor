@@ -3,7 +3,7 @@
 **S12 is BLOCKED at full-interview acceptance.** The available engineering
 checks do not complete G01-G09 on real interviews. Compatibility remains
 EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4. See the
-[current acceptance report](../fixtures/S12_ATTEMPT_03.md) for executed measurements and
+[current acceptance report](../fixtures/S12_SYNC_REVIEW.md) for executed measurements and
 the [handover](../handovers/S12.md) for the checkpoint and continuation.
 
 ## Corpus and review requirements
@@ -45,7 +45,10 @@ Required before acceptance:
    file**, with cue times. Preserve the no-new-connection preference. The bounded
    S08 listening pass remains valid for its existing TTS comparison only.
 
-No new listening file is prepared until a valid source/output comparison exists.
+Product pace/naturalness acceptance needs a valid source/output comparison.
+The owner separately requested one source-sync review: the original Zoom reference
+and supplied track at unchanged timing. That diagnostic file is now prepared; it
+does not authorize product export, source alignment, cuts or idle attenuation.
 The owner does not need to author JSON or label a complete interview personally.
 Prepare a short review after input requirements are satisfied. Record actual
 manual-baseline and assisted correction times on comparable tasks, including
@@ -224,3 +227,14 @@ extra native extent frame is separate from rendered duration. This is not real
 stereo, fractional-FPS GUI, productive editing or held-out acceptance. It does
 not change the frozen core/inference configuration or existing job identities.
 See the current report for exact evidence, failed assumptions and remaining gates.
+
+## Requested source-sync review (attempt 04)
+
+One private 62.12-second A/B video is prepared, with six model-assisted early/
+mid/late pairs. Exact selection/cues/source bindings and media remain local.
+The app-panel request returned queued, not confirmed playback; actual owner
+feedback is pending. Record any reply against the existing source-bound selection
+and its real precision. Do not infer a full-recording certificate, verified zero,
+independent content/gap/idle labels or productive utility from bounded sync review.
+The original 32.5 ms/insufficient-anchor diagnostics remain intact. Do not prepare
+a second comparison or add a connection. See the current review report for QA.

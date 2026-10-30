@@ -11,7 +11,7 @@
   "next_step": "S12",
   "latest_handover": "docs/handovers/S12.md",
   "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
-  "technical_gate_status": "blocked_s12_baseline_production_coverage_integration_independent_labels_real_output_acceptance_offline_eof_proof_passed",
+  "technical_gate_status": "blocked_s12_source_sync_review_prepared_owner_feedback_pending_production_coverage_and_real_acceptance_unrun",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [
     "Reviewed source-clock baseline acceptance is still missing: the new two-person diagnostics retain a 32.5 ms reference-mix lag on one source and insufficient anchors on the other; band origins remain unverified. The owner-approved empty-ending preference now has an exact offline v2 preview and scoped synthetic native/render proof, but no production planner/export integration. Original v1 origin/exact-tail refusals remain mandatory.",
@@ -158,8 +158,9 @@
   "updated_date": "2026-10-30",
   "prerequisites_for_next_step": [
     "Resume S12 only. Source clocks, production coverage integration, independent labels and actual full/held-out utility remain blocked; S13-S15 pending.",
-    "Read current state/NEXT_STEP/full S12 handover including attempt 03, protocols, S03-S12 guides, current evidence and coverage status. Resolve containing checkpoint and verify live/local/upstream clean equality and exact-SHA CI first.",
+    "Read state/NEXT_STEP/full S12 handover including attempt 04, protocols, S03-S12 guides and current sync-review report/JSON. Resolve containing checkpoint and verify live/local/upstream clean equality and exact-SHA CI first.",
     "Both complete interviews are available privately. New timing-provenance and marked-empty-ending owner replies are recorded and source-bound; do not ask for the folder or these answers again. Neither approves alignment/cuts/idle gains.",
+    "One 62.12 s private source-sync A/B review is prepared with six numbered early/middle/late pairs and a local cue guide. Owner requested preparation only; actual playback/feedback remains pending. Read any actual reply and bind it to the original selection/source/project/analysis. Do not create another comparison file or infer full-recording/zero-offset/cut/idle acceptance.",
     "Offline v2 coverage previews preserve every original source/sample/event/null offset and propose 51093/47005-frame ends. They are NOT EditPlans or Application/desktop inputs. All v1 origin/exact-tail refusals remain.",
     "Synthetic N2 mono 192 kHz EOF native/render proof passes scoped checks; raw PCM unity and pixel identity are explicitly false under channel/image conversion. Native extra extent frame is distinct from 301 rendered frames. No real stereo output acceptance follows.",
     "Resolve reviewed baseline evidence without turning 32.5 ms or insufficient anchors into zero. Only then design/test explicit production coverage integration, preserving v1 meanings and independently bound global/idle approvals.",
@@ -1405,6 +1406,28 @@
       "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
       "s12_status": "blocked",
       "s13_status": "pending"
+    },
+    {
+      "check": "s12_attempt04_review_checkpoint_privacy",
+      "command": ".venv/Scripts/python.exe -B .local/S12/attempt-04/validate_checkpoint.py",
+      "applies_to": "S12 attempt 04 documentation checkpoint; resolve containing commit from handover history",
+      "status": "passed",
+      "attempt": 4,
+      "reviewed_document_files": 9,
+      "valid_local_links": 62,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "historical_manifests_verified": 9,
+      "attempt02_complete_runs_verified": 4,
+      "attempt02_failed_run_retained": 1,
+      "one_private_review_artifact_hash_verified": true,
+      "source_bound_selection_and_original_null_offsets_preserved": true,
+      "production_core_and_frozen_configuration_unchanged": true,
+      "actual_owner_playback_or_acceptance_claimed": false,
+      "state_next_step_handover_consistent": true,
+      "s12_status": "blocked",
+      "s13_status": "pending",
+      "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
     }
   ],
   "previous_step_implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
@@ -1887,8 +1910,8 @@
   "s12_evidence": {
     "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
     "guide": "docs/project/S12_VALIDATION.md",
-    "measurements": "docs/fixtures/S12_ATTEMPT_03.json",
-    "acceptance_report": "docs/fixtures/S12_ATTEMPT_03.md",
+    "measurements": "docs/fixtures/S12_SYNC_REVIEW.json",
+    "acceptance_report": "docs/fixtures/S12_SYNC_REVIEW.md",
     "completion_handover": "docs/handovers/S12.md",
     "status": "blocked",
     "full_suite_tests": 237,
@@ -1912,7 +1935,7 @@
     "held_out_opened": true,
     "calibration_changed": false,
     "real_content_utility_acceptance": false,
-    "new_listening_files": 0,
+    "new_listening_files": 1,
     "new_connection": false,
     "production_core_unchanged": true,
     "s13_started": false,
@@ -1944,7 +1967,7 @@
       "implementation_unchanged_since": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
       "new_media_or_gui_operations_in_documentation_review": false
     },
-    "latest_attempt": 3,
+    "latest_attempt": 4,
     "historical_measurements": "docs/fixtures/S12_ACCEPTANCE.json",
     "attempt_01_full_suite_seconds": 206.03,
     "full_suite_date": "2026-10-30",
@@ -1979,7 +2002,7 @@
     "focused_suite_date": "2026-10-30",
     "attempt_02_full_suite_seconds": 249.574,
     "attempt_02_full_suite_tests": 231,
-    "prior_measurements": "docs/fixtures/S12_ATTEMPT_02.json",
+    "prior_measurements": "docs/fixtures/S12_ATTEMPT_03.json",
     "offline_coverage_preview_implemented": true,
     "offline_coverage_schema_version": 2,
     "coverage_preview_is_export_authority": false,
@@ -2001,7 +2024,7 @@
       "s13_status": "pending",
       "new_media_in_documentation_review": false
     },
-    "checkpoint_documentation_review": {
+    "attempt_03_checkpoint_documentation_review": {
       "status": "passed",
       "attempt": 3,
       "reviewed_text_files": 13,
@@ -2016,6 +2039,45 @@
       "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
       "s12_status": "blocked",
       "s13_status": "pending"
+    },
+    "historical_measurement_records": [
+      "docs/fixtures/S12_ACCEPTANCE.json",
+      "docs/fixtures/S12_ATTEMPT_02.json",
+      "docs/fixtures/S12_ATTEMPT_03.json"
+    ],
+    "owner_sync_review_request": {
+      "answer": "Prepare one short local review",
+      "scope": "one local source-sync review; supplied timing unchanged",
+      "alignment_cut_idle_utility_approval": false
+    },
+    "sync_review_prepared": true,
+    "sync_review_seconds": "62.12",
+    "sync_review_pairs": 6,
+    "sync_review_owner_feedback": "PENDING",
+    "sync_review_playback_confirmed": false,
+    "sync_review_panel_status": "queued",
+    "sync_review_artifact_QA_checks": 11,
+    "attempt_04_new_Kdenlive_operations": false,
+    "attempt_04_new_model_inference": false,
+    "attempt_04_full_suite_rerun": false,
+    "checkpoint_documentation_review": {
+      "status": "passed",
+      "attempt": 4,
+      "reviewed_document_files": 9,
+      "valid_local_links": 62,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "historical_manifests_verified": 9,
+      "attempt02_complete_runs_verified": 4,
+      "attempt02_failed_run_retained": 1,
+      "one_private_review_artifact_hash_verified": true,
+      "source_bound_selection_and_original_null_offsets_preserved": true,
+      "production_core_and_frozen_configuration_unchanged": true,
+      "actual_owner_playback_or_acceptance_claimed": false,
+      "state_next_step_handover_consistent": true,
+      "s12_status": "blocked",
+      "s13_status": "pending",
+      "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
     }
   }
 }

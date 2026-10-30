@@ -1,4 +1,4 @@
-**Historical evidence retained. Current continuation: [attempt 03](S12_ATTEMPT_03.md), recording owner replies and scoped EOF proof; real acceptance remains blocked.**
+**Historical evidence retained. Current continuation: [attempt 04 sync review](S12_SYNC_REVIEW.md); one local review prepared, playback/feedback and real acceptance pending.**
 
 # S12 attempt 02 - complete inputs available, output acceptance blocked
 
