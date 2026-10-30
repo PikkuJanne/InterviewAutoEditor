@@ -3,7 +3,7 @@
 **S12 is BLOCKED at full-interview acceptance.** The available engineering
 checks do not complete G01-G09 on real interviews. Compatibility remains
 EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4. See the
-[current acceptance report](../fixtures/S12_ATTEMPT_02.md) for executed measurements and
+[current acceptance report](../fixtures/S12_ATTEMPT_03.md) for executed measurements and
 the [handover](../handovers/S12.md) for the checkpoint and continuation.
 
 ## Corpus and review requirements
@@ -76,8 +76,8 @@ Resolution needs either a different genuinely exact-coverage input set with
 documented provenance or an explicitly reviewed, versioned unequal-tail policy
 with tests and adapter/native-render evidence for how **every original sample**
 and the complete video are represented. Such a policy must retain the current
-v1 refusals and give explicit source, coverage and recovery semantics. There is
-no implemented policy extension in this checkpoint. Do not trim, pad, shift,
+v1 refusals and give explicit source, coverage and recovery semantics. The offline v2 coverage preview and scoped synthetic native EOF proof are now
+available; there is still no production planning/export policy extension. Do not trim, pad, shift,
 stretch, replace media, hide tail loss or certify a draft to get past the gate.
 
 The new two-person video ends at 47004/25 seconds, with one WAV ending 4/375
@@ -87,7 +87,9 @@ reliable for the other. These are reference-mix diagnostics, not applied offsets
 or zero-origin certificates. The
 [source-clock/end-coverage proposal](S12_SOURCE_COVERAGE_PROPOSAL.md) gives exact
 potential shared endpoints and explicitly marked empty EOF coverage. It is
-pending review, unimplemented and not accepted by v1.
+accepted as an empty-ending preference, with exact offline previews and synthetic
+representation proof. Baseline review and production integration remain pending;
+v1 does not accept it.
 
 Reviewed analysis is supplied explicitly through the existing Application or
 desktop path. Global gap approvals remain separately bound to that complete
@@ -204,3 +206,21 @@ regression. Actual full-interview open/play/group-edit/save/reopen/render and
 owner acceptance remain required when valid full-interview output exists.
 The 90% gap and 70% effort targets are unmeasured on acceptance interviews.
 S12 remains selected; S13-S15 remain pending.
+
+## Attempt 03 offline coverage boundary
+
+The owner confirms leveling-only timing provenance for the new recording and
+accepts the marked empty ending. [s12_coverage.py](../../tools/s12_coverage.py)
+records strict v2 coverage-only reviews/previews, with actual private bindings.
+They preserve the original v1 Analysis and cannot authorize origin, cuts or gain
+changes. Do not load them as Application/desktop EditPlans. Existing v1 exact
+coverage and origin refusals stay intact. Production coverage integration still
+needs separate implementation/testing after baseline evidence is reviewed.
+
+The new native synthetic N2/192 kHz mono case proves a marked blank picture
+frame and preservation of partial EOF audio under a fixed channel-conversion
+reference. Raw mono unity and pixel identity are explicitly false, and the
+extra native extent frame is separate from rendered duration. This is not real
+stereo, fractional-FPS GUI, productive editing or held-out acceptance. It does
+not change the frozen core/inference configuration or existing job identities.
+See the current report for exact evidence, failed assumptions and remaining gates.

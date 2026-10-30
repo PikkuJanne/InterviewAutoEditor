@@ -1,3 +1,5 @@
+**Historical evidence retained. Current continuation: [attempt 03](S12_ATTEMPT_03.md), recording owner replies and scoped EOF proof; real acceptance remains blocked.**
+
 # S12 acceptance report - attempt 01, 29 October 2026
 
 **Historical attempt 01.** The two-person input is now available. See the

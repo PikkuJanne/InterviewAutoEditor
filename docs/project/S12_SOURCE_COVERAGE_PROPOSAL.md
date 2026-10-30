@@ -1,8 +1,17 @@
 # S12 source-clock and end-coverage proposal
 
-**PENDING REVIEW. No approval or implementation is recorded here.** Current v1
-origin and `exact_coverage` refusals remain unchanged. Neither interview has an
-accepted edited output. Source media stays private, unchanged and recoverable.
+**30 October continuation: empty-ending preference ACCEPTED; production export
+integration and alignment review PENDING.** The owner confirms leveling alone
+retained the new interview's original timing and accepts preserving all audio
+with a marked empty ending. Neither answer accepts alignment, cuts or idle gains.
+Current v1 origin and `exact_coverage` refusals remain unchanged. Neither interview
+has an accepted edited output. Source media stays private and recoverable.
+
+Attempt 03 adds a strict v2 **offline coverage preview**, plus a generated native
+EOF experiment. See [current evidence](../fixtures/S12_ATTEMPT_03.md). The preview
+keeps the complete original Analysis, null offsets and source counts; it records
+coverage-only authority and cannot load as an EditPlan. Application and desktop
+do not accept it. It is not a source-clock certificate or automatic migration.
 
 The supplied real recordings expose a limitation of the current strict input
 contract. Their small unequal ends do not, by themselves, establish damaged media
@@ -31,8 +40,9 @@ second source, establish lipsync or authorize shifting anything.
 
 The existing band origin evidence remains unverified. The owner's confirmation
 of production volume leveling supplies processing provenance, not an automatic
-zero-offset certificate. A question about whether the new WAVs retained original
-start/end timing is recorded separately from any alignment acceptance.
+zero-offset certificate. The owner now confirms the new WAVs retained original
+start/end timing through leveling only. This remains separate from alignment
+acceptance and does not turn the measured 32.5 ms diagnostic into zero.
 
 ## Proposed source-clock treatment
 
@@ -76,10 +86,11 @@ map must still govern every track and the declared empty coverage.
 
 ## Required implementation and evidence before use
 
-No current Application/desktop option accepts this proposal. A strict, explicitly
-versioned coverage/baseline contract and corresponding planner/export handling
-would be required. Existing v1 files must retain their meanings and refusals;
-there must be no silent migration or automatic approval rebinding.
+No current Application/desktop option accepts this proposal. The new offline
+coverage review/preview records are explicitly v2 and bind the exact unchanged
+Analysis. A reviewed baseline contract and corresponding planner/export handling
+are still required. Existing v1 files retain their meanings and refusals; there
+is no silent migration or automatic approval rebinding.
 
 Before enabling such a contract, prove exact source-sample retention through
 partial final native audio frames, absence of EOF repeats/freezes, correct
@@ -89,11 +100,16 @@ fractional FPS, changes to review bindings, cancellation/recovery and source-tim
 Keep/audible. Cleanup must bind the exact refined plan and retain unity on all
 protected events, shared microphones and overlap.
 
-Actual Kdenlive 26.08.2 open/play/group-edit/save/reopen/render evidence is needed
-for the new representation. XML plausibility, a generated frame count or this
-design document is insufficient. Review the native round trip and rendered last
-samples/pictures before claiming that the proposal works.
+Actual Kdenlive 26.08.2 open/play/group-move/undo/save/close/reopen/render now
+passes for a separately constructed 12-second synthetic N2/192 kHz mono case.
+All 300 recorded picture anchors retain their timing, frame 301 is black, and
+the complete rendered PCM matches a fixed mono-to-stereo reference within one
+LSB, including the final source sample. Raw mono-sum unity and pixel identity
+are explicitly false: channel/image conversion remains visible in the report.
+The native sequence adds one extent frame on reopen while clip bounds stay
+unchanged; the actual GUI render still contains 301 frames. This is scoped
+representation evidence, not a production adapter or real stereo acceptance.
 
-Until the baseline decision, missing evidence and tested representation exist,
+Until the baseline decision, missing evidence and tested production integration exist,
 real planning/export remain blocked. Preserve the complete read-only analyses,
 source inventories, draft review records and recoverable jobs for resuming S12.

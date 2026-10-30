@@ -10,11 +10,11 @@
   "active_step": "S12",
   "next_step": "S12",
   "latest_handover": "docs/handovers/S12.md",
-  "implementation_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
-  "technical_gate_status": "blocked_s12_reviewed_source_clock_tail_independent_labels_real_output_acceptance_full_analysis_generated_stress_passed",
+  "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+  "technical_gate_status": "blocked_s12_baseline_production_coverage_integration_independent_labels_real_output_acceptance_offline_eof_proof_passed",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [
-    "Both complete real inputs are available, but current v1 planning/export still refuse unverified audio origins and unequal exact tails. New two-person diagnostics find a repeatable 32.5 ms reference-mix lag on one source and insufficient anchors on the other. A genuinely reviewed source-clock/baseline decision and explicitly versioned/tested preserving EOF-coverage policy are missing.",
+    "Reviewed source-clock baseline acceptance is still missing: the new two-person diagnostics retain a 32.5 ms reference-mix lag on one source and insufficient anchors on the other; band origins remain unverified. The owner-approved empty-ending preference now has an exact offline v2 preview and scoped synthetic native/render proof, but no production planner/export integration. Original v1 origin/exact-tail refusals remain mandatory.",
     "The distinct two-person recording is registered as held-out before inference and has now undergone full engineering analysis without tuning. Independent human content/removable-gap/idle labels and corresponding explicit approvals are still missing; model protection is not ground truth or silence authority.",
     "Actual edited two-person/band native/render/noise/sync/editability/correction-effort metrics and focused owner acceptance are NOT RUN. Complete read-only analyses, native input round-trip and low-resolution zero-activity two-hour stress do not satisfy those acceptance gates."
   ],
@@ -157,18 +157,16 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-30",
   "prerequisites_for_next_step": [
-    "Resume S12 only; real-output/held-out/human utility acceptance remains blocked. S13-S15 stay pending.",
-    "Read current STATE/NEXT_STEP, full S12 handover including attempt 02, protocols, S03-S12 guides, current report/JSON and source-clock/EOF proposal. Resolve containing checkpoint and verify live/local/upstream equality, clean tree and exact-SHA CI first.",
-    "Both complete private interviews are available in the private registry. Do not request the already supplied two-person folder again. Native starter and separate round-trip copy exist; new complete Application cold analysis and fresh band cache-validation runs are retained.",
-    "New two-person recording is registered as held-out before inference, now fully engineering-analyzed without tuning. Preserve frozen configuration, actual exposure history and independent human labels; no fitting or invented unseen-corpus claim.",
-    "New fixed diagnostics find 32.5 ms reference-mix lag on ten reliable anchors for one WAV; the other has only two reliable anchors. Do not apply offsets, infer zero, certify origins or assign a cause. Processing history and actual baseline/coverage acceptance remain separate.",
-    "Review source/project/analysis-bound private drafts and pending actual owner replies. End differences remain +/-4/375 s on both corpora. Proposed shared ends 51093 and 47005 frames require a versioned/tested explicit preserving contract, not duration/status edits. Current v1 refusals remain.",
-    "Preserve every source sample and original picture clock, protected words/reactions/uncertainty/overlap/shared microphones/exterior handles, independent global/idle approvals, one shared map, source-time Keep/audible, exact refined cleanup bindings, original 12.00/12.45 lag and conservative headroom.",
-    "Preserve immutable jobs/caches/journals and strict source/tool/code identities. Nine old manifests, four new complete runs and a failed experimental-opt-in export are intact. Corrected opt-in uses a NEW destination; no changed-options implicit resume or repair.",
-    "Actual two-hour silent mono N2/64x36 generated-media analysis and identity export pass; cold stress resource metrics were not recorded and remain unknown. This is not dialogue/high-resolution/native/render/content utility acceptance. Keep separate earlier 599-cut/eight-source metadata cases.",
-    "Fresh full suite 231 tests/zero skips. No implementation/model/settings/lock/licence/fixture change. Current original-input native create/play/save/close/reopen/save-copy passes, with an extra native sequence frame reported separately. No real edited-output or long-project GUI/render acceptance.",
-    "Resolve independent human content/gap/idle labels and explicit approvals, accepted real editable exports, actual noise/sync/editability/performance/correction-effort and focused owner acceptance. 90%/70% remain unmeasured. At most one comparison file, no new connection; do not repeat bounded S08 listening.",
-    "Run applicable gates, update current evidence/state/NEXT_STEP/S12 handover, commit/push/verify and STOP. No S13."
+    "Resume S12 only. Source clocks, production coverage integration, independent labels and actual full/held-out utility remain blocked; S13-S15 pending.",
+    "Read current state/NEXT_STEP/full S12 handover including attempt 03, protocols, S03-S12 guides, current evidence and coverage status. Resolve containing checkpoint and verify live/local/upstream clean equality and exact-SHA CI first.",
+    "Both complete interviews are available privately. New timing-provenance and marked-empty-ending owner replies are recorded and source-bound; do not ask for the folder or these answers again. Neither approves alignment/cuts/idle gains.",
+    "Offline v2 coverage previews preserve every original source/sample/event/null offset and propose 51093/47005-frame ends. They are NOT EditPlans or Application/desktop inputs. All v1 origin/exact-tail refusals remain.",
+    "Synthetic N2 mono 192 kHz EOF native/render proof passes scoped checks; raw PCM unity and pixel identity are explicitly false under channel/image conversion. Native extra extent frame is distinct from 301 rendered frames. No real stereo output acceptance follows.",
+    "Resolve reviewed baseline evidence without turning 32.5 ms or insufficient anchors into zero. Only then design/test explicit production coverage integration, preserving v1 meanings and independently bound global/idle approvals.",
+    "Preserve frozen held-out configuration/exposure, no fitting, every protected event/exterior handle/shared mic/map, original picture timing, source-clock Keep/audible, refined cleanup binding and headroom.",
+    "Preserve original files/caches/immutable jobs and failed evidence. Offline helper adds no core module or job/config identity change. Use new destinations for changed code/options; no implicit rebinding or repairs.",
+    "Complete independent held-out labels and valid real editable exports; measure actual retention/approval/noise/sync/editability/performance/manual and assisted correction time and focused owner acceptance. 90%/70% unmeasured. At most one comparison file, no new connection.",
+    "Run applicable gates, update state/NEXT_STEP/S12 handover, commit/push/verify, verbose handover and STOP. No S13."
   ],
   "validation_evidence": [
     {
@@ -1388,6 +1386,25 @@
       "s12_status": "blocked",
       "s13_status": "pending",
       "new_media_in_documentation_review": false
+    },
+    {
+      "check": "s12_attempt03_checkpoint_documentation_privacy",
+      "command": ".venv/Scripts/python.exe -B .local/S12/attempt-03/validate_checkpoint.py",
+      "applies_to": "S12 attempt 03 documentation checkpoint; resolve containing commit from handover history",
+      "status": "passed",
+      "attempt": 3,
+      "reviewed_text_files": 13,
+      "reviewed_document_files": 9,
+      "valid_local_links": 54,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "state_next_step_handover_consistent": true,
+      "owner_answers_bound_without_alignment_approval": true,
+      "all_original_v1_refusals_and_frozen_core_inventory_preserved": true,
+      "new_real_export_or_held_out_utility_claimed": false,
+      "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+      "s12_status": "blocked",
+      "s13_status": "pending"
     }
   ],
   "previous_step_implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
@@ -1868,17 +1885,17 @@
     }
   },
   "s12_evidence": {
-    "implementation_commit": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
+    "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
     "guide": "docs/project/S12_VALIDATION.md",
-    "measurements": "docs/fixtures/S12_ATTEMPT_02.json",
-    "acceptance_report": "docs/fixtures/S12_ATTEMPT_02.md",
+    "measurements": "docs/fixtures/S12_ATTEMPT_03.json",
+    "acceptance_report": "docs/fixtures/S12_ATTEMPT_03.md",
     "completion_handover": "docs/handovers/S12.md",
     "status": "blocked",
-    "full_suite_tests": 231,
+    "full_suite_tests": 237,
     "full_suite_skipped": 0,
-    "full_suite_seconds": 249.574,
-    "focused_tests": 7,
-    "focused_seconds": 0.936,
+    "full_suite_seconds": 254.017,
+    "focused_tests": 6,
+    "focused_seconds": 5.23,
     "long_timing_cases": 2,
     "long_timing_cuts_per_case": 599,
     "long_timing_labels_per_case": 600,
@@ -1927,14 +1944,14 @@
       "implementation_unchanged_since": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
       "new_media_or_gui_operations_in_documentation_review": false
     },
-    "latest_attempt": 2,
+    "latest_attempt": 3,
     "historical_measurements": "docs/fixtures/S12_ACCEPTANCE.json",
     "attempt_01_full_suite_seconds": 206.03,
     "full_suite_date": "2026-10-30",
     "complete_private_interviews_registered": 2,
     "held_out_registered_before_inference": true,
     "native_two_person_starter_created": true,
-    "new_actual_kdenlive_scope": "original_input_create_play_save_close_reopen_save_copy_only",
+    "new_actual_kdenlive_scope": "synthetic_N2_mono_192k_EOF_open_play_group_move_undo_save_close_reopen_render_not_real_output",
     "real_automated_export_created": false,
     "two_person_cold_analysis_seconds": 259.328,
     "two_person_parent_peak_bytes": 144019456,
@@ -1945,9 +1962,29 @@
     "long_media_zero_activity_low_resolution_only": true,
     "source_clock_coverage_proposal": "docs/project/S12_SOURCE_COVERAGE_PROPOSAL.md",
     "source_clock_tail_policy_implemented": false,
-    "owner_processing_history_reply": null,
-    "owner_empty_ending_reply": null,
-    "checkpoint_documentation_review": {
+    "owner_processing_history_reply": {
+      "applies_to": "two_person_002",
+      "answer": "Yes—leveling only; original timing retained",
+      "alignment_approval": false
+    },
+    "owner_empty_ending_reply": {
+      "applies_to": [
+        "two_person_002",
+        "band_001"
+      ],
+      "answer": "Yes—preserve all audio with a marked empty ending",
+      "coverage_preference_accepted": true,
+      "alignment_cut_idle_approvals": false
+    },
+    "focused_suite_date": "2026-10-30",
+    "attempt_02_full_suite_seconds": 249.574,
+    "attempt_02_full_suite_tests": 231,
+    "prior_measurements": "docs/fixtures/S12_ATTEMPT_02.json",
+    "offline_coverage_preview_implemented": true,
+    "offline_coverage_schema_version": 2,
+    "coverage_preview_is_export_authority": false,
+    "synthetic_native_eof_representation_checks": 12,
+    "attempt_02_checkpoint_documentation_review": {
       "status": "passed",
       "attempt": 2,
       "reviewed_document_files": 8,
@@ -1964,6 +2001,21 @@
       "s13_status": "pending",
       "new_media_in_documentation_review": false
     },
-    "focused_suite_date": "2026-10-29"
+    "checkpoint_documentation_review": {
+      "status": "passed",
+      "attempt": 3,
+      "reviewed_text_files": 13,
+      "reviewed_document_files": 9,
+      "valid_local_links": 54,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "state_next_step_handover_consistent": true,
+      "owner_answers_bound_without_alignment_approval": true,
+      "all_original_v1_refusals_and_frozen_core_inventory_preserved": true,
+      "new_real_export_or_held_out_utility_claimed": false,
+      "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+      "s12_status": "blocked",
+      "s13_status": "pending"
+    }
   }
 }

@@ -1,3 +1,5 @@
+**Historical evidence retained. Current continuation: [attempt 03](S12_ATTEMPT_03.md), recording owner replies and scoped EOF proof; real acceptance remains blocked.**
+
 # S12 attempt 02 - complete inputs available, output acceptance blocked
 
 **30 October 2026: S12 remains BLOCKED. No S13 work.** The two-person recording
