@@ -11,10 +11,10 @@
   "next_step": "S12",
   "latest_handover": "docs/handovers/S12.md",
   "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
-  "technical_gate_status": "blocked_s12_source_sync_review_prepared_owner_feedback_pending_production_coverage_and_real_acceptance_unrun",
+  "technical_gate_status": "blocked_s12_rejected_unintelligible_review_pair_baseline_inconsistent_diagnostics_production_coverage_and_real_acceptance_unrun",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [
-    "Reviewed source-clock baseline acceptance is still missing: the new two-person diagnostics retain a 32.5 ms reference-mix lag on one source and insufficient anchors on the other; band origins remain unverified. The owner-approved empty-ending preference now has an exact offline v2 preview and scoped synthetic native/render proof, but no production planner/export integration. Original v1 origin/exact-tail refusals remain mandatory.",
+    "Reviewed source-clock baseline acceptance remains missing. Owner reports five review pairs work and pair 2B is unintelligible/unscorable for sync; fidelity checks detect no gross extraction/resampling/AAC corruption, exact perceived cause unknown. Additional pre-existing review anchors diagnose participant_01 at -10/+32.5/+32.5 ms and participant_02 at +32.5/+32.5/+32.5 ms; prior fixed-anchor evidence remains. No origin is certified or shifted. Coverage-only v2 preview/native EOF proof still has no production planner/export integration; v1 refusals remain.",
     "The distinct two-person recording is registered as held-out before inference and has now undergone full engineering analysis without tuning. Independent human content/removable-gap/idle labels and corresponding explicit approvals are still missing; model protection is not ground truth or silence authority.",
     "Actual edited two-person/band native/render/noise/sync/editability/correction-effort metrics and focused owner acceptance are NOT RUN. Complete read-only analyses, native input round-trip and low-resolution zero-activity two-hour stress do not satisfy those acceptance gates."
   ],
@@ -158,12 +158,12 @@
   "updated_date": "2026-10-30",
   "prerequisites_for_next_step": [
     "Resume S12 only. Source clocks, production coverage integration, independent labels and actual full/held-out utility remain blocked; S13-S15 pending.",
-    "Read state/NEXT_STEP/full S12 handover including attempt 04, protocols, S03-S12 guides and current sync-review report/JSON. Resolve containing checkpoint and verify live/local/upstream clean equality and exact-SHA CI first.",
+    "Read current state/NEXT_STEP/full S12 handover including attempt 05, protocols, S03-S12 guides and S12_SYNC_FEEDBACK report/JSON. Resolve containing checkpoint and verify live/local/upstream clean equality and exact-SHA CI first.",
     "Both complete interviews are available privately. New timing-provenance and marked-empty-ending owner replies are recorded and source-bound; do not ask for the folder or these answers again. Neither approves alignment/cuts/idle gains.",
-    "One 62.12 s private source-sync A/B review is prepared with six numbered early/middle/late pairs and a local cue guide. Owner requested preparation only; actual playback/feedback remains pending. Read any actual reply and bind it to the original selection/source/project/analysis. Do not create another comparison file or infer full-recording/zero-offset/cut/idle acceptance.",
+    "Owner feedback is received for the existing one-file review: 1/3/4/5/6 work, 2B unintelligible. Preserve both raw replies and source bindings. Pair 2 is rejected and timing-unscorable; no second comparison or whole-recording certificate. Independent native/continuous-resample checks agree exactly; AAC matches closely, exact perceived cause unknown. Preserve pending exact-analysis-bound audible request as unapplied data, never an origin/cut/idle approval.",
     "Offline v2 coverage previews preserve every original source/sample/event/null offset and propose 51093/47005-frame ends. They are NOT EditPlans or Application/desktop inputs. All v1 origin/exact-tail refusals remain.",
     "Synthetic N2 mono 192 kHz EOF native/render proof passes scoped checks; raw PCM unity and pixel identity are explicitly false under channel/image conversion. Native extra extent frame is distinct from 301 rendered frames. No real stereo output acceptance follows.",
-    "Resolve reviewed baseline evidence without turning 32.5 ms or insufficient anchors into zero. Only then design/test explicit production coverage integration, preserving v1 meanings and independently bound global/idle approvals.",
+    "Retain prior 13-anchor findings and new fixed review-position diagnostics: participant_01 -10/+32.5/+32.5 ms inconsistent, participant_02 three +32.5 ms offsets. Do not discard the early disagreement, infer zero, certify drift or repair sources. Review actual baseline/quality evidence explicitly before production EOF integration.",
     "Preserve frozen held-out configuration/exposure, no fitting, every protected event/exterior handle/shared mic/map, original picture timing, source-clock Keep/audible, refined cleanup binding and headroom.",
     "Preserve original files/caches/immutable jobs and failed evidence. Offline helper adds no core module or job/config identity change. Use new destinations for changed code/options; no implicit rebinding or repairs.",
     "Complete independent held-out labels and valid real editable exports; measure actual retention/approval/noise/sync/editability/performance/manual and assisted correction time and focused owner acceptance. 90%/70% unmeasured. At most one comparison file, no new connection.",
@@ -1428,6 +1428,52 @@
       "s12_status": "blocked",
       "s13_status": "pending",
       "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
+    },
+    {
+      "check": "s12_attempt05_intermediate_privacy_before_coverage_note",
+      "command": ".venv/Scripts/python.exe -B .local/S12/attempt-05/validate_checkpoint.py",
+      "applies_to": "Intermediate ten-document worktree before source-coverage note; final eleven-document checkpoint review follows",
+      "status": "passed",
+      "attempt": 5,
+      "reviewed_document_files": 10,
+      "valid_local_links": 69,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "historical_manifests_verified": 9,
+      "attempt02_complete_runs_verified": 4,
+      "failed_exports_and_origin_plan_retained": 2,
+      "original_review_and_exact_feedback_bindings_verified": true,
+      "pending_preservation_request_not_applied_or_approval": true,
+      "contrary_diagnostics_and_human_rejection_preserved": true,
+      "original_v1_refusals_and_frozen_core_inventory_preserved": true,
+      "new_media_or_source_certificate_or_full_acceptance_claimed": false,
+      "state_next_step_handover_consistent": true,
+      "s12_status": "blocked",
+      "s13_status": "pending",
+      "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
+    },
+    {
+      "check": "s12_attempt05_feedback_investigation_privacy",
+      "command": ".venv/Scripts/python.exe -B .local/S12/attempt-05/validate_checkpoint.py",
+      "applies_to": "S12 attempt 05 documentation checkpoint; resolve containing commit from handover history",
+      "status": "passed",
+      "attempt": 5,
+      "reviewed_document_files": 11,
+      "valid_local_links": 71,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "historical_manifests_verified": 9,
+      "attempt02_complete_runs_verified": 4,
+      "failed_exports_and_origin_plan_retained": 2,
+      "original_review_and_exact_feedback_bindings_verified": true,
+      "pending_preservation_request_not_applied_or_approval": true,
+      "contrary_diagnostics_and_human_rejection_preserved": true,
+      "original_v1_refusals_and_frozen_core_inventory_preserved": true,
+      "new_media_or_source_certificate_or_full_acceptance_claimed": false,
+      "state_next_step_handover_consistent": true,
+      "s12_status": "blocked",
+      "s13_status": "pending",
+      "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
     }
   ],
   "previous_step_implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
@@ -1910,8 +1956,8 @@
   "s12_evidence": {
     "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
     "guide": "docs/project/S12_VALIDATION.md",
-    "measurements": "docs/fixtures/S12_SYNC_REVIEW.json",
-    "acceptance_report": "docs/fixtures/S12_SYNC_REVIEW.md",
+    "measurements": "docs/fixtures/S12_SYNC_FEEDBACK.json",
+    "acceptance_report": "docs/fixtures/S12_SYNC_FEEDBACK.md",
     "completion_handover": "docs/handovers/S12.md",
     "status": "blocked",
     "full_suite_tests": 237,
@@ -1967,7 +2013,7 @@
       "implementation_unchanged_since": "f73cd9247abd2c1b71ab9d1bc80398b7afd729c3",
       "new_media_or_gui_operations_in_documentation_review": false
     },
-    "latest_attempt": 4,
+    "latest_attempt": 5,
     "historical_measurements": "docs/fixtures/S12_ACCEPTANCE.json",
     "attempt_01_full_suite_seconds": 206.03,
     "full_suite_date": "2026-10-30",
@@ -2002,7 +2048,7 @@
     "focused_suite_date": "2026-10-30",
     "attempt_02_full_suite_seconds": 249.574,
     "attempt_02_full_suite_tests": 231,
-    "prior_measurements": "docs/fixtures/S12_ATTEMPT_03.json",
+    "prior_measurements": "docs/fixtures/S12_SYNC_REVIEW.json",
     "offline_coverage_preview_implemented": true,
     "offline_coverage_schema_version": 2,
     "coverage_preview_is_export_authority": false,
@@ -2053,14 +2099,14 @@
     "sync_review_prepared": true,
     "sync_review_seconds": "62.12",
     "sync_review_pairs": 6,
-    "sync_review_owner_feedback": "PENDING",
-    "sync_review_playback_confirmed": false,
+    "sync_review_owner_feedback": "RECEIVED_FIVE_WORK_PAIR2_B_UNINTELLIGIBLE_TIMING_UNRESOLVED",
+    "sync_review_playback_confirmed": true,
     "sync_review_panel_status": "queued",
     "sync_review_artifact_QA_checks": 11,
     "attempt_04_new_Kdenlive_operations": false,
     "attempt_04_new_model_inference": false,
     "attempt_04_full_suite_rerun": false,
-    "checkpoint_documentation_review": {
+    "attempt_04_checkpoint_documentation_review": {
       "status": "passed",
       "attempt": 4,
       "reviewed_document_files": 9,
@@ -2074,6 +2120,142 @@
       "source_bound_selection_and_original_null_offsets_preserved": true,
       "production_core_and_frozen_configuration_unchanged": true,
       "actual_owner_playback_or_acceptance_claimed": false,
+      "state_next_step_handover_consistent": true,
+      "s12_status": "blocked",
+      "s13_status": "pending",
+      "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
+    },
+    "sync_review_owner_response": {
+      "initial_reply": "All others work, but 2 is very very very off",
+      "clarification": "The audio in 2 B was just crazy, couldn't make anything out of it",
+      "scope": "six numbered review pairs only; no exact timing or content boundaries supplied",
+      "reported_playback": true,
+      "playback_evidence": "owner_content_specific_report_not_app_panel_tool",
+      "pairs_reported_working": [
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "rejected_pair": 2,
+      "rejected_mode": "B",
+      "rejection_kind": "UNINTELLIGIBLE_AUDIO_TIMING_UNSCORABLE",
+      "positive_pair_count": 5,
+      "negative_pair_count": 1,
+      "full_recording_alignment_acceptance": false,
+      "global_gap_or_idle_approval": false
+    },
+    "sync_review_playback_evidence": "owner_content_specific_report",
+    "sync_review_rejected_pairs": [
+      2
+    ],
+    "sync_review_positive_pairs_qualitative": [
+      1,
+      3,
+      4,
+      5,
+      6
+    ],
+    "sync_review_global_alignment_accepted": false,
+    "pair2_fidelity_investigation": {
+      "native_container_decode_equals_original_PCM": true,
+      "continuous_file_origin_vs_guarded_resample_max_error_LSB": 0,
+      "continuous_vs_guarded_mismatched_sample_values": 0,
+      "encoded_B2_full_segment_SNR_db": 44.60270689369202,
+      "encoded_B2_channel_correlations": [
+        0.9999831571342518,
+        0.9999831571492755
+      ],
+      "encoded_B2_peak": 0.8435953855514526,
+      "both_input_channels_identical": true,
+      "full_resampled_sample_frames_compared": 192000,
+      "stereo_sample_values_compared": 384000,
+      "other_eleven_segments_also_measured": true,
+      "audio_moved_resampled_or_reencoded_for_owner_again": false,
+      "finding": "No gross corruption introduced by extraction, guarded resampling or stored AAC is detected; evidence points to the selected source passage, but exact cause of perceived unintelligibility remains unestablished",
+      "does_not_prove_original_intelligibility_or_player_behavior": true,
+      "SNR_is_encoder_reproduction_not_idle_noise_reduction": true
+    },
+    "additional_review_anchor_diagnostics": {
+      "method": "unchanged_S03_2kHz_4s_plus_minus100ms",
+      "selection": "all_six_existing_event_assisted_review_positions_fixed_before_owner_feedback_including_rejected_pair2",
+      "prior_thirteen_regular_anchor_results_preserved": true,
+      "results": [
+        {
+          "source_id": "participant_01",
+          "review_pairs": [
+            1,
+            4,
+            5
+          ],
+          "status": "INCONSISTENT_LAGS_REVIEW_OFFSET_OR_DRIFT",
+          "lag_milliseconds": [
+            -10.0,
+            32.5,
+            32.5
+          ],
+          "anchor_statuses": [
+            "RELIABLE_ANCHOR",
+            "RELIABLE_ANCHOR",
+            "RELIABLE_ANCHOR"
+          ]
+        },
+        {
+          "source_id": "participant_02",
+          "review_pairs": [
+            2,
+            3,
+            6
+          ],
+          "status": "OFFSET_DETECTED",
+          "lag_milliseconds": [
+            32.5,
+            32.5,
+            32.5
+          ],
+          "anchor_statuses": [
+            "RELIABLE_ANCHOR",
+            "RELIABLE_ANCHOR",
+            "RELIABLE_ANCHOR"
+          ]
+        }
+      ],
+      "applied_corrections": false,
+      "drift_confirmed": false,
+      "origin_certificates": 0,
+      "reliable_correlation_does_not_override_human_unintelligibility": true
+    },
+    "pending_rejected_window_preservation": {
+      "request": "private_pending_exact_analysis_bound_PlannerRequest",
+      "review_pair": 2,
+      "action": "audible",
+      "source_time_window_seconds": 4,
+      "retains_time_and_restores_unity_globally_under_existing_policies": true,
+      "global_gap_or_idle_approvals": 0,
+      "applied_to_job": false,
+      "v1_origin_refusals_with_pending_request": 2,
+      "not_export_authority": true,
+      "changed_analysis_or_refined_plan_requires_explicit_matching_bindings": true
+    },
+    "attempt_05_new_comparison_files": 0,
+    "attempt_05_full_suite_rerun": false,
+    "attempt_05_new_Kdenlive_operations": false,
+    "checkpoint_documentation_review": {
+      "status": "passed",
+      "attempt": 5,
+      "reviewed_document_files": 11,
+      "valid_local_links": 71,
+      "private_source_tokens_found": 0,
+      "retained_provenance_hashes_verified": 9,
+      "historical_manifests_verified": 9,
+      "attempt02_complete_runs_verified": 4,
+      "failed_exports_and_origin_plan_retained": 2,
+      "original_review_and_exact_feedback_bindings_verified": true,
+      "pending_preservation_request_not_applied_or_approval": true,
+      "contrary_diagnostics_and_human_rejection_preserved": true,
+      "original_v1_refusals_and_frozen_core_inventory_preserved": true,
+      "new_media_or_source_certificate_or_full_acceptance_claimed": false,
       "state_next_step_handover_consistent": true,
       "s12_status": "blocked",
       "s13_status": "pending",

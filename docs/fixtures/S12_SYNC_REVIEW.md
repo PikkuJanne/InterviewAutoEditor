@@ -1,3 +1,5 @@
+**Historical evidence retained. Current continuation: [attempt 05 feedback](S12_SYNC_FEEDBACK.md); five pairs reported working, pair 2B rejected as unintelligible, source baseline unresolved.**
+
 # S12 attempt 04 — one local sync review prepared
 
 **S12 remains BLOCKED; no S13.** The owner requested “Prepare one short local

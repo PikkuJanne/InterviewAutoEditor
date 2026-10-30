@@ -1,4 +1,4 @@
-**Historical evidence retained. Current continuation: [attempt 04 sync review](S12_SYNC_REVIEW.md); one local review prepared, playback/feedback and real acceptance pending.**
+**Historical evidence retained. Current continuation: [attempt 05 feedback](S12_SYNC_FEEDBACK.md); five pairs reported working, pair 2B rejected as unintelligible, source baseline unresolved.**
 
 # S12 attempt 03 — reviewed empty-ending preference and native EOF proof
 

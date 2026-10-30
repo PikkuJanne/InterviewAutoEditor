@@ -44,6 +44,15 @@ zero-offset certificate. The owner now confirms the new WAVs retained original
 start/end timing through leveling only. This remains separate from alignment
 acceptance and does not turn the measured 32.5 ms diagnostic into zero.
 
+Attempt 05 adds diagnostics at all six pre-existing review positions, retaining
+the original thirteen-anchor record. Source 1 gives -10/+32.5/+32.5 ms and an
+inconsistent-lag review status; source 2 gives three +32.5 ms offsets. This is
+neither a drift finding nor an origin certificate. The owner reports five review
+pairs work and pair 2B unintelligible; faithful digital reproduction does not
+override that rejection or make its timing scorable. Preserve contrary evidence
+and the pending exact-analysis-bound audible safeguard; see
+[current feedback](../fixtures/S12_SYNC_FEEDBACK.md). No clock is repaired.
+
 ## Proposed source-clock treatment
 
 Preserve every file at its original starter-clock position and record any

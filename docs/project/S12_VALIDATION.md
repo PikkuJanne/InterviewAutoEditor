@@ -3,7 +3,7 @@
 **S12 is BLOCKED at full-interview acceptance.** The available engineering
 checks do not complete G01-G09 on real interviews. Compatibility remains
 EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4. See the
-[current acceptance report](../fixtures/S12_SYNC_REVIEW.md) for executed measurements and
+[current acceptance report](../fixtures/S12_SYNC_FEEDBACK.md) for executed measurements and
 the [handover](../handovers/S12.md) for the checkpoint and continuation.
 
 ## Corpus and review requirements
@@ -232,9 +232,27 @@ See the current report for exact evidence, failed assumptions and remaining gate
 
 One private 62.12-second A/B video is prepared, with six model-assisted early/
 mid/late pairs. Exact selection/cues/source bindings and media remain local.
-The app-panel request returned queued, not confirmed playback; actual owner
-feedback is pending. Record any reply against the existing source-bound selection
+At the attempt-04 checkpoint the app-panel request returned queued, with playback
+and feedback unconfirmed. Attempt 05 below records actual owner feedback. Bind replies to the existing source-bound selection
 and its real precision. Do not infer a full-recording certificate, verified zero,
 independent content/gap/idle labels or productive utility from bounded sync review.
 The original 32.5 ms/insufficient-anchor diagnostics remain intact. Do not prepare
 a second comparison or add a connection. See the current review report for QA.
+
+## Attempt 05 review rejection and contradictory evidence
+
+Actual owner feedback reports five numbered pairs work and B2 unintelligible.
+Treat B2 as rejected/unscorable for timing, preserve both raw replies privately,
+and do not turn five qualitative positives into a full-recording certificate.
+Native PCM and continuous-versus-guarded resampling reproduce B2 exactly; AAC
+matches closely. No gross conversion corruption is detected, but actual source
+intelligibility and perceived cause remain unestablished. Preserve the failed
+model-selected sample rather than replacing it to improve a measured outcome.
+
+Additional diagnostics at all six previously selected review windows retain an
+early -10 ms versus later +32.5 ms inconsistency for source 1 and three +32.5 ms
+offsets for source 2. Preserve earlier thirteen-anchor records; no drift, zero,
+cause or origin certificate follows. A reliable correlation can coexist with
+unintelligible audio. Pending exact-analysis-bound audible preservation of B2
+is separate from approvals and grants no export authority. No second review
+file, fitting, offset repair, deletion or idle gain approval is introduced.
