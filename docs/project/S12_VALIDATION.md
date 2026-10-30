@@ -3,28 +3,37 @@
 **S12 is BLOCKED at full-interview acceptance.** The available engineering
 checks do not complete G01-G09 on real interviews. Compatibility remains
 EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4. See the
-[acceptance report](../fixtures/S12_ACCEPTANCE.md) for executed measurements and
+[current acceptance report](../fixtures/S12_ATTEMPT_02.md) for executed measurements and
 the [handover](../handovers/S12.md) for the checkpoint and continuation.
 
 ## Corpus and review requirements
 
-The recorded local corpus contains one complete interview with four participant
-audio files. The owner corrected the earlier raw-file description: these audio
+The recorded local corpus now contains a complete band interview with four
+participant audio files and a distinct complete two-person interview with two
+audio files. The new folder was supplied on 30 October 2026. The owner corrected
+the earlier raw-file description: supplied audio
 files have received the same volume leveling treatment intended for actual
 projects. Treat them as already leveled inputs; do not level, normalize or
 denoise them again. This confirms the intended processing provenance, while
 waveform alignment, equal tails, annotation accuracy and edited-output acceptance
-still need their own evidence. A complete two-person interview is unavailable
-now; the owner can provide it next time on this machine. No immediate repeat
-request or scheduled follow-up is needed.
+still need their own evidence. Do not ask for the already supplied two-person
+folder again. Both inputs have private source inventories and complete read-only
+Application analysis runs. The new input has an actual Kdenlive-created starter
+and separate native round-trip copy. Processing-history clarification for the new
+WAVs is separate from baseline/tail approval; record the actual reply status.
 
 Required before acceptance:
 
-1. A complete two-person recording: original MP4, the intended participant audio
-   files and explicit source mapping in a supported unedited starter.
-2. The complete band recording under an actually supported origin/tail contract.
+1. The available complete two-person recording has original MP4, intended audio,
+   explicit mapping and a supported unedited native starter. Source-clock/tail
+   acceptance and edited-output validation remain pending.
+2. The available complete band recording needs an actually supported reviewed
+   source-clock/tail contract before edited-output validation.
 3. Independently labelled held-out excerpts, preferably from a different
-   recording, registered before tuning. Different positions in the already
+   recording, registered before tuning. The new two-person recording is registered
+   as held-out before inference, with frozen code/model/settings evidence. It has
+   now undergone full engineering inference without tuning; human-labelled
+   acceptance remains unrun. Different positions in the already
    analyzed development recording are not an independent interview. Existing
    end excerpts remain reserved from label-based tuning; historical full-source
    inference does not make them a fresh test set.
@@ -57,7 +66,7 @@ precision; reviewer, date and evidence reference. Correlation diagnostics remain
 diagnostics. Preserve their ambiguous outcomes. Only a genuinely reviewed
 zero-origin record may declare verified zero; unknown offsets stay null.
 
-The current video ends at 51092/25 seconds. Three audio sources end 4/375 second
+The band video ends at 51092/25 seconds. Three audio sources end 4/375 second
 earlier and one ends 4/375 second later. Exact sample counts are authoritative.
 Approving an origin cannot fix unequal ends. The v1 `exact_coverage` contract
 requires every measured source end to equal the shared domain, including identity
@@ -70,6 +79,15 @@ and the complete video are represented. Such a policy must retain the current
 v1 refusals and give explicit source, coverage and recovery semantics. There is
 no implemented policy extension in this checkpoint. Do not trim, pad, shift,
 stretch, replace media, hide tail loss or certify a draft to get past the gate.
+
+The new two-person video ends at 47004/25 seconds, with one WAV ending 4/375
+second earlier and one 4/375 second later. Fixed-anchor diagnostics additionally
+find a 32.5 ms lag on ten reliable anchors for one source; only two anchors are
+reliable for the other. These are reference-mix diagnostics, not applied offsets
+or zero-origin certificates. The
+[source-clock/end-coverage proposal](S12_SOURCE_COVERAGE_PROPOSAL.md) gives exact
+potential shared endpoints and explicitly marked empty EOF coverage. It is
+pending review, unimplemented and not accepted by v1.
 
 Reviewed analysis is supplied explicitly through the existing Application or
 desktop path. Global gap approvals remain separately bound to that complete
@@ -156,6 +174,16 @@ Total time includes strict serialization/reload, turn construction, invariants
 and refusal checks. Run each process separately for these resource measurements.
 These are metadata/timing stress results, not full two-hour decode/inference,
 picture-budget, peak-audit, Kdenlive GUI or media-size acceptance.
+
+Attempt 02 separately runs actual two-hour generated-media analysis and identity
+export with two silent mono sources and 64x36 video. Both models decode all
+115200000 samples per source, and the final export retains all 180000 frames.
+This complements the eight-source/599-cut metadata cases; it does not establish
+two-hour dialogue, high-resolution throughput or long native/render acceptance.
+The initial missing-opt-in export refusal and failed staging remain intact.
+Recovery uses explicit opt-in in a new run with saved analysis. Cold-run resource
+values lost before the harness failure remain unknown. See the current report
+for measured export resources and limitations.
 
 ## Applicable regressions and gate boundary
 

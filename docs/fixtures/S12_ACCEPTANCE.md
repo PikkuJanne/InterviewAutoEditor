@@ -1,5 +1,10 @@
 # S12 acceptance report - attempt 01, 29 October 2026
 
+**Historical attempt 01.** The two-person input is now available. See the
+[30 October attempt 02 report](S12_ATTEMPT_02.md) for current availability,
+complete analysis, actual native input preparation, diagnostics and long-media
+evidence. The measurements and unrun work below describe this earlier checkpoint.
+
 **BLOCKED. Full-interview, held-out and automation-utility acceptance are NOT
 RUN. S12 is not complete; S13 has not started.** This checkpoint adds independent
 measurement tooling, runs engineering regressions and a two-hour contract/timing
