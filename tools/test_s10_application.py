@@ -139,6 +139,26 @@ class PipelineTests(unittest.TestCase):
         p=(o or self.o).output
         return p.with_name('.'+p.name+'.incomplete')
 
+    def test_new_cache_redirect_does_not_change_run_identity(self):
+        cache = self.root/'new-cache'
+        redirected = self.root/'package-local-cache'
+        original_resolve = Path.resolve
+        def resolve(path, *args, **kwargs):
+            if path == cache and cache.exists():
+                return redirected
+            return original_resolve(path, *args, **kwargs)
+        def progress(stage):
+            if stage == 'analyzing':
+                cache.mkdir()
+        options = replace(self.o, cache=cache)
+        # Reproduce MSIX's first-creation path redirection without requiring an
+        # installed Store parent. Source/tool/model/code fingerprints stay real.
+        with patch.object(Path, 'resolve', resolve):
+            self.assertEqual(Application(progress=progress).run(options).state, 'complete')
+        inputs = json.loads((options.output/'inputs.json').read_text())
+        self.assertEqual(inputs['cache'], str(cache.absolute()))
+        self.assertEqual(Application.report(options.output).state, 'complete')
+
     def test_end_to_end_refined_cleanup_export_matches_existing_adapter_bytes(self):
         manifest=Application().run(self.o)
         self.assertEqual(manifest.state,'complete')

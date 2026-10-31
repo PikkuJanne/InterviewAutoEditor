@@ -356,7 +356,12 @@ class Application:
                 'command': options.command, 'preset': options.preset,
                 'experimental': options.experimental, 'files': files,
                 **({'mutes': to_data(options.mutes)} if options.mutes else {}),
-                'cache': str(options.cache.resolve()) if options.cache else None,
+                # Cache is a reuse location, not source evidence. Windows MSIX
+                # can redirect a newly created LocalAppData directory: resolve()
+                # then changes between the first and final identity checks.
+                # Bind its stable absolute logical path; cache entries retain
+                # their independent source/model/settings integrity validation.
+                'cache': str(options.cache.absolute()) if options.cache else None,
                 'implementation': implementation, 'privacy': 'PRIVATE_LOCAL_ONLY'}
 
     @staticmethod

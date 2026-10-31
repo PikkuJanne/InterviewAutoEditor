@@ -41,6 +41,11 @@ Sandbox exposed the missing `msvcp140.dll` dependency; the launcher now names it
 clearly. Its official tested installer is pinned in `third_party/s14-runtime.json`
 but not redistributed. Installing that prerequisite can need administrator
 permission; the portable app itself does not. No host system DLL is copied.
+The first host run also exposed MSIX redirection of a newly created LocalAppData
+cache. Run identity now binds the cache's stable absolute logical location.
+Cache entry source/model/settings checks and all source/tool/model/code file
+fingerprints remain intact. Historical complete runs remain readable; partial
+runs from changed implementation bytes still require a fresh destination.
 
 The ZIP uses sorted names, fixed timestamps, regular-file modes and deflate
 level 9. Two builds from the same source/binary inputs must have identical
