@@ -103,13 +103,25 @@ class AtomicTests(unittest.TestCase):
                 with self.assertRaises(ValueError):_validate_reused_summary(p,current)
 
 
-@unittest.skipUnless(FFPROBE, 'Set local IAE_FFPROBE for actual input/export gates.')
+@unittest.skipUnless(FFPROBE and FFMPEG, 'Set local FFmpeg/ffprobe for current synthetic picture observations.')
 class PipelineTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Reobserve public generated pictures with the current implementation.
+        # Historical captures/bindings remain unchanged; no private approvals
+        # or stale picture records are implicitly migrated.
+        from interview_auto_editor.picture import PictureAnalysis, analyze_picture
+        old=read_record(PictureAnalysis,FIXTURE/'picture-analysis.json')
+        cls.current_picture=analyze_picture(read_record(Analysis,FIXTURE/'analysis.json'),
+            old.request,FIXTURE/'media/zoom-source.mp4',FFMPEG,FFPROBE)
+        assert replace(cls.current_picture,implementation_sha256=old.implementation_sha256)==old
+
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory()
         self.root=Path(self.temp.name)
         self.fixture=self.root/'fixture space \u00e4'
         shutil.copytree(FIXTURE,self.fixture)
+        (self.fixture/'picture-analysis.json').write_text(dumps(self.current_picture),encoding='utf-8')
         self.base=read_record(PlanningResult,self.fixture/'planning-result.json')
         self.request=self.root/'request.json'
         self.request.write_text(dumps(self.base.request),encoding='utf-8')

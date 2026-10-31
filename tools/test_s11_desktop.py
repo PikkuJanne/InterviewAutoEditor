@@ -24,6 +24,7 @@ from interview_auto_editor.probe import fingerprint
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / 'tests/fixtures/s09-picture-26.08.2'
 FFPROBE = os.environ.get('IAE_FFPROBE') or shutil.which('ffprobe')
+FFMPEG = os.environ.get('IAE_FFMPEG') or shutil.which('ffmpeg')
 
 
 class DesktopUnitTests(unittest.TestCase):
@@ -93,13 +94,22 @@ class DesktopUnitTests(unittest.TestCase):
         self.assertEqual(w.events.get()[0], 'cancelled')
 
 
-@unittest.skipUnless(FFPROBE, 'Set local IAE_FFPROBE for desktop integration.')
+@unittest.skipUnless(FFPROBE and FFMPEG, 'Set local FFmpeg/ffprobe for current synthetic picture observations.')
 class DesktopPipelineTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from interview_auto_editor.picture import PictureAnalysis, analyze_picture
+        old=read_record(PictureAnalysis,FIXTURE/'picture-analysis.json')
+        cls.current_picture=analyze_picture(read_record(Analysis,FIXTURE/'analysis.json'),
+            old.request,FIXTURE/'media/zoom-source.mp4',FFMPEG,FFPROBE)
+        assert replace(cls.current_picture,implementation_sha256=old.implementation_sha256)==old
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
         self.fixture = self.root/'fixture space \u00e4'
         shutil.copytree(FIXTURE, self.fixture)
+        (self.fixture/'picture-analysis.json').write_text(dumps(self.current_picture),encoding='utf-8')
         self.mapping = absolute_mapping(self.fixture/'mapping.json')
         self.o = RunOptions('run', self.fixture/'before.kdenlive', self.fixture/'mapping.json', Path(FFPROBE), self.root/'new run',
             analysis=self.fixture/'analysis.json', request=ROOT/'tests/fixtures/s10-cli-26.08.2/planner-request.json',
