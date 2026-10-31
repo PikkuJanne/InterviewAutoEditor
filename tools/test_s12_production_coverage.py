@@ -81,6 +81,9 @@ class ProductionCommandTests(unittest.TestCase):
                             pcm[-1] = 1200+i  # last real sample must be addressable
                             w.writeframes(pcm.tobytes())
                     a = inspect(folder/'constructed-starter.kdenlive', mapping, FFPROBE, mapping_base=folder).analysis
+                    a = replace(a,events=tuple(Event(str(i),identity,'speech',start*192000,end*192000,
+                        F(start),F(end),F(1),'synthetic construction','',(f'participant{i+1}',))
+                        for i,(identity,start,end) in enumerate((('p1',1,2),('p2',6,7)))))
                     analysis = folder/f'{label}-analysis.json'; analysis.write_text(dumps(a))
                     request = folder/f'{label}-request.json'
                     request.write_text(dumps(PlannerRequest(2, analysis_digest(a), 'tight', (), ())))
@@ -102,16 +105,19 @@ class ProductionCommandTests(unittest.TestCase):
                     master=next(f for f in seq.findall('filter') if props(f).get('mlt_service')=='volume')
                     self.assertEqual(props(master)['disable'],'0')
                     self.assertTrue(props(master)['level'].startswith('0=-'))
-                    self.assertLessEqual(len(exported.findall('chain')),6)
+                    self.assertEqual(sum(c.get('id','').startswith('s07chain') for c in exported.findall('chain')),3)
+                    self.assertGreater(len(json.loads(props(seq)['kdenlive:sequenceproperties.groups'])),1)
                     for ref in seq.findall('track')[1:]:
                         track = nodes[ref.get('producer')]
                         pl = nodes[track.find('track').get('producer')]
-                        e = pl.find('entry'); chain = nodes[e.get('producer')]
+                        entries = pl.findall('entry');e=entries[0]; chain = nodes[e.get('producer')]
                         resource = props(chain)['resource']
                         s = next(s for s in a.sources if (s.kind=='video') == resource.endswith('.mp4') and
                             (s.kind=='video' or resource.endswith(f'participant-0{int(s.source_id[-1])}.wav')))
                         stop = ceil(s.duration*a.fps)
-                        self.assertEqual((int(e.get('in')), int(e.get('out'))+1), (0, stop))
+                        self.assertEqual((int(entries[0].get('in')),int(entries[-1].get('out'))+1),(0,stop))
+                        self.assertTrue(all(int(left.get('out'))+1==int(right.get('in')) for left,right in zip(entries,entries[1:])))
+                        self.assertEqual(len({e.get('producer') for e in entries}),1)
                         self.assertEqual(props(chain)['eof'], 'continue')
                         self.assertEqual(sum(int(b.get('length')) for b in pl.findall('blank')), expected_end-stop)
                         if s.kind=='participant_audio':
