@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "step": "S14",
+  "date": "2026-10-31",
+  "status": "technical_acceptance_passed_sync_verify_live_at_checkpoint",
+  "source_commit": "94e2b290ca30e9e87ae815379d0e0738f8720d5c",
+  "candidate": "InterviewAutoEditor-1.0.0-rc.1-windows-x64",
+  "unsigned": true,
+  "builder": {
+    "python": "3.12.14",
+    "zlib_build": "1.3.2",
+    "zlib_runtime": "1.3.2"
+  },
+  "artifacts": [
+    {
+      "name": "InterviewAutoEditor-1.0.0-rc.1-windows-x64-source.zip",
+      "sha256": "e97835bf6c54b54a48da54491ec78e913083929159518b942cbad38407907d40",
+      "bytes": 5319641,
+      "files_reviewed": 334,
+      "privacy_scan": "passed"
+    },
+    {
+      "name": "InterviewAutoEditor-1.0.0-rc.1-windows-x64.zip",
+      "sha256": "4355c7ff754712767633e49e7e58fa76e7b3ac92a562b51ade740efbb12ec181",
+      "bytes": 72815699,
+      "files_reviewed": 5239,
+      "privacy_scan": "passed"
+    }
+  ],
+  "independent_identical_final_builds": 2,
+  "assembly_reproducibility": "Same pinned inputs/source and Python 3.12.14/zlib builder; not a native-binary-from-source reproducibility claim",
+  "package_inventory_files": 5239,
+  "native_inventory_files": 94,
+  "locked_wheels": 16,
+  "bundled_python": "3.12.16",
+  "bundled_tk": "8.6.15",
+  "models": {
+    "silero": "2623a2953f6ff3d2c1e61740c6cdb7168133479b267dfef114a4a3cc5bdd788f",
+    "yamnet": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de"
+  },
+  "external_prerequisites": [
+    "Separately installed Kdenlive with FFmpeg/ffprobe",
+    "Microsoft Visual C++ x64 v14 runtime"
+  ],
+  "cpp_installer": {
+    "version": "14.51.36247.0",
+    "sha256": "843068991daaa1f73ad9f6239bce4d0f6a07a51f18c37ea2a867e9beca71295c",
+    "authenticode": "Valid; Microsoft Corporation",
+    "sandbox_install_exit": 0,
+    "redistributed": false,
+    "host_version": "14.44.35211.0",
+    "host_install_changed": false
+  },
+  "clean_install": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "windows_version": "10.0.26100",
+    "architecture": "AMD64",
+    "python": "3.12.16",
+    "python_executable": "runtime\\python.exe",
+    "system_python": null,
+    "system_pip": null,
+    "network": "disabled by sandbox configuration",
+    "source_commit": "94e2b290ca30e9e87ae815379d0e0738f8720d5c",
+    "source_core_equals_packaged_core": true,
+    "starter_only_cpu_generation": "passed",
+    "compatibility": "EXPERIMENTAL",
+    "participants": 2,
+    "output_frames": 300,
+    "missing_source_refusal_and_restored_retry": "passed",
+    "cancel_and_prompt_free_resume": "passed",
+    "synthetic_sources_unchanged": true,
+    "unicode_package_relocation": "passed",
+    "corrupt_package_refused": "passed",
+    "full_suite": {
+      "tests": 267,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 736.0412036,
+      "summary_seconds": 736.036
+    },
+    "automated_pass": true
+  },
+  "clean_install_method": "Fresh offline Windows Sandbox; candidate extracted locally, no system Python/pip; external Kdenlive and test-only Git supplied read-only; official C++ prerequisite installed in Sandbox only",
+  "desktop": {
+    "source_commit": "94e2b290ca30e9e87ae815379d0e0738f8720d5c",
+    "desktop_generation_complete": true,
+    "starter_selected_via_file_dialog": true,
+    "neutral_two_source_mapping_confirmed_by_Codex": true,
+    "approval_or_analysis_records_selected": false,
+    "questionnaire_or_subjective_score": false,
+    "native_edit_copy_created_and_byte_identical": true,
+    "original_run_still_verifies": true,
+    "synthetic_sources_unchanged": true,
+    "participants": 2,
+    "groups": 6,
+    "output_frames": 300,
+    "actual_UI_observations": [
+      "bundled models and local tool paths in Local setup",
+      "Start/checking/project ready status",
+      "Open copy in Kdenlive enabled and clicked"
+    ],
+    "screen_note": "Primary generation controls visible after maximize; lower optional restore controls clipped in the small Sandbox viewport. Wider DPI/accessibility is not qualified.",
+    "actual_edit_copy_open_without_repair_observed": true
+  },
+  "primary_native": {
+    "passed": true,
+    "checks": {
+      "native_reopen_semantics_equal": true,
+      "native_undo_semantics_equal": true,
+      "three_group_members_moved_25_frames": true,
+      "exact_300_identity_mapped_pictures": true,
+      "every_picture_rgb_mae_under4": true,
+      "one_recorded_switch_at138": true,
+      "four_audio_anchors_within_one_frame": true,
+      "eight_protected_probes_at_fixed_master_within_half_db": true,
+      "mix_peak_below_point95": true,
+      "embedded_mp4_marker_below_minus50db": true,
+      "encoded_padding_at_most_one_frame": true
+    },
+    "source_commit": "94e2b290ca30e9e87ae815379d0e0738f8720d5c",
+    "genuine_editor": "26.08.2 rev d4e87e4",
+    "mlt": "7.43.0",
+    "qt": "6.11.1",
+    "platform": "Windows 11 26H2 / NT10.0.26300 / AMD64",
+    "actual_operations": [
+      "open without repair/missing media",
+      "play 00:00:00:00 through 00:00:11:24 with audio meters and picture",
+      "last three-clip group position 00:00:10:01 -> 00:00:11:01",
+      "native save",
+      "undo and save",
+      "quit process 6288",
+      "fresh process 10888 reopen",
+      "GUI full-project MP4-H264/AAC render 00:00:12:00",
+      "GUI queue finished 00:00:04",
+      "save reopened project"
+    ],
+    "groups": 6,
+    "entries": 18,
+    "native_sequence_extent_delta_frames": 0,
+    "picture_frames": 300,
+    "maximum_picture_rgb_mae": 0.0,
+    "picture_switch_frames": [
+      138
+    ],
+    "audio_samples": 576512,
+    "audio_peak": 0.22668424248695374,
+    "audio_anchors": [
+      {
+        "source_and_output_seconds": 1.99,
+        "best_lag_samples_grid48": 0,
+        "mse_zero": 3.774685453095117e-08
+      },
+      {
+        "source_and_output_seconds": 2.99,
+        "best_lag_samples_grid48": 0,
+        "mse_zero": 2.10199928574184e-08
+      },
+      {
+        "source_and_output_seconds": 7.99,
+        "best_lag_samples_grid48": 0,
+        "mse_zero": 2.2921360809391444e-08
+      },
+      {
+        "source_and_output_seconds": 8.99,
+        "best_lag_samples_grid48": 0,
+        "mse_zero": 2.160264500616904e-08
+      }
+    ],
+    "protected_probes": [
+      {
+        "source_index": 0,
+        "source_and_output_seconds": 1.9,
+        "relative_db": -6.434006432825048,
+        "expected_master_db": -6.4661278075026685
+      },
+      {
+        "source_index": 0,
+        "source_and_output_seconds": 2.3,
+        "relative_db": -6.379923425681223,
+        "expected_master_db": -6.4661278075026685
+      },
+      {
+        "source_index": 0,
+        "source_and_output_seconds": 7.9,
+        "relative_db": -6.441620872766226,
+        "expected_master_db": -6.4661278075026685
+      },
+      {
+        "source_index": 0,
+        "source_and_output_seconds": 8.3,
+        "relative_db": -6.3759927955105375,
+        "expected_master_db": -6.4661278075026685
+      },
+      {
+        "source_index": 1,
+        "source_and_output_seconds": 2.3,
+        "relative_db": -6.374610573972972,
+        "expected_master_db": -6.4661278075026685
+      },
+      {
+        "source_index": 1,
+        "source_and_output_seconds": 3.5,
+        "relative_db": -6.47910987563888,
+        "expected_master_db": -6.4661278075026685
+      },
+      {
+        "source_index": 1,
+        "source_and_output_seconds": 8.3,
+        "relative_db": -6.383295539936755,
+        "expected_master_db": -6.4661278075026685
+      },
+      {
+        "source_index": 1,
+        "source_and_output_seconds": 9.5,
+        "relative_db": -6.477806947452844,
+        "expected_master_db": -6.4661278075026685
+      }
+    ],
+    "embedded_marker_db": -227.71105089182362,
+    "master_linear": 0.475,
+    "master_db": -6.4661278075026685,
+    "normal_generation_includes_no_unapproved_noise_mute": true,
+    "files": {
+      "S14-native-moved.kdenlive": "9df8a9fc9fab2a463b2fdd59dd5ceedfc9814fdcd85a185e5dd3953d6bd993f7",
+      "S14-native-reopened.kdenlive": "8869d7fd021b315258a0536f5336ace0f22f90090051a6373999813edd4e8596",
+      "S14-native-undone.kdenlive": "702eaaa1d5cc015905ad8cd1ddde6d989c3777d0a153faa9d79fe5879ae216ce",
+      "S14-native.kdenlive": "8869d7fd021b315258a0536f5336ace0f22f90090051a6373999813edd4e8596",
+      "S14-render.mp4": "9077068eaa62b9a1ebde1697a0eeea14d11f9713ba248e50f4d7755c47980112"
+    }
+  },
+  "complete_real_workflows": [
+    {
+      "fixture": "band_001",
+      "returncode": 0,
+      "complete": true,
+      "explicit_saved_analysis": true,
+      "full_cpu_inference_repeated": false,
+      "native_timeline_and_effects_equal_S12": true,
+      "null_offsets_preserved": true,
+      "participants": 4
+    },
+    {
+      "fixture": "two_person_002",
+      "returncode": 0,
+      "complete": true,
+      "explicit_saved_analysis": true,
+      "full_cpu_inference_repeated": false,
+      "native_timeline_and_effects_equal_S12": true,
+      "null_offsets_preserved": true,
+      "participants": 2
+    }
+  ],
+  "preservation": {
+    "preserved_counts": {
+      "originals": 8,
+      "prior_attempt08": 44,
+      "earlier_artifacts": 243
+    },
+    "real_projects": [
+      {
+        "fixture": "band_001",
+        "starter_compatible": "TESTED",
+        "native_delivery_hash_unchanged": true,
+        "historical_runs_readable": true,
+        "original_null_offsets_unchanged": true
+      },
+      {
+        "fixture": "two_person_002",
+        "starter_compatible": "TESTED",
+        "native_delivery_hash_unchanged": true,
+        "historical_runs_readable": true,
+        "original_null_offsets_unchanged": true
+      }
+    ],
+    "new_full_real_render": false,
+    "retired_owner_exercise": "retired by owner; not passed"
+  },
+  "earlier_full_suite": {
+    "source_commit": "d91ed5286242696b7ce817dee3dc368de80b901e",
+    "tests": 265,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "seconds": 334.436,
+    "accepted_as_final": false
+  },
+  "superseded_sandbox_suite": {
+    "source_commit": "1d40477509112ceb9541960eef62635f3de43ed7",
+    "status": "interrupted_after_cache_fix_changed_source; not accepted; log retained"
+  },
+  "cold_cache_host": {
+    "run_complete": true,
+    "cache_logical_identity_retained": true,
+    "actual_path_redirected_by_MSIX": true,
+    "source_commit": "94e2b290ca30e9e87ae815379d0e0738f8720d5c"
+  },
+  "public_data_review": {
+    "source_commit": "94e2b290ca30e9e87ae815379d0e0738f8720d5c",
+    "source_zip_exact_git_archive_equal": true,
+    "archives": [
+      {
+        "name": "InterviewAutoEditor-1.0.0-rc.1-windows-x64-source.zip",
+        "sha256": "e97835bf6c54b54a48da54491ec78e913083929159518b942cbad38407907d40",
+        "bytes": 5319641,
+        "files_reviewed": 334,
+        "privacy_scan": "passed"
+      },
+      {
+        "name": "InterviewAutoEditor-1.0.0-rc.1-windows-x64.zip",
+        "sha256": "4355c7ff754712767633e49e7e58fa76e7b3ac92a562b51ade740efbb12ec181",
+        "bytes": 72815699,
+        "files_reviewed": 5239,
+        "privacy_scan": "passed"
+      }
+    ],
+    "native_files_in_inventory": 94,
+    "ffmpeg_kdenlive_binaries_bundled": false,
+    "model_hashes": {
+      "silero": "2623a2953f6ff3d2c1e61740c6cdb7168133479b267dfef114a4a3cc5bdd788f",
+      "yamnet": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de"
+    },
+    "private_paths_names_credentials_found": 0
+  },
+  "owner_exercise": "retired by owner; not passed",
+  "manual_seconds": null,
+  "assisted_seconds": null,
+  "subjective_usefulness": null,
+  "subjective_quality": null,
+  "accuracy_target_90_percent": null,
+  "effort_target_70_percent": null,
+  "earlier_failures_preserved": [
+    "First candidate lacked a declared C++ prerequisite; clean ONNX import failed",
+    "Host first-cache creation changed resolved MSIX cache location; publication correctly refused; fixed logical cache identity",
+    "Early Sandbox startup/duplicate extraction/operator and UI helper issues remain in private logs"
+  ],
+  "limits": [
+    "Exact primary editor row remains Windows 11 NT10.0.26300/AMD64, 26.08.2 rev d4e87e4; Sandbox 26100 remains EXPERIMENTAL in the editor registry",
+    "Primary generation controls visible after maximize; lower optional restore controls clipped in the small Sandbox viewport. Wider DPI/accessibility is not qualified.",
+    "No fresh full real-interview render in S14; final regenerated semantics/effects equal S12 and native delivery hashes retain its full-render proof",
+    "Independent numerical accuracy, subjective usefulness, timings and broader editor/Windows/accessibility claims remain unmeasured"
+  ],
+  "stable_release_published": false,
+  "tag_created": false,
+  "main_integrated": false,
+  "next_step": "S15 only after owner command and live S14 sync",
+  "synchronization": "verify live at checkpoint",
+  "ci": "No workflow configured; query statuses/checks/Actions for the final checkpoint SHA"
+}
