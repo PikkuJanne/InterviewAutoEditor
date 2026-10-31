@@ -20,7 +20,7 @@ def put(node, name, value):
     prop.text = str(value)
 
 
-def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False, cleanup=None, picture=None):
+def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False, cleanup=None, picture=None, mutes=()):
     """Bindings map every canonical source ID to its explicit local resource.
 
     Validate strict contracts, reproducibility, starter/media fingerprints and
@@ -36,6 +36,8 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
         result = refinement.result
     layout = build_turns(result)
     plan = layout.plan
+    from ..editing import validate_mutes, mute_keys
+    validate_mutes(plan.analysis, mutes)
     peak_report = None
     if cleanup is not None:
         from ..cleanup import validate_cleanup, native_keys
@@ -196,6 +198,16 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
                                        'level': ';'.join(f'{frame}={float(db):.9g}' for frame, db in keys)}.items():
                         put(effect, key, value)
             groups[unit].append({'data': f'{index}:{position}:-1', 'leaf': 'clip', 'type': 'Leaf'})
+            if audio:
+                keys = mute_keys(mutes, identity, a, stop, starter.fps)
+                if keys:
+                    put(entry, 'kdenlive:activeeffect', len(entry.findall('filter')))
+                    effect = ET.SubElement(entry, 'filter', id=unique('editorMute'))
+                    for key, value in {'window': 75, 'max_gain': '20dB', 'channel_mask': -1,
+                        'mlt_service': 'volume', 'kdenlive_id': 'volume', 'kdenlive:collapsed': 0,
+                        'kdenlive:effectName': 'Volume (keyframable)',
+                        'level': ';'.join(f'{frame}={db}' for frame, db in keys)}.items():
+                        put(effect, key, value)
             if stop < b:
                 ET.SubElement(playlist, 'blank', length=str(b - stop))
         node.set('out', str(end - 1))

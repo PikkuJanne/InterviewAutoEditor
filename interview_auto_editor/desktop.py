@@ -13,10 +13,11 @@ from .contracts import dumps, loads
 from .desktop_workflow import (DesktopJob, Worker, absolute_mapping, discover_mapping,
     error_message, open_edit_copy, prepare_job, restored_request, review_run)
 from .intake import MappingManifest
+from .editing import local_asset
 
 
 MODES = {'Inspect inputs': 'inspect', 'Analyze audio': 'analyze',
-         'Preview edits': 'plan', 'Create editable project': 'run'}
+         'Preview edits': 'plan', 'Create editable project': 'edit'}
 RECORDS = (('analysis', 'Reviewed analysis'), ('request', 'Global gap approvals'),
            ('picture', 'Recorded picture observations'), ('picture_request', 'Picture review request'),
            ('cleanup_request', 'Idle cleanup approvals'))
@@ -48,6 +49,9 @@ class Desktop:
             for key, env, tool in (('ffprobe', 'IAE_FFPROBE', 'ffprobe'), ('ffmpeg', 'IAE_FFMPEG', 'ffmpeg'),
                 ('speech_model', 'IAE_S04_MODEL', ''), ('reaction_model', 'IAE_S05_MODEL', ''),
                 ('cache', 'IAE_CACHE', ''), ('kdenlive', 'IAE_KDENLIVE', 'kdenlive'))}
+        for key in ('ffprobe', 'ffmpeg', 'speech_model', 'reaction_model', 'cache'):
+            if not self.assets[key].get():
+                self.assets[key].set(str(local_asset(key)))
         self.draft = None
         self.run_directory = None
         self.analysis = self.request = None
@@ -86,7 +90,7 @@ class Desktop:
         ttk.Combobox(row, textvariable=self.mode, values=list(MODES), state='readonly', width=25).pack(side='left')
         self.button(row, 'Reviewed records', self.reviewed_records)
         self.button(row, 'Local setup', self.local_setup)
-        self.record_status = ttk.Label(self.form, text='No reviewed records selected. Fresh analysis retains origin/tail review and cannot certify export.')
+        self.record_status = ttk.Label(self.form, text='Ready to create a conservative edit. Uncertain audio and original source timing are preserved.')
         self.record_status.pack(anchor='w')
         row = ttk.Frame(self.form); row.pack(fill='x', pady=(8, 2))
         self.button(row, 'New private run folder', self.choose_output)
@@ -265,7 +269,7 @@ class Desktop:
 
     def update_record_status(self):
         labels = [label for key, label in RECORDS if self.records[key].get()]
-        self.record_status.configure(text='Selected: ' + ', '.join(labels) if labels else 'No reviewed records selected. Fresh analysis retains origin/tail review and cannot certify export.')
+        self.record_status.configure(text='Selected: ' + ', '.join(labels) if labels else 'Ready to create a conservative edit. Uncertain audio and original source timing are preserved.')
 
     def choose_output(self):
         path = filedialog.asksaveasfilename(parent=self.root, title='Name a NEW private run folder', confirmoverwrite=False)
@@ -277,7 +281,7 @@ class Desktop:
         if not self.project.get() or not self.output.get() or not self.assets['ffprobe'].get():
             self.status.set('Choose a starter, a new private output folder and the media probe in Local setup.'); return
         options = RunOptions(MODES[self.mode.get()], Path(self.project.get()), Path('unused'), Path(self.assets['ffprobe'].get()), Path(self.output.get()),
-            preset=self.preset.get(), experimental=self.experimental.get(),
+            preset=self.preset.get(), experimental=True if MODES[self.mode.get()] == 'edit' else self.experimental.get(),
             **{k: Path(v.get()) if v.get() else None for k, v in self.records.items()},
             **{k: Path(v.get()) if v.get() else None for k, v in self.assets.items() if k not in ('ffprobe', 'kdenlive')})
         mapping, draft = self.mapping, self.draft
@@ -318,7 +322,8 @@ class Desktop:
         for marker in report.get('picture_markers', []):
             self.review_tree.insert('', 'end', values=('picture', review_seconds(marker['source_time']), review_seconds(marker['output_time']), marker['reason'].replace('_', ' ')))
         self.open_button.configure(state='normal' if self.can_open() else 'disabled')
-        self.status.set('Run ' + manifest.state + '. Review required; alignment and full-interview quality are not certified. Private report: ' + str(path / 'report.json'))
+        self.status.set('Ready project: ' + str(path / 'project.kdenlive') if manifest.state == 'complete' and manifest.command == 'edit' else
+            'Run ' + manifest.state + '. Private report: ' + str(path / 'report.json'))
 
     def can_open(self):
         return self.run_directory is not None and (self.run_directory / 'project.kdenlive').is_file() and not self.run_directory.name.endswith('.incomplete')

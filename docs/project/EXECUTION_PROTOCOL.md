@@ -8,7 +8,7 @@
 5. State the one step being executed. Plan its internal tasks and proceed autonomously within scope.
 
 ## During the step
-Implement through its exit gate. Resolve routine choices yourself and record material decisions. Do not pad work with unrelated refactors. Use relevant tests that address real failure modes. Work that requires the user's ear should be a small prepared comparison with clear timecodes, not an open-ended request to test everything.
+Implement through its exit gate. Resolve routine choices yourself and record material decisions. Do not pad work with unrelated refactors. Use relevant tests that address real failure modes. Codex owns setup, diagnosis, repairs, reruns and real-editor verification. Preserve uncertain audio and continue independent work. Ask the owner only for a consequential editorial choice that existing directions cannot settle, with the existing project, edited timeline timecode, plain options and the conservative default. Routine annotation, duplicate projects, timed repetitions and mandatory quality/usefulness sign-offs are retired from normal delivery.
 
 If an essential file, actual Kdenlive build, credential or permission is unavailable, finish independently useful authorized work and stop at that gate. Mark BLOCKED, explain exactly what is missing, preserve the partial checkpoint and give a continuation prompt for the SAME step. Do not silently waive gates or label unrun work as complete.
 
@@ -18,7 +18,7 @@ Follow GITHUB_WORKFLOW.md. Update progress, decisions and evidence; write a deta
 The persisted handover records the implementation commit, branch and its own path. It does not pretend to contain its own final commit hash. The final chat records the actual checkpoint SHA after commit/push. A new thread resolves that handover's containing commit from Git and verifies it against the branch. This avoids a self-referential endless documentation commit loop.
 
 ## Final response at every boundary
-Use the HANDOVER_TEMPLATE.md structure. Be verbose and self-contained: identify the step/outcome, behavior changed, files, decisions, tests with commands/results, actual Kdenlive evidence, limitations, exact Git checkpoint/CI state, remaining work, user action if genuinely needed and the exact next-thread prompt. Do not say merely 'done, tests pass'.
+Persist a verbose, self-contained engineering handover using HANDOVER_TEMPLATE.md: step/outcome, behavior, files, decisions, exact validation and native-editor evidence, limitations, Git/CI and next prompt. In chat lead with each usable absolute project path and one verified result. Give edited timeline timecodes for requested edits. Include only limitations affecting the owner's work, state “Nothing needed from Janne” when true, and end with next owner/action, branch, short commit and verified push status. Link the engineering handover instead of burdening the owner with audit terminology or test counts.
 
 End with: 'Paused after Sxx. The next thread should execute Syy only.' If blocked, say 'Paused with Sxx blocked. The next thread must resume Sxx.' Do not begin the next named step in the same response or through background work.
 

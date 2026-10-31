@@ -1,5 +1,11 @@
 # S10 recoverable local CLI
 
+For ordinary interviews use the current [editor workflow](S12_EDITOR_WORKFLOW.md):
+`edit --project '<starter.kdenlive>' --output '<new private run folder>'`.
+It selects the original-timing policy, discovers existing local assets, prints
+the project path and exits 0. Internal mapping/approval and benchmark files are
+optional. The legacy command defaults and exit codes below remain unchanged.
+
 The shared [`Application`](../../interview_auto_editor/application.py) service
 connects S03-S09 inspection, CPU analysis, pause planning, picture refinement,
 cleanup and the unchanged grouped exporter. Run from the repository with Python

@@ -16,7 +16,8 @@ import uuid
 
 from .adapters.kdenlive import read_starter, resolve_resource
 from .application import Application, LIMIT, RunError, RunOptions, read_record
-from .contracts import Analysis, Override, dumps, loads
+from .editing import Mute
+from .contracts import Analysis, Override, dumps, loads, to_data
 from .intake import FileMapping, MappingManifest
 from .planner import PlannerRequest, analysis_digest
 from .speech import atomic_new
@@ -34,10 +35,11 @@ class DesktopJob:
 
     def __post_init__(self):
         names = [k for k, v in self.options]
-        if len(names) != len(set(names)) or set(names) != {f.name for f in fields(RunOptions)}:
+        expected = {f.name for f in fields(RunOptions)}
+        if len(names) != len(set(names)) or set(names) not in (expected, expected - {'mutes'}):
             raise RunError('INVALID_DESKTOP_JOB')
         values = dict(self.options)
-        if (values['command'] not in ('inspect', 'analyze', 'plan', 'run') or
+        if (values['command'] not in ('inspect', 'analyze', 'plan', 'run', 'edit') or
                 values['experimental'] not in ('true', 'false') or
                 values['preset'] not in ('', 'tight', 'gentle') or
                 any(not values[k] for k in ('project', 'mapping', 'ffprobe', 'output'))):
@@ -48,7 +50,7 @@ class DesktopJob:
         values = []
         for field in fields(RunOptions):
             value = getattr(options, field.name)
-            values.append((field.name, ('true' if value else 'false') if field.name == 'experimental'
+            values.append((field.name, json.dumps(to_data(value)) if field.name == 'mutes' else ('true' if value else 'false') if field.name == 'experimental'
                            else str(value) if value is not None else ''))
         return loads(cls, dumps(cls(1, tuple(values))))
 
@@ -57,6 +59,8 @@ class DesktopJob:
         for key, value in values.items():
             if key == 'experimental':
                 values[key] = value == 'true'
+            elif key == 'mutes':
+                values[key] = loads(tuple[Mute, ...], value)
             elif key not in ('command', 'preset'):
                 path = Path(value) if value else None
                 if path is not None and not path.is_absolute():

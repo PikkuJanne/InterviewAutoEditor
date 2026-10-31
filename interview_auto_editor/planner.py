@@ -43,7 +43,7 @@ class GapApproval:
     approval_id: str
     start: F
     end: F
-    basis: Literal['construction_label', 'human_review']
+    basis: Literal['construction_label', 'human_review', 'digital_silence']
     evidence: str
 
     def __post_init__(self):
@@ -51,7 +51,7 @@ class GapApproval:
         text(self.evidence)
         if not F(0) <= rational(self.start) < rational(self.end):
             raise ValueError('Invalid approved global source-time interval.')
-        if self.basis not in ('construction_label', 'human_review'):
+        if self.basis not in ('construction_label', 'human_review', 'digital_silence'):
             raise ValueError('A model-negative result cannot approve silence.')
 
 

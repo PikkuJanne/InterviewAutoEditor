@@ -20,6 +20,7 @@ from .cancellation import Cancelled, checkpoint, scope
 from .cleanup import CleanupRequest, build_cleanup
 from .contracts import Analysis, dumps, loads, to_data
 from .intake import MappingManifest, inspect
+from .editing import Mute, ordinary_request, starter_mapping, validate_mutes
 from .picture import PictureAnalysis, PictureRequest, analyze_picture, refine_picture_seams, validate_picture, coverage_report
 from .planner import PlannerRequest, analysis_digest, explain, plan_pauses
 from .probe import fingerprint, tool_version
@@ -55,7 +56,7 @@ class RunManifest:
     schema_version: Literal[1]
     service: Literal['s10-recoverable-cli-1']
     identity_sha256: str
-    command: Literal['inspect', 'analyze', 'plan', 'export', 'run']
+    command: Literal['inspect', 'analyze', 'plan', 'export', 'run', 'edit']
     state: Literal['building', 'failed', 'cancelled', 'complete']
     attempt: int
     stage: str
@@ -75,7 +76,7 @@ class RunManifest:
 class RunOptions:
     command: str
     project: Path
-    mapping: Path
+    mapping: Path | None
     ffprobe: Path
     output: Path
     analysis: Path | None = None
@@ -89,6 +90,7 @@ class RunOptions:
     reaction_model: Path | None = None
     cache: Path | None = None
     experimental: bool = False
+    mutes: tuple[Mute, ...] = ()
 
 
 def read_record(cls, path):
@@ -262,7 +264,8 @@ class Application:
         self.progress = progress
 
     def inspect(self, options, mapping):
-        return inspect(options.project, mapping, options.ffprobe, mapping_base=options.mapping.parent)
+        return inspect(options.project, mapping, options.ffprobe,
+                       mapping_base=options.mapping.parent if options.mapping else options.project.parent)
 
     def analyze(self, options, intake, paths):
         if not all((options.speech_model, options.reaction_model, options.ffmpeg, options.cache)):
@@ -289,7 +292,7 @@ class Application:
     def export(self, options, base, bindings, names, output, picture=None, cleanup=None):
         return export_project(base, options.project, bindings, names, output,
                               options.ffprobe, experimental=options.experimental,
-                              picture=picture, cleanup=cleanup)
+                              picture=picture, cleanup=cleanup, mutes=options.mutes)
 
     def compatibility_probe(self, project):
         # This is structural probing, not a claim about the installed binary.
@@ -315,9 +318,9 @@ class Application:
             required = {'inputs.json', 'intake.json', 'report.json'}
             if manifest.command != 'inspect':
                 required |= {'analysis.json', 'analysis-report.json'}
-            if manifest.command in ('plan', 'export', 'run'):
+            if manifest.command in ('plan', 'export', 'run', 'edit'):
                 required |= {'planner-request.json', 'planning-result.json', 'edit-plan.json'}
-            if manifest.command in ('export', 'run'):
+            if manifest.command in ('export', 'run', 'edit'):
                 required.add('project.kdenlive')
             if not required <= names:
                 raise RunError('INCOMPLETE_RUN_MANIFEST')
@@ -350,6 +353,7 @@ class Application:
                 'python': platform.python_version(), 'platform': platform.platform(),
                 'command': options.command, 'preset': options.preset,
                 'experimental': options.experimental, 'files': files,
+                **({'mutes': to_data(options.mutes)} if options.mutes else {}),
                 'cache': str(options.cache.resolve()) if options.cache else None,
                 'implementation': implementation, 'privacy': 'PRIVATE_LOCAL_ONLY'}
 
@@ -367,7 +371,7 @@ class Application:
                 raise RunError('SAVED_ANALYSIS_SOURCE_MISMATCH')
 
     def run(self, options, *, resume=False):
-        if options.command not in ('inspect', 'analyze', 'plan', 'export', 'run'):
+        if options.command not in ('inspect', 'analyze', 'plan', 'export', 'run', 'edit'):
             raise RunError('UNKNOWN_COMMAND')
         if options.picture and options.picture_request:
             raise RunError('CHOOSE_SAVED_PICTURE_OR_REQUEST')
@@ -392,11 +396,12 @@ class Application:
                 # No cancelling during the very short journal/failure bookkeeping.
                 with scope(self.cancel):
                     inputs = self._inputs(options)
-                    mapping = read_record(MappingManifest, options.mapping)
+                    mapping = (read_record(MappingManifest, options.mapping) if options.mapping
+                               else starter_mapping(read_starter(options.project)))
                     if mapping.relocations:
                         raise RunError('RELOCATION_EXPORT_UNSUPPORTED_USE_EXPLICIT_MAPPING')
                     starter = read_starter(options.project)
-                    bindings = {p.source_id: resolve_resource(p.resource, options.mapping.parent)
+                    bindings = {p.source_id: resolve_resource(p.resource, options.mapping.parent if options.mapping else options.project.parent)
                                 for p in mapping.participants}
                     bindings['video'] = next(t.resource for t in starter.tracks if not t.audio)
                     inputs['sources'] = {k: {'path': str(p), 'sha256': fingerprint(p)}
@@ -441,7 +446,10 @@ class Application:
                             journal.record('analysis-report.json')
                         if options.command != 'analyze':
                             stage('planning')
-                            request = read_record(PlannerRequest, options.request) if options.request else PlannerRequest(1, analysis_digest(analysis), 'tight', (), ())
+                            request = (read_record(PlannerRequest, options.request) if options.request else
+                                ordinary_request(analysis, bindings, options.preset or 'tight') if options.command == 'edit' else
+                                PlannerRequest(1, analysis_digest(analysis), 'tight', (), ()))
+                            validate_mutes(analysis, options.mutes)
                             if options.preset:
                                 request = replace(request, preset=options.preset)
                             journal.write('planner-request.json', dumps(request))
@@ -480,7 +488,8 @@ class Application:
                                 report['turn_cues'] = to_data(layout.cues)
                             report['picture_markers'] = to_data(refinement.markers) if refinement else []
                             report['cleanup'] = to_data(cleanup) if cleanup else None
-                            if options.command in ('export', 'run'):
+                            report['editor_mutes'] = to_data(options.mutes)
+                            if options.command in ('export', 'run', 'edit'):
                                 stage('exporting')
                                 # Always revalidate/reproduce export on resume. Use
                                 # a private owned candidate at the same depth so

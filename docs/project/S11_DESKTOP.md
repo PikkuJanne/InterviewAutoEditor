@@ -1,5 +1,13 @@
 # S11 local desktop workflow
 
+Current Create editable project uses the ordinary `edit` service. Existing local
+assets are discovered automatically, original timing/unequal endings are retained,
+and no benchmark, approval JSON or mandatory owner sign-off is needed. Optional
+records retain their exact bindings. See [ordinary workflow](S12_EDITOR_WORKFLOW.md).
+Legacy inspection/preview commands and the historical details below retain their
+strict contracts. A saved old job remains readable; a changed implementation
+requires regeneration in a new folder instead of rewriting a partial manifest.
+
 The desktop calls the same [Application service](../../interview_auto_editor/application.py)
 as the [CLI](S10_CLI.md). Compatibility remains **EXPERIMENTAL**, targeting
 Kdenlive **26.08.2 rev. d4e87e4**. Kdenlive provides playback and timeline editing.
@@ -40,13 +48,14 @@ setup globally; a saved job resumes its exact original setup.
    file exactly once, and excludes the MP4's embedded audio.
 2. Choose **Tight** or **Gentle**. Select Inspect inputs, Analyze audio, Preview
    edits or Create editable project. Choose a **new private run folder**.
-   Experimental project creation requires its explicit opt-in checkbox.
+   Create editable project selects the documented experimental original-timing
+   path. Other legacy export modes retain their explicit opt-in requirements.
 3. Where available, use **Reviewed records** to select the matching saved analysis,
    global gap approvals, picture observations or picture request, and optional
-   idle cleanup approvals. All fields are optional; absent global approvals
-   authorize no deletion, and absent idle approvals mean unity gain. Saved
-   analysis remains explicit supplied data. Fresh CPU analysis preserves
-   unverified origins and exact tails and does not certify export readiness.
+   idle cleanup approvals. All fields are optional. The ordinary mode can shorten
+   measured all-channel digital silence within existing protection rules;
+   uncertain gaps/noise remain intact. Fresh CPU analysis keeps unknown offsets
+   unset and complete source endings through the original-timing policy.
 4. Start. Fixed stage messages and an indeterminate bar report real service
    progress; there is no fabricated percentage/ETA. The form locks while the
    worker runs. Cancel remains available. Closing during work requests safe
@@ -54,7 +63,8 @@ setup globally; a saved job resumes its exact original setup.
 5. Review exact original-source/output seconds, retained gap decisions, origin
    diagnostics and recorded-picture markers. Removed locations have no output
    time. Double-click a review row to read its full reason. Full private records
-   remain in the run folder. Completion always requires review.
+   remain in the run folder. Editorial review is available without a mandatory
+   questionnaire or sign-off gate.
 6. **Open copy in Kdenlive** verifies the run's recorded artifacts, creates a new
    sibling `RUN-edit-<id>/project.kdenlive`, and launches the explicitly selected
    local executable using an argument array. Keeping the copy at the same folder

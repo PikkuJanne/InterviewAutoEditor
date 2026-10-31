@@ -1,5 +1,19 @@
 # InterviewAutoEditor
 
+Create a conservative editable interview from an unedited starter in the prepared
+local environment:
+
+```powershell
+.venv/Scripts/python.exe -B -m interview_auto_editor edit --project '<starter.kdenlive>' --output '<new private run folder>'
+```
+
+Success prints the project path. This ordinary path preserves original timing,
+complete endings and uncertain audio, excludes the MP4 audio, and supports
+repeatable source-local mutes. It needs no mapping/approval JSON or owner
+benchmark exercise. See the [editor workflow](docs/project/S12_EDITOR_WORKFLOW.md)
+for local setup, conservative automation limits and recovery. The legacy CLI
+details and historical step descriptions below remain reference material.
+
 InterviewAutoEditor is a planned local Windows tool for turning a Zoom interview
 starter project into a new, editable Kdenlive project. **S10 provides a recoverable
 experimental CLI** for inspection, local CPU evidence, approved shared pause

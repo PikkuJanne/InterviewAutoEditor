@@ -10,8 +10,8 @@ The original rejection is on the normal path: `cli.main` calls
 `plan_pauses`. The planner constructs `EditPlan` before making decisions. Its
 schema-1 origin check rejects the unchanged unverified audio; even a verified
 origin cannot satisfy the subsequent unequal-tail check. The fix is an explicit
-policy in that same planner/contract/adapter path, rather than an offline XML
-patch or a changed source duration. The default request remains schema 1.
+policy in that same planner/contract/adapter path. Legacy commands retain their
+schema-1 default; the ordinary `edit` command selects schema 2 without a request file.
 
 Schema 2 does **not** certify an unknown origin or turn an unset measured offset
 into zero. It places each original source at the starter's original zero, keeps
@@ -88,5 +88,6 @@ Current real results belong in the
 [production audit](../fixtures/S12_PRODUCTION_COVERAGE.md). Synthetic checks,
 project-file checks, actual Kdenlive actions and human listening are separate
 evidence. Neither zero automatic removals nor missing independent labels proves
-90% pause automation or 70% effort reduction. S12 stays open until its remaining
-acceptance decisions are measured; S13 is not started.
+90% pause automation or 70% effort reduction. The timed owner exercise is retired
+by owner; see the revised S12 brief and current handover for applicable completion
+checks. Unknown accuracy, timing offsets and subjective usefulness stay unset.

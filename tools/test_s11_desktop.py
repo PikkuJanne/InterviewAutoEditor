@@ -153,11 +153,11 @@ class DesktopPipelineTests(unittest.TestCase):
             deadline = time.monotonic()+15
             while time.monotonic() < deadline:
                 root.update()
-                if not ui.worker.busy and ui.status.get().startswith('Run complete'): break
+                if not ui.worker.busy and ui.status.get().startswith('Ready project:'): break
                 time.sleep(.02)
             ui.worker.thread.join(1); root.update_idletasks()
             self.assertFalse(ui.worker.busy)
-            self.assertIn('Run complete', ui.status.get())
+            self.assertEqual(ui.status.get(), 'Ready project: ' + str(self.o.output/'project.kdenlive'))
             self.assertEqual(str(ui.open_button.cget('state')), 'normal')
             rows = [ui.review_tree.item(row, 'values') for row in ui.review_tree.get_children()]
             pictures = [r for r in rows if r[0] == 'picture']

@@ -1,5 +1,28 @@
 # S12 measurement and acceptance procedure
 
+## Governing revision — 31 October 2026
+
+The owner retired the timed manual/assisted exercise, routine listening/annotation
+assignments and mandatory usefulness/quality sign-off. These are **retired by
+owner**, never passed. All unmeasured seconds, subjective usefulness, independent
+label denominators and unsupported 90%/70% targets remain unset. Historical
+prerequisites and attempt-01–08 blockers below are preserved as history; they
+must not regenerate tasks. The current [S12 brief](steps/S12.md), [execution
+protocol](EXECUTION_PROTOCOL.md), [NEXT_STEP](../NEXT_STEP.md) and latest state
+handover govern continuation. Normal conservative generation needs no internal
+approval record or benchmark questionnaire. Codex owns setup, recovery, real
+editor checks and source-only verification of the authorized full mute. Preserve
+the original registration, implementation, pending audible safeguard conditions,
+five positive observations, rejected timing-unscorable excerpt and the particular
+no-safe-pause finding. One scoped mute authorizes no broader safeguard use.
+
+The new `edit` command measures all-channel original PCM digital silence before
+proposing automatic shared cuts; protection and exterior handles still apply.
+These engineering decisions are not independent content labels. Ambiguous speech
+or microphone noise is preserved. See [ordinary editing](S12_EDITOR_WORKFLOW.md).
+
+## Historical acceptance procedure and measurements
+
 **Current production policy:** the explicit schema-2 original-timing path is
 implemented. It preserves null offsets, every source ending and marked empty
 picture coverage. See [the policy](S12_ORIGINAL_TIMING.md) and

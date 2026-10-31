@@ -51,7 +51,9 @@ def resolve_resource(value, base, relocations=None, allow_unc=False):
     if str(path).startswith(('\\\\', '//')) and not allow_unc:
         raise IntakeError('UNC_REQUIRES_EXPLICIT_OPT_IN_UNTESTED')
     if not path.is_file():
-        raise IntakeError('UNRESOLVED_MEDIA_REFERENCE')
+        error = IntakeError('UNRESOLVED_MEDIA_REFERENCE')
+        error.affected_input = path
+        raise error
     return path
 
 
