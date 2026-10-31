@@ -107,6 +107,9 @@ class ProductionCommandTests(unittest.TestCase):
                     self.assertTrue(props(master)['level'].startswith('0=-'))
                     self.assertEqual(sum(c.get('id','').startswith('s07chain') for c in exported.findall('chain')),3)
                     self.assertGreater(len(json.loads(props(seq)['kdenlive:sequenceproperties.groups'])),1)
+                    self.assertLessEqual(len(json.loads(props(seq)['kdenlive:sequenceproperties.guides'])),3)
+                    self.assertTrue(report['turn_cues'])
+                    self.assertGreater(report['export']['diagnostic_cues_in_private_report'],0)
                     for ref in seq.findall('track')[1:]:
                         track = nodes[ref.get('producer')]
                         pl = nodes[track.find('track').get('producer')]

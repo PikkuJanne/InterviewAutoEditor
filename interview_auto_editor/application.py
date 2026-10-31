@@ -470,6 +470,8 @@ class Application:
                                 journal.write('cleanup-result.json', dumps(cleanup))
                             journal.write('edit-plan.json', dumps(layout.plan))
                             report['planning'] = explain(result)
+                            if request.schema_version == 2:
+                                report['turn_cues'] = to_data(layout.cues)
                             report['picture_markers'] = to_data(refinement.markers) if refinement else []
                             report['cleanup'] = to_data(cleanup) if cleanup else None
                             if options.command in ('export', 'run'):

@@ -197,6 +197,7 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     # Multiple cues sharing a frame become one native guide, with exact source
     # coordinates in its text. Local source IDs/names are intentionally private.
     guides = {}
+    audit_guides = plan.tail_policy == 'original_timing_with_gaps_v2'
     for source in sources.values():
         if source.duration < plan.time_map.source_frames / starter.fps:
             mapped = plan.time_map.map_time(source.duration)
@@ -205,11 +206,13 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
                 label = 'MISSING RECORDED PICTURE' if source.kind == 'video' else 'Audio source ended'
                 guides.setdefault(pos, []).append(f'{label}; {source.source_id}; original EOF {source.duration} s; empty coverage after EOF, no freeze or shift')
     for cue in layout.cues:
+        if audit_guides:
+            continue  # Full diagnostics live in the private run report.
         pos = min(end - 1, int(cue.output_start * starter.fps))
         guides.setdefault(pos, []).append(f'{cue.kind}: {", ".join(cue.source_ids)}; source [{cue.source_start},{cue.source_end}) s')
     for _, out in list(plan.time_map.segments())[1:]:
         guides.setdefault(out.start, []).append('Approved shared pause seam')
-    if refinement is not None:
+    if refinement is not None and not audit_guides:
         for marker in refinement.markers:
             output_time = marker.output_time
             if output_time is None:
@@ -255,6 +258,8 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
             'participants': len(audios), 'groups': len(groups), 'output_frames': end,
             'edit_units': list(plan.edit_units), 'input_sequence_extent_delta_frames': starter.sequence_frames - starter.clip_frames,
             'excluded_mp4_audio_tracks': starter.excluded_mp4_audio,
+            **({'diagnostic_cues_in_private_report': len(layout.cues),
+                'timeline_guides': len(guide)} if audit_guides else {}),
             **({'master_gain_db': master_db, 'master_linear_bound': .95 / len(audios),
                 'master_gain_policy': 'fixed 0.95/N mix headroom; source media and relative levels unchanged'} if master_db is not None else {}),
             **({'picture_algorithm': refinement.algorithm, 'picture_review_markers': len(refinement.markers)} if refinement is not None else {}),
