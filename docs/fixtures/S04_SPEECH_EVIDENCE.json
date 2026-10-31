@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "step": "S04",
+  "date": "2026-10-28",
+  "compatibility": "EXPERIMENTAL",
+  "development_fixture": {
+    "provenance": "Microsoft David Desktop local System.Speech synthetic development; not Kdenlive output; not human acceptance",
+    "sample_rate": 22050,
+    "sample_count": 480336,
+    "channels": 2,
+    "channel_relation": "opposite polarity; no averaging",
+    "annotation_method": "construction labels split at digital silence >100 ms; independent of model",
+    "media_committed": false,
+    "real_interview_acceptance": false
+  },
+  "model_sha256": "2623a2953f6ff3d2c1e61740c6cdb7168133479b267dfef114a4a3cc5bdd788f",
+  "runtime": "onnxruntime==1.20.1; numpy==2.1.3; CPUExecutionProvider; one thread",
+  "python": "3.12.14",
+  "ffmpeg": "8.1.1",
+  "cases": [
+    {
+      "id": "normal",
+      "synthetic_gain": "1",
+      "cue_duration": "54949/11025",
+      "channels": [
+        {
+          "pcm_channel": 0,
+          "annotated_regions": 2,
+          "protected_regions": 2,
+          "speech_events_intersecting_cue": 2,
+          "uncertainty_events_intersecting_cue": 4
+        },
+        {
+          "pcm_channel": 1,
+          "annotated_regions": 2,
+          "protected_regions": 2,
+          "speech_events_intersecting_cue": 2,
+          "uncertainty_events_intersecting_cue": 4
+        }
+      ]
+    },
+    {
+      "id": "soft",
+      "synthetic_gain": "0.03",
+      "cue_duration": "54949/11025",
+      "channels": [
+        {
+          "pcm_channel": 0,
+          "annotated_regions": 2,
+          "protected_regions": 2,
+          "speech_events_intersecting_cue": 3,
+          "uncertainty_events_intersecting_cue": 7
+        },
+        {
+          "pcm_channel": 1,
+          "annotated_regions": 2,
+          "protected_regions": 2,
+          "speech_events_intersecting_cue": 3,
+          "uncertainty_events_intersecting_cue": 7
+        }
+      ]
+    },
+    {
+      "id": "very_soft",
+      "synthetic_gain": "0.003",
+      "cue_duration": "54949/11025",
+      "channels": [
+        {
+          "pcm_channel": 0,
+          "annotated_regions": 2,
+          "protected_regions": 2,
+          "speech_events_intersecting_cue": 0,
+          "uncertainty_events_intersecting_cue": 2
+        },
+        {
+          "pcm_channel": 1,
+          "annotated_regions": 2,
+          "protected_regions": 2,
+          "speech_events_intersecting_cue": 0,
+          "uncertainty_events_intersecting_cue": 2
+        }
+      ]
+    },
+    {
+      "id": "short_yes",
+      "synthetic_gain": "1",
+      "cue_duration": "1966/3675",
+      "channels": [
+        {
+          "pcm_channel": 0,
+          "annotated_regions": 1,
+          "protected_regions": 1,
+          "speech_events_intersecting_cue": 1,
+          "uncertainty_events_intersecting_cue": 2
+        },
+        {
+          "pcm_channel": 1,
+          "annotated_regions": 1,
+          "protected_regions": 1,
+          "speech_events_intersecting_cue": 1,
+          "uncertainty_events_intersecting_cue": 2
+        }
+      ]
+    },
+    {
+      "id": "short_mm_hmm",
+      "synthetic_gain": "1",
+      "cue_duration": "16867/22050",
+      "channels": [
+        {
+          "pcm_channel": 0,
+          "annotated_regions": 1,
+          "protected_regions": 1,
+          "speech_events_intersecting_cue": 1,
+          "uncertainty_events_intersecting_cue": 2
+        },
+        {
+          "pcm_channel": 1,
+          "annotated_regions": 1,
+          "protected_regions": 1,
+          "speech_events_intersecting_cue": 1,
+          "uncertainty_events_intersecting_cue": 2
+        }
+      ]
+    }
+  ],
+  "chunk_equivalence": {
+    "reference": "single decoded buffer, stateful 512-sample inference",
+    "io_chunk_samples": [
+      1,
+      733,
+      8192,
+      65536
+    ],
+    "boundary_tolerance_samples": 0,
+    "result": "PASS",
+    "partial_final_window_tested": true
+  },
+  "sample_grid_and_active_tail_rates": [
+    16000,
+    44100,
+    48000,
+    96000,
+    192000
+  ],
+  "missing_and_wrong_model": "PASS visible fixed diagnostic; no fallback",
+  "laughter_protection": "NOT_VALIDATED_VAD_ALONE_INSUFFICIENT",
+  "real_content_listening_acceptance": "NOT_RUN",
+  "gui": "NOT_RUN_S04_ANALYSIS_ONLY_UNCHANGED_S01_S02_EVIDENCE",
+  "automated_suite": {
+    "tests": 90,
+    "new_s04_tests": 15,
+    "skipped": 0,
+    "seconds": 91.639,
+    "status": "PASS",
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v"
+  },
+  "private_engineering_integration": {
+    "status": "PASS_read_only_not_content_acceptance",
+    "participants": 4,
+    "pcm_channels": 8,
+    "initial_full_cold_seconds": 239.078,
+    "final_code_analysis_elapsed_seconds": 214.187,
+    "final_code_timing_scope": "concurrent validation; not a standalone benchmark",
+    "cache_reused_tracks": 4,
+    "speech_events": 2204,
+    "uncertainty_events": 3116,
+    "native_sequence_extent_deltas": [
+      0,
+      1
+    ],
+    "source_tail_seconds": [
+      "-4/375",
+      "+4/375"
+    ],
+    "all_original_intake_findings_retained": true,
+    "runtime_telemetry_disabled": true,
+    "real_alignment_certified": false,
+    "real_content_listening_acceptance": "NOT_RUN",
+    "private_media_paths_names_hashes_or_transcripts_published": false
+  }
+}

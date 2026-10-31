@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "step": "S11",
+  "date": "2026-10-29",
+  "status": "COMPLETE_APPLICABLE_SCOPE",
+  "implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
+  "starting_checkpoint": "e88e138a891078c3a04e9fb8f9117273dd0651d3",
+  "compatibility": "EXPERIMENTAL",
+  "service": "s10-recoverable-cli-1",
+  "runtime": {
+    "python": "3.12.14",
+    "tk": "8.6",
+    "ffmpeg": "8.1.1",
+    "ffprobe": "8.1.1",
+    "platform": "Windows AMD64"
+  },
+  "full_suite": {
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+    "tests": 224,
+    "s11_tests": 18,
+    "skipped": 0,
+    "seconds": 200.744,
+    "result": "PASS"
+  },
+  "focused_suite": {
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s11_desktop.py -v",
+    "tests": 18,
+    "skipped": 0,
+    "seconds": 22.426,
+    "result": "PASS_no_Tcl_cleanup_exceptions"
+  },
+  "earlier_runs": [
+    {
+      "scope": "Initial focused 16 tests",
+      "result": "FAILED_three_harness_errors_wrong_helper_import_CRLF_restore_and_absent_optional_gain_count"
+    },
+    {
+      "scope": "Corrected focused before final two checks",
+      "tests": 16,
+      "seconds": 20.834,
+      "result": "PASS"
+    },
+    {
+      "scope": "Initial full",
+      "tests": 222,
+      "seconds": 170.413,
+      "skipped": 11,
+      "result": "FAILED_missing_development_path_and_child_code_identity_changed_while_editing"
+    },
+    {
+      "scope": "Full with all assets before Tk lifecycle fix",
+      "result": "ABORTED_Tcl_objects_reclaimed_on_later_worker_thread_after_smoke_window_teardown"
+    }
+  ],
+  "desktop_gates": {
+    "fresh_terminal_free_synthetic_run": "PASS_observed_visible_UI",
+    "explicit_mapping_and_experimental_opt_in": true,
+    "actual_tk_start_worker_completion_review": "PASS_final_code",
+    "six_stage_cancellation_and_explicit_resume": "PASS_real_service_worker",
+    "changed_input_and_repeat_run_refusal": "PASS",
+    "missing_invalid_assets_and_safe_errors": "PASS",
+    "corrupt_run_refuses_review_and_launch": "PASS",
+    "exact_source_time_restore": "PASS",
+    "stale_cleanup_refuses_without_rebinding": "PASS",
+    "edit_copy_preserves_run_and_relative_depth": "PASS",
+    "mapping_row_counts": [
+      8,
+      64
+    ],
+    "row_scaling_is_media_export_acceptance": false,
+    "retained_core_export_audio_track_counts": [
+      1,
+      2,
+      3,
+      6,
+      8
+    ]
+  },
+  "synthetic_metrics": {
+    "output_frames": 267,
+    "groups": 6,
+    "gain_spans": 4,
+    "restore_source_interval_seconds": [
+      4,
+      7
+    ],
+    "restored_output_frames": 300,
+    "explicit_unity_gain_spans": 0
+  },
+  "actual_application": {
+    "build": "26.08.2",
+    "revision": "d4e87e4",
+    "installed_executable_sha256": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352",
+    "open_edit_copy_no_repair_or_missing_media": "PASS",
+    "playback_observed_at": "00:00:09:16",
+    "last_displayed_frame": "00:00:10:16",
+    "new_full_group_edit_save_reopen_render": "NOT_RUN_exporter_unchanged",
+    "retained_full_regression": "tests/fixtures/s10-cli-26.08.2/PROVENANCE.json",
+    "retained_actual_render_remeasured_by_full_suite": true,
+    "recording": "docs/fixtures/S11_WORKFLOW.md",
+    "visible_pass_preceded_final_presentation_and_poll_cleanup_refinements": true,
+    "helper_identity_workaround": "PRIVATE_unchanged_existing_runtime_copy_no_acquired_software_or_system_setting_change"
+  },
+  "preservation": {
+    "private_corpus_assertions": 102,
+    "unchanged_original_sources": 5,
+    "sample_exact_excerpts": 12,
+    "bounded_development_overlap_frames": 200,
+    "bounded_development_gain_spans": 0,
+    "real_origins_certified": false,
+    "real_source_tails_repaired": false,
+    "private_full_export_created": false,
+    "held_out_opened": false,
+    "new_listening_requested": false,
+    "new_connection": false
+  },
+  "application_cli_contracts_policy_models_adapter_unchanged": true,
+  "packaging_entry_point": "InterviewAutoEditor.pyw",
+  "clean_install_bundled_runtime_release": "NOT_RUN_S14_S15",
+  "s12_started": false,
+  "synchronization": "must_verify_live_at_each_checkpoint",
+  "ci": "verify_exact_checkpoint_SHA_at_close_starting_CI_not_configured",
+  "checkpoint_documentation_review": {
+    "status": "passed",
+    "metadata_files": 4,
+    "implementation_tests_and_artifacts_unchanged_since": "7d8d06dd4142f12e6da436a206964a894905d0bb",
+    "state_next_step_handover_consistent": true,
+    "full_tests": 224,
+    "s11_tests": 18,
+    "s12_status": "pending_not_started",
+    "reviewed_text_files": 12,
+    "generated_media_files": 0,
+    "valid_local_links": 70,
+    "private_source_tokens_found": 0,
+    "prior_provenance_hashes_verified": 9,
+    "application_cli_contracts_policy_models_adapter_fixtures_unchanged": true
+  }
+}

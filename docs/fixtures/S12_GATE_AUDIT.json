@@ -1,0 +1,330 @@
+{
+  "schema_version": 1,
+  "step": "S12",
+  "attempt": 6,
+  "date": "2026-10-31",
+  "status": "BLOCKED_REAL_ACCEPTANCE_NO_MATCHING_EXECUTABLE_BASELINE",
+  "starting_checkpoint": "294586484b8b6594838e9004006b7cc5ef85b309",
+  "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+  "tracked_code_changed": false,
+  "starting_checkpoint_verification": {
+    "local_live_upstream_equal": true,
+    "clean_worktree": true,
+    "containing_handover_commit": "294586484b8b6594838e9004006b7cc5ef85b309",
+    "changes_since_implementation": "documentation_and_evidence_only"
+  },
+  "exact_sha_CI_at_start": {
+    "checkpoint_sha": "294586484b8b6594838e9004006b7cc5ef85b309",
+    "implementation_sha": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+    "configured_workflows": 0,
+    "runs_for_each_SHA": 0,
+    "check_runs_for_each_SHA": 0,
+    "status_contexts_for_each_SHA": 0,
+    "classification": "NOT_CONFIGURED_NOT_GREEN",
+    "empty_combined_status": "pending"
+  },
+  "private_read_only_audit": {
+    "status": "passed",
+    "attempt": 6,
+    "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+    "starting_checkpoint": "294586484b8b6594838e9004006b7cc5ef85b309",
+    "elapsed_seconds": 86.563,
+    "tracked_code_changed": false,
+    "private_artifacts_and_cache_files_hash_compared_before_after": 243,
+    "original_media_files_hash_verified_before_after": 8,
+    "unverified_audio_origins_and_null_offsets_preserved": 6,
+    "held_out_core_modules_and_inventory_unchanged": 22,
+    "frozen_model_hashes_verified": 2,
+    "source_bound_feedback_fidelity_and_conflicting_diagnostics_preserved": true,
+    "coverage_previews": [
+      {
+        "fixture_id": "two_person_002",
+        "audio_sources": 2,
+        "events": 8420,
+        "original_video_frames": 47004,
+        "preview_shared_frames": 47005,
+        "source_counts_events_origins_preserved": true,
+        "v1_origin_refusals": 2,
+        "v2_as_EditPlan_refused": true,
+        "stale_coverage_review_refused": true
+      },
+      {
+        "fixture_id": "band_001",
+        "audio_sources": 4,
+        "events": 6218,
+        "original_video_frames": 51092,
+        "preview_shared_frames": 51093,
+        "source_counts_events_origins_preserved": true,
+        "v1_origin_refusals": 2,
+        "v2_as_EditPlan_refused": true,
+        "stale_coverage_review_refused": true
+      }
+    ],
+    "pending_request": {
+      "strict_codec_and_original_analysis_binding": "PASS",
+      "source_time_window_seconds": 4,
+      "execution_validation": "REFUSED_UNVERIFIED_ORIGIN",
+      "preset_refusals": 2,
+      "stale_analysis_refusals": 2,
+      "global_gap_or_idle_approvals": 0,
+      "applied_to_job": false,
+      "rebound": false,
+      "export_authority": false
+    },
+    "historical_manifests_verified": 9,
+    "attempt02_complete_runs_verified": 4,
+    "failed_runs_retained": 2,
+    "retained_genuine_artifact_hashes_verified": 9,
+    "all_preexisting_S12_and_used_cache_files_unchanged": true,
+    "full_suite_rerun": false,
+    "new_comparison_media_files": 0,
+    "cumulative_S12_comparison_media_files": 1,
+    "new_real_editable_export": false,
+    "new_origin_certificates": 0,
+    "new_inference_tuning_GUI_or_connection": false
+  },
+  "configured_input_and_job_bindings": {
+    "status": "passed",
+    "configured_project_mapping_tool_and_model_files_hash_verified": 8,
+    "installed_Kdenlive_executable_matches_prior_26_08_2_revision_d4e87e4_evidence": true,
+    "new_GUI_version_or_editability_evidence": false,
+    "historical_job_inputs_inspected": 15,
+    "job_inputs_reference_pending_request": false,
+    "pending_request_hash_unchanged": true
+  },
+  "focused_regressions": {
+    "tests": 33,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 31.453,
+    "status": "passed",
+    "selected_existing_tests": [
+      "test_s06_planner.RuleTests",
+      "test_s08_cleanup.PolicyTests.test_overlap_protects_every_mic_and_shared_mic_never_gated",
+      "test_s08_cleanup.PolicyTests.test_overrides_restore_interval_on_all_tracks",
+      "test_s08_cleanup.PolicyTests.test_source_approvals_do_not_authorize_shared_removal",
+      "test_s08_cleanup.PolicyTests.test_stale_tampered_unknown_and_non_idle_approvals_refused",
+      "test_s08_cleanup.PolicyTests.test_existing_origin_and_tail_refusals_still_apply",
+      "test_s09_picture.SeamTests.test_12_speech_12_45_picture_preserves_entire_opening_exact_20fps",
+      "test_s09_picture.SeamTests.test_protected_kinds_overlap_off_frame_and_overrides_survive",
+      "test_s09_picture.SeamTests.test_origin_and_exact_tail_refusals_remain_before_refinement",
+      "test_s09_picture.SeamTests.test_fractional_fps_and_variable_track_counts_restore_monotonically",
+      "test_s10_application.PipelineTests.test_source_time_override_restores_all_tracks_without_inference",
+      "test_s10_application.PipelineTests.test_stale_cleanup_bound_to_base_is_refused",
+      "test_s10_application.PipelineTests.test_cancellation_at_each_stage_never_publishes_final_and_resumes",
+      "test_s10_application.PipelineTests.test_resume_is_explicit_and_changed_settings_refuse",
+      "test_s10_application.PipelineTests.test_original_unverified_origins_and_unequal_tails_still_refuse",
+      "test_s10_application.PipelineTests.test_moved_package_references_resolve_and_regenerates_without_inference",
+      "test_s11_desktop.DesktopUnitTests.test_exact_source_override_never_creates_new_approval_or_changes_binding",
+      "test_s11_desktop.DesktopUnitTests.test_unverified_origin_cannot_be_certified_by_restore",
+      "test_s11_desktop.DesktopPipelineTests.test_restore_stale_cleanup_refuses_then_explicit_unity_succeeds",
+      "test_s12_coverage.CoverageTests.test_mixed_grid_retention_and_exact_empty_coverage",
+      "test_s12_coverage.CoverageTests.test_old_origin_and_exact_tail_refusals_survive",
+      "test_s12_coverage.CoverageTests.test_stale_rejected_or_malformed_review",
+      "test_s12_coverage.CoverageTests.test_modified_preview_map_samples_and_source_order_refuse",
+      "test_s12_coverage.CoverageTests.test_fractional_fps_absolute_sample_end",
+      "test_s12_quality.QualityTests.test_empty_metrics_remain_unknown_and_never_claim_utility",
+      "test_s12_quality.QualityTests.test_split_source_configuration_and_stale_label_bindings_fail_closed"
+    ],
+    "real_pending_request_or_jobs_used": false,
+    "synthetic_explicit_rebinding_tests_are_not_authority_to_rebind_real_approvals": true
+  },
+  "retained_full_suite": {
+    "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+    "executed_in_attempt": 3,
+    "tests": 237,
+    "skipped": 0,
+    "seconds": 254.017,
+    "rerun_in_attempt06": false
+  },
+  "retained_owner_feedback": {
+    "initial_reply": "All others work, but 2 is very very very off",
+    "clarification": "The audio in 2 B was just crazy, couldn't make anything out of it",
+    "scope": "six numbered review pairs only; no exact timing or content boundaries supplied",
+    "reported_playback": true,
+    "playback_evidence": "owner_content_specific_report_not_app_panel_tool",
+    "pairs_reported_working": [
+      1,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rejected_pair": 2,
+    "rejected_mode": "B",
+    "rejection_kind": "UNINTELLIGIBLE_AUDIO_TIMING_UNSCORABLE",
+    "positive_pair_count": 5,
+    "negative_pair_count": 1,
+    "full_recording_alignment_acceptance": false,
+    "global_gap_or_idle_approval": false
+  },
+  "retained_fidelity_evidence": {
+    "native_container_decode_equals_original_PCM": true,
+    "continuous_file_origin_vs_guarded_resample_max_error_LSB": 0,
+    "continuous_vs_guarded_mismatched_sample_values": 0,
+    "encoded_B2_full_segment_SNR_db": 44.60270689369202,
+    "encoded_B2_channel_correlations": [
+      0.9999831571342518,
+      0.9999831571492755
+    ],
+    "encoded_B2_peak": 0.8435953855514526,
+    "both_input_channels_identical": true,
+    "full_resampled_sample_frames_compared": 192000,
+    "stereo_sample_values_compared": 384000,
+    "other_eleven_segments_also_measured": true,
+    "audio_moved_resampled_or_reencoded_for_owner_again": false,
+    "finding": "No gross corruption introduced by extraction, guarded resampling or stored AAC is detected; evidence points to the selected source passage, but exact cause of perceived unintelligibility remains unestablished",
+    "does_not_prove_original_intelligibility_or_player_behavior": true,
+    "SNR_is_encoder_reproduction_not_idle_noise_reduction": true
+  },
+  "retained_conflicting_diagnostics": {
+    "method": "unchanged_S03_2kHz_4s_plus_minus100ms",
+    "selection": "all_six_existing_event_assisted_review_positions_fixed_before_owner_feedback_including_rejected_pair2",
+    "prior_thirteen_regular_anchor_results_preserved": true,
+    "results": [
+      {
+        "source_id": "participant_01",
+        "review_pairs": [
+          1,
+          4,
+          5
+        ],
+        "status": "INCONSISTENT_LAGS_REVIEW_OFFSET_OR_DRIFT",
+        "lag_milliseconds": [
+          -10.0,
+          32.5,
+          32.5
+        ],
+        "anchor_statuses": [
+          "RELIABLE_ANCHOR",
+          "RELIABLE_ANCHOR",
+          "RELIABLE_ANCHOR"
+        ]
+      },
+      {
+        "source_id": "participant_02",
+        "review_pairs": [
+          2,
+          3,
+          6
+        ],
+        "status": "OFFSET_DETECTED",
+        "lag_milliseconds": [
+          32.5,
+          32.5,
+          32.5
+        ],
+        "anchor_statuses": [
+          "RELIABLE_ANCHOR",
+          "RELIABLE_ANCHOR",
+          "RELIABLE_ANCHOR"
+        ]
+      }
+    ],
+    "applied_corrections": false,
+    "drift_confirmed": false,
+    "origin_certificates": 0,
+    "reliable_correlation_does_not_override_human_unintelligibility": true
+  },
+  "prior_feedback_files_changed": false,
+  "harness_failure": {
+    "retained": true,
+    "production_refusal_was_correct": true,
+    "initial_expectation": "schema",
+    "actual_refusal": "Missing/unknown contract fields.",
+    "corrected_assertion_only": true,
+    "complete_rerun_in_new_private_destination": true
+  },
+  "gates": [
+    {
+      "gate": "G01",
+      "engineering": "PASS: eight original media files rehashed before/after; eight configured assets match",
+      "real_acceptance": "NOT_RUN: no accepted edited output on which to check all references and embedded-MP4-audio exclusion"
+    },
+    {
+      "gate": "G02",
+      "engineering": "Retained actual synthetic Kdenlive evidence only; installed executable hash matches",
+      "real_acceptance": "NOT_RUN: actual real editable output open/play/group-edit/save/reopen/render"
+    },
+    {
+      "gate": "G03",
+      "engineering": "PASS: focused shared-map, frame-grid and restoration regressions; all six original null audio offsets retained",
+      "real_acceptance": "BLOCKED: no reviewed source baseline; conflicting diagnostics remain; real rendered anchors unmeasured"
+    },
+    {
+      "gate": "G04",
+      "engineering": "PASS: focused protected-kind/overlap/shared-mic/override regressions",
+      "real_acceptance": "NOT_ESTABLISHED: independent complete/held-out word/reaction/uncertainty labels and accepted output missing"
+    },
+    {
+      "gate": "G05",
+      "engineering": "PASS: no new gap approvals; stale source/configuration/label bindings refuse",
+      "real_acceptance": "NOT_RUN: independent removable/handover-gap denominators and corresponding approvals missing"
+    },
+    {
+      "gate": "G06",
+      "engineering": "Protection/cleanup policies unchanged; no source reprocessing or headroom-policy change",
+      "real_acceptance": "NOT_RUN: real noise reduction, clicks, syllable retention and rendered mix overload measurements"
+    },
+    {
+      "gate": "G07",
+      "engineering": "PASS: synthetic all-track restoration and explicit unity recovery with stale-cleanup refusal",
+      "real_acceptance": "NOT_RUN: actual real interview grouped ripple/editability acceptance"
+    },
+    {
+      "gate": "G08",
+      "engineering": "PASS: original 12.00/12.45 picture timing and protected/fractional-map regressions",
+      "real_acceptance": "NOT_RUN: real picture acceptance; existing stream-0-only and 8192-frame observation limits remain"
+    },
+    {
+      "gate": "G09",
+      "engineering": "PASS: nine historical manifests, four complete current runs, two failed runs, fifteen job input records and focused cancellation/resume",
+      "real_acceptance": "No new real export exists; original jobs/caches remain recoverable and unchanged"
+    }
+  ],
+  "actual_acceptance": {
+    "reviewed_source_baseline": false,
+    "production_EOF_integration": false,
+    "new_independent_content_gap_idle_labels": 0,
+    "new_gap_idle_approvals": 0,
+    "new_real_editable_output": false,
+    "full_or_held_out_output_acceptance": "NOT_RUN",
+    "actual_noise_sync_editability_correction_effort_owner_utility": "NOT_RUN",
+    "excessive_handover_coverage": null,
+    "manual_correction_seconds": null,
+    "assisted_correction_seconds": null,
+    "effort_reduction": null,
+    "automation_90_percent_or_effort_70_percent_claimed": false
+  },
+  "next_required_evidence": "Actual source-bound reviewed baseline consistent with retained human and diagnostic evidence; no certification from audits or qualitative positives",
+  "comparison_files": {
+    "new": 0,
+    "cumulative_S12": 1
+  },
+  "new_connection": false,
+  "s13_started": false,
+  "previous_feedback_report": "docs/fixtures/S12_SYNC_FEEDBACK.json",
+  "synchronization": "must_verify_live_at_each_checkpoint",
+  "checkpoint_documentation_review": {
+    "status": "passed",
+    "attempt": 6,
+    "reviewed_document_files": 6,
+    "valid_local_links": 47,
+    "private_source_tokens_found": 0,
+    "preexisting_private_artifact_and_cache_hashes_verified": 243,
+    "retained_genuine_artifact_hashes_verified": 9,
+    "historical_manifests_verified": 9,
+    "attempt02_complete_runs_verified": 4,
+    "failed_runs_retained": 2,
+    "original_feedback_fidelity_and_contrary_diagnostics_unchanged": true,
+    "pending_request_unapplied_unrebound_and_not_approval": true,
+    "frozen_core_inventory_and_prior_evidence_preserved": true,
+    "production_code_policies_licences_and_prior_fixtures_unchanged": true,
+    "new_real_export_source_certificate_or_acceptance_claimed": false,
+    "state_next_step_handover_consistent": true,
+    "s12_status": "blocked",
+    "s13_status": "pending",
+    "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "analysis_sha256": "29696215ebda5b6227d7823483845dd58387cf62482e54a8c0802b1ad38808f6",
+  "preset": "tight",
+  "approvals": [
+    {
+      "approval_id": "construction-gap",
+      "start": {
+        "numerator": 4,
+        "denominator": 1
+      },
+      "end": {
+        "numerator": 7,
+        "denominator": 1
+      },
+      "basis": "construction_label",
+      "evidence": "Independent digital silence on both generated participant tracks"
+    }
+  ],
+  "overrides": []
+}

@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "checks": {
+    "timeline_semantics_equal": true,
+    "native_sequence_extent_change_is_recorded_one_frame": true,
+    "exact_275_video_frames": true,
+    "picture_anchors_exact_mapping": true,
+    "mp4_marker_at_least_50db_down": true,
+    "native_gain_plateau_at_least_45db_down": true,
+    "native_gain_ramps_measured": true,
+    "no_large_gain_edge_discontinuity": true,
+    "both_audio_anchors_after_cut_present": true,
+    "audio_anchors_within_one_frame": true,
+    "audio_padding_at_most_one_frame": true
+  },
+  "project_sha256": "208d5d27c209962f8277263ec8d4c3a55423a0b406fb103cef263ee6c1158288",
+  "native_roundtrip_sha256": "6adf4f2f2dee144086b63fb0f6b268413d920a75b967f3a92e7623197bd93ecb",
+  "gui_render_sha256": "1e979756f71d450038c1eb7a237e3116e2f01edd30cfa41f55bfca14b6d5e26f",
+  "video_frames": 275,
+  "decoded_audio_samples_48000hz": 528384,
+  "whole_project_semantic_equal": false,
+  "native_sequence_extent_delta_frames": 1,
+  "picture_anchors": [
+    {
+      "output_frame": 0,
+      "source_frame": 0,
+      "rgb_mae": 1.615203,
+      "best_offset": 0
+    },
+    {
+      "output_frame": 34,
+      "source_frame": 34,
+      "rgb_mae": 1.999022,
+      "best_offset": 0
+    },
+    {
+      "output_frame": 99,
+      "source_frame": 99,
+      "rgb_mae": 2.523762,
+      "best_offset": 0
+    },
+    {
+      "output_frame": 100,
+      "source_frame": 125,
+      "rgb_mae": 2.521094,
+      "best_offset": 0
+    },
+    {
+      "output_frame": 101,
+      "source_frame": 126,
+      "rgb_mae": 2.745966,
+      "best_offset": 0
+    },
+    {
+      "output_frame": 149,
+      "source_frame": 174,
+      "rgb_mae": 2.58934,
+      "best_offset": 0
+    },
+    {
+      "output_frame": 249,
+      "source_frame": 274,
+      "rgb_mae": 2.336603,
+      "best_offset": 0
+    },
+    {
+      "output_frame": 274,
+      "source_frame": 299,
+      "rgb_mae": 2.147616,
+      "best_offset": 0
+    }
+  ],
+  "embedded_997hz_attenuation_db": -63.085,
+  "audio_anchors": [
+    {
+      "output_start_seconds": 2.6,
+      "source_start_seconds": 2.6,
+      "best_lag_samples_grid_48": 0,
+      "same_position_mse": 0.00024802
+    },
+    {
+      "output_start_seconds": 6.2,
+      "source_start_seconds": 7.2,
+      "best_lag_samples_grid_48": 0,
+      "same_position_mse": 3e-08
+    },
+    {
+      "output_start_seconds": 7.55,
+      "source_start_seconds": 8.55,
+      "best_lag_samples_grid_48": 0,
+      "same_position_mse": 4e-08
+    },
+    {
+      "output_start_seconds": 9.05,
+      "source_start_seconds": 10.05,
+      "best_lag_samples_grid_48": 0,
+      "same_position_mse": 2e-08
+    }
+  ],
+  "native_gain_relative_db": {
+    "1.34": -0.032,
+    "1.5": -13.986,
+    "1.7": -43.998,
+    "1.9": -60.008,
+    "2.1": -60.011,
+    "2.3": -43.961,
+    "2.5": -13.943,
+    "2.68": 0.0
+  },
+  "gain_edges": [
+    {
+      "frame": 35,
+      "max_adjacent_sample_delta": 0.0105577
+    },
+    {
+      "frame": 45,
+      "max_adjacent_sample_delta": 2.57e-05
+    },
+    {
+      "frame": 55,
+      "max_adjacent_sample_delta": 1.07e-05
+    },
+    {
+      "frame": 65,
+      "max_adjacent_sample_delta": 0.0064844
+    }
+  ],
+  "after_cut_amplitudes": {
+    "p01_330hz": 0.2440445674646818,
+    "p02_440hz": 0.2440912597717002
+  },
+  "scope": "Synthetic S02 entry-gain and manual shared cut only; no subjective listening, real alignment or subframe gain claim."
+}

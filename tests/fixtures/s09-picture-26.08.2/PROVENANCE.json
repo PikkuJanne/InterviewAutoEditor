@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "fixture_id": "s09-picture-26.08.2",
+  "date": "2026-10-29",
+  "content": "Generated tones/noise and luma video; no recorded people/voices; independent construction labels",
+  "compatibility": "EXPERIMENTAL",
+  "application": {
+    "name": "Kdenlive",
+    "version": "26.08.2",
+    "revision": "d4e87e4",
+    "mlt": "7.43.0",
+    "qt_using": "6.11.1",
+    "qt_built_against": "6.11.1",
+    "ffmpeg": "8.1.1",
+    "platform": "Windows AMD64",
+    "executable_sha256": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352",
+    "verification": "Observed About/Components dialogs and rehashed the installed executable during S09"
+  },
+  "construction_origin": {
+    "before.kdenlive": "Hand-relinked S01 native starter, not a new Kdenlive save",
+    "picture-cleaned.kdenlive": "Production S07/S08/S09 adapter output, not Kdenlive-authored",
+    "media": "tools/s09_fixture.py extends independently labelled S08 generated tone/noise construction with a known frame-138 luma switch"
+  },
+  "actual_application_checks": [
+    {
+      "action": "open",
+      "result": "PASS",
+      "detail": "Production picture-cleaned project opened without repair/missing-media warning"
+    },
+    {
+      "action": "play",
+      "result": "PASS",
+      "detail": "Project monitor playback advanced through the existing picture switch and full output; tone/noise content only, no subjective word acceptance"
+    },
+    {
+      "action": "native_save",
+      "result": "PASS",
+      "artifact": "native-roundtrip.kdenlive"
+    },
+    {
+      "action": "select_group",
+      "result": "PASS",
+      "detail": "Selecting final audio clip selected 3 items (one video and two audio)"
+    },
+    {
+      "action": "group_move",
+      "result": "PASS",
+      "artifact": "group-moved.kdenlive",
+      "detail": "Edit Duration Position 00:00:07:17 to 00:00:08:17; saved file measures +25 frames on every track, unchanged source bounds/gain keys"
+    },
+    {
+      "action": "undo_and_save",
+      "result": "PASS",
+      "artifact": "native-undone.kdenlive",
+      "detail": "Undo restores original semantics; separately saved native copy"
+    },
+    {
+      "action": "close_reopen",
+      "result": "PASS",
+      "detail": "Opening saved native-roundtrip closes native-undone; native-roundtrip reopened without warning"
+    },
+    {
+      "action": "gui_render",
+      "result": "PASS",
+      "artifact": "gui-render.mp4",
+      "detail": "MP4-H264/AAC; Full project; requested 00:00:10:17; UI reported Rendering finished in 00:00:09"
+    },
+    {
+      "action": "sanitized_native_open",
+      "result": "PASS",
+      "detail": "Public sanitized native-roundtrip also opened without repair/missing media; post-render destination metadata on the local working project was not saved over the captured artifact"
+    }
+  ],
+  "sanitization": {
+    "method": "Relink only verified identical synthetic media to media/ resources; remove root/browser/profile/layout/document-note/render-destination metadata",
+    "timeline_semantics_equal_before_after": true,
+    "raw_captures": "Kept ignored locally; not published",
+    "records": [
+      {
+        "path": "native-roundtrip.kdenlive",
+        "raw_capture_sha256": "4ba483be062fc5cf2431173c2be48d05fc3ae08b040057910dad69a6e4f7ea8f",
+        "sha256": "7468dd7213f185d1b1da8620668a26168644fad4d21da890fa5f979e8318ff66",
+        "sanitization_preserves_semantics": true
+      },
+      {
+        "path": "group-moved.kdenlive",
+        "raw_capture_sha256": "96c4c5faa74ba293f2f2be35b5ce09f97bd716ad6e95f8596e28db5dfc352f25",
+        "sha256": "c79f4eebe342812670ffa7d0742d036e2747f3d847a308a57cb6fc0113b9e355",
+        "sanitization_preserves_semantics": true
+      },
+      {
+        "path": "native-undone.kdenlive",
+        "raw_capture_sha256": "d770c3a93f344df4f64688b68142752e1d468332e4e911d2ccdfe1e2479d8b21",
+        "sha256": "7468dd7213f185d1b1da8620668a26168644fad4d21da890fa5f979e8318ff66",
+        "sanitization_preserves_semantics": true
+      },
+      {
+        "path": "gui-render.mp4",
+        "sha256": "0605ca23eb8e9357e98b22dcab1ff2773f46d17a8bfb97eedb88807b2bdda591",
+        "origin": "Actual Kdenlive GUI full-project MP4-H264/AAC render"
+      }
+    ]
+  },
+  "measurements": "render-validation.json",
+  "construction_manifest": "construction.json",
+  "source_frames": 300,
+  "baseline_deletion": [
+    105,
+    172
+  ],
+  "s09_deletion": [
+    105,
+    138
+  ],
+  "restored_shared_frames": 34,
+  "output_frames": 267,
+  "groups": 6,
+  "native_gain_spans": 4,
+  "separate_exact_delay_test": {
+    "fps": "20",
+    "speech_onset": "12",
+    "picture_onset": "249/20",
+    "delay": "9/20",
+    "source": "Independent generated decoder/math test in test_s09_picture.py, NOT this GUI fixture",
+    "full_speech_interval_kept": [
+      "12",
+      "15"
+    ]
+  },
+  "limitations": [
+    "Synthetic preservation only; no actual human-word or Zoom-layout accuracy claim",
+    "No 20-FPS/fractional-FPS or 3/6/8-track GUI evidence",
+    "Real source origins/tails still refused; held-out/full-interview acceptance NOT RUN",
+    "Engineering picture scores are not calibrated confidence or facial identity",
+    "Existing recorded brief shots can remain; no newly truncated short picture is manufactured"
+  ],
+  "files": [
+    {
+      "path": "analysis.json",
+      "sha256": "29696215ebda5b6227d7823483845dd58387cf62482e54a8c0802b1ad38808f6"
+    },
+    {
+      "path": "base-cleanup.json",
+      "sha256": "3b66da0b0e4bda4165f35b1fae1011568ca1e6424af5efc8d569f34b23efbad1"
+    },
+    {
+      "path": "before.kdenlive",
+      "sha256": "5108e78584a47ce7e009194bdda052f33be669b70561a85877ab3b33dc7d3865"
+    },
+    {
+      "path": "cleanup-request.json",
+      "sha256": "03097b5e1b122f3362d3815130e013a69d08c0d7a14efda2df6a1033b622d025"
+    },
+    {
+      "path": "cleanup-result.json",
+      "sha256": "b368604ccfaa9e4976ed26d75feffecd1347b6a845ac53c9557b1d40c3ff7177"
+    },
+    {
+      "path": "construction.json",
+      "sha256": "6778db6f79c75251d8562804fb2a05fc14b12ffe09f44c69f1c64779586744e6"
+    },
+    {
+      "path": "group-moved.kdenlive",
+      "sha256": "c79f4eebe342812670ffa7d0742d036e2747f3d847a308a57cb6fc0113b9e355"
+    },
+    {
+      "path": "gui-render.mp4",
+      "sha256": "0605ca23eb8e9357e98b22dcab1ff2773f46d17a8bfb97eedb88807b2bdda591"
+    },
+    {
+      "path": "mapping.json",
+      "sha256": "1d38c0e4be749927f56438f51aafb0f98f78c145ebe27042104c8430a18822e1"
+    },
+    {
+      "path": "media/participant-01.wav",
+      "sha256": "bd03e7381d265fea94793a5758645a2a38090c6154273a6f0a504c2c6488ae7b"
+    },
+    {
+      "path": "media/participant-02.wav",
+      "sha256": "e4ec27a74d0c6923eee3d4560ca332f6e20cdb708895a9648c8d2723d2b8cd65"
+    },
+    {
+      "path": "media/zoom-source.mp4",
+      "sha256": "6fb07d023d11f6ae66a354b98c65e01b6237705cf750d65852b17ba4c4a49e7a"
+    },
+    {
+      "path": "native-roundtrip.kdenlive",
+      "sha256": "7468dd7213f185d1b1da8620668a26168644fad4d21da890fa5f979e8318ff66"
+    },
+    {
+      "path": "native-undone.kdenlive",
+      "sha256": "7468dd7213f185d1b1da8620668a26168644fad4d21da890fa5f979e8318ff66"
+    },
+    {
+      "path": "picture-analysis.json",
+      "sha256": "230262498fa7752cead71887c3017afbf1783c526365eebe1a130ecd6b3fca80"
+    },
+    {
+      "path": "picture-cleaned.kdenlive",
+      "sha256": "3f08a1175030aae767aa76c1493bbd84182a59ae55f9353c940ed561cc244153"
+    },
+    {
+      "path": "picture-refinement.json",
+      "sha256": "55e759625d301ad962082166d28c436a5b3502c210608725db1d2aced5ca93dd"
+    },
+    {
+      "path": "picture-request.json",
+      "sha256": "155e4690a77a59f0eefc2b2dd1d0e5ce5d06453f6431d182119dbea36765c667"
+    },
+    {
+      "path": "planning-result.json",
+      "sha256": "3ce317b5fcc31f17b7a50fba3f36cf1728d5e5392e71b4f265a3634af9cc7717"
+    },
+    {
+      "path": "README.md",
+      "sha256": "2a133097733956a1e17c1fb3825af82b91d42d2f416fb42fd2a5dc432066d191"
+    },
+    {
+      "path": "refined-planning-result.json",
+      "sha256": "f8a851205835a49879e8e09ef33ef3fa090cb1adae5f78aa5927e0e272b8a5ae"
+    },
+    {
+      "path": "render-validation.json",
+      "sha256": "d128e73cdbd8ba4c0b31208ea7182d4d44cdb4fa1b5974d43dba43bb588abf2b"
+    }
+  ]
+}

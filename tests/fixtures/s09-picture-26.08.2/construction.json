@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "scope": "Synthetic tones/noise/luma pictures; no recorded people",
+  "project_origin": "Hand-relinked S01 starter and production export, NOT newly Kdenlive-authored",
+  "gui_evidence": "NOT_RUN_at_construction",
+  "independent_switch_source_frame": 138,
+  "independent_all_track_silence_seconds": [
+    4,
+    7
+  ],
+  "source_frames": 300,
+  "baseline_removed_frames": [
+    105,
+    172
+  ],
+  "refined_removed_frames": [
+    105,
+    138
+  ],
+  "output_frames": 267,
+  "export": {
+    "compatibility": "EXPERIMENTAL",
+    "adapter": "26.08.2",
+    "turn_algorithm": "s07-source-group-turns-1",
+    "participants": 2,
+    "groups": 6,
+    "output_frames": 267,
+    "edit_units": [
+      0,
+      50,
+      75,
+      105,
+      167,
+      192,
+      267
+    ],
+    "input_sequence_extent_delta_frames": 0,
+    "excluded_mp4_audio_tracks": 0,
+    "picture_algorithm": "s09-restore-only-seams-1",
+    "picture_review_markers": 5,
+    "cleanup_algorithm": "s08-approved-idle-1",
+    "gain_spans": 4,
+    "peak_report": {
+      "schema_version": 1,
+      "method": "retained-frame sum of physical-channel maxima; no cancellation credit",
+      "retained_frames_audited": 267,
+      "original_sum_bound": 0.48828125,
+      "attenuated_sum_bound": 0.48828125,
+      "export_safe": true,
+      "safety_ceiling": 0.95,
+      "gain_reduction_applied": false,
+      "correlation_frame_pairs": 134,
+      "max_absolute_correlation": 0.06292745972144348,
+      "bleed_diagnosis": "Possible correlation only; never a speaker/idle label or suppression authority",
+      "intersample_and_encoded_peak_proof": false
+    }
+  },
+  "files": [
+    {
+      "path": "analysis.json",
+      "sha256": "29696215ebda5b6227d7823483845dd58387cf62482e54a8c0802b1ad38808f6"
+    },
+    {
+      "path": "base-cleanup.json",
+      "sha256": "3b66da0b0e4bda4165f35b1fae1011568ca1e6424af5efc8d569f34b23efbad1"
+    },
+    {
+      "path": "before.kdenlive",
+      "sha256": "5108e78584a47ce7e009194bdda052f33be669b70561a85877ab3b33dc7d3865"
+    },
+    {
+      "path": "cleanup-request.json",
+      "sha256": "03097b5e1b122f3362d3815130e013a69d08c0d7a14efda2df6a1033b622d025"
+    },
+    {
+      "path": "cleanup-result.json",
+      "sha256": "b368604ccfaa9e4976ed26d75feffecd1347b6a845ac53c9557b1d40c3ff7177"
+    },
+    {
+      "path": "mapping.json",
+      "sha256": "1d38c0e4be749927f56438f51aafb0f98f78c145ebe27042104c8430a18822e1"
+    },
+    {
+      "path": "media/participant-01.wav",
+      "sha256": "bd03e7381d265fea94793a5758645a2a38090c6154273a6f0a504c2c6488ae7b"
+    },
+    {
+      "path": "media/participant-02.wav",
+      "sha256": "e4ec27a74d0c6923eee3d4560ca332f6e20cdb708895a9648c8d2723d2b8cd65"
+    },
+    {
+      "path": "media/zoom-source.mp4",
+      "sha256": "6fb07d023d11f6ae66a354b98c65e01b6237705cf750d65852b17ba4c4a49e7a"
+    },
+    {
+      "path": "picture-analysis.json",
+      "sha256": "230262498fa7752cead71887c3017afbf1783c526365eebe1a130ecd6b3fca80"
+    },
+    {
+      "path": "picture-cleaned.kdenlive",
+      "sha256": "3f08a1175030aae767aa76c1493bbd84182a59ae55f9353c940ed561cc244153"
+    },
+    {
+      "path": "picture-refinement.json",
+      "sha256": "55e759625d301ad962082166d28c436a5b3502c210608725db1d2aced5ca93dd"
+    },
+    {
+      "path": "picture-request.json",
+      "sha256": "155e4690a77a59f0eefc2b2dd1d0e5ce5d06453f6431d182119dbea36765c667"
+    },
+    {
+      "path": "planning-result.json",
+      "sha256": "3ce317b5fcc31f17b7a50fba3f36cf1728d5e5392e71b4f265a3634af9cc7717"
+    },
+    {
+      "path": "refined-planning-result.json",
+      "sha256": "f8a851205835a49879e8e09ef33ef3fa090cb1adae5f78aa5927e0e272b8a5ae"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "algorithm": "s08-approved-idle-1",
+  "request": {
+    "schema_version": 1,
+    "planning_sha256": "d79e8021532b32b6a2dabe9350951fabc8739a2a62d488881b0fa0991d9e8708",
+    "approvals": [
+      {
+        "approval_id": "p0-idle-0",
+        "source_id": "p0",
+        "start": {
+          "numerator": 16,
+          "denominator": 5
+        },
+        "end": {
+          "numerator": 4,
+          "denominator": 1
+        },
+        "basis": "construction_label",
+        "evidence": "Independent generated noise-only interval; no vocal content"
+      },
+      {
+        "approval_id": "p0-idle-1",
+        "source_id": "p0",
+        "start": {
+          "numerator": 46,
+          "denominator": 5
+        },
+        "end": {
+          "numerator": 51,
+          "denominator": 5
+        },
+        "basis": "construction_label",
+        "evidence": "Independent generated noise-only interval; no vocal content"
+      },
+      {
+        "approval_id": "p1-idle-0",
+        "source_id": "p1",
+        "start": {
+          "numerator": 22,
+          "denominator": 25
+        },
+        "end": {
+          "numerator": 47,
+          "denominator": 25
+        },
+        "basis": "construction_label",
+        "evidence": "Independent generated noise-only interval; no vocal content"
+      },
+      {
+        "approval_id": "p1-idle-1",
+        "source_id": "p1",
+        "start": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "end": {
+          "numerator": 197,
+          "denominator": 25
+        },
+        "basis": "construction_label",
+        "evidence": "Independent generated noise-only interval; no vocal content"
+      }
+    ]
+  },
+  "spans": [
+    {
+      "source_id": "p0",
+      "approval_id": "p0-idle-0",
+      "start_frame": 81,
+      "down_frame": 86,
+      "up_frame": 94,
+      "end_frame": 99
+    },
+    {
+      "source_id": "p0",
+      "approval_id": "p0-idle-1",
+      "start_frame": 231,
+      "down_frame": 236,
+      "up_frame": 249,
+      "end_frame": 254
+    },
+    {
+      "source_id": "p1",
+      "approval_id": "p1-idle-0",
+      "start_frame": 23,
+      "down_frame": 28,
+      "up_frame": 41,
+      "end_frame": 46
+    },
+    {
+      "source_id": "p1",
+      "approval_id": "p1-idle-1",
+      "start_frame": 176,
+      "down_frame": 181,
+      "up_frame": 191,
+      "end_frame": 196
+    }
+  ],
+  "diagnoses": []
+}

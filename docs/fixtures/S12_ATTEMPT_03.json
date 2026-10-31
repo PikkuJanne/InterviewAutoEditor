@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "step": "S12",
+  "attempt": 3,
+  "date": "2026-10-30",
+  "status": "BLOCKED_REAL_OUTPUT_ACCEPTANCE",
+  "starting_checkpoint": "9dcc65ef5804dc05b67489c888844c930a62bdc1",
+  "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+  "compatibility": "EXPERIMENTAL",
+  "production_build": "26.08.2 rev. d4e87e4",
+  "prior_full_interview_and_long_stress_measurements": "docs/fixtures/S12_ATTEMPT_02.json",
+  "production_core_unchanged": true,
+  "application_desktop_exporter_unchanged": true,
+  "original_v1_contracts_and_refusals_unchanged": true,
+  "held_out_configuration_unchanged": true,
+  "owner_processing_history_reply": {
+    "applies_to": "two_person_002",
+    "answer": "Yes—leveling only; original timing retained",
+    "alignment_approval": false
+  },
+  "owner_empty_ending_reply": {
+    "applies_to": [
+      "two_person_002",
+      "band_001"
+    ],
+    "answer": "Yes—preserve all audio with a marked empty ending",
+    "coverage_preference_accepted": true,
+    "alignment_cut_idle_approvals": false
+  },
+  "coverage_preview": {
+    "schema_version": 2,
+    "policy": "preserve_samples_mark_empty_eof",
+    "authority": "coverage_only_not_origin_or_edit_approval",
+    "analysis_sources_and_events_unchanged": true,
+    "source_bound_private_reviews": true,
+    "production_export_enabled": false,
+    "corpora": [
+      {
+        "fixture_id": "two_person_002",
+        "source_frames": 47004,
+        "preview_shared_frames": 47005,
+        "all_sample_counts_retained": true,
+        "original_origin_statuses_preserved": true,
+        "v1_planning_refusals": 2,
+        "real_export_created": false,
+        "coverage_preview_only": true
+      },
+      {
+        "fixture_id": "band_001",
+        "source_frames": 51092,
+        "preview_shared_frames": 51093,
+        "all_sample_counts_retained": true,
+        "original_origin_statuses_preserved": true,
+        "v1_planning_refusals": 2,
+        "real_export_created": false,
+        "coverage_preview_only": true
+      }
+    ]
+  },
+  "synthetic_native_eof_experiment": {
+    "provenance": "generated_media_and_hand_relinked_constructed_project_not_production_export",
+    "actual_GUI_operations": [
+      "open",
+      "play",
+      "group_position_move_25_frames",
+      "undo",
+      "save_copy",
+      "close",
+      "reopen",
+      "save_copy",
+      "render"
+    ],
+    "actual_GUI_render_finished_seconds_displayed": 10,
+    "render_codecs": "FFV1 / PCM s16le 192000 Hz stereo",
+    "checks": {
+      "originals_and_construction_unchanged": true,
+      "native_undo_semantics_equal": true,
+      "native_reopen_timeline_semantics_equal": true,
+      "native_extra_sequence_frame_reported_separately": true,
+      "all_three_members_move_25_frames": true,
+      "rendered_301_frames": true,
+      "all_300_recorded_picture_anchors_match": true,
+      "one_empty_picture_no_freeze": true,
+      "exact_rendered_pcm_duration": true,
+      "all_samples_match_fixed_channel_conversion_within_1_lsb": true,
+      "complete_partial_tail_including_last_sample": true,
+      "digital_zero_after_all_eofs": true
+    },
+    "source_frames": 300,
+    "rendered_frames": 301,
+    "new_empty_picture_frames": 1,
+    "native_sequence_extent_delta_frames": 1,
+    "pcm": {
+      "source_counts": [
+        2306048,
+        2301952
+      ],
+      "rendered_samples_per_channel": 2311680,
+      "expected_samples_per_channel": 2311680,
+      "whole_mix_max_error_lsb": 585,
+      "tail_max_error_lsb": 293,
+      "after_last_source_eof_peak_lsb": 0,
+      "last_original_sample_expected": 671,
+      "last_original_sample_rendered": [
+        474,
+        474
+      ],
+      "whole_mix_mismatched_samples_over_2_lsb": 4568986,
+      "fixed_channel_conversion_reference_gain": 0.7071067811865476,
+      "measured_gain_diagnostic_only": 0.7071071271535776,
+      "fixed_channel_conversion_max_error_lsb": 0.4998205312506343,
+      "fixed_channel_conversion_tail_max_error_lsb": 0.4998205312506343,
+      "fixed_channel_conversion_mismatches_over_1_lsb": 0
+    },
+    "picture_anchors": 300,
+    "maximum_picture_anchor_rgb_mae": 1.892332175925926,
+    "all_picture_anchor_best_offsets_zero": true,
+    "final_empty_picture_peak_rgb": 0,
+    "raw_unity_pcm_equality": false,
+    "pixel_identical_to_direct_source_decode": false,
+    "channel_reference_is_fixed_not_fitted": true,
+    "real_stereo_output_acceptance": "NOT_RUN",
+    "construction_group_ripple_deletion": "NOT_RUN_group_move_and_undo_only",
+    "initial_strict_measurement_failure_preserved": true,
+    "artifacts": {
+      "construction.json": "bf9ff9d8e31460344ea1b603516cfc4bc300ef55ee0443151ddaef33910e1c23",
+      "native-moved.kdenlive": "a23e91f9e98f2dba90a60a5fd7d5b67fc7c55382dd35f9b8ac17dcca74e71d4b",
+      "native-restored.kdenlive": "f5b5d6972fa5935b0531575f77ff95b0f52b55b11b44dc5a2c78196a2bb0a6fc",
+      "native-roundtrip.kdenlive": "2328972930099d1286f0adeb2b2365888c599c425df1a47ee1407d183b878580",
+      "gui-render-192k.mkv": "f8835d255a28b4dbb76ef41f5d614dc3a5a24767b79a57281ad90c43c98bc184"
+    }
+  },
+  "full_suite": {
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+    "tests": 237,
+    "skipped": 0,
+    "seconds": 254.017,
+    "result": "PASS",
+    "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
+  },
+  "focused_suite": {
+    "tests": 6,
+    "skipped": 0,
+    "seconds": 5.23,
+    "result": "PASS"
+  },
+  "preservation": {
+    "original_core_files_and_frozen_inventory_unchanged": true,
+    "new_core_modules": 0,
+    "historical_manifest_counts": {
+      "S10": 8,
+      "S11": 1
+    },
+    "attempt02_run_states": [
+      "complete",
+      "complete",
+      "complete",
+      "complete",
+      "failed"
+    ],
+    "retained_provenance_hashes_verified": 9,
+    "old_manifests_rewritten": false,
+    "old_source_clock_review_drafts_rewritten": false
+  },
+  "actual_acceptance": {
+    "complete_two_person_read_only_analysis": "PASS",
+    "complete_band_fresh_cache_validation": "PASS",
+    "complete_two_person_edited_output": "NOT_RUN",
+    "complete_band_edited_output": "NOT_RUN",
+    "held_out_human_labelled_retention": "NOT_RUN",
+    "independently_annotated_content_retention": null,
+    "independently_approved_real_removal_precision": null,
+    "excessive_handover_gap_coverage": null,
+    "real_idle_noise_reduction_db": null,
+    "actual_real_output_render_sync": "NOT_RUN",
+    "actual_real_output_native_editability": "NOT_RUN",
+    "manual_baseline_seconds": null,
+    "assisted_correction_seconds": null,
+    "effort_reduction": null,
+    "owner_listening": "NOT_RUN",
+    "owner_utility": "NOT_RUN"
+  },
+  "held_out_tuning": false,
+  "new_real_verified_audio_origins": 0,
+  "new_real_automated_export": false,
+  "new_comparison_audio_files": 0,
+  "new_connection": false,
+  "s13_started": false,
+  "blockers": [
+    "Reviewed source-clock baseline acceptance is still missing: the new two-person diagnostics retain a 32.5 ms reference-mix lag on one source and insufficient anchors on the other; band origins remain unverified. The owner-approved empty-ending preference now has an exact offline v2 preview and scoped synthetic native/render proof, but no production planner/export integration. Original v1 origin/exact-tail refusals remain mandatory.",
+    "The distinct two-person recording is registered as held-out before inference and has now undergone full engineering analysis without tuning. Independent human content/removable-gap/idle labels and corresponding explicit approvals are still missing; model protection is not ground truth or silence authority.",
+    "Actual edited two-person/band native/render/noise/sync/editability/correction-effort metrics and focused owner acceptance are NOT RUN. Complete read-only analyses, native input round-trip and low-resolution zero-activity two-hour stress do not satisfy those acceptance gates."
+  ],
+  "synchronization": "must_verify_live_at_each_checkpoint",
+  "remaining_implementation": "Explicit reviewed baseline plus separately validated production coverage integration; do not feed CoveragePreview to Application/desktop or reinterpret v1",
+  "retained_failure_evidence": [
+    "first validator wrong run_bounded keyword",
+    "raw mono-unity/pixel/native-extent equality assumptions failed and remain reported",
+    "one generated-fixture test expected one blank instead of two; corrected assertion",
+    "intermediate full suite before offline helper relocation retained separately"
+  ],
+  "owner_optional_sync_review_preference": "question_pending_no_alignment_approval_inferred",
+  "checkpoint_documentation_review": {
+    "status": "passed",
+    "attempt": 3,
+    "reviewed_text_files": 13,
+    "reviewed_document_files": 9,
+    "valid_local_links": 54,
+    "private_source_tokens_found": 0,
+    "retained_provenance_hashes_verified": 9,
+    "state_next_step_handover_consistent": true,
+    "owner_answers_bound_without_alignment_approval": true,
+    "all_original_v1_refusals_and_frozen_core_inventory_preserved": true,
+    "new_real_export_or_held_out_utility_claimed": false,
+    "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+    "s12_status": "blocked",
+    "s13_status": "pending"
+  }
+}

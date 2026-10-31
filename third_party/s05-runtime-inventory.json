@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "platform": "Windows AMD64 CPython 3.12",
+  "base_lock": "requirements-s04-win-py312.lock",
+  "additional_wheels": [
+    {
+      "wheel": "ai_edge_litert-2.3.0-cp312-cp312-win_amd64.whl",
+      "sha256": "b33b039667da6c57815f88d4709c1b31890375fa2cd35f165a3bf9dfd36f23a3",
+      "bytes": 20670680,
+      "notices": [
+        {
+          "path": "third_party/s05-ai_edge_litert-LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      ]
+    },
+    {
+      "wheel": "backports_strenum-1.2.8-py3-none-any.whl",
+      "sha256": "fc297cb26971f7d5e15a478a06a78575197f81daea47975771b1aae996dcccf4",
+      "bytes": 7862,
+      "notices": [
+        {
+          "path": "third_party/s05-backports_strenum-LICENSE",
+          "sha256": "1dceef1677a39befa8bf0285ab2db441ba117520bb2de839547ace006a17750d"
+        }
+      ]
+    },
+    {
+      "wheel": "colorama-0.4.6-py2.py3-none-any.whl",
+      "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6",
+      "bytes": 25335,
+      "notices": [
+        {
+          "path": "third_party/s05-colorama-LICENSE.txt",
+          "sha256": "cac35c02686e5d04a5a7140bfb3b36e73aed496656e891102e428886d7930318"
+        }
+      ]
+    },
+    {
+      "wheel": "ml_dtypes-0.5.3-cp312-cp312-win_amd64.whl",
+      "sha256": "da65e5fd3eea434ccb8984c3624bc234ddcc0d9f4c81864af611aaebcc08a50e",
+      "bytes": 208182,
+      "notices": [
+        {
+          "path": "third_party/s05-ml_dtypes-LICENSE",
+          "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+        },
+        {
+          "path": "third_party/s05-ml_dtypes-LICENSE.eigen",
+          "sha256": "9221c2f936159b8446d329249fb4c0f25be510f447383a0f13336ac7985668a3"
+        }
+      ]
+    },
+    {
+      "wheel": "tqdm-4.67.1-py3-none-any.whl",
+      "sha256": "26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2",
+      "bytes": 78540,
+      "notices": [
+        {
+          "path": "third_party/s05-tqdm-LICENCE",
+          "sha256": "dc33252e829015e3b150086fb9b3a40f6ad6fb32c2f4610ce812fa677d35986a"
+        }
+      ]
+    },
+    {
+      "wheel": "typing_extensions-4.15.0-py3-none-any.whl",
+      "sha256": "f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548",
+      "bytes": 44614,
+      "notices": [
+        {
+          "path": "third_party/s05-typing_extensions-LICENSE",
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        }
+      ]
+    }
+  ]
+}

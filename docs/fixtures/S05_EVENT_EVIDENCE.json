@@ -1,0 +1,1310 @@
+{
+  "schema_version": 1,
+  "step": "S05",
+  "date": "2026-10-29",
+  "compatibility": "EXPERIMENTAL",
+  "g04_status": "PASS_BOUNDED_S05_DEVELOPMENT_SHARED_REMOVAL_NO_ATTENUATION",
+  "model_manifest": "third_party/yamnet-model.json",
+  "runtime_lock": "requirements-s05-win-py312.lock",
+  "settings_fixed_before_supplementary_benchmark": true,
+  "training_or_finetuning_performed": false,
+  "external_supplementary_development": {
+    "schema_version": 1,
+    "step": "S05",
+    "split": "development",
+    "provenance": "ESC-50 official fixed revision; folds 1-2; clip categories only, NOT cleaned Zoom or sample-bound labels; CC BY-NC 3.0, local development evaluation only",
+    "compatibility": "EXPERIMENTAL",
+    "settings": {
+      "speech": {
+        "speech_threshold": {
+          "numerator": 1,
+          "denominator": 2
+        },
+        "uncertain_threshold": {
+          "numerator": 3,
+          "denominator": 20
+        },
+        "signal_peak": {
+          "numerator": 1,
+          "denominator": 10000
+        },
+        "onset": {
+          "numerator": 3,
+          "denominator": 25
+        },
+        "tail": {
+          "numerator": 1,
+          "denominator": 5
+        },
+        "merge_samples": 1600
+      },
+      "reactions": {
+        "reaction_threshold": {
+          "numerator": 1,
+          "denominator": 10
+        },
+        "vocal_uncertainty": {
+          "numerator": 3,
+          "denominator": 100
+        },
+        "signal_minimum": {
+          "numerator": 1,
+          "denominator": 1000000
+        },
+        "floor_ratio": {
+          "numerator": 4,
+          "denominator": 1
+        },
+        "onset": {
+          "numerator": 3,
+          "denominator": 25
+        },
+        "tail": {
+          "numerator": 1,
+          "denominator": 5
+        }
+      }
+    },
+    "seconds": 12.359,
+    "source_channel_seconds": 320.0,
+    "real_time_factor_including_two_decodes": 0.038622,
+    "groups": [
+      {
+        "kind": "laughter",
+        "labels": 16,
+        "speech_model_hits": 8,
+        "reaction_model_hits": 14,
+        "reaction_hits_without_speech_model": 6,
+        "sample_bound_labels": 0,
+        "fully_fused_protected_sample_bound_labels": 0
+      },
+      {
+        "kind": "noise",
+        "labels": 32,
+        "speech_model_hits": 3,
+        "reaction_model_hits": 0,
+        "reaction_hits_without_speech_model": 0,
+        "sample_bound_labels": 0,
+        "fully_fused_protected_sample_bound_labels": 0
+      },
+      {
+        "kind": "uncertainty",
+        "labels": 16,
+        "speech_model_hits": 4,
+        "reaction_model_hits": 0,
+        "reaction_hits_without_speech_model": 0,
+        "sample_bound_labels": 0,
+        "fully_fused_protected_sample_bound_labels": 0
+      }
+    ],
+    "cases": [
+      {
+        "id": "external_dev_001",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -54
+      },
+      {
+        "id": "external_dev_002",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "273/625",
+        "fused_protected_fraction": "619/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_003",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -50
+      },
+      {
+        "id": "external_dev_004",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -27
+      },
+      {
+        "id": "external_dev_005",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "433/625",
+        "fused_protected_fraction": "811/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_006",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -35
+      },
+      {
+        "id": "external_dev_007",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -33
+      },
+      {
+        "id": "external_dev_008",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -25
+      },
+      {
+        "id": "external_dev_009",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -50
+      },
+      {
+        "id": "external_dev_010",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "109/125",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -93
+      },
+      {
+        "id": "external_dev_011",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -49
+      },
+      {
+        "id": "external_dev_012",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "169/625",
+        "fused_protected_fraction": "427/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_013",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "313/625",
+        "fused_protected_fraction": "619/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_014",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "161/625",
+        "fused_protected_fraction": "331/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_015",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "201/625",
+        "fused_protected_fraction": "427/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_016",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -50
+      },
+      {
+        "id": "external_dev_017",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -57
+      },
+      {
+        "id": "external_dev_018",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -61
+      },
+      {
+        "id": "external_dev_019",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -61
+      },
+      {
+        "id": "external_dev_020",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -58
+      },
+      {
+        "id": "external_dev_021",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -58
+      },
+      {
+        "id": "external_dev_022",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -61
+      },
+      {
+        "id": "external_dev_023",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -58
+      },
+      {
+        "id": "external_dev_024",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "497/625",
+        "fused_protected_fraction": "907/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_025",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -65
+      },
+      {
+        "id": "external_dev_026",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -40
+      },
+      {
+        "id": "external_dev_027",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -69
+      },
+      {
+        "id": "external_dev_028",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -66
+      },
+      {
+        "id": "external_dev_029",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -42
+      },
+      {
+        "id": "external_dev_030",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -48
+      },
+      {
+        "id": "external_dev_031",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -65
+      },
+      {
+        "id": "external_dev_032",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -62
+      },
+      {
+        "id": "external_dev_033",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -46
+      },
+      {
+        "id": "external_dev_034",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -51
+      },
+      {
+        "id": "external_dev_035",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -51
+      },
+      {
+        "id": "external_dev_036",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -52
+      },
+      {
+        "id": "external_dev_037",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -37
+      },
+      {
+        "id": "external_dev_038",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -43
+      },
+      {
+        "id": "external_dev_039",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -42
+      },
+      {
+        "id": "external_dev_040",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -29
+      },
+      {
+        "id": "external_dev_041",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -74
+      },
+      {
+        "id": "external_dev_042",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "261/625",
+        "fused_protected_fraction": "523/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_043",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "461/625",
+        "fused_protected_fraction": "811/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_044",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "397/625",
+        "fused_protected_fraction": "811/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_045",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -29
+      },
+      {
+        "id": "external_dev_046",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -20
+      },
+      {
+        "id": "external_dev_047",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -32
+      },
+      {
+        "id": "external_dev_048",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "537/625",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_049",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "193/625",
+        "fused_protected_fraction": "427/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_050",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "21/125",
+        "fused_protected_fraction": "331/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_051",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "9/25",
+        "fused_protected_fraction": "523/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_052",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "429/625",
+        "fused_protected_fraction": "433/625",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_053",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -35
+      },
+      {
+        "id": "external_dev_054",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -49
+      },
+      {
+        "id": "external_dev_055",
+        "kind": "laughter",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": true,
+        "s04_protected_fraction": "329/625",
+        "fused_protected_fraction": "619/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_056",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -39
+      },
+      {
+        "id": "external_dev_057",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -45
+      },
+      {
+        "id": "external_dev_058",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "73/125",
+        "fused_protected_fraction": "369/625",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_059",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -52
+      },
+      {
+        "id": "external_dev_060",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -50
+      },
+      {
+        "id": "external_dev_061",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -48
+      },
+      {
+        "id": "external_dev_062",
+        "kind": "uncertainty",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "377/625",
+        "fused_protected_fraction": "619/1000",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "external_dev_063",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -54
+      },
+      {
+        "id": "external_dev_064",
+        "kind": "noise",
+        "annotation_method": "upstream_clip_category",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": false,
+        "empirical_rms_floor_db_bin": -61
+      }
+    ],
+    "held_out_opened": false,
+    "g04_private_interview_acceptance": "NOT_ESTABLISHED_BY_THIS_BENCHMARK",
+    "warning": "Clip labels measure detection, not boundaries. Scores are uncalibrated. Noise hits are reported, never removed.",
+    "coverage_diagnostics": [
+      {
+        "kind": "laughter",
+        "clips": 16,
+        "entire_clip_fully_protected": 13,
+        "minimum_entire_clip_protected_fraction": "619/1000",
+        "interpretation": "Not event retention; clip may include silence. Noise protection measures overprotection, never a silence certificate."
+      },
+      {
+        "kind": "noise",
+        "clips": 32,
+        "entire_clip_fully_protected": 27,
+        "minimum_entire_clip_protected_fraction": "331/1000",
+        "interpretation": "Not event retention; clip may include silence. Noise protection measures overprotection, never a silence certificate."
+      },
+      {
+        "kind": "uncertainty",
+        "clips": 16,
+        "entire_clip_fully_protected": 7,
+        "minimum_entire_clip_protected_fraction": "331/1000",
+        "interpretation": "Not event retention; clip may include silence. Noise protection measures overprotection, never a silence certificate."
+      }
+    ]
+  },
+  "generated_s04_regression": {
+    "schema_version": 1,
+    "step": "S05",
+    "split": "development",
+    "provenance": "Unchanged S04 local TTS construction labels, independent of model predictions; opposite polarity stereo; not human interview acceptance",
+    "compatibility": "EXPERIMENTAL",
+    "settings": {
+      "speech": {
+        "speech_threshold": {
+          "numerator": 1,
+          "denominator": 2
+        },
+        "uncertain_threshold": {
+          "numerator": 3,
+          "denominator": 20
+        },
+        "signal_peak": {
+          "numerator": 1,
+          "denominator": 10000
+        },
+        "onset": {
+          "numerator": 3,
+          "denominator": 25
+        },
+        "tail": {
+          "numerator": 1,
+          "denominator": 5
+        },
+        "merge_samples": 1600
+      },
+      "reactions": {
+        "reaction_threshold": {
+          "numerator": 1,
+          "denominator": 10
+        },
+        "vocal_uncertainty": {
+          "numerator": 3,
+          "denominator": 100
+        },
+        "signal_minimum": {
+          "numerator": 1,
+          "denominator": 1000000
+        },
+        "floor_ratio": {
+          "numerator": 4,
+          "denominator": 1
+        },
+        "onset": {
+          "numerator": 3,
+          "denominator": 25
+        },
+        "tail": {
+          "numerator": 1,
+          "denominator": 5
+        }
+      }
+    },
+    "seconds": 4.297,
+    "source_channel_seconds": 217.839,
+    "real_time_factor_including_two_decodes": 0.019726,
+    "groups": [
+      {
+        "kind": "acknowledgement",
+        "labels": 4,
+        "speech_model_hits": 4,
+        "reaction_model_hits": 0,
+        "reaction_hits_without_speech_model": 0,
+        "sample_bound_labels": 4,
+        "fully_fused_protected_sample_bound_labels": 4
+      },
+      {
+        "kind": "speech",
+        "labels": 12,
+        "speech_model_hits": 8,
+        "reaction_model_hits": 0,
+        "reaction_hits_without_speech_model": 0,
+        "sample_bound_labels": 12,
+        "fully_fused_protected_sample_bound_labels": 12
+      }
+    ],
+    "cases": [
+      {
+        "id": "generated_01_channel_0",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_01_channel_0",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_02_channel_0",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_02_channel_0",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_03_channel_0",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_03_channel_0",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_04_channel_0",
+        "kind": "acknowledgement",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_05_channel_0",
+        "kind": "acknowledgement",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_01_channel_1",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_01_channel_1",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_02_channel_1",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_02_channel_1",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_03_channel_1",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_03_channel_1",
+        "kind": "speech",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": false,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_04_channel_1",
+        "kind": "acknowledgement",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      },
+      {
+        "id": "generated_05_channel_1",
+        "kind": "acknowledgement",
+        "annotation_method": "construction_sample_bounds",
+        "speech_model_hit": true,
+        "reaction_model_hit": false,
+        "s04_protected_fraction": "1",
+        "fused_protected_fraction": "1",
+        "full_retention_assessable": true,
+        "empirical_rms_floor_db_bin": -240
+      }
+    ],
+    "held_out_opened": false,
+    "g04_private_interview_acceptance": "NOT_ESTABLISHED_BY_THIS_BENCHMARK",
+    "warning": "Clip labels measure detection, not boundaries. Scores are uncalibrated. Noise hits are reported, never removed."
+  },
+  "external_dataset": {
+    "name": "ESC-50",
+    "revision": "33c8ce9eb2cf0b1c2f8bcf322eb349b6be34dbb6",
+    "development_folds": [
+      1,
+      2
+    ],
+    "annotation": "upstream clip categories, not event/sample bounds",
+    "licence": "CC BY-NC 3.0; noncommercial local development evaluation only; per-clip attribution kept locally",
+    "audio_or_source_hashes_published": false,
+    "reserved_laughter_clips": 24,
+    "reserved_folds": [
+      3,
+      4,
+      5
+    ],
+    "reserved_audio_downloaded_or_opened": false,
+    "pretraining_audioset_overlap": "UNKNOWN"
+  },
+  "private_content_labels": "COARSE_HUMAN_DEVELOPMENT_ENVELOPES_WITH_CONFIRMED_PREVIEW_OVERLAP",
+  "private_human_listening": "BOUNDED_DEVELOPMENT_PRESERVATION_ONLY; HELD_OUT_ACCEPTANCE_NOT_RUN",
+  "shared_microphone": "one inseparable source group; physical channels do not identify people",
+  "noise_or_correlation_can_remove_protection": false,
+  "boundary_tolerance_samples": 0,
+  "sample_grids_tested": [
+    16000,
+    44100,
+    48000,
+    96000,
+    192000
+  ],
+  "source_repair_or_edits": false,
+  "gui": "NOT_RUN_S05_ANALYSIS_ONLY_UNCHANGED_S01_S02_EVIDENCE",
+  "automated_suite": {
+    "tests": 107,
+    "skipped": 0,
+    "seconds": 101.871,
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_*.py -v",
+    "scope": "90 existing and 17 S05; explicit local model/generated assets and real FFmpeg/probe enabled"
+  },
+  "private_corpus_preservation": {
+    "assertions": 102,
+    "unchanged_original_media": 5,
+    "sample_exact_pcm_excerpts": 12,
+    "native_sequence_extent_deltas": [
+      0,
+      1
+    ],
+    "track_semantics_equal": true,
+    "whole_project_semantics_equal": false
+  },
+  "s02_render_regression": {
+    "passed": true,
+    "checks": 11,
+    "frames": 275,
+    "picture_anchor_best_offset": 0,
+    "audio_anchor_best_lag_samples_grid48": 0,
+    "embedded_mp4_marker_attenuation_db": -63.085,
+    "scope": "Original unchanged S02 GUI render measured again, no new GUI interaction"
+  },
+  "setup_and_cli": {
+    "explicit_size_hash_verified_download": "PASS",
+    "hash_locked_dependency_resolution": "PASS_all_16_wheels",
+    "pip_check": "PASS",
+    "cli_complete_review_exit": 2,
+    "cli_repeat_no_overwrite_exit": 1
+  },
+  "private_full_source_read_only": {
+    "private_full_source_analysis": "PASS",
+    "participants": 4,
+    "pcm_channels": 8,
+    "cold_seconds": 355.438,
+    "cache_reuse_tracks": 4,
+    "s04_events_preserved": true,
+    "s04_reviews_preserved": true,
+    "events": [
+      {
+        "reaction": 4,
+        "uncertainty": 10
+      },
+      {
+        "reaction": 4,
+        "uncertainty": 8
+      },
+      {
+        "reaction": 0,
+        "uncertainty": 16
+      },
+      {
+        "reaction": 0,
+        "uncertainty": 760
+      }
+    ],
+    "overlap_events": 96,
+    "decoded_samples_per_channel": [
+      32698710,
+      32698710,
+      32698710,
+      32699051
+    ],
+    "source_samples": [
+      392384512,
+      392384512,
+      392384512,
+      392388608
+    ],
+    "original_intake_findings_unchanged": true,
+    "native_extent_deltas": [
+      0,
+      1
+    ],
+    "real_alignment_certified": false,
+    "real_content_listening_acceptance": "NOT_RUN",
+    "scope": "Engineering integration only; no human content labels or held-out acceptance; preserves exact original intake and every S04 event/review"
+  },
+  "annotation_pack": {
+    "cues": 3,
+    "total_seconds": 24,
+    "human_labels": "PARTIAL_APPROXIMATE_PHONE_OBSERVATIONS_RECORDED_LOCALLY",
+    "candidate_descriptions_are_ground_truth": false,
+    "source_sample_exactness": "PASS_all_three_cues_PCM_bytes_equal_original_windows"
+  },
+  "human_review_followup": {
+    "source": "direct user listening observations",
+    "private_comments_labels_and_timecodes_published": false,
+    "timing_precision": "approximate_seconds_from_phone_mp3",
+    "required_positive_category_coverage": "INCOMPLETE",
+    "coarse_windows_checked": 3,
+    "all_coarse_windows_fully_protected_on_both_channels": true,
+    "overlapping_cues_independent": false,
+    "production_code_settings_or_protection_changed": false,
+    "next_review_pack_seconds": 21,
+    "next_review_pack_human_confirmation": "RECEIVED_COARSE_DIRECT_USER_FEEDBACK; SEE_HUMAN_REVIEW_ROUND2",
+    "next_review_pack_provenance": "private interview speech candidate; two-source channel preview at uncertified declared origin; explicitly external pre-existing development laughter example",
+    "held_out_audio_opened": false,
+    "g04": "BLOCKED",
+    "scope": "HISTORICAL_ATTEMPT02; SEE_BOUNDED_DEVELOPMENT_GATE_FOR_CURRENT_VERDICT"
+  },
+  "listening_review_delivery_followup": {
+    "status": "PAUSED_BY_EXPLICIT_USER_REQUEST",
+    "phone_delivery": "FAILED_USER_REPORTED_UNUSABLE",
+    "new_connection": "DECLINED",
+    "maximum_future_human_review_audio_files": 1,
+    "single_private_preview_prepared_seconds": 23,
+    "single_private_preview_phone_access_verified": false,
+    "source_cues_unchanged": true,
+    "production_analysis_changed": false,
+    "additional_listening_requires_user_resume": true,
+    "new_content_acceptance": false,
+    "held_out_audio_opened": false,
+    "g04": "BLOCKED",
+    "scope": "HISTORICAL_ATTEMPT03; USER_LATER_RESUMED_WITH_EXISTING_CLIP_FEEDBACK"
+  },
+  "human_review_round2": {
+    "source": "direct user development feedback after returning to computer",
+    "private_comments_labels_source_timecodes_published": false,
+    "clips_reviewed": 3,
+    "timing_precision": "approximate seconds; no exact word, laughter-onset, gasp-onset or overlap bounds",
+    "coarse_channel_envelopes_checked": 6,
+    "fully_fused_protected_coarse_channel_envelopes": 5,
+    "coarse_envelope_exceeds_known_vocal_labels_on_one_source": true,
+    "combined_two_source_timeline_envelope_fully_protected": true,
+    "confirmed_vocal_content_loss": false,
+    "simultaneous_talk": "NOT_CONFIRMED_BY_DISTINCT_VOICES_ALONE",
+    "source_attribution_of_private_reaction": "UNCONFIRMED",
+    "reviewed_external_reaction_positive_speech_vad_hit": false,
+    "reviewed_external_reaction_positive_reaction_model_hit": true,
+    "reviewed_external_end_vocal_envelope_s04_protected_fraction": "59/75",
+    "reviewed_external_end_vocal_envelope_fused_protected_fraction": "1",
+    "fraction_scope": "conservative envelope with uncertain event onset; not a precise gasp-duration measurement",
+    "source_exact_private_preview_channels": 4,
+    "new_audio_files_requested_or_delivered": 0,
+    "maximum_future_human_review_audio_files": 1,
+    "new_connection_authorized": false,
+    "phone_access_success_inferred": false,
+    "production_code_settings_events_or_media_changed": false,
+    "held_out_audio_opened": false,
+    "g04": "BLOCKED",
+    "scope": "HISTORICAL_ATTEMPT04_BEFORE_DIRECT_USER_OVERLAP_CONFIRMATION; DIAGNOSTIC_METRICS_RETAINED"
+  },
+  "bounded_development_gate": {
+    "status": "PASS_BOUNDED_S05_DEVELOPMENT_SHARED_REMOVAL_NO_ATTENUATION",
+    "human_confirmation_source": "direct user clarification of already reviewed development preview",
+    "private_comments_labels_source_timecodes_published": false,
+    "human_confirmed_preview_overlap": true,
+    "exact_overlap_word_laughter_onset_boundaries_known": false,
+    "annotation_envelope_method": "entire preview chosen independently of detector boundaries; no inferred silence or source attribution",
+    "whole_overlap_preview_shared_protected_fraction": "1",
+    "whole_overlap_preview_individual_source_protection_fractions": [
+      "1027/1600",
+      "1"
+    ],
+    "individual_source_detection_complete": false,
+    "group_preservation_reason": "one shared removal map must retain the union of all protected events; current contract refuses attenuation on protected sources",
+    "synthetic_contract_harness_interior_single_frame_cuts_refused": 198,
+    "synthetic_contract_harness_protected_source_attenuations_refused": 4,
+    "synthetic_contract_harness_neutral_gain_controls_accepted": 2,
+    "synthetic_contract_harness_is_real_origin_acceptance": false,
+    "earlier_coarse_observation_channel_checks_fully_protected": 6,
+    "new_speech_external_vocal_channel_envelopes_fully_protected": 4,
+    "whole_overlap_preview_group_checks_fully_protected": 1,
+    "generated_construction_sample_bound_regions_fully_protected": 16,
+    "denominator_warning": "different observation/channel/group/construction units, reported separately; no pooled accuracy score",
+    "gasp_onset_unspecified": true,
+    "reaction_without_positive_vad_human_reviewed": true,
+    "model_settings_fitted_to_human_labels": false,
+    "production_code_events_sources_or_origins_changed": false,
+    "held_out_audio_opened": false,
+    "full_interview_held_out_and_gain_acceptance": "NOT_RUN",
+    "new_audio_files_requested_or_delivered": 0,
+    "further_s05_listening_required": false,
+    "maximum_future_human_review_audio_files": 1,
+    "new_connection_authorized": false,
+    "s06_started": false
+  }
+}

@@ -1,0 +1,331 @@
+"""Experimental 26.08.2 grouped export from a reproducible approved S06 result."""
+from copy import deepcopy
+from dataclasses import replace
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+from .kdenlive import MAX_XML, IntakeError, props, read_starter, resolve_resource
+from .compatibility import assess, PLAN_TARGET
+from ..probe import fingerprint, probe_video, probe_wav
+from ..turns import build_turns, pieces
+from ..timing import ceil
+
+
+NATIVE_OPTIONAL_GROUP_BUDGET = 128
+
+
+def native_layout(result):
+    """Bound optional fragmentation for the observed 26.08.2 editor.
+
+    Hundreds of optional short units stall native decoder initialization on a
+    complete interview, although the same unchanged sources play when merged.
+    Coalesce the shortest neighbouring units only in the original-timing path.
+    Every real shared-removal seam and every exact semantic cue survives; no
+    source time, inference setting, gain decision or approval is changed.
+    """
+    layout = build_turns(result)
+    original = layout.plan.edit_units
+    if layout.plan.tail_policy != 'original_timing_with_gaps_v2':
+        return layout, {}
+    mandatory = {0, *(out.end for _, out in layout.plan.time_map.segments())}
+    units = list(original)
+    target = max(NATIVE_OPTIONAL_GROUP_BUDGET + 1, len(mandatory))
+    while len(units) > target:
+        candidates = [(min(b-a, c-b), c-a, b) for a, b, c in zip(units, units[1:], units[2:]) if b not in mandatory]
+        if not candidates:
+            break
+        units.remove(min(candidates)[2])
+    layout = replace(layout, plan=replace(layout.plan, edit_units=tuple(units)))
+    return layout, {'native_group_policy': '26.08.2-coalesce-small-optional-units-1',
+        'original_structural_groups': len(original)-1,
+        'native_structural_groups': len(units)-1,
+        'optional_boundaries_coalesced': len(original)-len(units),
+        'mandatory_shared_seams_preserved': True,
+        'semantic_cues_preserved': len(layout.cues)}
+
+
+def put(node, name, value):
+    prop = node.find(f"property[@name='{name}']")
+    if prop is None:
+        prop = ET.SubElement(node, 'property', name=name)
+    prop.text = str(value)
+
+
+def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False, cleanup=None, picture=None, mutes=(), target_kdenlive=None):
+    """Bindings map every canonical source ID to its explicit local resource.
+
+    Validate strict contracts, reproducibility, starter/media fingerprints and
+    actual complete media grids before writing a new file atomically. Optional
+    S08 cleanup is separately reproduced; the canonical v1 plan stays unchanged.
+    """
+    starter = read_starter(project)
+    compatibility = assess(starter, target_kdenlive)
+    if not compatibility['export_allowed']:
+        raise IntakeError(compatibility['reason'])
+    if compatibility['experimental_opt_in_required'] and not experimental:
+        raise IntakeError('EXPERIMENTAL_EXPORT_REQUIRES_OPT_IN')
+    refinement = None
+    if picture is not None:
+        from ..picture import refine_picture_seams
+        refinement = refine_picture_seams(result, picture)
+        result = refinement.result
+    layout, grouping = native_layout(result)
+    plan = layout.plan
+    from ..editing import validate_mutes, mute_keys
+    validate_mutes(plan.analysis, mutes, plan.overrides)
+    peak_report = None
+    if cleanup is not None:
+        from ..cleanup import validate_cleanup, native_keys
+        from ..peaks import measure_peaks
+        cleanup = validate_cleanup(result, cleanup)
+    project, output = Path(project).resolve(), Path(output).resolve()
+    if fingerprint(project) != plan.analysis.header.project_sha256:
+        raise IntakeError('PLAN_PROJECT_FINGERPRINT_MISMATCH')
+    video = next(s for s in plan.analysis.sources if s.kind == 'video')
+    if plan.analysis.header.adapter_target != PLAN_TARGET or starter.fps != plan.time_map.fps or starter.clip_frames != video.duration * starter.fps:
+        raise IntakeError('PLAN_ADAPTER_OR_GRID_MISMATCH')
+    sources = {s.source_id: s for s in plan.analysis.sources}
+    paths = {k: Path(v).resolve() for k, v in bindings.items()}
+    audios = {s.source_id for s in sources.values() if s.kind == 'participant_audio'}
+    if set(paths) != set(sources) or len(set(paths.values())) != len(paths) or set(paths.values()) != {t.resource for t in starter.tracks}:
+        raise IntakeError('EXPLICIT_SOURCE_BINDING_MISMATCH')
+    if set(names) != audios or any(not isinstance(n, str) or not n.strip() for n in names.values()) or len({n.strip().casefold() for n in names.values()}) != len(names):
+        raise IntakeError('PARTICIPANT_NAMES_REQUIRED')
+    tracks = {t.resource: t for t in starter.tracks}
+    for identity, path in paths.items():
+        source, track = sources[identity], tracks[path]
+        if track.audio != (source.kind == 'participant_audio') or fingerprint(path) != source.sha256:
+            raise IntakeError('PLAN_MEDIA_FINGERPRINT_OR_KIND_MISMATCH')
+        if track.audio:
+            probe = probe_wav(path)
+            if (probe.sample_rate, probe.sample_count) != (source.sample_rate, source.sample_count):
+                raise IntakeError('PLAN_AUDIO_GRID_MISMATCH')
+        else:
+            probe = probe_video(path, ffprobe, track.stream_index)
+            if probe.fps != starter.fps or probe.duration != source.duration or probe.start != 0 or probe.cadence != 'CFR_AUDITED':
+                raise IntakeError('PLAN_VIDEO_GRID_MISMATCH')
+    if output == project or output in paths.values() or output.exists():
+        raise FileExistsError('Export requires a new destination.')
+    if cleanup is not None:
+        peak_report = measure_peaks(result, cleanup, paths)
+        if plan.tail_policy == 'original_timing_with_gaps_v2':
+            peak_report['master_adjusted_sum_bound'] = peak_report['original_sum_bound'] * .95 / len(audios)
+            peak_report['export_safe'] = peak_report['master_adjusted_sum_bound'] <= .95
+        if not peak_report['export_safe']:
+            raise IntakeError('MIX_HEADROOM_REVIEW_REQUIRED_NO_AUTOMATIC_NORMALIZATION')
+    with project.open('rb') as stream:
+        raw = stream.read(MAX_XML + 1)
+    if len(raw) > MAX_XML or hashlib.sha256(raw).hexdigest() != plan.analysis.header.project_sha256:
+        raise IntakeError('SOURCE_CHANGED_DURING_EXPORT')
+    root = ET.fromstring(raw.decode('utf-8-sig'))
+    if plan.tail_policy == 'original_timing_with_gaps_v2' and starter.profile_reference and Path(starter.profile_reference).is_absolute():
+        profile_path = resolve_resource(starter.profile_reference, project.parent)
+        with profile_path.open(encoding='utf-8-sig') as profile_stream:
+            profile_text = profile_stream.read(65537)
+        if len(profile_text) > 65536:
+            raise IntakeError('PROJECT_PROFILE_SIZE_LIMIT')
+        profile_values = dict(line.split('=', 1) for line in profile_text.splitlines() if '=' in line)
+        for key, value in root.find('profile').attrib.items():
+            if key != 'description' and (key not in profile_values or int(profile_values[key]) != int(value)):
+                raise IntakeError('PROJECT_PROFILE_MISMATCH')
+    nodes = {n.get('id'): n for n in root if n.get('id')}
+    seq = next(n for n in root.findall('tractor') if 'kdenlive:sequenceproperties.groups' in props(n))
+    base = Path(root.get('root', project.parent))
+    path_by_chain = {}
+    for chain in root.findall('chain'):
+        value = props(chain).get('resource')
+        if value:
+            path = resolve_resource(value, base)
+            path_by_chain[chain.get('id')] = path
+            try:
+                relative = os.path.relpath(path, output.parent)
+            except ValueError:
+                relative = str(path)
+            put(chain, 'resource', relative.replace('\\', '/'))
+            if path.suffix.lower() == '.mp4':
+                for key, value in (('audio_index', -1), ('astream', -1), ('set.test_audio', 1)):
+                    put(chain, key, value)
+    for parent in root.iter():
+        for prop in list(parent.findall('property')):
+            if prop.get('name') == 'kdenlive:docproperties.profile' and plan.tail_policy == 'original_timing_with_gaps_v2':
+                continue
+            if prop.get('name') in ('kdenlive:docproperties.browserurl', 'kdenlive:docproperties.profile', 'kdenlive:docproperties.layout', 'kdenlive:documentnotes'):
+                parent.remove(prop)
+    root.attrib.pop('root', None)
+    old_tracks = [nodes[t.get('producer')] for t in seq.findall('track')[1:]]
+    kept = []
+    for node in old_tracks:
+        entries = [(nodes[t.get('producer')], e) for t in node.findall('track') for e in nodes[t.get('producer')].findall('entry')]
+        if entries and path_by_chain[entries[0][1].get('producer')] in paths.values() and not (props(node).get('kdenlive:audio_track') == '1' and path_by_chain[entries[0][1].get('producer')].suffix.lower() == '.mp4'):
+            kept.append((node, *entries[0]))
+        else:
+            for t in node.findall('track'):
+                root.remove(nodes[t.get('producer')])
+            root.remove(node)
+    kept.sort(key=lambda row: props(row[0]).get('kdenlive:audio_track') != '1')
+    main_bin = nodes['main_bin']
+    recoverable = {path_by_chain.get(e.get('producer')) for e in main_bin.findall('entry')}
+    for _, _, entry in kept:
+        path = path_by_chain[entry.get('producer')]
+        if path not in recoverable:
+            main_bin.append(deepcopy(entry))
+            recoverable.add(path)
+    for ref in list(seq.findall('track'))[1:]:
+        seq.remove(ref)
+    for transition in list(seq.findall('transition')):
+        seq.remove(transition)
+    units = tuple(pieces(plan))
+    groups = [[] for _ in units]
+    used = {n.get('id') for n in root.iter() if n.get('id')}
+    def unique(prefix):
+        i = 0
+        while f'{prefix}{i}' in used:
+            i += 1
+        value = f'{prefix}{i}'
+        used.add(value)
+        return value
+    end = plan.time_map.output_frames
+    for index, (node, playlist, original) in enumerate(kept):
+        chain = nodes[original.get('producer')]
+        identity = next(k for k, p in paths.items() if p == path_by_chain[chain.get('id')])
+        audio = sources[identity].kind == 'participant_audio'
+        coverage_end = ceil(sources[identity].duration * starter.fps)
+        # Include a partial final native audio frame. avformat continues to
+        # actual decoded EOF, then yields absence instead of repeating media.
+        if plan.tail_policy == 'original_timing_with_gaps_v2':
+            chain.set('out', str(coverage_end - 1))
+            put(chain, 'length', coverage_end)
+            put(chain, 'eof', 'continue')
+        if audio:
+            put(node, 'kdenlive:track_name', names[identity])
+        for ref in node.findall('track'):
+            pl = nodes[ref.get('producer')]
+            for item in list(pl):
+                if item.tag != 'property':
+                    pl.remove(item)
+        shared_chain = None
+        for unit, (a, b, position) in enumerate(units):
+            stop = min(b, coverage_end)
+            if stop <= a:
+                ET.SubElement(playlist, 'blank', length=str(b - a))
+                continue
+            # Native Kdenlive saves share a track's producer across its clips.
+            # Thousands of duplicate avformat producers otherwise reopen the
+            # same long recordings thousands of times during timeline load.
+            if shared_chain is None or plan.tail_policy == 'exact_coverage':
+                copy = deepcopy(chain)
+                copy.set('id', unique('s07chain'))
+                root.insert(list(root).index(playlist), copy)
+                shared_chain = copy
+            else:
+                copy = shared_chain
+            entry = ET.SubElement(playlist, 'entry', producer=copy.get('id'), **{'in': str(a), 'out': str(stop - 1)})
+            put(entry, 'kdenlive:id', props(copy)['kdenlive:id'])
+            if audio and cleanup is not None:
+                keys = native_keys(cleanup, identity, a, stop)
+                if keys:
+                    put(entry, 'kdenlive:activeeffect', 0)
+                    effect = ET.SubElement(entry, 'filter', id=unique('s08filter'))
+                    for key, value in {'window': 75, 'max_gain': '20dB', 'channel_mask': -1,
+                                       'mlt_service': 'volume', 'kdenlive_id': 'volume',
+                                       'kdenlive:collapsed': 0,
+                                       'level': ';'.join(f'{frame}={float(db):.9g}' for frame, db in keys)}.items():
+                        put(effect, key, value)
+            groups[unit].append({'data': f'{index}:{position}:-1', 'leaf': 'clip', 'type': 'Leaf'})
+            if audio:
+                keys = mute_keys(mutes, identity, a, stop, starter.fps)
+                if keys:
+                    put(entry, 'kdenlive:activeeffect', len(entry.findall('filter')))
+                    effect = ET.SubElement(entry, 'filter', id=unique('editorMute'))
+                    for key, value in {'window': 75, 'max_gain': '20dB', 'channel_mask': -1,
+                        'mlt_service': 'volume', 'kdenlive_id': 'volume', 'kdenlive:collapsed': 0,
+                        'kdenlive:effectName': 'Volume (keyframable)',
+                        'level': ';'.join(f'{frame}={db}' for frame, db in keys)}.items():
+                        put(effect, key, value)
+            if stop < b:
+                ET.SubElement(playlist, 'blank', length=str(b - stop))
+        node.set('out', str(end - 1))
+        last = seq.findall('track')[-1]
+        seq.insert(list(seq).index(last) + 1, ET.Element('track', producer=node.get('id')))
+        transition = ET.SubElement(seq, 'transition', id=unique('s07transition'))
+        values = {'a_track': 0, 'b_track': index + 1, 'mlt_service': 'mix' if audio else 'qtblend', 'kdenlive_id': 'mix' if audio else 'qtblend', 'internal_added': 237, 'always_active': 1}
+        values.update({'sum': 1, 'accepts_blanks': 1} if audio else {'compositing': 0, 'distort': 0, 'rotate_center': 0})
+        for key, value in values.items():
+            put(transition, key, value)
+    # Multiple cues sharing a frame become one native guide, with exact source
+    # coordinates in its text. Local source IDs/names are intentionally private.
+    guides = {}
+    audit_guides = plan.tail_policy == 'original_timing_with_gaps_v2'
+    for source in sources.values():
+        if source.duration < plan.time_map.source_frames / starter.fps:
+            mapped = plan.time_map.map_time(source.duration)
+            if mapped is not None:
+                pos = min(end - 1, int(mapped * starter.fps))
+                label = 'MISSING RECORDED PICTURE' if source.kind == 'video' else 'Audio source ended'
+                guides.setdefault(pos, []).append(f'{label}; {source.source_id}; original EOF {source.duration} s; empty coverage after EOF, no freeze or shift')
+    for cue in layout.cues:
+        if audit_guides:
+            continue  # Full diagnostics live in the private run report.
+        pos = min(end - 1, int(cue.output_start * starter.fps))
+        guides.setdefault(pos, []).append(f'{cue.kind}: {", ".join(cue.source_ids)}; source [{cue.source_start},{cue.source_end}) s')
+    for _, out in list(plan.time_map.segments())[1:]:
+        guides.setdefault(out.start, []).append('Approved shared pause seam')
+    if refinement is not None and not audit_guides:
+        for marker in refinement.markers:
+            output_time = marker.output_time
+            if output_time is None:
+                # Removed-source markers remain explicit; place their guide on
+                # the following shared seam rather than invent a mapped time.
+                output_time = next(out.start / starter.fps for src, out in plan.time_map.segments()
+                                   if src.start / starter.fps > marker.source_time)
+            pos = min(end - 1, int(output_time * starter.fps))
+            guides.setdefault(pos, []).append(f'{marker.kind}; source {marker.source_time} s; output {marker.output_time} s; confidence {marker.confidence}; {marker.reason}')
+    guide = [{'comment': ' | '.join(comments), 'duration': 0, 'pos': pos, 'type': 0} for pos, comments in sorted(guides.items())]
+    for key, value in {'groups': json.dumps([{'children': g, 'type': 'Normal'} for g in groups if len(g) > 1]), 'guides': json.dumps(guide), 'tracksCount': len(kept), 'zonein': 0, 'zoneout': end, 'position': 0, 'activeTrack': 0, 'audioTarget': 0, 'videoTarget': len(kept)-1}.items():
+        put(seq, 'kdenlive:sequenceproperties.' + key, value)
+    put(seq, 'kdenlive:markers', json.dumps(guide))
+    master_db = None
+    if plan.tail_policy == 'original_timing_with_gaps_v2':
+        # One reversible mix fader, NOT per-recording leveling or denoising.
+        # Integer PCM is bounded by unity per source; 0.95/N is a fixed routing
+        # bound independent of interview content, models and held-out data.
+        master_db = 20 * math.log10(.95 / len(audios))
+        master = next((f for f in seq.findall('filter')
+                       if props(f).get('mlt_service') == 'volume' and props(f).get('internal_added') == '237'), None)
+        if master is None:
+            raise IntakeError('EXPECTED_NATIVE_MASTER_VOLUME')
+        put(master, 'disable', 0)
+        put(master, 'level', f'0={master_db:.9f}')
+    put(seq, 'kdenlive:duration', end)
+    put(seq, 'kdenlive:maxduration', end)
+    seq.set('out', str(end - 1))
+    for tractor in root.findall('tractor'):
+        if props(tractor).get('kdenlive:projectTractor') == '1':
+            tractor.set('out', str(end - 1))
+            for ref in tractor.findall('track'):
+                ref.set('out', str(end - 1))
+    ET.indent(root, space=' ')
+    if fingerprint(project) != plan.analysis.header.project_sha256 or any(fingerprint(paths[s.source_id]) != s.sha256 for s in sources.values()):
+        raise IntakeError('SOURCE_CHANGED_DURING_EXPORT')
+    serialized = ET.tostring(root, encoding='unicode', xml_declaration=True) + '\n'
+    if len(serialized.encode('utf-8')) > MAX_XML:
+        raise IntakeError('EXPORTED_XML_EXCEEDS_BOUNDED_SIZE')
+    if target_kdenlive is not None and assess(starter, target_kdenlive) != compatibility:
+        raise IntakeError('TARGET_CHANGED_DURING_EXPORT')
+    from ..speech import atomic_new
+    atomic_new(output, serialized)
+    return {'compatibility': compatibility['compatibility'], 'adapter': starter.adapter_id, 'turn_algorithm': layout.algorithm,
+            **grouping,
+            'participants': len(audios), 'groups': len(groups), 'output_frames': end,
+            'edit_units': list(plan.edit_units), 'input_sequence_extent_delta_frames': starter.sequence_frames - starter.clip_frames,
+            'excluded_mp4_audio_tracks': starter.excluded_mp4_audio,
+            **({'diagnostic_cues_in_private_report': len(layout.cues),
+                'timeline_guides': len(guide)} if audit_guides else {}),
+            **({'master_gain_db': master_db, 'master_linear_bound': .95 / len(audios),
+                'master_gain_policy': 'fixed 0.95/N mix headroom; source media and relative levels unchanged'} if master_db is not None else {}),
+            **({'picture_algorithm': refinement.algorithm, 'picture_review_markers': len(refinement.markers)} if refinement is not None else {}),
+            **({'cleanup_algorithm': cleanup.algorithm, 'gain_spans': len(cleanup.spans), 'peak_report': peak_report} if cleanup is not None else {})}

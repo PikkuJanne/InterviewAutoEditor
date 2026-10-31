@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "provenance": "generated_synthetic_media_no_recorded_people",
+  "before_project": "Hand-relinked copy of native S01 starter; not a new Kdenlive save",
+  "after_project": "S07 production adapter output; not Kdenlive-authored",
+  "gui_evidence": "NOT_RUN",
+  "source_windows_seconds": [
+    [
+      [
+        1,
+        3
+      ],
+      [
+        7,
+        9
+      ]
+    ],
+    [
+      [
+        2,
+        4
+      ],
+      [
+        8,
+        10
+      ]
+    ]
+  ],
+  "global_gap_seconds": [
+    4,
+    7
+  ],
+  "source_frames": 300,
+  "export": {
+    "compatibility": "EXPERIMENTAL",
+    "adapter": "26.08.2",
+    "turn_algorithm": "s07-source-group-turns-1",
+    "participants": 2,
+    "groups": 6,
+    "output_frames": 233,
+    "edit_units": [
+      0,
+      50,
+      75,
+      105,
+      133,
+      158,
+      233
+    ],
+    "input_sequence_extent_delta_frames": 0,
+    "excluded_mp4_audio_tracks": 0
+  },
+  "files": [
+    {
+      "path": "after.kdenlive",
+      "sha256": "8e74609303344130a6a6b7a7d843da455a313b101795199637aebf91d602d5e9"
+    },
+    {
+      "path": "before.kdenlive",
+      "sha256": "5108e78584a47ce7e009194bdda052f33be669b70561a85877ab3b33dc7d3865"
+    },
+    {
+      "path": "mapping.json",
+      "sha256": "1d38c0e4be749927f56438f51aafb0f98f78c145ebe27042104c8430a18822e1"
+    },
+    {
+      "path": "media/participant-01.wav",
+      "sha256": "691e8ed74be2b1d203a5c7e35b7f6bfd9fd27ebc1f6b1c20105a0a2d0bb361bf"
+    },
+    {
+      "path": "media/participant-02.wav",
+      "sha256": "99e41a3900958cdeec6c91b2a251c285e79ab7c4dce47860ca49f226813dfcd0"
+    },
+    {
+      "path": "media/zoom-source.mp4",
+      "sha256": "188d4cf1c31da0e353babb1d8cdf673ded0074340d1b7a67b59ea9dd64011058"
+    },
+    {
+      "path": "planning-result.json",
+      "sha256": "fcb3e0dbb89362d2fc0a7083d0783de7ef226982af82fc53ee653eca69460920"
+    }
+  ]
+}

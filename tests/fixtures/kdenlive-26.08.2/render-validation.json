@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "checks": {
+    "semantic_round_trip_equal": true,
+    "exact_300_video_frames": true,
+    "picture_anchor_mae_below_4": true,
+    "picture_anchor_best_matches_same_frame": true,
+    "embedded_marker_at_least_50db_lower": true,
+    "both_participant_tones_present": true,
+    "decoded_audio_padding_within_one_frame": true
+  },
+  "fixture": "grouped-gain.kdenlive",
+  "reference_sha256": "f466f340e1026ff9498db67ded313265b998513ac0f910fae3f0f6ffd1b51df2",
+  "roundtrip_sha256": "28796a8ee3189b59da0002cf8ebcf73bb951f297380934301546e2d94f3dfc6c",
+  "gui_render_sha256": "0641406f8d814b200dfc6c3226188c12f6ce5247fef6468328b99f032ddeef36",
+  "render_bytes": 477066,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 320,
+        "height": 180,
+        "r_frame_rate": "25/1",
+        "duration": "12.000000",
+        "nb_frames": "300"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "duration": "12.010000",
+        "nb_frames": "564"
+      }
+    ],
+    "format": {
+      "duration": "12.010000"
+    }
+  },
+  "picture_anchors": [
+    {
+      "frame": 0,
+      "same_frame_rgb_mae": 1.615203,
+      "best_offset_frames": 0
+    },
+    {
+      "frame": 99,
+      "same_frame_rgb_mae": 2.420168,
+      "best_offset_frames": 0
+    },
+    {
+      "frame": 100,
+      "same_frame_rgb_mae": 2.488206,
+      "best_offset_frames": 0
+    },
+    {
+      "frame": 199,
+      "same_frame_rgb_mae": 2.281811,
+      "best_offset_frames": 0
+    },
+    {
+      "frame": 200,
+      "same_frame_rgb_mae": 2.248895,
+      "best_offset_frames": 0
+    },
+    {
+      "frame": 299,
+      "same_frame_rgb_mae": 1.976609,
+      "best_offset_frames": 0
+    }
+  ],
+  "decoded_audio_samples_48000hz": 576512,
+  "marker_997hz_attenuation_db": -135.291,
+  "render_tone_amplitudes_s16": {
+    "participant_01_330hz": 2832.43,
+    "participant_02_440hz": 5655.238,
+    "embedded_997hz": 0.001376
+  },
+  "scope": "Synthetic reference only; GUI provenance recorded separately. No interview quality or native gain-edge claim."
+}

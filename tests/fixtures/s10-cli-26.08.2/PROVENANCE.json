@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "fixture_id": "s10-cli-26.08.2",
+  "date": "2026-10-29",
+  "compatibility": "EXPERIMENTAL",
+  "content": "Byte-identical generated S09 tones/noise/luma media; no recorded people or private interviews",
+  "application": {
+    "name": "Kdenlive",
+    "version": "26.08.2",
+    "revision": "d4e87e4",
+    "mlt": "7.43.0",
+    "qt": "6.11.1",
+    "executable_sha256": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352",
+    "verification": "Observed About/Components during S10: 26.08.2 rev. d4e87e4, MLT 7.43.0, Qt using/built against 6.11.1; installed executable hash matches"
+  },
+  "input_provenance": "../s09-picture-26.08.2/PROVENANCE.json",
+  "actual_application_checks": [
+    {
+      "action": "open",
+      "result": "PASS",
+      "detail": "Integrated CLI output opened without missing media or repair"
+    },
+    {
+      "action": "play",
+      "result": "PASS",
+      "detail": "Project monitor advanced through complete generated output"
+    },
+    {
+      "action": "save",
+      "result": "PASS",
+      "artifact": "native-roundtrip.kdenlive"
+    },
+    {
+      "action": "group_edit",
+      "result": "PASS",
+      "detail": "Selecting final audio clip selects 3 items. Edit Duration position 00:00:07:17 to 00:00:08:17. All three move 25 frames.",
+      "artifact": "group-moved.kdenlive"
+    },
+    {
+      "action": "undo_save",
+      "result": "PASS",
+      "artifact": "native-undone.kdenlive"
+    },
+    {
+      "action": "close_reopen",
+      "result": "PASS",
+      "detail": "Opened original CLI output to close native copy, then reopened native-roundtrip without warning"
+    },
+    {
+      "action": "render",
+      "result": "PASS",
+      "detail": "Full project MP4-H264/AAC, requested 00:00:10:17; UI reports finished in 00:00:01",
+      "artifact": "gui-render.mp4"
+    },
+    {
+      "action": "sanitized_native_open",
+      "result": "PASS",
+      "detail": "Public native-roundtrip opened without repair or missing media. Post-render UI changes were not saved over the captured file."
+    }
+  ],
+  "render_is_primary_deliverable": false,
+  "files": [
+    {
+      "path": "picture-cleaned.kdenlive",
+      "raw_capture_sha256": "a671e8323b13e5a8edf0ef7df32fd3696d08520038e1e77f0edc6326bc69fbbe",
+      "sha256": "3f08a1175030aae767aa76c1493bbd84182a59ae55f9353c940ed561cc244153",
+      "origin": "S10 CLI adapter construction",
+      "sanitization_preserves_semantics": true
+    },
+    {
+      "path": "native-roundtrip.kdenlive",
+      "raw_capture_sha256": "0715957b762b750698419e0424b57c44f71aac45dbd2817e60ba36261d4abdf5",
+      "sha256": "f6b9ba7b859214fec4711c64e65b50249772ec380279f12dce8a17317da257c4",
+      "origin": "Actual Kdenlive GUI save",
+      "sanitization_preserves_semantics": true
+    },
+    {
+      "path": "group-moved.kdenlive",
+      "raw_capture_sha256": "b840834dd41e3c978cae53f52ab1f1231417fafa73801a4cd1fa7d305e451a38",
+      "sha256": "e67b6e463560911d1af7a1649a3490ed4be9c5e26fc44d3691d6488d01a1fa0a",
+      "origin": "Actual Kdenlive GUI save",
+      "sanitization_preserves_semantics": true
+    },
+    {
+      "path": "native-undone.kdenlive",
+      "raw_capture_sha256": "0715957b762b750698419e0424b57c44f71aac45dbd2817e60ba36261d4abdf5",
+      "sha256": "f6b9ba7b859214fec4711c64e65b50249772ec380279f12dce8a17317da257c4",
+      "origin": "Actual Kdenlive GUI save",
+      "sanitization_preserves_semantics": true
+    },
+    {
+      "path": "gui-render.mp4",
+      "sha256": "0605ca23eb8e9357e98b22dcab1ff2773f46d17a8bfb97eedb88807b2bdda591"
+    },
+    {
+      "path": "planner-request.json",
+      "sha256": "cec28697afdaa31086892169ef3097949dc111b710559fee7461e2595cf7a70a"
+    },
+    {
+      "path": "media/zoom-source.mp4",
+      "sha256": "6fb07d023d11f6ae66a354b98c65e01b6237705cf750d65852b17ba4c4a49e7a"
+    },
+    {
+      "path": "media/participant-01.wav",
+      "sha256": "bd03e7381d265fea94793a5758645a2a38090c6154273a6f0a504c2c6488ae7b"
+    },
+    {
+      "path": "media/participant-02.wav",
+      "sha256": "e4ec27a74d0c6923eee3d4560ca332f6e20cdb708895a9648c8d2723d2b8cd65"
+    }
+  ]
+}

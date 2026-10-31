@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "step": "S12",
+  "attempt": 5,
+  "date": "2026-10-30",
+  "status": "BLOCKED_REJECTED_REVIEW_PAIR_QUALITY_TIMING_UNRESOLVED",
+  "starting_checkpoint": "e224125421fe271025b068d54952bc27b366c2fa",
+  "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+  "tracked_code_changed": false,
+  "owner_feedback": {
+    "initial_reply": "All others work, but 2 is very very very off",
+    "clarification": "The audio in 2 B was just crazy, couldn't make anything out of it",
+    "scope": "six numbered review pairs only; no exact timing or content boundaries supplied",
+    "reported_playback": true,
+    "playback_evidence": "owner_content_specific_report_not_app_panel_tool",
+    "pairs_reported_working": [
+      1,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rejected_pair": 2,
+    "rejected_mode": "B",
+    "rejection_kind": "UNINTELLIGIBLE_AUDIO_TIMING_UNSCORABLE",
+    "positive_pair_count": 5,
+    "negative_pair_count": 1,
+    "full_recording_alignment_acceptance": false,
+    "global_gap_or_idle_approval": false
+  },
+  "fidelity_investigation": {
+    "native_container_decode_equals_original_PCM": true,
+    "continuous_file_origin_vs_guarded_resample_max_error_LSB": 0,
+    "continuous_vs_guarded_mismatched_sample_values": 0,
+    "encoded_B2_full_segment_SNR_db": 44.60270689369202,
+    "encoded_B2_channel_correlations": [
+      0.9999831571342518,
+      0.9999831571492755
+    ],
+    "encoded_B2_peak": 0.8435953855514526,
+    "both_input_channels_identical": true,
+    "full_resampled_sample_frames_compared": 192000,
+    "stereo_sample_values_compared": 384000,
+    "other_eleven_segments_also_measured": true,
+    "audio_moved_resampled_or_reencoded_for_owner_again": false,
+    "finding": "No gross corruption introduced by extraction, guarded resampling or stored AAC is detected; evidence points to the selected source passage, but exact cause of perceived unintelligibility remains unestablished",
+    "does_not_prove_original_intelligibility_or_player_behavior": true,
+    "SNR_is_encoder_reproduction_not_idle_noise_reduction": true
+  },
+  "additional_diagnostics": {
+    "method": "unchanged_S03_2kHz_4s_plus_minus100ms",
+    "selection": "all_six_existing_event_assisted_review_positions_fixed_before_owner_feedback_including_rejected_pair2",
+    "prior_thirteen_regular_anchor_results_preserved": true,
+    "results": [
+      {
+        "source_id": "participant_01",
+        "review_pairs": [
+          1,
+          4,
+          5
+        ],
+        "status": "INCONSISTENT_LAGS_REVIEW_OFFSET_OR_DRIFT",
+        "lag_milliseconds": [
+          -10.0,
+          32.5,
+          32.5
+        ],
+        "anchor_statuses": [
+          "RELIABLE_ANCHOR",
+          "RELIABLE_ANCHOR",
+          "RELIABLE_ANCHOR"
+        ]
+      },
+      {
+        "source_id": "participant_02",
+        "review_pairs": [
+          2,
+          3,
+          6
+        ],
+        "status": "OFFSET_DETECTED",
+        "lag_milliseconds": [
+          32.5,
+          32.5,
+          32.5
+        ],
+        "anchor_statuses": [
+          "RELIABLE_ANCHOR",
+          "RELIABLE_ANCHOR",
+          "RELIABLE_ANCHOR"
+        ]
+      }
+    ],
+    "applied_corrections": false,
+    "drift_confirmed": false,
+    "origin_certificates": 0,
+    "reliable_correlation_does_not_override_human_unintelligibility": true
+  },
+  "preservation_safeguard": {
+    "request": "private_pending_exact_analysis_bound_PlannerRequest",
+    "review_pair": 2,
+    "action": "audible",
+    "source_time_window_seconds": 4,
+    "retains_time_and_restores_unity_globally_under_existing_policies": true,
+    "global_gap_or_idle_approvals": 0,
+    "applied_to_job": false,
+    "v1_origin_refusals_with_pending_request": 2,
+    "not_export_authority": true,
+    "changed_analysis_or_refined_plan_requires_explicit_matching_bindings": true
+  },
+  "source_integrity": {
+    "original_review_sources_analysis_and_frozen_core_unchanged": true,
+    "new_comparison_media_files": 0,
+    "cumulative_S12_comparison_media_files": 1,
+    "old_jobs_rewritten": false,
+    "new_verified_real_audio_origins": 0,
+    "new_real_editable_export": false,
+    "new_Kdenlive_operations": false,
+    "new_model_inference_or_tuning": false,
+    "new_connection": false
+  },
+  "retained_regression_evidence": {
+    "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
+    "tests": 237,
+    "skipped": 0,
+    "seconds": 254.017,
+    "executed_in_attempt": 3,
+    "full_suite_rerun_in_attempt05": false,
+    "reason": "no_tracked_code_change; actual_PCM_fidelity_diagnostics_preservation_and_metadata_checks_run"
+  },
+  "actual_acceptance": {
+    "bounded_review_feedback_received": true,
+    "whole_interview_or_held_out_quality_acceptance": "NOT_RUN",
+    "independent_words_reactions_or_removable_idle_labels": 0,
+    "correction_effort": null,
+    "excessive_handover_coverage": null,
+    "effort_reduction": null
+  },
+  "previous_review_report": "docs/fixtures/S12_SYNC_REVIEW.json",
+  "s13_started": false,
+  "synchronization": "must_verify_live_at_each_checkpoint",
+  "checkpoint_documentation_review": {
+    "status": "passed",
+    "attempt": 5,
+    "reviewed_document_files": 11,
+    "valid_local_links": 71,
+    "private_source_tokens_found": 0,
+    "retained_provenance_hashes_verified": 9,
+    "historical_manifests_verified": 9,
+    "attempt02_complete_runs_verified": 4,
+    "failed_exports_and_origin_plan_retained": 2,
+    "original_review_and_exact_feedback_bindings_verified": true,
+    "pending_preservation_request_not_applied_or_approval": true,
+    "contrary_diagnostics_and_human_rejection_preserved": true,
+    "original_v1_refusals_and_frozen_core_inventory_preserved": true,
+    "new_media_or_source_certificate_or_full_acceptance_claimed": false,
+    "state_next_step_handover_consistent": true,
+    "s12_status": "blocked",
+    "s13_status": "pending",
+    "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
+  }
+}

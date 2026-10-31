@@ -1,0 +1,22 @@
+# Merge with existing rules in S00; never overwrite local rules blindly.
+.local/
+private/
+recordings/
+media/private/
+fixtures/private/
+output/
+outputs/
+.cache/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.log
+.env
+.env.*
+!.env.example
+# Public synthetic media fixtures may be committed only after explicit review.

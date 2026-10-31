@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "analysis_sha256": "29696215ebda5b6227d7823483845dd58387cf62482e54a8c0802b1ad38808f6",
+  "layout": "speaker_view",
+  "basis": "construction_label",
+  "evidence": "Independent generated full-picture luma switch at frame 138 inside all-track silence [4,7)"
+}

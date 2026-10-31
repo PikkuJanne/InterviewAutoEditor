@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "step": "S09",
+  "date": "2026-10-29",
+  "status": "PASS_applicable_synthetic_and_retained_bounded_development",
+  "starting_checkpoint": "ba9a638257a36534430db626b5d992afad3da327",
+  "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
+  "compatibility": "EXPERIMENTAL",
+  "algorithms": [
+    "s09-recorded-picture-1",
+    "s09-restore-only-seams-1"
+  ],
+  "guidance": "docs/project/S09_PICTURE.md",
+  "provenance": "tests/fixtures/s09-picture-26.08.2/PROVENANCE.json",
+  "render_measurements": "tests/fixtures/s09-picture-26.08.2/render-validation.json",
+  "runtime": {
+    "python": "3.12.14",
+    "ffmpeg_ffprobe": "8.1.1",
+    "kdenlive": "26.08.2 rev. d4e87e4",
+    "mlt": "7.43.0",
+    "qt": "6.11.1"
+  },
+  "initial_full_suite": {
+    "tests": 176,
+    "skipped": 0,
+    "seconds": 154.629,
+    "status": "PASS",
+    "scope": "Before four additional S09 budget/actual-delay/recovery/artifact tests"
+  },
+  "final_focused_suite": {
+    "tests": 20,
+    "skipped": 0,
+    "seconds": 21.355,
+    "status": "PASS",
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_s09_picture.py -v"
+  },
+  "final_full_suite": {
+    "tests": 180,
+    "skipped": 0,
+    "seconds": 145.749,
+    "status": "PASS",
+    "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p test_*.py -v",
+    "assets": "Existing local pinned S04/S05 models, generated development fixture, FFmpeg/ffprobe; no downloads; no private interview needed for public tests"
+  },
+  "exact_delayed_switch": {
+    "speech_onset_seconds": "12",
+    "picture_onset_seconds": "249/20",
+    "fps": "20",
+    "preserved_delay_seconds": "9/20",
+    "fully_retained_source_speech_seconds": [
+      "12",
+      "15"
+    ],
+    "audio_sample_grids": [
+      48000,
+      44100
+    ],
+    "speech_interval_samples_checked": 276300,
+    "picture_boundary_frame": 249,
+    "actual_decoder_used": true,
+    "kdenlive_gui_20fps": false,
+    "scope": "Constructed timing/content envelopes, not human words or face identity"
+  },
+  "shared_silence_seam": {
+    "source_frames": 300,
+    "baseline_deletion": [
+      105,
+      172
+    ],
+    "s09_deletion": [
+      105,
+      138
+    ],
+    "restored_frames_all_tracks": 34,
+    "output_frames": 267,
+    "groups": 6,
+    "native_gain_spans": 4,
+    "new_deletion_authority": false,
+    "speech_picture_independent_shift": false
+  },
+  "gates": {
+    "G01": "PASS_applicable_source_preservation_and_actual_MP4_audio_exclusion",
+    "G02": "PASS_actual_26.08.2_open_play_group_edit_undo_save_close_reopen_render",
+    "G03": "PASS_exact_shared_map_and_actual_render_mapping_anchors",
+    "G04": "PASS_construction_envelopes_and_retained_bounded_development_only",
+    "G05": "PASS_removal_subset_of_independent_global_approvals",
+    "G06": "PASS_existing_S08_safeguards_and_actual_tone_noise_peak_regression_no_new_subjective_acceptance",
+    "G07": "PASS_actual_all_three_group_members_move_25_frames_and_undo",
+    "G08": "PASS_applicable_constructed_delayed_silence_speech_flash_and_fallback_cases",
+    "G09": "PASS_scoped_stale_binding_budget_failure_cancel_no_overwrite_and_moved_package",
+    "G11": "verify_live_at_checkpoint"
+  },
+  "actual_render": {
+    "video_frames": 267,
+    "picture_frames_measured": 267,
+    "maximum_picture_rgb_mae": 0.0,
+    "observed_output_switch_frames": [
+      105
+    ],
+    "audio_anchors": [
+      {
+        "source_seconds": 1.99,
+        "output_seconds": 1.99,
+        "best_lag_samples_grid48": 0,
+        "mse_at_zero": 5.213550306920153e-08
+      },
+      {
+        "source_seconds": 2.99,
+        "output_seconds": 2.99,
+        "best_lag_samples_grid48": 0,
+        "mse_at_zero": 4.413021959015777e-08
+      },
+      {
+        "source_seconds": 7.99,
+        "output_seconds": 6.67,
+        "best_lag_samples_grid48": 0,
+        "mse_at_zero": 4.9639774217144685e-08
+      },
+      {
+        "source_seconds": 8.99,
+        "output_seconds": 7.67,
+        "best_lag_samples_grid48": 0,
+        "mse_at_zero": 3.5835505777872524e-08
+      }
+    ],
+    "noise_relative_db": [
+      -31.689,
+      -43.766,
+      -33.858,
+      -33.836
+    ],
+    "decoded_audio_samples_48000hz": 513024,
+    "decoded_peak": 0.47673100233078003,
+    "embedded_marker_db": -227.711,
+    "native_sequence_extent_delta_frames": 0
+  },
+  "actual_render_checks_passed": 12,
+  "actual_render_checks_total": 12,
+  "protected_tone_probes": 8,
+  "maximum_protected_probe_relative_db": 0.091,
+  "private_preservation": {
+    "assertions": 102,
+    "unchanged_original_files": 5,
+    "sample_exact_excerpts": 12,
+    "retained_confirmed_overlap_frames": 200,
+    "idle_approvals": 0,
+    "gain_spans": 0,
+    "real_origins_verified": false,
+    "unverified_offsets": null,
+    "unequal_tails_unchanged": true,
+    "real_planning_export_refused": true,
+    "held_out_opened": false,
+    "new_listening": false
+  },
+  "cli": {
+    "picture_analyze_exit": 2,
+    "repeat_destination_refusal_exit": 1,
+    "picture_refine_exit": 2,
+    "picture_export_exit": 2,
+    "refinement_byte_reproduction": true,
+    "export_semantic_reproduction_from_distinct_output_directory": true,
+    "moved_space_unicode_package_byte_exact_export": true
+  },
+  "failures_and_corrections": [
+    "Initial expected output count 266 was an arithmetic error; 300-(138-105)=267. Corrected assertion and construction metadata; no production algorithm changed.",
+    "Native modal accessibility indexes unavailable; refreshed observed screenshots and keyboard/coordinates completed actions.",
+    "Ctrl-W did not close this application project; actual close/reopen used opening another saved project.",
+    "Early documentation link review ran before aggregate evidence existed; rerun after all deliverables are written."
+  ],
+  "not_run": [
+    "Private Zoom picture analysis/layout calibration",
+    "Held-out/full-interview content or subjective picture quality acceptance",
+    "20-FPS/fractional-FPS and 3/6/8-track GUI matrix",
+    "Automatic layout/face identity verification",
+    "Two-hour picture stress and expanded decode budgets"
+  ],
+  "s10_started": false,
+  "checkpoint_documentation_review": {
+    "passed": true,
+    "implementation_commit": "8e31359b0e20941d4fd81e35429d83776e4f47c5",
+    "documentation_and_evidence_files": 4,
+    "implementation_tests_and_artifacts_unchanged": true,
+    "state_next_step_handover_evidence_consistent": true,
+    "private_source_tokens_found": 0,
+    "reviewed_text_files": 34,
+    "generated_media_files": 4,
+    "valid_local_links": 62,
+    "provenance_artifact_hashes_verified": 22,
+    "s09_status": "completed",
+    "s10_status": "pending_not_started"
+  }
+}

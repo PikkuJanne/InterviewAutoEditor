@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "name": "Astral python-build-standalone CPython",
+    "version": "3.12.16",
+    "release": "20261026",
+    "platform": "x86_64-pc-windows-msvc",
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.12.16%2B20261026-x86_64-pc-windows-msvc-install_only.tar.gz",
+    "sha256": "590dfcbe3a34c07301e6332e13e2188b98655cd072b08afa45a7998dc4c22bc5",
+    "bytes": 47113364,
+    "licensing_metadata": "third_party/python-runtime/PYTHON.json",
+    "license_directory": "third_party/python-runtime/licenses",
+    "full_archive_url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.12.16%2B20261026-x86_64-pc-windows-msvc-pgo-full.tar.zst",
+    "full_archive_sha256": "37b4eb2818fee605fefa75ed156c4f2e1aaeaebaf662f9b30177c842ee16c48f",
+    "modifications": "No binary modifications. Omit pip/site-packages, ensurepip, idlelib, stdlib test directory, scripts, include/libs, PDB, PYC and LIB/H files; add the 16 locked inference wheels. Retain Tcl/Tk and upstream notices."
+  },
+  "models": {
+    "silero": "2623a2953f6ff3d2c1e61740c6cdb7168133479b267dfef114a4a3cc5bdd788f",
+    "yamnet": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de"
+  },
+  "external_cpp_prerequisite": {
+    "name": "Microsoft Visual C++ x64 v14 Redistributable",
+    "redistributed": false,
+    "tested_host_version": "14.44.35211.0",
+    "clean_sandbox_installer_version": "14.51.36247.0",
+    "url": "https://download.visualstudio.microsoft.com/download/pr/ebdab8e5-1d7b-4d9f-a11b-cbb1720c3b12/843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295C/VC_redist.x64.exe",
+    "sha256": "843068991daaa1f73ad9f6239bce4d0f6a07a51f18c37ea2a867e9beca71295c",
+    "bytes": 18731856,
+    "official_setup": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist",
+    "policy": "Separate official prerequisite; no system DLL copying or installer redistribution. Install only when missing, under Microsoft's own terms."
+  },
+  "download_policy": "Explicit setup only; builder and application operate offline",
+  "ffmpeg_policy": "Not redistributed. Use a separately installed Kdenlive toolchain. Exact build flags and hashes belong to private run identity, never a blanket LGPL assertion."
+}

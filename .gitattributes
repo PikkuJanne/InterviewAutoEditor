@@ -1,0 +1,9 @@
+# S05 upstream files retain exact bytes used in provenance hashes.
+# Recognize their original CRLF terminators without hiding textual diffs.
+third_party/s05-ml_dtypes-LICENSE -text whitespace=cr-at-eol
+third_party/s05-ml_dtypes-LICENSE.eigen -text whitespace=cr-at-eol
+third_party/yamnet-class-map.csv -text whitespace=cr-at-eol
+# Verbatim upstream runtime metadata/notices retain their original whitespace.
+# Textual diffs remain visible; Git must not rewrite the licensed input bytes.
+third_party/python-runtime/PYTHON.json -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof
+third_party/python-runtime/licenses/* -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof

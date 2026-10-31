@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "algorithm": "s09-restore-only-seams-1",
+  "input_planning_sha256": "3ce317b5fcc31f17b7a50fba3f36cf1728d5e5392e71b4f265a3634af9cc7717",
+  "picture_sha256": "230262498fa7752cead71887c3017afbf1783c526365eebe1a130ecd6b3fca80",
+  "result": {
+    "schema_version": 1,
+    "algorithm": "s06-shared-pauses-1",
+    "request": {
+      "schema_version": 1,
+      "analysis_sha256": "29696215ebda5b6227d7823483845dd58387cf62482e54a8c0802b1ad38808f6",
+      "preset": "tight",
+      "approvals": [
+        {
+          "approval_id": "construction-gap:s09:0",
+          "start": {
+            "numerator": 21,
+            "denominator": 5
+          },
+          "end": {
+            "numerator": 138,
+            "denominator": 25
+          },
+          "basis": "construction_label",
+          "evidence": "Independent digital silence on both generated participant tracks"
+        }
+      ],
+      "overrides": []
+    },
+    "plan": {
+      "analysis": {
+        "header": {
+          "schema_version": 1,
+          "run_id": "intake",
+          "project_sha256": "5108e78584a47ce7e009194bdda052f33be669b70561a85877ab3b33dc7d3865",
+          "tool_version": "0.4.0",
+          "adapter_target": "kdenlive-26.08.2-experimental",
+          "settings": [],
+          "model_versions": []
+        },
+        "fps": {
+          "numerator": 25,
+          "denominator": 1
+        },
+        "sources": [
+          {
+            "source_id": "video",
+            "sha256": "6fb07d023d11f6ae66a354b98c65e01b6237705cf750d65852b17ba4c4a49e7a",
+            "kind": "video",
+            "sample_rate": 0,
+            "sample_count": 0,
+            "duration": {
+              "numerator": 12,
+              "denominator": 1
+            },
+            "origin": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "verified_offset": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "origin_status": "verified",
+            "channel_labels": []
+          },
+          {
+            "source_id": "p1",
+            "sha256": "e4ec27a74d0c6923eee3d4560ca332f6e20cdb708895a9648c8d2723d2b8cd65",
+            "kind": "participant_audio",
+            "sample_rate": 48000,
+            "sample_count": 576000,
+            "duration": {
+              "numerator": 12,
+              "denominator": 1
+            },
+            "origin": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "verified_offset": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "origin_status": "verified",
+            "channel_labels": [
+              "participant1"
+            ]
+          },
+          {
+            "source_id": "p0",
+            "sha256": "bd03e7381d265fea94793a5758645a2a38090c6154273a6f0a504c2c6488ae7b",
+            "kind": "participant_audio",
+            "sample_rate": 48000,
+            "sample_count": 576000,
+            "duration": {
+              "numerator": 12,
+              "denominator": 1
+            },
+            "origin": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "verified_offset": {
+              "numerator": 0,
+              "denominator": 1
+            },
+            "origin_status": "verified",
+            "channel_labels": [
+              "participant0"
+            ]
+          }
+        ],
+        "events": [
+          {
+            "event_id": "p0-0",
+            "source_id": "p0",
+            "kind": "speech",
+            "start_sample": 48000,
+            "end_sample": 144000,
+            "protected_start": {
+              "numerator": 22,
+              "denominator": 25
+            },
+            "protected_end": {
+              "numerator": 16,
+              "denominator": 5
+            },
+            "confidence": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "evidence": "Constructed tone activity, not human speech",
+            "uncertainty_reason": "",
+            "channel_labels": [
+              "participant0"
+            ]
+          },
+          {
+            "event_id": "p0-1",
+            "source_id": "p0",
+            "kind": "speech",
+            "start_sample": 336000,
+            "end_sample": 432000,
+            "protected_start": {
+              "numerator": 172,
+              "denominator": 25
+            },
+            "protected_end": {
+              "numerator": 46,
+              "denominator": 5
+            },
+            "confidence": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "evidence": "Constructed tone activity, not human speech",
+            "uncertainty_reason": "",
+            "channel_labels": [
+              "participant0"
+            ]
+          },
+          {
+            "event_id": "p1-0",
+            "source_id": "p1",
+            "kind": "speech",
+            "start_sample": 96000,
+            "end_sample": 192000,
+            "protected_start": {
+              "numerator": 47,
+              "denominator": 25
+            },
+            "protected_end": {
+              "numerator": 21,
+              "denominator": 5
+            },
+            "confidence": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "evidence": "Constructed tone activity, not human speech",
+            "uncertainty_reason": "",
+            "channel_labels": [
+              "participant1"
+            ]
+          },
+          {
+            "event_id": "p1-1",
+            "source_id": "p1",
+            "kind": "speech",
+            "start_sample": 384000,
+            "end_sample": 480000,
+            "protected_start": {
+              "numerator": 197,
+              "denominator": 25
+            },
+            "protected_end": {
+              "numerator": 51,
+              "denominator": 5
+            },
+            "confidence": {
+              "numerator": 1,
+              "denominator": 1
+            },
+            "evidence": "Constructed tone activity, not human speech",
+            "uncertainty_reason": "",
+            "channel_labels": [
+              "participant1"
+            ]
+          }
+        ],
+        "shots": [],
+        "reviews": []
+      },
+      "time_map": {
+        "fps": {
+          "numerator": 25,
+          "denominator": 1
+        },
+        "source_frames": 300,
+        "retained": [
+          {
+            "start": 0,
+            "end": 105
+          },
+          {
+            "start": 138,
+            "end": 300
+          }
+        ]
+      },
+      "removed_reasons": [
+        "tight_different_approved_pause;approval=construction-gap:s09:0"
+      ],
+      "gains": [],
+      "edit_units": [
+        0,
+        105,
+        267
+      ],
+      "overrides": [],
+      "reviews": [],
+      "tail_policy": "exact_coverage"
+    },
+    "decisions": [
+      {
+        "source_start": {
+          "numerator": 4,
+          "denominator": 1
+        },
+        "source_end": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "rule": "different",
+        "outcome": "removed",
+        "reason": "tight_different_approved_pause",
+        "residual_target": {
+          "numerator": 8,
+          "denominator": 25
+        },
+        "removed": [
+          {
+            "start": 105,
+            "end": 138
+          }
+        ],
+        "approval_ids": [
+          "construction-gap:s09:0"
+        ]
+      }
+    ]
+  },
+  "markers": [
+    {
+      "kind": "picture_handover_review",
+      "source_time": {
+        "numerator": 2,
+        "denominator": 1
+      },
+      "output_time": {
+        "numerator": 2,
+        "denominator": 1
+      },
+      "confidence": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "reason": "speaker_view; recorded picture identity unverified; original speech timing retained"
+    },
+    {
+      "kind": "picture_seam_review",
+      "source_time": {
+        "numerator": 138,
+        "denominator": 25
+      },
+      "output_time": {
+        "numerator": 21,
+        "denominator": 5
+      },
+      "confidence": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "reason": "seam_at_existing_stable_picture_restored_shared_silence"
+    },
+    {
+      "kind": "probable_picture_boundary",
+      "source_time": {
+        "numerator": 138,
+        "denominator": 25
+      },
+      "output_time": {
+        "numerator": 21,
+        "denominator": 5
+      },
+      "confidence": {
+        "numerator": 9,
+        "denominator": 10
+      },
+      "reason": "Recorded transition; speech-relative delay is uncertain/unavoidable, never independently retimed"
+    },
+    {
+      "kind": "picture_handover_review",
+      "source_time": {
+        "numerator": 7,
+        "denominator": 1
+      },
+      "output_time": {
+        "numerator": 142,
+        "denominator": 25
+      },
+      "confidence": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "reason": "speaker_view; recorded picture identity unverified; original speech timing retained"
+    },
+    {
+      "kind": "picture_handover_review",
+      "source_time": {
+        "numerator": 8,
+        "denominator": 1
+      },
+      "output_time": {
+        "numerator": 167,
+        "denominator": 25
+      },
+      "confidence": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "reason": "speaker_view; recorded picture identity unverified; original speech timing retained"
+    }
+  ]
+}

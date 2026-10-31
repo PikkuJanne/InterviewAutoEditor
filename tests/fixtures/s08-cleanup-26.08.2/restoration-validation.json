@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "checks": {
+    "exactly_one_native_clip_effect_bypassed": true,
+    "timing_groups_and_gain_keys_unchanged": true,
+    "restored_plateau_within_half_db_of_original": true,
+    "other_cleanup_interval_still_suppressed": true,
+    "restored_mix_peak_below_ceiling": true
+  },
+  "restored_source_seconds": 9.6,
+  "output_seconds": 6.92,
+  "restored_relative_db": -0.087,
+  "other_interval_relative_db": -31.689,
+  "decoded_peak": 0.47673100233078003,
+  "native_sha256": "ba4e6d24201a0ee919abd4f13220d4d61955aa2fd51eab0643088c1339f02223",
+  "render_sha256": "6e41c9cfd3bfda262b82f157c9ceb3adf705f8be21240dbcd34cb1c3676ba871"
+}

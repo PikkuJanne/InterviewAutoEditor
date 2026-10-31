@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "participants": 2,
+      "fps": [
+        25,
+        1
+      ],
+      "frames": 300,
+      "samples_per_participant": 576000,
+      "generator_and_probe": "PASS",
+      "kdenlive_gui": "NOT RUN except public N=2 fixture, see provenance"
+    },
+    {
+      "participants": 3,
+      "fps": [
+        25,
+        1
+      ],
+      "frames": 25,
+      "samples_per_participant": 48000,
+      "generator_and_probe": "PASS",
+      "kdenlive_gui": "NOT RUN except public N=2 fixture, see provenance"
+    },
+    {
+      "participants": 6,
+      "fps": [
+        25,
+        1
+      ],
+      "frames": 25,
+      "samples_per_participant": 48000,
+      "generator_and_probe": "PASS",
+      "kdenlive_gui": "NOT RUN except public N=2 fixture, see provenance"
+    },
+    {
+      "participants": 8,
+      "fps": [
+        25,
+        1
+      ],
+      "frames": 25,
+      "samples_per_participant": 48000,
+      "generator_and_probe": "PASS",
+      "kdenlive_gui": "NOT RUN except public N=2 fixture, see provenance"
+    },
+    {
+      "participants": 2,
+      "fps": [
+        30000,
+        1001
+      ],
+      "frames": 30,
+      "samples_per_participant": 48048,
+      "generator_and_probe": "PASS",
+      "kdenlive_gui": "NOT RUN except public N=2 fixture, see provenance"
+    }
+  ]
+}
