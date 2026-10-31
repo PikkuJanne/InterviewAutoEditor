@@ -1,4 +1,4 @@
-"""Read-only, fail-closed intake of observed 26.08.2 starter structures.
+"""Read-only, fail-closed intake of the observed simple document-1.1 family.
 
 Fractional millisecond serialization is recovered only when uniquely within
 half a millisecond of a project frame. This is parser coverage, not GUI proof.
@@ -8,6 +8,8 @@ from fractions import Fraction
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
+
+from .compatibility import ADAPTER_ID, select_adapter
 
 MAX_XML = 8 * 1024 * 1024
 
@@ -76,6 +78,9 @@ class Starter:
     resources: tuple[Path, ...]
     compatibility: str = 'EXPERIMENTAL'
     profile_reference: str | None = None
+    writer_version: str = '26.08.2'
+    document_version: str = '1.1'
+    adapter_id: str = ADAPTER_ID
 
 
 def read_starter(project, relocations=None, allow_unc=False):
@@ -110,6 +115,14 @@ def read_starter(project, relocations=None, allow_unc=False):
                   'playlist': {'property', 'entry'}, 'entry': {'property'},
                   'property': set(), 'filter': {'property'}, 'transition': {'property'},
                   'tractor': {'property', 'track', 'filter', 'transition'}, 'track': set()}
+    attributes = {'mlt': {'LC_NUMERIC', 'producer', 'version', 'root'},
+        'profile': {'colorspace', 'description', 'display_aspect_den', 'display_aspect_num',
+            'frame_rate_den', 'frame_rate_num', 'height', 'progressive',
+            'sample_aspect_den', 'sample_aspect_num', 'width'},
+        'producer': {'id', 'in', 'out'}, 'chain': {'id', 'in', 'out'},
+        'playlist': {'id'}, 'entry': {'in', 'out', 'producer'},
+        'tractor': {'id', 'in', 'out'}, 'track': {'hide', 'in', 'out', 'producer'},
+        'filter': {'id', 'in', 'out'}, 'transition': {'id', 'in', 'out'}, 'property': {'name'}}
     for n in root.iter():
         names = [p.get('name') for p in n.findall('property')]
         if n.tag not in allowed or len(names) != len(set(names)):
@@ -118,6 +131,8 @@ def read_starter(project, relocations=None, allow_unc=False):
             raise IntakeError('UNSUPPORTED_XML_NESTING_OR_PROCESSING')
         if any(k in n.attrib for k in ('speed', 'warp_speed')):
             raise IntakeError('SOURCE_RETIMING_UNSUPPORTED')
+        if set(n.attrib) - attributes[n.tag]:
+            raise IntakeError('UNKNOWN_XML_ATTRIBUTE')
     nodes = {n.get('id'): n for n in root if n.get('id')}
     for n in root.iter():
         if n.tag in ('track', 'entry') and n.get('producer') not in nodes:
@@ -126,8 +141,10 @@ def read_starter(project, relocations=None, allow_unc=False):
     if len(bins) != 1:
         raise IntakeError('EXPECTED_MAIN_BIN')
     bp = props(bins[0])
-    if (bp.get('kdenlive:docproperties.kdenliveversion'), bp.get('kdenlive:docproperties.version')) != ('26.08.2', '1.1'):
-        raise IntakeError('NO_TESTED_STRUCTURE_ADAPTER')
+    writer = bp.get('kdenlive:docproperties.kdenliveversion')
+    document = bp.get('kdenlive:docproperties.version')
+    if select_adapter(writer, document) is None:
+        raise IntakeError('NO_RECOGNIZED_STRUCTURE_ADAPTER')
     if len(root.findall('profile')) != 1:
         raise IntakeError('EXPECTED_SINGLE_PROFILE')
     try:
@@ -148,6 +165,8 @@ def read_starter(project, relocations=None, allow_unc=False):
             raise IntakeError('SOURCE_PROCESSING_UNSUPPORTED')
         if cp.get('kdenlive:proxy', '-') not in ('', '-'):
             raise IntakeError('PROXY_SOURCE_UNSUPPORTED')
+        if any(cp.get(key, '0') not in ('', '0', '0.0') for key in ('force_fps', 'video_delay', 'audio_delay')):
+            raise IntakeError('SOURCE_TIMING_OVERRIDE_UNSUPPORTED')
         resources.add(resolve_resource(cp.get('resource'), base, relocations, allow_unc))
     seqs = [n for n in root.findall('tractor') if 'kdenlive:sequenceproperties.groups' in props(n)]
     if len(seqs) != 1:
@@ -190,6 +209,9 @@ def read_starter(project, relocations=None, allow_unc=False):
         audio = props(node).get('kdenlive:audio_track') == '1'
         if node.tag != 'tractor' or len(children) != 2 or any(nodes[c.get('producer')].tag != 'playlist' or c.get('hide') != ('video' if audio else 'audio') for c in children):
             raise IntakeError('UNSUPPORTED_TRACK_ROUTING')
+        if any((c.get('in') is not None and xml_frames(c.get('in'), fps) != 0)
+               or c.get('out') is not None for c in children):
+            raise IntakeError('TRACK_PLAYLIST_OFFSET_OR_CROP_UNSUPPORTED')
         items = [e for c in children for e in nodes[c.get('producer')] if e.tag != 'property']
         if not items:
             continue
@@ -235,4 +257,5 @@ def read_starter(project, relocations=None, allow_unc=False):
     if any(ref.get('out') is not None and xml_frames(ref.get('out'), fps) + 1 != end for ref in refs[1:]):
         raise IntakeError('SEQUENCE_TRACK_CROP_UNSUPPORTED')
     return Starter(path, fps, end, seq_end, tuple(tracks), len(linked), tuple(sorted(resources)),
-                   profile_reference=bp.get('kdenlive:docproperties.profile') or None)
+                   profile_reference=bp.get('kdenlive:docproperties.profile') or None,
+                   writer_version=writer, document_version=document)

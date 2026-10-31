@@ -21,6 +21,7 @@ def main(argv=None):
             cmd.add_argument('--' + flag, type=Path)
         cmd.add_argument('--preset', choices=('tight', 'gentle'))
         cmd.add_argument('--experimental', action='store_true')
+        cmd.add_argument('--target-kdenlive', type=Path, help='Read-only executable identity check against the exact tested matrix.')
         cmd.add_argument('--resume', action='store_true')
         cmd.add_argument('--cancel-file', type=Path, help='Presence requests cooperative cancellation; never created or removed by the service.')
         cmd.add_argument('--mute', nargs=3, action='append', default=[], metavar=('PARTICIPANT_ID', 'START_SECONDS', 'END_SECONDS'),
@@ -29,7 +30,8 @@ def main(argv=None):
     report.add_argument('--run', type=Path, required=True)
     probe = commands.add_parser('compatibility-probe')
     probe.add_argument('--project', type=Path, required=True)
-    probe.add_argument('--output', type=Path, required=True, help='New structural probe report; no installed-build certification.')
+    probe.add_argument('--target-kdenlive', type=Path)
+    probe.add_argument('--output', type=Path, required=True, help='New capability/build-identity report. Does not operate the editor.')
     args = parser.parse_args(argv)
     try:
         if args.command == 'report':
@@ -40,10 +42,10 @@ def main(argv=None):
                 'validation': 'Historical run artifacts only; sources not revalidated.'}), end='')
             return 2 if manifest.state == 'complete' else 1
         if args.command == 'compatibility-probe':
-            result = Application().compatibility_probe(args.project)
+            result = Application().compatibility_probe(args.project, args.target_kdenlive)
             atomic_new(args.output, json_text(result))
-            print('Structural compatibility report written; actual application testing was not performed.')
-            return 2 if result['compatibility'] == 'EXPERIMENTAL' else 1
+            print('Compatibility: ' + result['compatibility'] + '. Report written; editor was not operated by this probe.')
+            return {'TESTED': 0, 'EXPERIMENTAL': 2, 'UNSUPPORTED': 1}[result['compatibility']]
         values = {k: v for k, v in vars(args).items() if k not in ('resume', 'cancel_file', 'mute')}
         values['mutes'] = tuple(Mute(identity, Fraction(a), Fraction(b)) for identity, a, b in args.mute)
         if args.command == 'edit':
@@ -60,10 +62,11 @@ def main(argv=None):
         app.run(options, resume=args.resume)
         if args.command == 'edit':
             print('Ready project: ' + str((options.output / 'project.kdenlive').absolute()))
-            print('Kdenlive 26.08.2 compatibility is experimental. Original timing and uncertain audio are preserved.')
+            print('Compatibility: ' + app.compatibility_probe(options.project, options.target_kdenlive)['compatibility'] + '. Original timing and uncertain audio are preserved.')
             return 0
-        print('Run completed atomically. Review the private report; compatibility remains EXPERIMENTAL.')
-        return 2  # legacy completion status; never an alignment certificate
+        print('Run completed atomically. Review the private report for exact target compatibility.')
+        return 0 if (options.target_kdenlive is not None and
+            app.compatibility_probe(options.project, options.target_kdenlive)['compatibility'] == 'TESTED') else 2
     except KeyboardInterrupt:
         print('Cancelled. No partial final run. Completed caches and staging evidence remain local.', file=sys.stderr)
         return 130

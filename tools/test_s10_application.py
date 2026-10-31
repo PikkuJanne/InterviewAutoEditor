@@ -173,6 +173,17 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result.attempt,2)
         self.assertEqual(fingerprint(self.o.output/'project.kdenlive'),before)
 
+    def test_changed_target_build_refuses_recovery(self):
+        target = self.root/'identity-only.exe'; target.write_bytes(b'never executed')
+        o = replace(self.o, target_kdenlive=target)
+        def fail(stage):
+            if stage == 'reporting': raise OSError('retained failed run')
+        with self.assertRaises(OSError): Application(progress=fail).run(o)
+        target.write_bytes(b'changed build')
+        with self.assertRaisesRegex(RunError, 'RESUME_INPUTS_CHANGED'):
+            Application().run(o, resume=True)
+        self.assertFalse(o.output.exists())
+
     def test_abrupt_process_exit_before_rename_recovers_complete_staged_journal(self):
         script='import os; import interview_auto_editor.application as a; a._rename_new=lambda *args:os._exit(88); from interview_auto_editor.cli import main; raise SystemExit(main())'
         cmd=[sys.executable,'-c',script,'run','--project',str(self.o.project),'--mapping',str(self.o.mapping),

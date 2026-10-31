@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "fixture_id": "s13-compatibility-26.08.2",
+  "date": "2026-10-31",
+  "application": {
+    "version": "26.08.2",
+    "revision": "d4e87e4",
+    "mlt": "7.43.0",
+    "qt": "6.11.1",
+    "platform": "Windows 11 / NT 10.0.26300 / AMD64",
+    "executable_sha256": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352"
+  },
+  "source_provenance": "../s09-picture-26.08.2/PROVENANCE.json",
+  "content": "Existing generated tones/noise/luma; no recorded people",
+  "generation": "Current Application.run; explicit matching target executable; experimental=False; original canonical analysis/request plus regenerated equivalent picture observations",
+  "actual_application_checks": [
+    {
+      "action": "open_no_repair_or_missing_media",
+      "result": "PASS"
+    },
+    {
+      "action": "play_from_start_to_end",
+      "result": "PASS"
+    },
+    {
+      "action": "three_member_group_move_25_frames",
+      "result": "PASS"
+    },
+    {
+      "action": "save_moved",
+      "result": "PASS"
+    },
+    {
+      "action": "undo_save_exact_original_semantics",
+      "result": "PASS"
+    },
+    {
+      "action": "quit_process",
+      "result": "PASS"
+    },
+    {
+      "action": "fresh_process_reopen_no_warning",
+      "result": "PASS"
+    },
+    {
+      "action": "full_project_GUI_render_H264_AAC",
+      "result": "PASS"
+    }
+  ],
+  "GUI_observation": "Native render queue reports finished in 00:00:02. About reports 26.08.2; executable matches prior revision identity. Initial default launches exposed no targetable window; isolated config/TEMP resolved startup.",
+  "sanitization": "Remove root and browser/profile/layout/notes metadata; known three resource URLs rewritten to existing sibling synthetic media; semantic equality asserted for each copy.",
+  "sanitized_native_GUI_open": "PASS: opened the public native-roundtrip in actual 26.08.2 without repair or missing media; no save over public fixture",
+  "files": [
+    {
+      "path": "group-moved.kdenlive",
+      "sha256": "5b315981a1ee69ff831ea3e93f60736179f06e48d206628d785a80d8828b6ce4",
+      "origin": "actual GUI save",
+      "raw_capture_sha256": "6344459826c9ada33f8f66c73d4b0b6503f74a552f9f78b9bc42192400781d3b"
+    },
+    {
+      "path": "gui-render.mp4",
+      "sha256": "0605ca23eb8e9357e98b22dcab1ff2773f46d17a8bfb97eedb88807b2bdda591",
+      "origin": "actual GUI render",
+      "raw_capture_sha256": "0605ca23eb8e9357e98b22dcab1ff2773f46d17a8bfb97eedb88807b2bdda591"
+    },
+    {
+      "path": "native-roundtrip.kdenlive",
+      "sha256": "5d5784520a439ea772ace92e1ede576a9f5f0fba17555c8475c00f9c9e7f6315",
+      "origin": "actual GUI save",
+      "raw_capture_sha256": "7039e37b34bcacd6db96676933200e13a096f2060283a0428426ad4102759599"
+    },
+    {
+      "path": "native-undone.kdenlive",
+      "sha256": "5d5784520a439ea772ace92e1ede576a9f5f0fba17555c8475c00f9c9e7f6315",
+      "origin": "actual GUI save",
+      "raw_capture_sha256": "7039e37b34bcacd6db96676933200e13a096f2060283a0428426ad4102759599"
+    },
+    {
+      "path": "picture-cleaned.kdenlive",
+      "sha256": "260f4b7ea535ed163cfb4014a2283f5407d5d2cc37bd080b527035d73070ef78",
+      "origin": "generated adapter output",
+      "raw_capture_sha256": "0c8321217903cce4f0041ed8a8de40565512c891914372fbb8795c333486e4a6"
+    }
+  ],
+  "component_dialog_observed_in_S13": "26.08.2 rev d4e87e4; MLT 7.43.0; Qt using and built against 6.11.1; Windows 11 Version 26H2"
+}

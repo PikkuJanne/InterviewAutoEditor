@@ -36,7 +36,8 @@ class DesktopJob:
     def __post_init__(self):
         names = [k for k, v in self.options]
         expected = {f.name for f in fields(RunOptions)}
-        if len(names) != len(set(names)) or set(names) not in (expected, expected - {'mutes'}):
+        if (len(names) != len(set(names)) or not set(names) <= expected
+                or not expected - {'mutes', 'target_kdenlive'} <= set(names)):
             raise RunError('INVALID_DESKTOP_JOB')
         values = dict(self.options)
         if (values['command'] not in ('inspect', 'analyze', 'plan', 'run', 'edit') or

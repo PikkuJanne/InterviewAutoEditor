@@ -10,17 +10,18 @@ from interview_auto_editor.probe import fingerprint
 from s02_validate_render import FRAME_BYTES, amplitude, db_ratio, decode, semantic
 
 
-def validate(bundle,ffmpeg):
+def validate(bundle,ffmpeg,media=None):
     bundle=Path(bundle)
+    media=Path(media) if media is not None else bundle/'media'
     expected=semantic(bundle/'picture-cleaned.kdenlive')
     native=semantic(bundle/'native-roundtrip.kdenlive')
     moved=semantic(bundle/'group-moved.kdenlive')
     undone=semantic(bundle/'native-undone.kdenlive')
     render=bundle/'gui-render.mp4'
     audio=decode(ffmpeg,render,True)
-    raw=[decode(ffmpeg,bundle/f'media/participant-{i:02}.wav',True) for i in (1,2)]
+    raw=[decode(ffmpeg,media/f'participant-{i:02}.wav',True) for i in (1,2)]
     video=decode(ffmpeg,render)
-    source=decode(ffmpeg,bundle/'media/zoom-source.mp4')
+    source=decode(ffmpeg,media/'zoom-source.mp4')
     picture_errors=[]
     for out in range(len(video)//FRAME_BYTES):
         src=out if out<105 else out+33
@@ -49,7 +50,7 @@ def validate(bundle,ffmpeg):
     for i,hz,src in ((0,880,3.52),(0,880,9.6),(1,1100,1.3),(1,1100,7.4)):
         out=src if src<4.2 else src-1.32
         noise.append(round(db_ratio(amplitude(audio,hz,out,.12),amplitude(raw[i],hz,src,.12)),3))
-    embedded=decode(ffmpeg,bundle/'media/zoom-source.mp4',True)
+    embedded=decode(ffmpeg,media/'zoom-source.mp4',True)
     marker=db_ratio(amplitude(audio,997,.2,.5),amplitude(embedded,997,.2,.5))
     checks={
         'native_profile_timing_routing_groups_guides_gain_equal':expected==native,

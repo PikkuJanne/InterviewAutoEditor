@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Literal
 
 from . import __version__
+from .adapters.compatibility import PLAN_TARGET
 from .adapters.kdenlive import IntakeError, read_starter, resolve_resource
 from .contracts import Analysis, Header, Source, text, to_data
 from .offsets import OriginDiagnostic, diagnostic_windows
@@ -170,7 +171,7 @@ def inspect(project, mapping, ffprobe, *, mapping_base=None, ffmpeg=None, anchor
     for p, signature in before.items():
         if (p.stat().st_size, p.stat().st_mtime_ns) != signature:
             raise IntakeError('SOURCE_CHANGED_DURING_INSPECTION')
-    header = Header(1, 'intake', fingerprint(starter.path), __version__, 'kdenlive-26.08.2-experimental', (), ())
+    header = Header(1, 'intake', fingerprint(starter.path), __version__, PLAN_TARGET, (), ())
     analysis = Analysis(header, starter.fps, tuple(sources), (), (), ())
     return IntakeResult(analysis, starter.clip_frames, starter.sequence_frames, starter.excluded_mp4_audio,
                         tuple(tails), tuple(diagnostics), tuple(origins), tool_version(ffprobe),

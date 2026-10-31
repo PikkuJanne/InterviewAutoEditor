@@ -90,6 +90,7 @@ class RunOptions:
     cache: Path | None = None
     experimental: bool = False
     mutes: tuple[Mute, ...] = ()
+    target_kdenlive: Path | None = None
 
 
 def read_record(cls, path):
@@ -291,20 +292,22 @@ class Application:
     def export(self, options, base, bindings, names, output, picture=None, cleanup=None):
         return export_project(base, options.project, bindings, names, output,
                               options.ffprobe, experimental=options.experimental,
-                              picture=picture, cleanup=cleanup, mutes=options.mutes)
+                              picture=picture, cleanup=cleanup, mutes=options.mutes,
+                              target_kdenlive=options.target_kdenlive)
 
-    def compatibility_probe(self, project):
+    def compatibility_probe(self, project, target_kdenlive=None):
         # This is structural probing, not a claim about the installed binary.
         try:
             starter = read_starter(project)
-        except (OSError, ValueError, TypeError, KeyError, StopIteration):
-            return {'schema_version': 1, 'compatibility': 'UNSUPPORTED',
-                    'reason': 'STARTER_OR_MEDIA_NOT_SUPPORTED', 'export_allowed': False,
-                    'actual_application_test_performed': False}
-        return {'schema_version': 1, 'compatibility': starter.compatibility,
-                'adapter': '26.08.2', 'experimental_opt_in_required': True,
-                'actual_application_test_performed': False,
-                'installed_build_verified': False, 'fps': to_data(starter.fps)}
+        except (OSError, ValueError, TypeError, KeyError, StopIteration) as exc:
+            from .adapters.kdenlive import IntakeError
+            return {'schema_version': 2, 'compatibility': 'UNSUPPORTED',
+                    'reason': str(exc) if isinstance(exc, IntakeError) else 'STARTER_OR_MEDIA_NOT_SUPPORTED',
+                    'export_allowed': False, 'actual_application_test_performed': False,
+                    'installed_build_verified': False,
+                    'analysis_available': 'Saved canonical Analysis records and direct local media analysis remain usable; unsafe project timing is not imported.'}
+        from .adapters.compatibility import assess
+        return assess(starter, target_kdenlive)
 
     @staticmethod
     def report(directory):
@@ -336,7 +339,7 @@ class Application:
 
     def _inputs(self, options):
         names = ('project', 'mapping', 'analysis', 'request', 'picture', 'picture_request',
-                 'cleanup_request', 'ffprobe', 'ffmpeg', 'speech_model', 'reaction_model')
+                 'cleanup_request', 'ffprobe', 'ffmpeg', 'speech_model', 'reaction_model', 'target_kdenlive')
         files = {name: {'path': str(Path(value).resolve()), 'sha256': fingerprint(value)}
                  for name in names if (value := getattr(options, name)) is not None}
         # A real starter may bind a custom native profile. It is an input asset,
@@ -423,7 +426,7 @@ class Application:
                     intake = self.inspect(options, mapping)
                     journal.write('intake.json', json_text(intake.summary()))
                     report = {'schema_version': 1, 'privacy': 'PRIVATE_LOCAL_ONLY',
-                              'compatibility': 'EXPERIMENTAL', 'intake': intake.summary(),
+                              'compatibility': self.compatibility_probe(options.project, options.target_kdenlive)['compatibility'], 'intake': intake.summary(),
                               'restore': 'Replan with source-time keep/audible; remove global approvals for identity time; remove idle approvals for unity. Export to a NEW run. Bin originals remain recoverable.'}
                     if options.command != 'inspect':
                         stage('analyzing')

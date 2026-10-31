@@ -9,6 +9,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 
 from .kdenlive import MAX_XML, IntakeError, props, read_starter, resolve_resource
+from .compatibility import assess, PLAN_TARGET
 from ..probe import fingerprint, probe_video, probe_wav
 from ..turns import build_turns, pieces
 from ..timing import ceil
@@ -54,14 +55,18 @@ def put(node, name, value):
     prop.text = str(value)
 
 
-def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False, cleanup=None, picture=None, mutes=()):
+def export_project(result, project, bindings, names, output, ffprobe, *, experimental=False, cleanup=None, picture=None, mutes=(), target_kdenlive=None):
     """Bindings map every canonical source ID to its explicit local resource.
 
     Validate strict contracts, reproducibility, starter/media fingerprints and
     actual complete media grids before writing a new file atomically. Optional
     S08 cleanup is separately reproduced; the canonical v1 plan stays unchanged.
     """
-    if not experimental:
+    starter = read_starter(project)
+    compatibility = assess(starter, target_kdenlive)
+    if not compatibility['export_allowed']:
+        raise IntakeError(compatibility['reason'])
+    if compatibility['experimental_opt_in_required'] and not experimental:
         raise IntakeError('EXPERIMENTAL_EXPORT_REQUIRES_OPT_IN')
     refinement = None
     if picture is not None:
@@ -78,11 +83,10 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
         from ..peaks import measure_peaks
         cleanup = validate_cleanup(result, cleanup)
     project, output = Path(project).resolve(), Path(output).resolve()
-    starter = read_starter(project)
     if fingerprint(project) != plan.analysis.header.project_sha256:
         raise IntakeError('PLAN_PROJECT_FINGERPRINT_MISMATCH')
     video = next(s for s in plan.analysis.sources if s.kind == 'video')
-    if plan.analysis.header.adapter_target != 'kdenlive-26.08.2-experimental' or starter.fps != plan.time_map.fps or starter.clip_frames != video.duration * starter.fps:
+    if plan.analysis.header.adapter_target != PLAN_TARGET or starter.fps != plan.time_map.fps or starter.clip_frames != video.duration * starter.fps:
         raise IntakeError('PLAN_ADAPTER_OR_GRID_MISMATCH')
     sources = {s.source_id: s for s in plan.analysis.sources}
     paths = {k: Path(v).resolve() for k, v in bindings.items()}
@@ -310,9 +314,11 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     serialized = ET.tostring(root, encoding='unicode', xml_declaration=True) + '\n'
     if len(serialized.encode('utf-8')) > MAX_XML:
         raise IntakeError('EXPORTED_XML_EXCEEDS_BOUNDED_SIZE')
+    if target_kdenlive is not None and assess(starter, target_kdenlive) != compatibility:
+        raise IntakeError('TARGET_CHANGED_DURING_EXPORT')
     from ..speech import atomic_new
     atomic_new(output, serialized)
-    return {'compatibility': 'EXPERIMENTAL', 'adapter': '26.08.2', 'turn_algorithm': layout.algorithm,
+    return {'compatibility': compatibility['compatibility'], 'adapter': starter.adapter_id, 'turn_algorithm': layout.algorithm,
             **grouping,
             'participants': len(audios), 'groups': len(groups), 'output_frames': end,
             'edit_units': list(plan.edit_units), 'input_sequence_extent_delta_frames': starter.sequence_frames - starter.clip_frames,
