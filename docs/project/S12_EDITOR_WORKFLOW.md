@@ -82,3 +82,6 @@ denominators remain unmeasured. Retirement is not a pass. No 90%/70% result is
 claimed. The original observations, study copies, approvals and failures remain
 recoverable. Compatibility is experimental and limited to the exact validated
 Kdenlive build; broader compatibility and release packaging belong to later steps.
+
+Actual complete-interview generation, native round trips, full renders and scope
+limits are recorded in the [S12 delivery audit](../fixtures/S12_EDITOR_DELIVERY.md).

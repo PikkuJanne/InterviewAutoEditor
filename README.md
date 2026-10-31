@@ -14,7 +14,7 @@ benchmark exercise. See the [editor workflow](docs/project/S12_EDITOR_WORKFLOW.m
 for local setup, conservative automation limits and recovery. The legacy CLI
 details and historical step descriptions below remain reference material.
 
-InterviewAutoEditor is a planned local Windows tool for turning a Zoom interview
+InterviewAutoEditor is an experimental local Windows tool for turning a Zoom interview
 starter project into a new, editable Kdenlive project. **S10 provides a recoverable
 experimental CLI** for inspection, local CPU evidence, approved shared pause
 plans, reversible cleanup and recorded-picture review. Run folders contain an
@@ -23,12 +23,14 @@ editable project, exact plans, private manifests and review reports. See the
 original-timing policy that preserves unequal source endings and marks missing
 picture; legacy schema-1 origin/exact-tail refusals remain. See the
 [original-timing guide](docs/project/S12_ORIGINAL_TIMING.md) and
-[current production audit](docs/fixtures/S12_PRODUCTION_COVERAGE.md).
+[current editor delivery audit](docs/fixtures/S12_EDITOR_DELIVERY.md) and
+[retained production audit](docs/fixtures/S12_PRODUCTION_COVERAGE.md).
 
 **S11 adds a minimal local desktop** over that same service: double-click
 [`InterviewAutoEditor.pyw`](InterviewAutoEditor.pyw) in the prepared checkout.
-Pick a starter, confirm participant mapping, choose Tight/Gentle, run/cancel,
-review source-time Keep/Restore and open an editable copy in Kdenlive.
+Pick a starter and new output, choose Tight/Gentle, run/cancel and open the
+editable project in Kdenlive. Mapping and source-time Keep/Restore remain
+available for deliberate advanced choices.
 See the [desktop guide](docs/project/S11_DESKTOP.md). This is a source/packaging
 entry point; bundled-runtime and clean-install release checks remain later work.
 
@@ -36,8 +38,9 @@ The installed primary target is independently verified as **Kdenlive 26.08.2,
 revision d4e87e4**. Its two-participant synthetic reference passed actual GUI
 open/play/group-edit/undo/save/reopen/render checks. S12 adds actual native edit,
 reopen and full-render checks on both complete real interviews. Product
-compatibility remains experimental; independent content/utility acceptance is
-still open. S01 is complete: the
+compatibility remains experimental. S12 technical delivery is complete;
+independent corpus accuracy and subjective utility remain unmeasured, and the
+timed owner exercise is retired. S01 is complete: the
 owner's example media is privately indexed, and a genuine four-participant starter was saved,
 played and reopened in Kdenlive. Read-only validation retains unverified origins
 and exact tail differences; the explicit S12 policy exports them without
@@ -48,7 +51,7 @@ certifying unknown offsets. See
 [S02 export proof](docs/fixtures/S02_EXPORT_PROOF.md) for exact limits, usage,
 native gain-edge measurements, GUI evidence and recovery instructions.
 
-## Planned workflow
+## Product workflow
 
 - Read a simple, unedited project with one Zoom MP4 and a variable number of
   aligned, already-cleaned participant audio files.
@@ -64,7 +67,8 @@ native gain-edge measurements, GUI evidence and recovery instructions.
 These are the full product requirements. S06-S10 connect conservative approved
 pause planning, grouped export, idle cleanup and picture review. Scoped actual
 Kdenlive synthetic round trips pass; the desktop uses the same contracts and
-recovery rules. Full-interview acceptance remains later work.
+recovery rules. S12 full-interview technical checks pass; broader compatibility
+and clean-install release checks remain later work.
 Real source offsets, drift and subframe tails remain unverified. The observed
 native one-frame sequence extent change is retained explicitly in the proof.
 

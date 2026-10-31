@@ -21,6 +21,11 @@ proposing automatic shared cuts; protection and exterior handles still apply.
 These engineering decisions are not independent content labels. Ambiguous speech
 or microphone noise is preserved. See [ordinary editing](S12_EDITOR_WORKFLOW.md).
 
+The current [attempt-09 delivery audit](../fixtures/S12_EDITOR_DELIVERY.md)
+records completed S12 technical checks, both actual full native renders, source
+preservation and the scoped full mute. It supersedes the historical blockers
+below. Independent/subjective metrics remain unmeasured.
+
 ## Historical acceptance procedure and measurements
 
 **Current production policy:** the explicit schema-2 original-timing path is
@@ -31,10 +36,10 @@ prerequisite/proposal paragraphs below describe the earlier gate; they are not a
 current claim that production export is unavailable. Original schema-1 requests,
 registration, rejected review and failed runs remain intact.
 
-**S12 is BLOCKED at full-interview acceptance.** The available engineering
+**Historical attempt-08 status: S12 was BLOCKED at full-interview acceptance.** The available engineering
 checks do not complete G01-G09 on real interviews. Compatibility remains
 EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4. See the
-[current correction audit](../fixtures/S12_OWNER_CORRECTION.md) for executed
+[historical correction audit](../fixtures/S12_OWNER_CORRECTION.md) for executed
 measurements and the [handover](../handovers/S12_ATTEMPT_08.md) for the checkpoint
 and continuation. The [previous gate audit](../fixtures/S12_GATE_AUDIT.md) and
 earlier handover retain the historical refusals and reviews.

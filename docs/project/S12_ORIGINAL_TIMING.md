@@ -85,7 +85,7 @@ full-span coverage, incomplete-observation rejection and equivalence of the
 optimized calculation to the original integer measurements.
 
 Current real results belong in the
-[production audit](../fixtures/S12_PRODUCTION_COVERAGE.md). Synthetic checks,
+[current editor delivery audit](../fixtures/S12_EDITOR_DELIVERY.md) (with the retained [production audit](../fixtures/S12_PRODUCTION_COVERAGE.md)). Synthetic checks,
 project-file checks, actual Kdenlive actions and human listening are separate
 evidence. Neither zero automatic removals nor missing independent labels proves
 90% pause automation or 70% effort reduction. The timed owner exercise is retired
