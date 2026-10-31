@@ -5,7 +5,8 @@ The exact build/acceptance record is in the S14 handover and package inventory.
 
 - Bundled relocatable CPython 3.12.16, Tk, 16 hash-locked CPU inference wheels,
   unchanged Silero VAD v5.1.2 and Google YAMNet classification TFLite v1. No
-  system Python, administrator setup or runtime network/model download.
+  system Python or runtime network/model download. External prerequisites can
+  need administrator setup; the portable app itself runs as an ordinary user.
 - Thin desktop and CLI generate a new editable Kdenlive timeline with one video
   and N named participant audio tracks. MP4 audio is excluded. Grouped edits,
   original media and native reversible gain effects remain editable.

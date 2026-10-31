@@ -1,6 +1,6 @@
 # Release checklist
 
-S14 prepares the release candidate and owner acceptance. S15 performs integration and release after explicit instruction to run S15. Do not publish a stable release during earlier steps.
+S14 prepares the release candidate and applicable technical acceptance. The owner-directed S12 revision retires the timed exercise and mandatory subjective usefulness/pace/usability sign-off; retired is not passed, and unknown quality/effort numbers remain unmeasured. S15 performs integration and release after explicit instruction to run S15. Do not publish a stable release during earlier steps.
 
 - All required S00–S14 gates passed with real evidence; no material loss of speech, laughter or synchronization defect remains.
 - Actual production Kdenlive 26 build tested; newest stable available 26 build checked if different; exact supported matrix published. Future builds clearly experimental until tested.
