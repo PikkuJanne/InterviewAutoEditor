@@ -11,7 +11,7 @@ from typing import Literal
 
 from .contracts import (Analysis, EditPlan, Override, Review, dumps, fingerprint,
                         loads, text)
-from .timing import FrameRange, SharedTimeMap, frame_time, rational, removable_frames
+from .timing import FrameRange, SharedTimeMap, ceil, frame_time, rational, removable_frames
 
 
 ALGORITHM = 's06-shared-pauses-1'
@@ -57,14 +57,14 @@ class GapApproval:
 
 @dataclass(frozen=True)
 class PlannerRequest:
-    schema_version: Literal[1]
+    schema_version: Literal[1, 2]
     analysis_sha256: str
     preset: Literal['tight', 'gentle']
     approvals: tuple[GapApproval, ...]
     overrides: tuple[Override, ...]
 
     def __post_init__(self):
-        if type(self.schema_version) is not int or self.schema_version != 1:
+        if type(self.schema_version) is not int or self.schema_version not in (1, 2):
             raise ValueError('Unsupported planner request version.')
         fingerprint(self.analysis_sha256)
         if self.preset not in PRESETS:
@@ -90,15 +90,18 @@ class GapDecision:
 
 @dataclass(frozen=True)
 class PlanningResult:
-    schema_version: Literal[1]
+    schema_version: Literal[1, 2]
     algorithm: Literal['s06-shared-pauses-1']
     request: PlannerRequest
     plan: EditPlan
     decisions: tuple[GapDecision, ...]
 
     def __post_init__(self):
-        if self.schema_version != 1 or self.algorithm != ALGORITHM:
+        if self.schema_version not in (1, 2) or self.algorithm != ALGORITHM:
             raise ValueError('Unsupported planning result.')
+        expected_policy = 'exact_coverage' if self.schema_version == 1 else 'original_timing_with_gaps_v2'
+        if self.request.schema_version != self.schema_version or self.plan.tail_policy != expected_policy:
+            raise ValueError('Planning result/request timing policy mismatch.')
         if analysis_digest(self.plan.analysis) != self.request.analysis_sha256:
             raise ValueError('Planner request belongs to a different analysis.')
         if self.request.overrides != self.plan.overrides or self.plan.gains:
@@ -190,7 +193,8 @@ def plan_pauses(analysis, request):
 
     Approvals cover *every* track, never a per-microphone silence decision.
     No approvals, no activity or uncertain anchors preserve the full recording.
-    Real unverified origins and unequal tails fail even for an identity plan.
+    V1 retains its origin/tail refusals. Explicit V2 requests preserve original
+    placement without alignment certification and represent absence after EOF.
     """
     analysis = loads(Analysis, dumps(analysis))
     request = loads(PlannerRequest, dumps(request))
@@ -201,12 +205,15 @@ def plan_pauses(analysis, request):
     frames = video.duration * analysis.fps
     if frames.denominator != 1:
         raise ValueError('Video extent must be exact whole project frames.')
+    if request.schema_version == 2:
+        frames = ceil(max(s.duration for s in analysis.sources) * analysis.fps)
+    policy = 'exact_coverage' if request.schema_version == 1 else 'original_timing_with_gaps_v2'
     whole = SharedTimeMap(analysis.fps, int(frames), (FrameRange(0, int(frames)),))
     reviews = tuple(Review(r.source_id, r.source_time, whole.map_time(r.source_time), r.reason)
                     for r in analysis.reviews)
     # Reuse strict origin/tail/override/gain invariants BEFORE decisions.
-    EditPlan(analysis, whole, (), (), (0, whole.output_frames), request.overrides, reviews, 'exact_coverage')
-    if any(a.end > video.duration for a in request.approvals):
+    EditPlan(analysis, whole, (), (), (0, whole.output_frames), request.overrides, reviews, policy)
+    if any(a.end > frame_time(whole.source_frames, analysis.fps) for a in request.approvals):
         raise ValueError('Gap approval exceeds recording extent.')
     preset = PRESETS[request.preset]
     islands = _islands(analysis, preset)
@@ -255,8 +262,8 @@ def plan_pauses(analysis, request):
                     for r in analysis.reviews)
     # Shared seam boundaries only. Meaningful turn/group construction is S07.
     units = (0, *(output.end for _, output in mapping.segments()))
-    plan = EditPlan(analysis, mapping, tuple(reasons), (), units, request.overrides, reviews, 'exact_coverage')
-    result = PlanningResult(1, ALGORITHM, request, plan, tuple(decisions))
+    plan = EditPlan(analysis, mapping, tuple(reasons), (), units, request.overrides, reviews, policy)
+    result = PlanningResult(request.schema_version, ALGORITHM, request, plan, tuple(decisions))
     return loads(PlanningResult, dumps(result))
 
 
@@ -272,6 +279,15 @@ def explain(result):
         'schema_version': 1, 'algorithm': result.algorithm, 'preset': result.request.preset,
         'source_frames': mapping.source_frames, 'output_frames': mapping.output_frames,
         'removed_frames': mapping.source_frames - mapping.output_frames,
+        'timing_policy': result.plan.tail_policy,
+        'alignment_certified_by_this_plan': False,
+        'source_coverage': [{'source_id': s.source_id, 'real_end_seconds': str(s.duration),
+                             'clip_end_frame': ceil(s.duration * mapping.fps),
+                             'empty_source_seconds': [str(s.duration), str(frame_time(mapping.source_frames, mapping.fps))],
+                             'mapped_real_end_seconds': str(mapping.map_time(s.duration)),
+                             'original_origin_status': s.origin_status,
+                             'verified_offset': None if s.verified_offset is None else str(s.verified_offset)}
+                            for s in result.plan.analysis.sources],
         'source_duration': str(frame_time(mapping.source_frames, mapping.fps)),
         'output_duration': str(frame_time(mapping.output_frames, mapping.fps)),
         'segments': [{'source_frames': [s.start, s.end], 'output_frames': [o.start, o.end],

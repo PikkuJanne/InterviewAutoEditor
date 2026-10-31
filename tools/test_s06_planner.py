@@ -253,7 +253,7 @@ class BoundaryTests(unittest.TestCase):
         req = request(a)
         with self.assertRaisesRegex(ValueError, 'different analysis'):
             plan_pauses(replace(a, events=a.events[:1]), req)
-        for change in ({'schema_version': 2}, {'preset': 'aggressive'}, {'schema_version': True}):
+        for change in ({'schema_version': 3}, {'preset': 'aggressive'}, {'schema_version': True}):
             data = to_data(req)
             data.update(change)
             with self.assertRaises(ValueError):

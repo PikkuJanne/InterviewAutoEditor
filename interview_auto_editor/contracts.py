@@ -10,7 +10,7 @@ import json
 import re
 from typing import Literal, get_args, get_origin, get_type_hints
 
-from .timing import SharedTimeMap, frame_time, integer, rational
+from .timing import SharedTimeMap, ceil, frame_time, integer, rational
 
 
 def text(value):
@@ -212,19 +212,24 @@ class EditPlan:
     edit_units: tuple[int, ...]  # output frame boundaries, shared by all tracks
     overrides: tuple[Override, ...]
     reviews: tuple[Review, ...]
-    tail_policy: Literal['exact_coverage']
+    tail_policy: Literal['exact_coverage', 'original_timing_with_gaps_v2']
 
     def __post_init__(self):
         m = self.time_map
         duration = frame_time(m.source_frames, m.fps)
-        if self.analysis.fps != m.fps or self.tail_policy != 'exact_coverage':
+        if self.analysis.fps != m.fps or self.tail_policy not in ('exact_coverage', 'original_timing_with_gaps_v2'):
             raise ValueError('Map rate/tail policy mismatch.')
-        # No implicit silence, freeze, truncation, offset or source repair in v1.
-        # Later explicit tail policies need a versioned contract extension.
+        original = self.tail_policy == 'original_timing_with_gaps_v2'
+        if original and m.source_frames != ceil(max(s.duration for s in self.analysis.sources) * m.fps):
+            raise ValueError('Original timing requires the complete longest source extent.')
         for source in self.analysis.sources:
-            if source.origin_status != 'verified' or source.origin != 0 or source.verified_offset != 0:
+            # V2 preserves the starter clock, including unknown alignment. It
+            # does not certify, replace or apply a diagnostic/verified offset.
+            if source.origin != 0:
+                raise ValueError('Nonzero source placement is unsupported.')
+            if not original and (source.origin_status != 'verified' or source.verified_offset != 0):
                 raise ValueError('Unverified/nonzero origin cannot authorize an export.')
-            if source.duration != duration:
+            if not original and source.duration != duration:
                 raise ValueError('Unresolved source tails; exact coverage required.')
         if len(self.removed_reasons) != len(m.retained) - 1:
             raise ValueError('Each removed interval requires a reason.')

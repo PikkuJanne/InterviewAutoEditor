@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 from .kdenlive import MAX_XML, IntakeError, props, read_starter, resolve_resource
 from ..probe import fingerprint, probe_video, probe_wav
 from ..turns import build_turns, pieces
+from ..timing import ceil
 
 
 def put(node, name, value):
@@ -43,7 +44,8 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     starter = read_starter(project)
     if fingerprint(project) != plan.analysis.header.project_sha256:
         raise IntakeError('PLAN_PROJECT_FINGERPRINT_MISMATCH')
-    if plan.analysis.header.adapter_target != 'kdenlive-26.08.2-experimental' or starter.fps != plan.time_map.fps or starter.clip_frames != plan.time_map.source_frames:
+    video = next(s for s in plan.analysis.sources if s.kind == 'video')
+    if plan.analysis.header.adapter_target != 'kdenlive-26.08.2-experimental' or starter.fps != plan.time_map.fps or starter.clip_frames != video.duration * starter.fps:
         raise IntakeError('PLAN_ADAPTER_OR_GRID_MISMATCH')
     sources = {s.source_id: s for s in plan.analysis.sources}
     paths = {k: Path(v).resolve() for k, v in bindings.items()}
@@ -135,6 +137,13 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
         chain = nodes[original.get('producer')]
         identity = next(k for k, p in paths.items() if p == path_by_chain[chain.get('id')])
         audio = sources[identity].kind == 'participant_audio'
+        coverage_end = ceil(sources[identity].duration * starter.fps)
+        # Include a partial final native audio frame. avformat continues to
+        # actual decoded EOF, then yields absence instead of repeating media.
+        if plan.tail_policy == 'original_timing_with_gaps_v2':
+            chain.set('out', str(coverage_end - 1))
+            put(chain, 'length', coverage_end)
+            put(chain, 'eof', 'continue')
         if audio:
             put(node, 'kdenlive:track_name', names[identity])
         for ref in node.findall('track'):
@@ -143,13 +152,17 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
                 if item.tag != 'property':
                     pl.remove(item)
         for unit, (a, b, position) in enumerate(units):
+            stop = min(b, coverage_end)
+            if stop <= a:
+                ET.SubElement(playlist, 'blank', length=str(b - a))
+                continue
             copy = deepcopy(chain)
             copy.set('id', unique('s07chain'))
             root.insert(list(root).index(playlist), copy)
-            entry = ET.SubElement(playlist, 'entry', producer=copy.get('id'), **{'in': str(a), 'out': str(b - 1)})
+            entry = ET.SubElement(playlist, 'entry', producer=copy.get('id'), **{'in': str(a), 'out': str(stop - 1)})
             put(entry, 'kdenlive:id', props(copy)['kdenlive:id'])
             if audio and cleanup is not None:
-                keys = native_keys(cleanup, identity, a, b)
+                keys = native_keys(cleanup, identity, a, stop)
                 if keys:
                     put(entry, 'kdenlive:activeeffect', 0)
                     effect = ET.SubElement(entry, 'filter', id=unique('s08filter'))
@@ -159,6 +172,8 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
                                        'level': ';'.join(f'{frame}={float(db):.9g}' for frame, db in keys)}.items():
                         put(effect, key, value)
             groups[unit].append({'data': f'{index}:{position}:-1', 'leaf': 'clip', 'type': 'Leaf'})
+            if stop < b:
+                ET.SubElement(playlist, 'blank', length=str(b - stop))
         node.set('out', str(end - 1))
         last = seq.findall('track')[-1]
         seq.insert(list(seq).index(last) + 1, ET.Element('track', producer=node.get('id')))
@@ -170,6 +185,13 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     # Multiple cues sharing a frame become one native guide, with exact source
     # coordinates in its text. Local source IDs/names are intentionally private.
     guides = {}
+    for source in sources.values():
+        if source.duration < plan.time_map.source_frames / starter.fps:
+            mapped = plan.time_map.map_time(source.duration)
+            if mapped is not None:
+                pos = min(end - 1, int(mapped * starter.fps))
+                label = 'MISSING RECORDED PICTURE' if source.kind == 'video' else 'Audio source ended'
+                guides.setdefault(pos, []).append(f'{label}; {source.source_id}; original EOF {source.duration} s; empty coverage after EOF, no freeze or shift')
     for cue in layout.cues:
         pos = min(end - 1, int(cue.output_start * starter.fps))
         guides.setdefault(pos, []).append(f'{cue.kind}: {", ".join(cue.source_ids)}; source [{cue.source_start},{cue.source_end}) s')
@@ -186,7 +208,7 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
             pos = min(end - 1, int(output_time * starter.fps))
             guides.setdefault(pos, []).append(f'{marker.kind}; source {marker.source_time} s; output {marker.output_time} s; confidence {marker.confidence}; {marker.reason}')
     guide = [{'comment': ' | '.join(comments), 'duration': 0, 'pos': pos, 'type': 0} for pos, comments in sorted(guides.items())]
-    for key, value in {'groups': json.dumps([{'children': g, 'type': 'Normal'} for g in groups]), 'guides': json.dumps(guide), 'tracksCount': len(kept), 'zonein': 0, 'zoneout': end, 'position': 0, 'activeTrack': 0, 'audioTarget': 0, 'videoTarget': len(kept)-1}.items():
+    for key, value in {'groups': json.dumps([{'children': g, 'type': 'Normal'} for g in groups if len(g) > 1]), 'guides': json.dumps(guide), 'tracksCount': len(kept), 'zonein': 0, 'zoneout': end, 'position': 0, 'activeTrack': 0, 'audioTarget': 0, 'videoTarget': len(kept)-1}.items():
         put(seq, 'kdenlive:sequenceproperties.' + key, value)
     put(seq, 'kdenlive:markers', json.dumps(guide))
     put(seq, 'kdenlive:duration', end)
