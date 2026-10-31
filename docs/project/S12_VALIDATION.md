@@ -11,8 +11,8 @@ registration, rejected review and failed runs remain intact.
 **S12 is BLOCKED at full-interview acceptance.** The available engineering
 checks do not complete G01-G09 on real interviews. Compatibility remains
 EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4. See the
-[current production audit](../fixtures/S12_PRODUCTION_COVERAGE.md) for executed
-measurements and the [handover](../handovers/S12_ATTEMPT_07.md) for the checkpoint
+[current correction audit](../fixtures/S12_OWNER_CORRECTION.md) for executed
+measurements and the [handover](../handovers/S12_ATTEMPT_08.md) for the checkpoint
 and continuation. The [previous gate audit](../fixtures/S12_GATE_AUDIT.md) and
 earlier handover retain the historical refusals and reviews.
 

@@ -1,5 +1,9 @@
 # S12 attempt 07 — production coverage and real editor checks
 
+**Subsequent owner correction:** the source question is resolved and the scoped
+native correction/current remaining owner gate are in the
+[attempt-08 audit](S12_OWNER_CORRECTION.md). This production evidence is retained.
+
 Implementation: `a817f93c051bf15041da4f25efcfbcc32fdb1ecd`.
 First production coverage commit: `9af678916f1dd42545330904229f7f8519826d71`.
 Branch: `codex/kdenlive26-overhaul`. Date: 2026-10-31. **S12 only; acceptance
