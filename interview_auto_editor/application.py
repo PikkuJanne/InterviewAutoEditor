@@ -20,7 +20,7 @@ from .cancellation import Cancelled, checkpoint, scope
 from .cleanup import CleanupRequest, build_cleanup
 from .contracts import Analysis, dumps, loads, to_data
 from .intake import MappingManifest, inspect
-from .picture import PictureAnalysis, PictureRequest, analyze_picture, refine_picture_seams, validate_picture
+from .picture import PictureAnalysis, PictureRequest, analyze_picture, refine_picture_seams, validate_picture, coverage_report
 from .planner import PlannerRequest, analysis_digest, explain, plan_pauses
 from .probe import fingerprint, tool_version
 from .reactions import YamnetCPU, analyze as reaction_analyze
@@ -454,9 +454,12 @@ class Application:
                                         raise RunError('SAVED_PICTURE_BINDING_MISMATCH')
                                 else:
                                     picture = analyze_picture(analysis, picture_request,
-                                        bindings['video'], options.ffmpeg, options.ffprobe)
+                                        bindings['video'], options.ffmpeg, options.ffprobe,
+                                        stream_index=next(t.stream_index for t in starter.tracks if not t.audio))
                             if picture:
                                 journal.write('picture-analysis.json', dumps(picture))
+                                report['picture_coverage'] = coverage_report(analysis, picture)
+                                report['picture_stream_index'] = next(t.stream_index for t in starter.tracks if not t.audio)
                             cleanup_request = read_record(CleanupRequest, options.cleanup_request) if options.cleanup_request else None
                             base, result, refinement, cleanup, layout = self.plan(analysis, request, picture, cleanup_request)
                             journal.write('planning-result.json', dumps(base))

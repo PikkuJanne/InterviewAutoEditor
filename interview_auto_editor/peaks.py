@@ -47,6 +47,7 @@ def measure_peaks(result, cleanup, bindings):
                 bounds, signals = [], []
                 for s, p, wav in rows:
                     lo, hi = ceil(F(f, 1)/plan.time_map.fps*p.sample_rate), ceil(F(f+1, 1)/plan.time_map.fps*p.sample_rate)
+                    lo, hi = min(lo, s.sample_count), min(hi, s.sample_count)
                     wav.setpos(lo)
                     raw = wav.readframes(hi-lo)
                     if len(raw) != (hi-lo)*p.channels*p.sample_width:

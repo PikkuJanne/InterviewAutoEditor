@@ -92,11 +92,17 @@ class ProductionCommandTests(unittest.TestCase):
                     p = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
                     self.assertEqual(p.returncode, 2, p.stdout+p.stderr)
                     self.assertEqual(Application.report(out).state, 'complete')
+                    report=json.loads((out/'report.json').read_text())
+                    self.assertEqual(report['export']['master_linear_bound'], .95/2)
                     exported = ET.parse(out/'project.kdenlive').getroot()
                     nodes = {n.get('id'):n for n in exported if n.get('id')}
                     seq = next(n for n in exported.findall('tractor') if 'kdenlive:sequenceproperties.groups' in props(n))
                     expected_end = ceil(max(s.duration for s in a.sources)*a.fps)
                     self.assertEqual(int(seq.get('out'))+1, expected_end)
+                    master=next(f for f in seq.findall('filter') if props(f).get('mlt_service')=='volume')
+                    self.assertEqual(props(master)['disable'],'0')
+                    self.assertTrue(props(master)['level'].startswith('0=-'))
+                    self.assertLessEqual(len(exported.findall('chain')),6)
                     for ref in seq.findall('track')[1:]:
                         track = nodes[ref.get('producer')]
                         pl = nodes[track.find('track').get('producer')]

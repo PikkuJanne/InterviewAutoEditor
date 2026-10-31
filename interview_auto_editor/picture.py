@@ -8,6 +8,8 @@ from dataclasses import dataclass, replace
 from fractions import Fraction as F
 import hashlib
 from pathlib import Path
+import json
+import tempfile
 from typing import Literal
 
 from .contracts import Analysis, dumps, fingerprint as check_hash, loads, text
@@ -21,20 +23,22 @@ SEAM_ALGORITHM = 's09-restore-only-seams-1'
 WIDTH, HEIGHT = 96, 54
 PIXELS = WIDTH * HEIGHT
 MAX_FRAMES = 8192
+FULL_CHUNK = 2048
+MAX_FULL_FRAMES = 1_000_000
 MIN_SHOT = F(1, 2)
 RADIUS = F(3, 2)
 
 
 @dataclass(frozen=True)
 class PictureRequest:
-    schema_version: Literal[1]
+    schema_version: Literal[1, 2]
     analysis_sha256: str
     layout: Literal['speaker_view', 'gallery', 'pinned', 'camera_off', 'uncertain']
     basis: Literal['construction_label', 'human_review']
     evidence: str
 
     def __post_init__(self):
-        if type(self.schema_version) is not int or self.schema_version != 1:
+        if type(self.schema_version) is not int or self.schema_version not in (1, 2):
             raise ValueError('Unsupported picture request.')
         check_hash(self.analysis_sha256)
         if self.layout not in ('speaker_view', 'gallery', 'pinned', 'camera_off', 'uncertain') or self.basis not in ('construction_label', 'human_review'):
@@ -133,7 +137,7 @@ def handovers(analysis):
     return tuple(sorted({right for _, right in _handover_pairs(analysis)}))
 
 
-def window_ranges(analysis):
+def window_ranges(analysis, *, full_span=False):
     video = next(s for s in analysis.sources if s.kind == 'video')
     total = video.duration * analysis.fps
     if total.denominator != 1:
@@ -143,9 +147,18 @@ def window_ranges(analysis):
     # Include the preceding gap and a half-second left picture handle. Long
     # gaps count against the explicit budget; no partial coverage is implied.
     lefts = {t: min(left for left, right in _handover_pairs(analysis) if right == t) for t in handovers(analysis)}
-    return tuple((t, FrameRange(max(0, floor(min(t-RADIUS, lefts[t]-MIN_SHOT)*analysis.fps)),
+    windows = tuple((t, FrameRange(max(0, floor(min(t-RADIUS, lefts[t]-MIN_SHOT)*analysis.fps)),
                                min(int(total), ceil((t+RADIUS)*analysis.fps))))
-                 for t in handovers(analysis))
+                 for t in handovers(analysis) if t-RADIUS < video.duration)
+    if full_span:
+        if total > MAX_FULL_FRAMES:
+            raise ValueError('Full picture span exceeds explicit disk/frame budget.')
+        # One shared frame catches transitions on chunk boundaries. EOF is a
+        # coverage sentinel, separate from actual conversational handovers.
+        full = tuple((video.duration, FrameRange(start, min(int(total), start+FULL_CHUNK)))
+                     for start in range(0, int(total), FULL_CHUNK-1))
+        return full + windows
+    return windows
 
 
 def confidence(boundary, fps, layout):
@@ -193,10 +206,11 @@ def validate_picture(analysis, picture):
             picture.video_sha256 != video.sha256 or
             picture.implementation_sha256 != fingerprint(Path(__file__))):
         raise ValueError('Picture observations belong to different inputs or implementation.')
-    expected = window_ranges(analysis)
+    expected = window_ranges(analysis, full_span=picture.request.schema_version == 2)
     if tuple((w.handover, w.frames) for w in picture.windows) != expected:
         raise ValueError('Incomplete or stale handover picture coverage.')
-    if sum(w.frames.length for w in picture.windows) > MAX_FRAMES:
+    if (picture.request.schema_version == 1 and sum(w.frames.length for w in picture.windows) > MAX_FRAMES
+            or any(w.frames.length > MAX_FRAMES for w in picture.windows)):
         raise ValueError('Picture analysis exceeds bounded frame budget.')
     for w in picture.windows:
         previous = w.frames.start
@@ -209,7 +223,51 @@ def validate_picture(analysis, picture):
     return picture
 
 
-def analyze_picture(analysis, request, video_path, ffmpeg, ffprobe):
+def _inspect_full_frames(frames, start):
+    """Identical integer thresholds, vectorized for complete long recordings."""
+    try:
+        import numpy as np
+    except ImportError:
+        return inspect_frames(frames, start)
+    data=np.frombuffer(b''.join(frames),dtype=np.uint8).reshape(len(frames),PIXELS).astype(np.int16)
+    delta=np.abs(np.diff(data,axis=0))
+    sums=delta.sum(axis=1);broad=(delta>=24).sum(axis=1)
+    found=[]
+    for index in np.flatnonzero((sums>=10*PIXELS)&(broad*4>=PIXELS)):
+        i=int(index)+1;before=after=0
+        for j in range(i-1,-1,-1):
+            if int(np.abs(data[j]-data[i-1]).sum())>12*PIXELS:break
+            before+=1
+        for j in range(i,len(frames)):
+            if int(np.abs(data[j]-data[i]).sum())>12*PIXELS:break
+            after+=1
+        found.append(Boundary(start+i,F(int(sums[index]),PIXELS*255),F(int(broad[index]),PIXELS),before,after))
+    return tuple(found)
+
+
+def coverage_report(analysis, picture):
+    """Explicit union and complement; unobserved time never implies silence."""
+    picture = validate_picture(analysis, picture)
+    video = next(s for s in analysis.sources if s.kind == 'video')
+    total = int(video.duration * analysis.fps)
+    covered = []
+    for r in sorted((w.frames for w in picture.windows), key=lambda r:r.start):
+        if covered and r.start <= covered[-1][1]:
+            covered[-1][1] = max(covered[-1][1],r.end)
+        else:
+            covered.append([r.start,r.end])
+    missing=[];cursor=0
+    for a,b in covered:
+        if cursor<a:missing.append([cursor,a])
+        cursor=b
+    if cursor<total:missing.append([cursor,total])
+    return {'recorded_frames':total,'observed_frames':sum(b-a for a,b in covered),
+            'observed_frame_intervals':covered,'unobserved_recorded_frame_intervals':missing,
+            'unobserved_recorded_seconds':[[str(frame_time(a,analysis.fps)),str(frame_time(b,analysis.fps))] for a,b in missing],
+            'recorded_end_seconds':str(video.duration),'semantic_picture_identity_verified':False}
+
+
+def analyze_picture(analysis, request, video_path, ffmpeg, ffprobe, *, stream_index=None):
     """Read local audited video in one decode pass; no model or network operation.
 
     Select absolute decoder frame numbers BEFORE scaling; no approximate seeking,
@@ -221,10 +279,19 @@ def analyze_picture(analysis, request, video_path, ffmpeg, ffprobe):
     video = next(s for s in analysis.sources if s.kind == 'video')
     if request.analysis_sha256 != analysis_digest(analysis) or fingerprint(video_path) != video.sha256:
         raise ValueError('Picture input binding mismatch.')
-    windows = window_ranges(analysis)
-    if sum(r.length for _, r in windows) > MAX_FRAMES:
+    full = request.schema_version == 2
+    windows = window_ranges(analysis, full_span=full)
+    if not full and sum(r.length for _, r in windows) > MAX_FRAMES:
         raise ValueError('Picture analysis exceeds bounded frame budget.')
-    probe = probe_video(video_path, ffprobe)
+    if stream_index is None:
+        metadata = json.loads(run_bounded([ffprobe,'-v','error','-protocol_whitelist','file,pipe',
+            '-i',Path(video_path).resolve(),'-show_streams','-of','json']))
+        candidates = [s['index'] for s in metadata['streams'] if s['codec_type']=='video'
+                      and not s.get('disposition',{}).get('attached_pic')]
+        if len(candidates) != 1:
+            raise ValueError('Explicit video stream required for ambiguous picture input.')
+        stream_index = candidates[0]
+    probe = probe_video(video_path, ffprobe, stream_index)
     if (probe.fps, probe.duration, probe.start, probe.cadence) != (analysis.fps, video.duration, F(0), 'CFR_AUDITED'):
         raise ValueError('Picture source timing not audited CFR.')
     # Merge ranges for a single bounded decode, including overlapping handovers.
@@ -237,11 +304,34 @@ def analyze_picture(analysis, request, video_path, ffmpeg, ffprobe):
     images = {}
     decoder_hash = fingerprint(ffmpeg)
     version = tool_version(ffmpeg)
-    if merged:
+    if full:
+        count = probe.decoded_frames
+        # Decode once to a private bounded, temporary disk buffer. Read only a
+        # window at a time, rather than keeping hours of raw pictures in RAM.
+        with tempfile.TemporaryDirectory(prefix='iae-picture-') as temp:
+            raw_path=Path(temp)/'frames.gray'
+            run_bounded([ffmpeg,'-v','error','-nostdin','-n','-protocol_whitelist','file,pipe',
+                '-i',Path(video_path).resolve(),'-map',f'0:{stream_index}','-an','-sn','-dn',
+                '-vf',f'scale={WIDTH}:{HEIGHT}:flags=area,format=gray','-frames:v',count,
+                '-fps_mode','passthrough','-f','rawvideo',raw_path],
+                limit=65536,timeout=max(120,ceil(video.duration)))
+            if raw_path.stat().st_size != count*PIXELS:
+                raise ValueError('Incomplete full picture decode; no partial observations.')
+            observed=[]
+            with raw_path.open('rb') as raw_stream:
+                for t,r in windows:
+                    from .cancellation import checkpoint
+                    checkpoint()
+                    raw_stream.seek(r.start*PIXELS)
+                    raw=raw_stream.read(r.length*PIXELS)
+                    frames=[raw[i:i+PIXELS] for i in range(0,len(raw),PIXELS)]
+                    observed.append(PictureWindow(t,r,_inspect_full_frames(frames,r.start)))
+            observed=tuple(observed)
+    elif merged:
         select = '+'.join(f'between(n,{r.start},{r.end-1})' for r in merged)
         count = sum(r.length for r in merged)
         raw = run_bounded([ffmpeg, '-v', 'error', '-nostdin', '-protocol_whitelist', 'file,pipe',
-            '-i', Path(video_path).resolve(), '-map', '0:0', '-an', '-sn', '-dn',
+            '-i', Path(video_path).resolve(), '-map', f'0:{stream_index}', '-an', '-sn', '-dn',
             '-vf', f"select='{select}',scale={WIDTH}:{HEIGHT}:flags=area,format=gray",
             '-frames:v', count, '-fps_mode', 'passthrough', '-f', 'rawvideo', 'pipe:1'],
             limit=count*PIXELS, timeout=120)
@@ -254,8 +344,9 @@ def analyze_picture(analysis, request, video_path, ffmpeg, ffprobe):
                 cursor += PIXELS
     if fingerprint(video_path) != video.sha256 or fingerprint(ffmpeg) != decoder_hash:
         raise ValueError('Picture source or decoder changed during analysis.')
-    observed = tuple(PictureWindow(t, r, inspect_frames([images[f] for f in range(r.start, r.end)], r.start))
-                     for t, r in windows)
+    if not full:
+        observed = tuple(PictureWindow(t, r, inspect_frames([images[f] for f in range(r.start, r.end)], r.start))
+                         for t, r in windows)
     result = PictureAnalysis(1, ALGORITHM, request, video.sha256, fingerprint(Path(__file__)),
                              decoder_hash, version, observed)
     return validate_picture(analysis, result)

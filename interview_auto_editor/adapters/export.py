@@ -2,6 +2,7 @@
 from copy import deepcopy
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import xml.etree.ElementTree as ET
@@ -71,6 +72,9 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
         raise FileExistsError('Export requires a new destination.')
     if cleanup is not None:
         peak_report = measure_peaks(result, cleanup, paths)
+        if plan.tail_policy == 'original_timing_with_gaps_v2':
+            peak_report['master_adjusted_sum_bound'] = peak_report['original_sum_bound'] * .95 / len(audios)
+            peak_report['export_safe'] = peak_report['master_adjusted_sum_bound'] <= .95
         if not peak_report['export_safe']:
             raise IntakeError('MIX_HEADROOM_REVIEW_REQUIRED_NO_AUTOMATIC_NORMALIZATION')
     with project.open('rb') as stream:
@@ -151,14 +155,22 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
             for item in list(pl):
                 if item.tag != 'property':
                     pl.remove(item)
+        shared_chain = None
         for unit, (a, b, position) in enumerate(units):
             stop = min(b, coverage_end)
             if stop <= a:
                 ET.SubElement(playlist, 'blank', length=str(b - a))
                 continue
-            copy = deepcopy(chain)
-            copy.set('id', unique('s07chain'))
-            root.insert(list(root).index(playlist), copy)
+            # Native Kdenlive saves share a track's producer across its clips.
+            # Thousands of duplicate avformat producers otherwise reopen the
+            # same long recordings thousands of times during timeline load.
+            if shared_chain is None or plan.tail_policy == 'exact_coverage':
+                copy = deepcopy(chain)
+                copy.set('id', unique('s07chain'))
+                root.insert(list(root).index(playlist), copy)
+                shared_chain = copy
+            else:
+                copy = shared_chain
             entry = ET.SubElement(playlist, 'entry', producer=copy.get('id'), **{'in': str(a), 'out': str(stop - 1)})
             put(entry, 'kdenlive:id', props(copy)['kdenlive:id'])
             if audio and cleanup is not None:
@@ -211,6 +223,18 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     for key, value in {'groups': json.dumps([{'children': g, 'type': 'Normal'} for g in groups if len(g) > 1]), 'guides': json.dumps(guide), 'tracksCount': len(kept), 'zonein': 0, 'zoneout': end, 'position': 0, 'activeTrack': 0, 'audioTarget': 0, 'videoTarget': len(kept)-1}.items():
         put(seq, 'kdenlive:sequenceproperties.' + key, value)
     put(seq, 'kdenlive:markers', json.dumps(guide))
+    master_db = None
+    if plan.tail_policy == 'original_timing_with_gaps_v2':
+        # One reversible mix fader, NOT per-recording leveling or denoising.
+        # Integer PCM is bounded by unity per source; 0.95/N is a fixed routing
+        # bound independent of interview content, models and held-out data.
+        master_db = 20 * math.log10(.95 / len(audios))
+        master = next((f for f in seq.findall('filter')
+                       if props(f).get('mlt_service') == 'volume' and props(f).get('internal_added') == '237'), None)
+        if master is None:
+            raise IntakeError('EXPECTED_NATIVE_MASTER_VOLUME')
+        put(master, 'disable', 0)
+        put(master, 'level', f'0={master_db:.9f}')
     put(seq, 'kdenlive:duration', end)
     put(seq, 'kdenlive:maxduration', end)
     seq.set('out', str(end - 1))
@@ -231,5 +255,7 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
             'participants': len(audios), 'groups': len(groups), 'output_frames': end,
             'edit_units': list(plan.edit_units), 'input_sequence_extent_delta_frames': starter.sequence_frames - starter.clip_frames,
             'excluded_mp4_audio_tracks': starter.excluded_mp4_audio,
+            **({'master_gain_db': master_db, 'master_linear_bound': .95 / len(audios),
+                'master_gain_policy': 'fixed 0.95/N mix headroom; source media and relative levels unchanged'} if master_db is not None else {}),
             **({'picture_algorithm': refinement.algorithm, 'picture_review_markers': len(refinement.markers)} if refinement is not None else {}),
             **({'cleanup_algorithm': cleanup.algorithm, 'gain_spans': len(cleanup.spans), 'peak_report': peak_report} if cleanup is not None else {})}
