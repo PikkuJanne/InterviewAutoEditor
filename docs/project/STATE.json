@@ -8,10 +8,10 @@
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
   "active_step": "S15",
-  "next_step": "S15",
-  "latest_handover": "docs/handovers/S14.md",
-  "implementation_commit": "94e2b290ca30e9e87ae815379d0e0738f8720d5c",
-  "technical_gate_status": "S15_in_progress_preparing_stable_integration_and_final_assets",
+  "next_step": "COMPLETE",
+  "latest_handover": "docs/handovers/S15.md",
+  "implementation_commit": "671b5c8d3d7bd0fea5d916015e87b07f104ae2cf",
+  "technical_gate_status": "S15_applicable_G01_G11_release_complete_v1.0.0_published_final_sync_verify_live_at_checkpoint",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
   "steps": [
@@ -125,13 +125,24 @@
       "title": "Integrate publish and close the project",
       "prerequisite": "S14",
       "brief": "docs/project/steps/S15.md",
-      "status": "in_progress"
+      "status": "completed"
     }
   ],
   "release": {
-    "tag": null,
-    "url": null,
-    "commit": null
+    "tag": "v1.0.0",
+    "url": "https://github.com/PikkuJanne/InterviewAutoEditor/releases/tag/v1.0.0",
+    "commit": "671b5c8d3d7bd0fea5d916015e87b07f104ae2cf",
+    "remote_tag_object": "d913e07b248e8db37f484da32caea3734614a469",
+    "asset_hashes": {
+      "InterviewAutoEditor-1.0.0-windows-x64-source.zip": "152a7d8a4567c7b6552837cdd8c53972f1f2d96d78cc6ba8ebf784b71cec527a",
+      "InterviewAutoEditor-1.0.0-windows-x64.zip": "482c2d0c32c3c3e5623c7ab95e889fdccfbc3472ac0985c43d8cbc2f5e07a4b7",
+      "PROVENANCE.json": "67810a1bdfa5f081463cf4c04ede18cf2fecddcb23049f4a307d7d334bc6c654",
+      "SHA256SUMS.txt": "f11135c90c039d3ee77359b5460ffc81d5cef93ddfe7192b235d25d116e1c1b7"
+    },
+    "published_at": "2026-10-31T19:20:25Z",
+    "draft": false,
+    "prerelease": false,
+    "documentation_checkpoint": "later than release commit; resolve latest handover containing commit"
   },
   "production_kdenlive_build_evidence": {
     "source": "application_generated_setup_report_and_observed_version_dialog",
@@ -155,10 +166,12 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-31",
   "prerequisites_for_next_step": [
-    "S15 is explicitly authorized in the current chat; prior synchronized S14 checkpoint is 4d1dfeff6e092d02e3453109d354a3587dbdc753.",
-    "Complete permitted main integration, final builds/affected validation, unused v1.0.0 tag/publication, remote asset verification and final handover; do not claim completion from prepared files.",
-    "Preserve exact compatibility, unchanged application/runtime/models, private originals/evidence, null offsets and scoped safeguards. Retired owner exercise is not passed; unknown quality/effort stays unmeasured.",
-    "After final synchronized S15 checkpoint STOP. Maintenance is owner-directed; no invented S16 or background work."
+    "S00\u2013S15 complete; COMPLETE is the terminal closure state. Do not invent S16 or begin automatic post-release work.",
+    "Re-verify final documentation checkpoint against local/upstream/live main and retained codex/kdenlive26-overhaul; a failed sync resumes S15.",
+    "Published v1.0.0 remains at release commit 671b5c8d3d7bd0fea5d916015e87b07f104ae2cf; final docs are intentionally later. Never replace its tag/assets.",
+    "Maintenance is owner-directed and scoped separately. Read S15 handover/release guide and preserve private originals/evidence, null offsets, held-out registration, source-bound approvals and exact compatibility.",
+    "Future exporter/media/adapter changes need affected native editor and timing/render validation. Broader versions/platforms require evidence; conservative generation stays prompt-free.",
+    "Owner exercise and mandatory subjective sign-off remain retired, not passed; unknown quality/effort stays unmeasured. No new routine owner tasks or scheduled work."
   ],
   "validation_evidence": [
     {
@@ -1708,6 +1721,13 @@
       "accuracy_90_percent": null,
       "effort_70_percent": null,
       "stable_release_published": false
+    },
+    {
+      "check": "s15_stable_release_validation",
+      "status": "passed",
+      "applies_to_commit": "671b5c8d3d7bd0fea5d916015e87b07f104ae2cf",
+      "report": "docs/fixtures/S15_RELEASE_VALIDATION.json",
+      "final_checkpoint": "documentation/state only; verify live Git sync and exact-SHA CI separately"
     }
   ],
   "previous_step_implementation_commit": "0f30418fb789ec24b336355a78d97be2172de28c",
@@ -2909,6 +2929,43 @@
     "known_display_limit": "Lower optional Keep/Restore controls clipped in small Sandbox viewport; primary GUI and CLI recovery passed; wider DPI/accessibility unqualified",
     "S15_started": false,
     "stable_release_published": false,
+    "sync": "verify live at checkpoint"
+  },
+  "maintenance_branch": "main",
+  "checkpoint_branch": "main",
+  "s15_evidence": {
+    "status": "complete",
+    "release_commit": "671b5c8d3d7bd0fea5d916015e87b07f104ae2cf",
+    "report": "docs/fixtures/S15_RELEASE_VALIDATION.json",
+    "handover": "docs/handovers/S15.md",
+    "guide": "docs/project/S15_RELEASE.md",
+    "release_url": "https://github.com/PikkuJanne/InterviewAutoEditor/releases/tag/v1.0.0",
+    "independent_identical_builds": 2,
+    "unchanged_execution_and_notice_files": 5192,
+    "full_suite": {
+      "tests": 267,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "seconds": 273.8730309999992
+    },
+    "ready_cmd_self_check": "passed",
+    "ordinary_generation_and_recovery": "passed",
+    "real_interview_regenerations": 2,
+    "native_timeline_and_all_effects_equal_S12": true,
+    "retained_native_GUI_and_clean_Windows_evidence": "S14; unchanged execution identity/output semantics",
+    "original_sources_hashes_unchanged": 8,
+    "prior_attempt08_hashes_unchanged": 44,
+    "earlier_private_hashes_unchanged": 243,
+    "six_unknown_offsets_preserved": true,
+    "draft_and_published_downloaded_assets_verified": 4,
+    "tag_peeled_commit_verified": "671b5c8d3d7bd0fea5d916015e87b07f104ae2cf",
+    "owner_exercise": "retired by owner; not passed",
+    "subjective_usefulness": null,
+    "manual_seconds": null,
+    "assisted_seconds": null,
+    "accuracy_90_percent": null,
+    "effort_70_percent": null,
     "sync": "verify live at checkpoint"
   }
 }

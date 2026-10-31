@@ -1,60 +1,41 @@
-# Next owner-commanded chat — S15 only
+# S00–S15 complete — stable release published
 
-**S14 technical acceptance is complete.** First verify its documentation
-checkpoint against local HEAD, upstream and the LIVE GitHub branch, with a clean
-tracked worktree. Any failed sync keeps continuation on S14.
+InterviewAutoEditor **1.0.0** is published at
+[GitHub](https://github.com/PikkuJanne/InterviewAutoEditor/releases/tag/v1.0.0).
+Release commit: `671b5c8d3d7bd0fea5d916015e87b07f104ae2cf`; the immutable remote
+annotated `v1.0.0` tag peels to that commit. Four published assets were downloaded
+and verified against local hashes, GitHub digests and the checksum manifest.
+Final documentation is deliberately a later commit; resolve it from the
+[S15 handover](handovers/S15.md) history and verify live main before continuing.
 
-Read [state](project/STATE.json), [verbose handover](handovers/S14.md),
-[readiness and known limits](project/S14_READINESS.md),
-[executed evidence](fixtures/S14_RC_VALIDATION.json),
-[quick start](QUICKSTART.md), [build guide](project/S14_PACKAGING.md),
-[S15 brief](project/steps/S15.md) and execution/GitHub/release protocols.
+Read [state](project/STATE.json), [release evidence](fixtures/S15_RELEASE_VALIDATION.json),
+[quick start](QUICKSTART.md), [stable notes](RELEASE_NOTES.md),
+[exact compatibility](COMPATIBILITY.md) and [maintenance/build guide](project/S15_RELEASE.md).
+The ordinary final package, CPU checks and recovery pass; both complete
+interviews regenerate with their accepted timeline/effect semantics. Original
+media/native evidence, six unknown offsets and scoped safeguards are preserved.
 
-Accepted unsigned Windows AMD64 **1.0.0-rc.1** candidate source:
-`94e2b290ca30e9e87ae815379d0e0738f8720d5c`. Two independent builds reproduce
-the runnable/source ZIP hashes. The final bundled-runtime clean Windows suite
-passes **267 tests, zero skips/failures/errors**. Actual packaged desktop
-generation/open-copy and a fresh primary Kdenlive open/play/group edit/save/
-undo/quit/reopen/full GUI render pass. Both complete interviews regenerate with
-their exact S12 native timeline/effect semantics; original/native evidence and
-six null offsets remain unchanged. No new full real-interview render is claimed.
+Nothing needed from Janne. Existing native delivery projects remain usable;
+absolute private paths are in the chat handover. The app is unsigned. Kdenlive/
+FFmpeg and Microsoft C++ x64 runtime are separate prerequisites. Only Kdenlive
+26.08.2 rev d4e87e4 / Windows 11 NT10.0.26300 AMD64 is TESTED. Small-screen
+optional Keep/Restore clipping remains; CLI/native recovery is available.
+Broader DPI/accessibility/platforms and numerical quality/effort are unmeasured.
+The timed owner exercise/usefulness sign-off is retired, not passed.
 
-The primary TESTED editor row is still **26.08.2 rev d4e87e4 / Windows 11
-NT10.0.26300 / AMD64**. Fresh package-clean Sandbox **NT10.0.26100** passes
-setup/CPU/desktop; its editor probe remains EXPERIMENTAL. No range or blanket
-future support is inferred. Kdenlive/FFmpeg and the official Microsoft C++ x64
-runtime are separate prerequisites. The app is unsigned; no paid signing or
-global execution-policy change is needed. Small-viewport optional Keep/Restore
-controls can be clipped; documented CLI/native restoration remains available.
-Carry this and wider DPI/accessibility limits forward unless repaired/validated.
+The next state is **COMPLETE**, not S16. No maintenance, recurring job or
+background execution starts automatically. If live synchronization fails,
+resume **S15**, preserving the published release and prepared evidence.
 
-Nothing needed from Janne for the delivered candidate. The owner timing and
-mandatory subjective pace/usability/usefulness exercise remains **retired by
-owner, not passed**. Unknown seconds, quality and 90%/70% targets remain null.
-Codex owns setup, repairs, retries, editor operation and affected validation.
-Keep original sources, private evidence, held-out registration and scoped
-safeguards; no wider cut/mute authority or implicit approval migration follows.
+Closure/maintenance continuation prompt:
 
-Local candidate ZIPs are **not a published stable release**. Once commanded in
-a new chat, S15 owns permitted normal integration/review/protection, final assets
-from the actual release commit, affected checks, the intended unused tag,
-publication and remote tag/asset verification. Do not force-push, replace tags,
-bypass required review or infer main integration from a local candidate. S15 has
-not started here. Finish S15 with actual release URLs/SHAs and a maintenance
-continuation; do not invent S16 or start background post-release work.
-
-Ready prompt:
-
-> In InterviewAutoEditor on codex/kdenlive26-overhaul, inspect Git and read
-> AGENTS.md, docs/project/STATE.json, docs/NEXT_STEP.md, docs/handovers/S14.md,
-> docs/project/steps/S15.md and execution/GitHub/release protocols. Verify the
-> synchronized S14 checkpoint and accepted candidate source
-> 94e2b290ca30e9e87ae815379d0e0738f8720d5c. Execute S15 only: inspect review and
-> protection requirements, integrate normally, build/validate the actual release
-> commit and publish/verify the intended stable tag/assets when permitted.
-> Preserve private evidence/originals, unknown offsets, scoped safeguards, exact
-> compatibility and documented limits. The owner exercise/usefulness sign-off
-> remains retired, not passed; Codex owns setup, diagnosis and affected checks.
-> Commit/push, verify live SHA and clean worktree/CI, write the final verbose
-> handover and maintenance continuation, then STOP. Do not invent S16 or start
-> background post-release work.
+> In InterviewAutoEditor on main, inspect Git and read AGENTS.md,
+> docs/project/STATE.json, docs/NEXT_STEP.md and docs/handovers/S15.md. Verify
+> final local/upstream/live main and retained codex/kdenlive26-overhaul match,
+> with a clean worktree. Verify published v1.0.0 still peels to release commit
+> 671b5c8d3d7bd0fea5d916015e87b07f104ae2cf. The sequence is COMPLETE: report
+> closure only; do not invent S16, replace tags/assets or start background work.
+> Undertake maintenance only after a separately scoped owner request, preserving
+> media/evidence, unknown offsets, scoped safeguards, retired study and exact
+> compatibility claims. Perform affected checks and commit/push/live-verify/
+> handover/STOP for that requested maintenance.
