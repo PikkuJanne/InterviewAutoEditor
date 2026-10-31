@@ -14,7 +14,7 @@ from typing import Literal
 import uuid
 
 from . import __version__
-from .adapters.export import export_project
+from .adapters.export import export_project, native_layout
 from .adapters.kdenlive import read_starter, resolve_resource
 from .cancellation import Cancelled, checkpoint, scope
 from .cleanup import CleanupRequest, build_cleanup
@@ -26,7 +26,6 @@ from .planner import PlannerRequest, analysis_digest, explain, plan_pauses
 from .probe import fingerprint, tool_version
 from .reactions import YamnetCPU, analyze as reaction_analyze
 from .speech import SileroCPU, SpeechError, atomic_new, analyze as speech_analyze
-from .turns import build_turns
 
 
 SERVICE = 's10-recoverable-cli-1'
@@ -286,7 +285,7 @@ class Application:
         # Never rebind a stale approval silently. Caller supplies a request bound
         # to this exact refined result, as S08/S09 require.
         cleanup = build_cleanup(result, cleanup_request) if cleanup_request else None
-        layout = build_turns(result)
+        layout, _ = native_layout(result)
         return base, result, refinement, cleanup, layout
 
     def export(self, options, base, bindings, names, output, picture=None, cleanup=None):
@@ -449,7 +448,7 @@ class Application:
                             request = (read_record(PlannerRequest, options.request) if options.request else
                                 ordinary_request(analysis, bindings, options.preset or 'tight') if options.command == 'edit' else
                                 PlannerRequest(1, analysis_digest(analysis), 'tight', (), ()))
-                            validate_mutes(analysis, options.mutes)
+                            validate_mutes(analysis, options.mutes, request.overrides)
                             if options.preset:
                                 request = replace(request, preset=options.preset)
                             journal.write('planner-request.json', dumps(request))

@@ -13,6 +13,10 @@ from .planner import GapApproval, PlannerRequest, analysis_digest
 from .timing import ceil, floor
 
 
+class EditError(ValueError):
+    """Fixed local editorial diagnostics, without input names or content."""
+
+
 @dataclass(frozen=True)
 class Mute:
     source_id: str
@@ -22,7 +26,7 @@ class Mute:
     def __post_init__(self):
         text(self.source_id)
         if not isinstance(self.start, F) or not isinstance(self.end, F) or not 0 <= self.start < self.end:
-            raise ValueError('Mute requires ordered original-source seconds.')
+            raise EditError('Mute requires ordered original-source seconds.')
 
 
 def local_asset(name):
@@ -95,17 +99,19 @@ def ordinary_request(analysis, bindings, preset='tight'):
     return PlannerRequest(2, analysis_digest(analysis), preset, approvals, ())
 
 
-def validate_mutes(analysis, mutes):
+def validate_mutes(analysis, mutes, overrides=()):
     sources = {s.source_id: s for s in analysis.sources if s.kind == 'participant_audio'}
     previous = {}
     for mute in sorted(mutes, key=lambda m: (m.source_id, m.start)):
         source = sources.get(mute.source_id)
         if source is None or mute.end > source.duration:
-            raise ValueError('Mute participant or original-source bounds do not resolve.')
+            raise EditError('Mute participant or original-source bounds do not resolve. Check the participant ID and source seconds.')
         if ceil(mute.start * analysis.fps) + 4 > floor(mute.end * analysis.fps):
-            raise ValueError('Mute needs at least four project frames for silent interior and edge fades.')
+            raise EditError('Mute needs at least four project frames for silent interior and edge fades.')
         if mute.start <= previous.get(mute.source_id, F(-1)):
-            raise ValueError('Mute ranges must be disjoint with a gap between them.')
+            raise EditError('Mute ranges must be disjoint with a gap between them.')
+        if any(mute.start < o.end and mute.end > o.start for o in overrides):
+            raise EditError('Mute conflicts with source-time preservation. Remove the mute or explicitly revise Keep/audible first.')
         previous[mute.source_id] = mute.end
 
 

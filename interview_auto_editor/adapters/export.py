@@ -1,5 +1,6 @@
 """Experimental 26.08.2 grouped export from a reproducible approved S06 result."""
 from copy import deepcopy
+from dataclasses import replace
 import hashlib
 import json
 import math
@@ -11,6 +12,39 @@ from .kdenlive import MAX_XML, IntakeError, props, read_starter, resolve_resourc
 from ..probe import fingerprint, probe_video, probe_wav
 from ..turns import build_turns, pieces
 from ..timing import ceil
+
+
+NATIVE_OPTIONAL_GROUP_BUDGET = 128
+
+
+def native_layout(result):
+    """Bound optional fragmentation for the observed 26.08.2 editor.
+
+    Hundreds of optional short units stall native decoder initialization on a
+    complete interview, although the same unchanged sources play when merged.
+    Coalesce the shortest neighbouring units only in the original-timing path.
+    Every real shared-removal seam and every exact semantic cue survives; no
+    source time, inference setting, gain decision or approval is changed.
+    """
+    layout = build_turns(result)
+    original = layout.plan.edit_units
+    if layout.plan.tail_policy != 'original_timing_with_gaps_v2':
+        return layout, {}
+    mandatory = {0, *(out.end for _, out in layout.plan.time_map.segments())}
+    units = list(original)
+    target = max(NATIVE_OPTIONAL_GROUP_BUDGET + 1, len(mandatory))
+    while len(units) > target:
+        candidates = [(min(b-a, c-b), c-a, b) for a, b, c in zip(units, units[1:], units[2:]) if b not in mandatory]
+        if not candidates:
+            break
+        units.remove(min(candidates)[2])
+    layout = replace(layout, plan=replace(layout.plan, edit_units=tuple(units)))
+    return layout, {'native_group_policy': '26.08.2-coalesce-small-optional-units-1',
+        'original_structural_groups': len(original)-1,
+        'native_structural_groups': len(units)-1,
+        'optional_boundaries_coalesced': len(original)-len(units),
+        'mandatory_shared_seams_preserved': True,
+        'semantic_cues_preserved': len(layout.cues)}
 
 
 def put(node, name, value):
@@ -34,10 +68,10 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
         from ..picture import refine_picture_seams
         refinement = refine_picture_seams(result, picture)
         result = refinement.result
-    layout = build_turns(result)
+    layout, grouping = native_layout(result)
     plan = layout.plan
     from ..editing import validate_mutes, mute_keys
-    validate_mutes(plan.analysis, mutes)
+    validate_mutes(plan.analysis, mutes, plan.overrides)
     peak_report = None
     if cleanup is not None:
         from ..cleanup import validate_cleanup, native_keys
@@ -279,6 +313,7 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     from ..speech import atomic_new
     atomic_new(output, serialized)
     return {'compatibility': 'EXPERIMENTAL', 'adapter': '26.08.2', 'turn_algorithm': layout.algorithm,
+            **grouping,
             'participants': len(audios), 'groups': len(groups), 'output_frames': end,
             'edit_units': list(plan.edit_units), 'input_sequence_extent_delta_frames': starter.sequence_frames - starter.clip_frames,
             'excluded_mp4_audio_tracks': starter.excluded_mp4_audio,

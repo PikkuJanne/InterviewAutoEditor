@@ -6,7 +6,7 @@ from fractions import Fraction
 
 from .application import Application, RunError, RunOptions, json_text
 from .speech import atomic_new
-from .editing import Mute, local_asset
+from .editing import EditError, Mute, local_asset
 
 
 def main(argv=None):
@@ -69,6 +69,11 @@ def main(argv=None):
         return 130
     except RunError as exc:
         print('Run refused: ' + str(exc), file=sys.stderr)
+        return 1
+    except EditError as exc:
+        print('Edit refused: ' + str(exc), file=sys.stderr)
+        if args.command == 'edit':
+            print('Affected starter: ' + str(args.project.absolute()), file=sys.stderr)
         return 1
     except (OSError, ValueError, TypeError, KeyError, StopIteration, OverflowError, ZeroDivisionError) as exc:
         if args.command == 'edit':

@@ -14,12 +14,15 @@ import xml.etree.ElementTree as ET
 
 from interview_auto_editor.application import Application, RunOptions, read_record
 from interview_auto_editor.cli import main
-from interview_auto_editor.contracts import Analysis, Event, dumps
+from interview_auto_editor.contracts import Analysis, Event, Override, dumps
 from interview_auto_editor.desktop_workflow import DesktopJob, review_run
 from interview_auto_editor.editing import Mute, ordinary_request, starter_mapping, mute_keys, validate_mutes
 from interview_auto_editor.adapters.kdenlive import props, read_starter
 from interview_auto_editor.intake import inspect
 from interview_auto_editor.planner import PlannerRequest, analysis_digest, plan_pauses
+from interview_auto_editor.planner import GapApproval
+from interview_auto_editor.adapters.export import native_layout
+from interview_auto_editor.turns import build_turns
 from s12_coverage_fixture import generate
 from test_s12_coverage import example
 
@@ -27,6 +30,45 @@ FFPROBE = os.environ.get('IAE_FFPROBE') or shutil.which('ffprobe')
 
 
 class EditorChoiceTests(unittest.TestCase):
+    def test_explicit_mute_cannot_bypass_any_tracks_keep_or_audible_safeguard(self):
+        for action in ('keep','audible'):
+            with self.assertRaisesRegex(ValueError,'preservation'):
+                validate_mutes(example(),(Mute('p0',F(3),F(5)),),
+                    (Override('p1',F(4),F(6),action),))
+        validate_mutes(example(),(Mute('p0',F(3),F(5)),),
+            (Override('p1',F(5),F(6),'audible'),))
+
+    def test_native_fragmentation_coalesces_optional_units_without_touching_shared_cuts_or_cues(self):
+        a = example()
+        a = replace(a, sources=tuple(replace(s, duration=F(1200),
+            sample_count=1200*s.sample_rate,
+            channel_labels=(s.source_id,) if s.kind=='participant_audio' else ()) for s in a.sources))
+        sources={s.source_id:s for s in a.sources}
+        a = replace(a, events=tuple(Event(str(i),'p'+str(i%2),'speech',
+            (i*3+1)*sources['p'+str(i%2)].sample_rate,
+            (i*3+2)*sources['p'+str(i%2)].sample_rate,F(i*3+1),F(i*3+2),F(1),
+            'independent synthetic construction','',sources['p'+str(i%2)].channel_labels) for i in range(300)))
+        request = PlannerRequest(2,analysis_digest(a),'tight',(),())
+        result = plan_pauses(a, request)
+        original = build_turns(result)
+        layout, info = native_layout(result)
+        self.assertGreater(len(original.plan.edit_units)-1,128)
+        self.assertEqual(len(layout.plan.edit_units)-1,128)
+        self.assertEqual(layout.cues,original.cues)
+        self.assertEqual(layout.plan.time_map,original.plan.time_map)
+        self.assertEqual(layout.plan.analysis,a)
+        self.assertEqual(Application().plan(a,request)[-1],layout)
+        # Mandatory pause seams may exceed the soft structural budget. Never
+        # restore approved removals or merge media across a real shared seam.
+        approvals=tuple(GapApproval(str(i),F(i*3)+F(11,5),
+            F(i*3)+F(19,5),'construction_label','known synthetic silence') for i in range(180))
+        cut_result=plan_pauses(a,replace(request,approvals=approvals))
+        cut_layout,_=native_layout(cut_result)
+        mandatory={0,*(out.end for _,out in cut_result.plan.time_map.segments())}
+        self.assertGreater(len(mandatory),129)
+        self.assertTrue(mandatory <= set(cut_layout.plan.edit_units))
+        self.assertEqual(cut_layout.plan.time_map,cut_result.plan.time_map)
+
     def test_mutes_keep_original_coordinates_across_clip_seams(self):
         mutes = (Mute('p0', F(3), F(5)),)
         validate_mutes(example(), mutes)

@@ -35,6 +35,15 @@ Full leading/trailing sections and uncertain vocal content remain. Source media
 are never normalized or denoised again. Shared edits and named participant tracks
 remain editable in Kdenlive. A fixed native master fader provides mix headroom.
 
+For this exact editor build, the adapter coalesces the smallest optional edit
+groups toward 128 groups. Dense optional fragmentation stalled a complete
+interview's native preview; the same unchanged media played after coalescing.
+Every mandatory shared pause seam remains, even when those seams exceed the
+structural target. Complete speaker/overlap cues stay in the private report.
+This changes timeline representation only; speech/reaction settings, approved
+deletions, gain choices and source timing are unchanged. It is a representation
+target for the observed build, not a claim that 128 is a universal editor limit.
+
 Automatic pause decisions require measured digital silence on **every channel
 of every participant source**, intersected with speech/reaction protection and
 the existing conservative pacing/handle rules. This intentionally preserves
@@ -56,6 +65,10 @@ same shared time map, including edits crossing clip boundaries. Remove a mute
 and regenerate in a new folder, or disable the native effect on an editable
 copy. No participant names, recording-specific timecodes or source paths are
 embedded in detection logic.
+
+An explicit mute cannot cross a source-time Keep/audible preservation interval
+on any track. Remove the conflicting mute or deliberately revise that existing
+choice first; one scoped correction never grants wider safeguard authority.
 
 Old jobs can still be read and reviewed without an owner questionnaire. A
 changed implementation correctly refuses partial resume; regenerate with the
