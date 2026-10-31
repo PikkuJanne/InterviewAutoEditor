@@ -82,6 +82,16 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
     if len(raw) > MAX_XML or hashlib.sha256(raw).hexdigest() != plan.analysis.header.project_sha256:
         raise IntakeError('SOURCE_CHANGED_DURING_EXPORT')
     root = ET.fromstring(raw.decode('utf-8-sig'))
+    if plan.tail_policy == 'original_timing_with_gaps_v2' and starter.profile_reference and Path(starter.profile_reference).is_absolute():
+        profile_path = resolve_resource(starter.profile_reference, project.parent)
+        with profile_path.open(encoding='utf-8-sig') as profile_stream:
+            profile_text = profile_stream.read(65537)
+        if len(profile_text) > 65536:
+            raise IntakeError('PROJECT_PROFILE_SIZE_LIMIT')
+        profile_values = dict(line.split('=', 1) for line in profile_text.splitlines() if '=' in line)
+        for key, value in root.find('profile').attrib.items():
+            if key != 'description' and (key not in profile_values or int(profile_values[key]) != int(value)):
+                raise IntakeError('PROJECT_PROFILE_MISMATCH')
     nodes = {n.get('id'): n for n in root if n.get('id')}
     seq = next(n for n in root.findall('tractor') if 'kdenlive:sequenceproperties.groups' in props(n))
     base = Path(root.get('root', project.parent))
@@ -101,6 +111,8 @@ def export_project(result, project, bindings, names, output, ffprobe, *, experim
                     put(chain, key, value)
     for parent in root.iter():
         for prop in list(parent.findall('property')):
+            if prop.get('name') == 'kdenlive:docproperties.profile' and plan.tail_policy == 'original_timing_with_gaps_v2':
+                continue
             if prop.get('name') in ('kdenlive:docproperties.browserurl', 'kdenlive:docproperties.profile', 'kdenlive:docproperties.layout', 'kdenlive:documentnotes'):
                 parent.remove(prop)
     root.attrib.pop('root', None)

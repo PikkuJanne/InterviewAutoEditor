@@ -73,6 +73,7 @@ class Starter:
     excluded_mp4_audio: int
     resources: tuple[Path, ...]
     compatibility: str = 'EXPERIMENTAL'
+    profile_reference: str | None = None
 
 
 def read_starter(project, relocations=None, allow_unc=False):
@@ -231,4 +232,5 @@ def read_starter(project, relocations=None, allow_unc=False):
             raise IntakeError('UNEXPLAINED_TRACK_OR_WRAPPER_EXTENT')
     if any(ref.get('out') is not None and xml_frames(ref.get('out'), fps) + 1 != end for ref in refs[1:]):
         raise IntakeError('SEQUENCE_TRACK_CROP_UNSUPPORTED')
-    return Starter(path, fps, end, seq_end, tuple(tracks), len(linked), tuple(sorted(resources)))
+    return Starter(path, fps, end, seq_end, tuple(tracks), len(linked), tuple(sorted(resources)),
+                   profile_reference=bp.get('kdenlive:docproperties.profile') or None)

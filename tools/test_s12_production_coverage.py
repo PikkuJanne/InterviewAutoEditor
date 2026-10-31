@@ -67,6 +67,14 @@ class ProductionCommandTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             folder = Path(temp)/'fixture'
             generate(folder, FFPROBE)
+            starter=folder/'constructed-starter.kdenlive'
+            root=ET.parse(starter).getroot()
+            profile_path=folder/'native-profile'
+            profile_path.write_text('\n'.join(f'{k}={v}' for k,v in root.find('profile').attrib.items())+'\n')
+            from interview_auto_editor.adapters.export import put
+            put(next(pl for pl in root.findall('playlist') if pl.get('id')=='main_bin'),
+                'kdenlive:docproperties.profile',str(profile_path))
+            ET.ElementTree(root).write(starter,encoding='utf-8',xml_declaration=True)
             from interview_auto_editor.application import read_record
             from interview_auto_editor.intake import MappingManifest
             mapping = read_record(MappingManifest, folder/'mapping.json')
@@ -95,10 +103,13 @@ class ProductionCommandTests(unittest.TestCase):
                     p = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
                     self.assertEqual(p.returncode, 2, p.stdout+p.stderr)
                     self.assertEqual(Application.report(out).state, 'complete')
+                    inputs=json.loads((out/'inputs.json').read_text())
+                    self.assertEqual(Path(inputs['files']['project_profile']['path']),profile_path)
                     report=json.loads((out/'report.json').read_text())
                     self.assertEqual(report['export']['master_linear_bound'], .95/2)
                     exported = ET.parse(out/'project.kdenlive').getroot()
                     nodes = {n.get('id'):n for n in exported if n.get('id')}
+                    self.assertEqual(props(nodes['main_bin'])['kdenlive:docproperties.profile'],str(profile_path))
                     seq = next(n for n in exported.findall('tractor') if 'kdenlive:sequenceproperties.groups' in props(n))
                     expected_end = ceil(max(s.duration for s in a.sources)*a.fps)
                     self.assertEqual(int(seq.get('out'))+1, expected_end)

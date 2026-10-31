@@ -337,6 +337,12 @@ class Application:
                  'cleanup_request', 'ffprobe', 'ffmpeg', 'speech_model', 'reaction_model')
         files = {name: {'path': str(Path(value).resolve()), 'sha256': fingerprint(value)}
                  for name in names if (value := getattr(options, name)) is not None}
+        # A real starter may bind a custom native profile. It is an input asset,
+        # not disposable UI state; changed profiles must invalidate recovery.
+        native_profile = read_starter(options.project).profile_reference
+        if native_profile and Path(native_profile).is_absolute():
+            profile_path = resolve_resource(native_profile, options.project.parent)
+            files['project_profile'] = {'path': str(profile_path), 'sha256': fingerprint(profile_path)}
         root = Path(__file__).parent
         implementation = {p.relative_to(root).as_posix(): fingerprint(p)
                           for p in sorted(root.rglob('*.py'))}
