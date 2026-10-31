@@ -35,10 +35,18 @@ See the [desktop guide](docs/project/S11_DESKTOP.md). This is a source/packaging
 entry point; bundled-runtime and clean-install release checks remain later work.
 
 The installed primary target is independently verified as **Kdenlive 26.08.2,
-revision d4e87e4**. Its two-participant synthetic reference passed actual GUI
+revision d4e87e4**. S13 tests this exact build on the observed Windows 11/AMD64
+platform, which matches the latest stable checked on 2026-10-31. Use
+`compatibility-probe --project '<starter>' --target-kdenlive '<kdenlive.exe>' --output '<new report.json>'`
+to check structure and exact executable identity. A matching target allows
+normal export; unverified targets remain experimental, and unsafe structures
+stop export. See the [matrix](docs/COMPATIBILITY.md) and
+[upgrade/migration guide](docs/project/S13_MAINTENANCE.md).
+Its two-participant synthetic reference passed actual GUI
 open/play/group-edit/undo/save/reopen/render checks. S12 adds actual native edit,
 reopen and full-render checks on both complete real interviews. Product
-compatibility remains experimental. S12 technical delivery is complete;
+release remains experimental; tested compatibility is scoped to that exact row.
+S12 technical delivery is complete;
 independent corpus accuracy and subjective utility remain unmeasured, and the
 timed owner exercise is retired. S01 is complete: the
 owner's example media is privately indexed, and a genuine four-participant starter was saved,
@@ -68,7 +76,7 @@ These are the full product requirements. S06-S10 connect conservative approved
 pause planning, grouped export, idle cleanup and picture review. Scoped actual
 Kdenlive synthetic round trips pass; the desktop uses the same contracts and
 recovery rules. S12 full-interview technical checks pass; broader compatibility
-and clean-install release checks remain later work.
+checks follow the exact S13 matrix; clean-install release checks remain S14 work.
 Real source offsets, drift and subframe tails remain unverified. The observed
 native one-frame sequence extent change is retained explicitly in the proof.
 

@@ -7,11 +7,11 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S12",
-  "next_step": "S13",
-  "latest_handover": "docs/handovers/S12_ATTEMPT_09.md",
-  "implementation_commit": "0f30418fb789ec24b336355a78d97be2172de28c",
-  "technical_gate_status": "s12_applicable_technical_gates_pass_owner_exercise_retired_not_passed",
+  "active_step": "S13",
+  "next_step": "S14",
+  "latest_handover": "docs/handovers/S13.md",
+  "implementation_commit": "c557330758f41d72c3612ab6de2a78b95ed652d2",
+  "technical_gate_status": "s13_exact_G02_and_G10_compatibility_matrix_pass_S14_clean_install_pending",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
   "steps": [
@@ -111,7 +111,7 @@
       "title": "Verify compatibility and prepare future upgrades",
       "prerequisite": "S12",
       "brief": "docs/project/steps/S13.md",
-      "status": "pending"
+      "status": "completed"
     },
     {
       "id": "S14",
@@ -140,25 +140,27 @@
     "windows_executable_version_fields": "empty",
     "revision": "d4e87e4",
     "executable_sha256": "7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352",
-    "compatibility": "experimental_product_compatibility_synthetic_reference_checks_passed",
+    "compatibility": "tested_exact_26.08.2_d4e87e4_Windows11_NT10.0.26300_AMD64_scoped_matrix",
     "verification_step": "S01",
     "evidence": "docs/fixtures/S01_CAPTURE.md",
     "mlt": "7.43.0",
     "qt6core_dll_file_product_version": "6.11.1.0",
     "ffmpeg": "8.1.1",
     "windows_nt": "10.0.26300.0",
-    "architecture": "AMD64"
+    "architecture": "AMD64",
+    "compatibility_verification_step": "S13",
+    "compatibility_evidence": "docs/fixtures/S13_COMPATIBILITY.json"
   },
   "observed_base_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-31",
   "prerequisites_for_next_step": [
-    "Start a new owner-commanded chat for S13 only; no S13 work ran in the S12 chat. Reverify live Git checkpoint first.",
-    "Read attempt-09 handover, current state/NEXT_STEP and S13 brief. Exact production build is 26.08.2 rev d4e87e4; compatibility stays experimental until measured.",
-    "The owner timing/usefulness exercise is retired by owner, not passed. Keep times, subjective judgments and unsupported 90%/70% targets null. Never recreate the old assignment.",
-    "Preserve original media, prior attempts/jobs/study copies, analyses, six null offsets, frozen held-out registration, five positive judgments, rejected timing-unscorable excerpt, no-safe-pause finding and separate pending audible-safeguard conditions.",
-    "Use ordinary edit generation; Codex owns setup, diagnosis, native checks and recovery. Preserve ambiguous content. No broader cut/mute authority follows from the scoped correction.",
-    "S13 scope is exact compatibility/capability checks and migration guidance; no release, publishing, background next step or unsolicited owner questionnaire. Commit/push/live-verify/handover/STOP."
+    "Owner commands a new S14-only chat; first verify the live S13 documentation checkpoint, upstream and clean worktree. Failed sync keeps continuation on S13.",
+    "Read S13 handover, current exact matrix, maintenance guide and S14 brief. Tested target is only 26.08.2 rev d4e87e4 on measured Windows 11/NT10.0.26300/AMD64; latest stable matched production on 2026-10-31.",
+    "S14 owns release-candidate packaging, clean-install checks and applicable acceptance. G10 compatibility matrix passed in S13; do not mistake it for a completed clean-install/package gate. S15 owns stable integration/publishing.",
+    "Preserve prompt-free ordinary generation, retired owner exercise (not passed), null timing/subjective/90-percent/70-percent claims, originals/private evidence, six null offsets, held-out registration and separate scoped safeguards.",
+    "Codex owns setup, diagnosis, editor operation and affected validation. Never recreate routine owner annotation/two-edits/two-saves/timing/usefulness prerequisites. Ask only about an unresolved consequential editorial choice.",
+    "No blanket future-version promise or implicit plan/approval migration. Keep tested/experimental/unsupported states and source/binary/implementation-bound recovery. Commit/push/live-verify/handover/STOP before S15."
   ],
   "validation_evidence": [
     {
@@ -1603,9 +1605,28 @@
       "s12_status": "blocked",
       "s13_status": "pending",
       "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73"
+    },
+    {
+      "check": "s13_frozen_full_automated_suite",
+      "status": "passed",
+      "tests": 260,
+      "seconds": 285.047,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "applies_to_commit": "c557330758f41d72c3612ab6de2a78b95ed652d2",
+      "command": ".venv/Scripts/python.exe -B -m unittest discover -s tools -p 'test_*.py' -v",
+      "evidence": "docs/fixtures/S13_COMPATIBILITY.json"
+    },
+    {
+      "check": "s13_actual_native_G02_and_compatibility_matrix",
+      "status": "passed",
+      "applies_to_commit": "c557330758f41d72c3612ab6de2a78b95ed652d2",
+      "scope": "Exact primary/latest-stable build; fresh native group move/save/undo/quit/reopen/GUI render; final generation byte-identical to G02 input; no range or package claim.",
+      "evidence": "tests/fixtures/s13-compatibility-26.08.2/PROVENANCE.json"
     }
   ],
-  "previous_step_implementation_commit": "7d8d06dd4142f12e6da436a206964a894905d0bb",
+  "previous_step_implementation_commit": "0f30418fb789ec24b336355a78d97be2172de28c",
   "s01_evidence": {
     "capture_record": "docs/fixtures/S01_CAPTURE.md",
     "fixture_provenance": "tests/fixtures/kdenlive-26.08.2/PROVENANCE.json",
@@ -2708,6 +2729,42 @@
     ],
     "s12_complete": true,
     "next_step": "S13",
+    "sync": "verify live at checkpoint"
+  },
+  "s13_evidence": {
+    "status": "complete",
+    "implementation_commit": "c557330758f41d72c3612ab6de2a78b95ed652d2",
+    "report": "docs/fixtures/S13_COMPATIBILITY.json",
+    "guide": "docs/project/S13_MAINTENANCE.md",
+    "matrix": "docs/COMPATIBILITY.md",
+    "native_provenance": "tests/fixtures/s13-compatibility-26.08.2/PROVENANCE.json",
+    "latest_stable": "26.08.2",
+    "production_equals_latest_stable": true,
+    "declared_range": null,
+    "full_tests": {
+      "tests": 260,
+      "seconds": 285.047,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    "states_exercised": [
+      "TESTED",
+      "EXPERIMENTAL",
+      "UNSUPPORTED"
+    ],
+    "probe_schema_version": 2,
+    "fresh_native_round_trip_and_GUI_render": "passed",
+    "new_real_full_render": false,
+    "S12_native_delivery_hashes_unchanged": true,
+    "original_sources_hash_verified_unchanged": 8,
+    "prior_attempt08_hashes_verified_unchanged": 44,
+    "earlier_private_artifact_hashes_verified_unchanged": 243,
+    "six_null_offsets_preserved": true,
+    "future_canary": "26.11.70 available; not installed/run; optional non-blocking",
+    "plan_schema_migration": false,
+    "owner_exercise": "retired by owner; not passed",
+    "G10_package_clean_install": "S14; not run in S13",
     "sync": "verify live at checkpoint"
   }
 }

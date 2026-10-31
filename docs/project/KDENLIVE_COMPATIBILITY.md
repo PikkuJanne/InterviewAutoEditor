@@ -1,5 +1,12 @@
 # Kdenlive 26 and future compatibility policy
 
+S13 implements the candidate registry and exact local target identity check.
+See the [current matrix](../COMPATIBILITY.md) and
+[on-demand probe, adapter and plan maintenance guide](S13_MAINTENANCE.md).
+Only the explicitly measured build/platform is tested. Absent target identity
+remains experimental; unsafe project structures stop export. Historical plan
+adapter identifiers remain unchanged rather than silently migrating caches.
+
 ## Primary target
 Kdenlive 26.x is the product target, not a generic older XML template. In S01 record Janne's exact installed 26.x.y, platform, bundled MLT/Qt/FFmpeg information where available, and the project document version/schema features observed in files saved by that build. Do not invent a patch number or treat application version, document version and MLT version as interchangeable.
 

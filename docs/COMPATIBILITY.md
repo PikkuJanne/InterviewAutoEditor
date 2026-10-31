@@ -1,5 +1,50 @@
 # Tested compatibility
 
+## Current S13 matrix — 2026-10-31
+
+The exact measured target is **26.08.2 rev d4e87e4 / Windows 11, NT
+10.0.26300, AMD64**; MLT 7.43.0, Qt 6.11.1 and FFmpeg 8.1.1. Its executable
+SHA-256 is `7a5bbf2e7764514a863fad756fe2195779475804706a8a74e73ab922def1d352`.
+The official [download page](https://kdenlive.org/en/download/) and
+[release index](https://kdenlive.org/categories/release/) list 26.08.2 as latest
+stable at this check. Production and latest stable are the same row. No version
+range is declared, so no additional oldest-supported build is implied.
+
+| Build / structure / target | State and export behavior | Measured scope |
+|---|---|---|
+| Exact production/latest-stable build and platform above, document 1.1, simple starter, matching supplied executable | TESTED; normal export without experimental flag | Fresh S13 genuine open/play/three-member group move/save/undo/save/quit/reopen/GUI render; two-participant 25 FPS synthetic with shared cut, guides, native gain, relative media and embedded MP4 audio excluded. Prior S12 full two/four-participant native/render evidence retained. |
+| Recognized document 1.1 simple starter, target omitted or executable/platform/writer outside measured row | EXPERIMENTAL; advanced export needs explicit opt-in to new copy | Structural checks only. Future 26 patches/27+ do not inherit tested status. Ordinary conservative edit remains available without a questionnaire. |
+| Unknown document or unsafe topology, attributes, retiming, source processing or references | UNSUPPORTED; no project export, even with opt-in | Precise reason in probe; existing canonical analysis/planning and direct media analysis remain usable independently. Unsupported project timing is not inferred. |
+| Official 26.11.70 development canary | NOT RUN; no tested claim | [Official testing notice](https://kdenlive.org/news/2026/october-testing/) describes upcoming relative-path changes. Optional canary was not installed; this does not block the stable row. |
+| Other OS/build combinations, older pre-26 versions, unknown document families | No tested support | Probe decides experimental candidate vs unsupported from actual structure; there is no all-26.x or 26+ guarantee. |
+
+Evidence: [S13 provenance](../tests/fixtures/s13-compatibility-26.08.2/PROVENANCE.json),
+[render measurements](../tests/fixtures/s13-compatibility-26.08.2/render-validation.json),
+[aggregate](fixtures/S13_COMPATIBILITY.json) and [S13 handover](handovers/S13.md).
+Current implementation SHA is recorded in the handover. Earlier compatibility
+labels below are historical checkpoint snapshots, superseded only within this
+explicit tested scope. A tested format/build is not a stable product release,
+word-accuracy score, performance promise or clean-install package certification.
+
+The fresh GUI render contains 267 mapped frames with zero RGB MAE against this
+synthetic source, four zero-lag measured audio anchors, retained overlap and gain
+keys, and no audible MP4 marker. Native movement shifts all three final clips
+25 frames without changing source bounds; undo restores full semantics.
+The sanitized native copy also opens without repair or missing media.
+Automated count/fractional-FPS coverage is separate from GUI coverage: 3/6/8-track
+and fractional-FPS GUI operation, UNC and other machines remain untested.
+The two complete private interview deliveries retain their S12 evidence; S13
+does not claim a new full real-interview render or independent subjective score.
+
+Use the [probe and maintenance guide](project/S13_MAINTENANCE.md). Supply
+`--target-kdenlive` to bind the exact local binary. Without it the probe reports
+EXPERIMENTAL even when the writer string says 26.08.2. It does not operate the
+GUI. Canonical plans keep their existing exact schema/adapter identifier; no
+silent migration, version downgrade or approval rebinding occurs. G02 and S13's
+compatibility portion of G10 pass; clean-install packaging belongs to S14.
+
+## Historical S01–S12 checkpoint records
+
 Target family: Kdenlive 26.x. S01 independently confirmed the installed
 **26.08.2 - rev. d4e87e4** build on Windows NT 10.0.26300.0 / AMD64.
 MLT is 7.43.0; the Qt6Core DLL reports 6.11.1.0; bundled FFmpeg is 8.1.1.
