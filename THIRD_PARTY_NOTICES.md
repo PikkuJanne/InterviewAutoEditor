@@ -1,5 +1,44 @@
 # Model and runtime provenance
 
+## S14 portable candidate
+
+The candidate bundles unchanged model bytes and the 16 locked S04/S05 wheels
+listed below, with their complete wheel metadata/notices. `PACKAGE.json` is the
+per-file SHA256 inventory, including every native DLL/PYD and model. Exact
+wheel source bytes are pinned by both locks and the S04/S05 inventories.
+No development virtualenv, ESC-50 audio, TTS voices or private recording is
+bundled. The application's original MIT licence is unchanged.
+
+The new portable CPython **3.12.16** runtime is Astral
+[python-build-standalone release 20261026](https://github.com/astral-sh/python-build-standalone/releases/tag/20261026),
+Windows x86_64 MSVC. [The package lock](third_party/s14-runtime.json) pins the
+install-only archive and the full upstream archive used to retrieve licensing
+metadata. `third_party/python-runtime/PYTHON.json` retains the original
+component/link/licence inventory; `third_party/python-runtime/licenses/`
+retains all supplied notices (a superset including non-Windows components).
+The runtime's own `LICENSE.txt` and Tcl/Tk notices are also retained. Its native
+binaries are unmodified; omitted development/pip/debug files are documented
+in the lock. The CPython source/build scripts remain available through the
+upstream release. This differs from the development interpreter and is tested
+separately. Python, Tcl/Tk, OpenSSL, libffi, SQLite, bzip2, lzma and compression
+notices are preserved; exact applicable upstream licences are in that metadata.
+Microsoft VC runtime DLLs retain their upstream bytes/copyright; the associated
+[Microsoft runtime terms](https://visualstudio.microsoft.com/license-terms/vs2022-cruntime/)
+are retained in `third_party/python-runtime/Microsoft-Visual-Cpp-Runtime.txt`.
+
+**No Kdenlive or FFmpeg binary is redistributed.** The candidate invokes the
+user's separate local installation. Its tested decoder is Kdenlive's FFmpeg
+8.1.1 build. FFmpeg licensing depends on the actual configuration, including
+optional GPL components; see [FFmpeg's upstream licence description](https://www.ffmpeg.org/legal.html).
+Do not describe every FFmpeg build as LGPL or copy its binaries into a release
+without the corresponding notices/source/distribution review. Selecting an
+external installed decoder avoids that binary redistribution in this candidate.
+Kdenlive remains a separately installed editing prerequisite.
+
+The historical S04/S05 paragraphs below describe the original source-development
+checkpoints. Their "not bundled" statements apply to those earlier checkpoints;
+the S14 candidate inventory above describes current binary packaging.
+
 S04 uses **Silero VAD v5.1.2**, upstream revision
 `6478567951ae5c9979ad7b234185b5515f4be7a1`, unchanged ONNX bytes, under the
 MIT licence. The exact source URL, SHA256, size, interface and licence hash are

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "name": "Astral python-build-standalone CPython",
+    "version": "3.12.16",
+    "release": "20261026",
+    "platform": "x86_64-pc-windows-msvc",
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.12.16%2B20261026-x86_64-pc-windows-msvc-install_only.tar.gz",
+    "sha256": "590dfcbe3a34c07301e6332e13e2188b98655cd072b08afa45a7998dc4c22bc5",
+    "bytes": 47113364,
+    "licensing_metadata": "third_party/python-runtime/PYTHON.json",
+    "license_directory": "third_party/python-runtime/licenses",
+    "full_archive_url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.12.16%2B20261026-x86_64-pc-windows-msvc-pgo-full.tar.zst",
+    "full_archive_sha256": "37b4eb2818fee605fefa75ed156c4f2e1aaeaebaf662f9b30177c842ee16c48f",
+    "modifications": "No binary modifications. Omit pip/site-packages, ensurepip, idlelib, stdlib test directory, scripts, include/libs, PDB, PYC and LIB/H files; add the 16 locked inference wheels. Retain Tcl/Tk and upstream notices."
+  },
+  "models": {
+    "silero": "2623a2953f6ff3d2c1e61740c6cdb7168133479b267dfef114a4a3cc5bdd788f",
+    "yamnet": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de"
+  },
+  "download_policy": "Explicit setup only; builder and application operate offline",
+  "ffmpeg_policy": "Not redistributed. Use a separately installed Kdenlive toolchain. Exact build flags and hashes belong to private run identity, never a blanket LGPL assertion."
+}

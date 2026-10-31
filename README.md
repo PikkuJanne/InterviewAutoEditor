@@ -1,5 +1,12 @@
 # InterviewAutoEditor
 
+S14 adds an unsigned Windows x64 portable **1.0.0-rc.1** candidate with a bundled
+Python/Tk runtime, pinned CPU dependencies and both models. See the
+[portable quick start](docs/QUICKSTART.md), [candidate notes](docs/RELEASE_NOTES_RC1.md)
+and [rebuild procedure](docs/project/S14_PACKAGING.md). Kdenlive/FFmpeg remain a
+separate local prerequisite. Exact acceptance is recorded in the S14 handover;
+stable integration/publication belongs to S15.
+
 Create a conservative editable interview from an unedited starter in the prepared
 local environment:
 
