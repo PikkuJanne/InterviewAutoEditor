@@ -3,7 +3,7 @@
 **S12 is BLOCKED at full-interview acceptance.** The available engineering
 checks do not complete G01-G09 on real interviews. Compatibility remains
 EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4. See the
-[current acceptance report](../fixtures/S12_SYNC_FEEDBACK.md) for executed measurements and
+[current gate audit](../fixtures/S12_GATE_AUDIT.md) for executed measurements and
 the [handover](../handovers/S12.md) for the checkpoint and continuation.
 
 ## Corpus and review requirements
@@ -256,3 +256,28 @@ cause or origin certificate follows. A reliable correlation can coexist with
 unintelligible audio. Pending exact-analysis-bound audible preservation of B2
 is separate from approvals and grants no export authority. No second review
 file, fitting, offset repair, deletion or idle gain approval is introduced.
+
+
+## Attempt 06 binding and preservation audit
+
+The [current gate audit](../fixtures/S12_GATE_AUDIT.md) separates new engineering
+checks from G01–G09 real acceptance. Eight original media files and all audited
+pre-existing S12/used-cache files match before/after. Frozen core/model inventory,
+both complete analyses, six original unverified/null audio origins, feedback,
+fidelity, contrary diagnostics, immutable jobs and failed runs remain unchanged.
+Thirty-three focused regressions pass; they do not supply missing independent
+labels, reviewed source baseline or real-output acceptance.
+
+Pending request codec/digest/window checks pass; executable planning still refuses
+the original origins for both presets. Metadata-only changed-analysis and other-
+recording bindings refuse. Fifteen saved job input records reference no pending
+request. It stays unapplied/unrebound, with zero gap/idle approvals. No implicit
+certification follows from a matching digest, faithful PCM or five qualitative
+positives. Different analysis/refined cleanup requires explicit matching reviewed
+bindings. No second comparison, repair, broad replay request or connection.
+
+Production EOF integration still needs explicit implementation/tests and actual
+native evidence after actual baseline review. The known stream-0-only decoder
+and 8192-frame picture budget remain; the held-out MP4's video stream 1 is not
+silently substituted. All full/held-out acoustic/sync/editability/effort/owner
+utility gates stay unrun; repeated audits cannot replace them. Resume S12 only.
