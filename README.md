@@ -5,8 +5,11 @@ starter project into a new, editable Kdenlive project. **S10 provides a recovera
 experimental CLI** for inspection, local CPU evidence, approved shared pause
 plans, reversible cleanup and recorded-picture review. Run folders contain an
 editable project, exact plans, private manifests and review reports. See the
-[S10 quick start and recovery guide](docs/project/S10_CLI.md). Unverified real
-origins and unequal exact tails still refuse planning/export.
+[S10 quick start and recovery guide](docs/project/S10_CLI.md). S12 adds an explicit
+original-timing policy that preserves unequal source endings and marks missing
+picture; legacy schema-1 origin/exact-tail refusals remain. See the
+[original-timing guide](docs/project/S12_ORIGINAL_TIMING.md) and
+[current production audit](docs/fixtures/S12_PRODUCTION_COVERAGE.md).
 
 **S11 adds a minimal local desktop** over that same service: double-click
 [`InterviewAutoEditor.pyw`](InterviewAutoEditor.pyw) in the prepared checkout.
@@ -17,11 +20,14 @@ entry point; bundled-runtime and clean-install release checks remain later work.
 
 The installed primary target is independently verified as **Kdenlive 26.08.2,
 revision d4e87e4**. Its two-participant synthetic reference passed actual GUI
-open/play/group-edit/undo/save/reopen/render checks. Product compatibility remains
-experimental: the exporter is a bounded synthetic proof. S01 is complete: the
+open/play/group-edit/undo/save/reopen/render checks. S12 adds actual native edit,
+reopen and full-render checks on both complete real interviews. Product
+compatibility remains experimental; independent content/utility acceptance is
+still open. S01 is complete: the
 owner's example media is privately indexed, and a genuine four-participant starter was saved,
 played and reopened in Kdenlive. Read-only validation retains unverified origins
-and exact tail differences, so those real inputs still refuse export. See
+and exact tail differences; the explicit S12 policy exports them without
+certifying unknown offsets. See
 [the compatibility record](docs/COMPATIBILITY.md),
 [capture evidence](docs/fixtures/S01_CAPTURE.md) and
 [private-input observations](docs/fixtures/S01_REAL_INPUTS.md). See the
@@ -75,7 +81,7 @@ S06 adds Tight/Gentle shared pause plans, exact source/output mapping and
 source-time Keep overrides. Every deletion requires an explicit global
 removable-gap label bound to the analysis; negative model results alone never
 authorize a cut. Full exterior handles, protected content and uncertainty
-survive. Real unverified origins/unequal tails still refuse planning/export.
+survive. Legacy schema-1 requests still refuse unverified origins/unequal tails.
 See [S06 contracts, usage and limits](docs/project/S06_PLANNER.md). S06 exports
 plan data only; it does not yet create an automatically edited Kdenlive project.
 
@@ -83,7 +89,7 @@ S07 derives meaningful source-group turns and overlap boundaries, keeps minor
 backchannels as guides, and exports N+1 synchronized clips per edit group using
 the same approved shared map. Synthetic before/after projects, actual native
 saves and the GUI render pass the scoped Kdenlive 26.08.2 rev. d4e87e4 gates.
-Real source origin/tail refusals and EXPERIMENTAL compatibility remain. See
+Legacy source origin/tail refusals and EXPERIMENTAL compatibility remain. See
 [S07 usage, recovery and limits](docs/project/S07_EXPORT.md).
 
 S08 adds explicitly approved, reversible idle-microphone gain automation. It
@@ -91,7 +97,7 @@ retains protected content, shared microphones, full handles and source-time
 overrides, audits conservative mix headroom, and exports editable native Volume
 effects. Missing model activity or correlation never authorizes suppression.
 See [S08 policy, evidence and restoration](docs/project/S08_CLEANUP.md) and the
-current handover for its listening gate status. Real origin/tail refusals and
+current handover for its listening gate status. Legacy origin/tail refusals and
 EXPERIMENTAL compatibility remain.
 
 S09 observes probable recorded-picture boundaries near substantial source-group

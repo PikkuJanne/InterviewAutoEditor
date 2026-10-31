@@ -1,10 +1,20 @@
 # S12 measurement and acceptance procedure
 
+**Current production policy:** the explicit schema-2 original-timing path is
+implemented. It preserves null offsets, every source ending and marked empty
+picture coverage. See [the policy](S12_ORIGINAL_TIMING.md) and
+[current production evidence](../fixtures/S12_PRODUCTION_COVERAGE.md). Historical
+prerequisite/proposal paragraphs below describe the earlier gate; they are not a
+current claim that production export is unavailable. Original schema-1 requests,
+registration, rejected review and failed runs remain intact.
+
 **S12 is BLOCKED at full-interview acceptance.** The available engineering
 checks do not complete G01-G09 on real interviews. Compatibility remains
 EXPERIMENTAL for Kdenlive 26.08.2 rev. d4e87e4. See the
-[current gate audit](../fixtures/S12_GATE_AUDIT.md) for executed measurements and
-the [handover](../handovers/S12.md) for the checkpoint and continuation.
+[current production audit](../fixtures/S12_PRODUCTION_COVERAGE.md) for executed
+measurements and the [handover](../handovers/S12_ATTEMPT_07.md) for the checkpoint
+and continuation. The [previous gate audit](../fixtures/S12_GATE_AUDIT.md) and
+earlier handover retain the historical refusals and reviews.
 
 ## Corpus and review requirements
 

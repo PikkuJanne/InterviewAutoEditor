@@ -9,14 +9,13 @@
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
   "active_step": "S12",
   "next_step": "S12",
-  "latest_handover": "docs/handovers/S12.md",
-  "implementation_commit": "645f5c784b9ce9cb903590919873b7fe969f4b73",
-  "technical_gate_status": "blocked_s12_rejected_unintelligible_review_pair_baseline_inconsistent_diagnostics_production_coverage_and_real_acceptance_unrun",
+  "latest_handover": "docs/handovers/S12_ATTEMPT_07.md",
+  "implementation_commit": "a817f93c051bf15041da4f25efcfbcc32fdb1ecd",
+  "technical_gate_status": "s12_production_original_timing_full_picture_native_roundtrips_and_reopened_renders_pass_human_labels_noise_identity_and_utility_pending",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [
-    "Reviewed source-clock baseline acceptance remains missing. Owner reports five review pairs work and pair 2B is unintelligible/unscorable for sync; fidelity checks detect no gross extraction/resampling/AAC corruption, exact perceived cause unknown. Additional pre-existing review anchors diagnose participant_01 at -10/+32.5/+32.5 ms and participant_02 at +32.5/+32.5/+32.5 ms; prior fixed-anchor evidence remains. No origin is certified or shifted. Coverage-only v2 preview/native EOF proof still has no production planner/export integration; v1 refusals remain.",
-    "The distinct two-person recording is registered as held-out before inference and has now undergone full engineering analysis without tuning. Independent human content/removable-gap/idle labels and corresponding explicit approvals are still missing; model protection is not ground truth or silence authority.",
-    "Actual edited two-person/band native/render/noise/sync/editability/correction-effort metrics and focused owner acceptance are NOT RUN. Complete read-only analyses, native input round-trip and low-resolution zero-activity two-hour stress do not satisfy those acceptance gates."
+    "Independent sound/removable-pause/idle labels and owner correction-time/quality measurements remain incomplete. Both real native projects now pass open/play/group move/save/undo/save/close/reopen and actual installed Kdenlive render checks. Source timing/endings and every original sample/frame are retained. Human judgments and edit permissions remain separate.",
+    "A separately approved narrow two-noise edit is held because the named source is digital zero in the review interval. Only that edit awaits matching participant/source clarification. No global cut or idle-microphone permission is inferred."
   ],
   "steps": [
     {
@@ -157,18 +156,14 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-31",
   "prerequisites_for_next_step": [
-    "Resume S12 only. Source clocks, production coverage integration, independent labels and actual full/held-out utility remain blocked; S13-S15 pending.",
-    "Read current state/NEXT_STEP/full S12 handover including attempts 05/06, protocols, S03-S12 guides, S12_SYNC_FEEDBACK and S12_GATE_AUDIT reports/JSON. Resolve containing checkpoint and verify live/local/upstream clean equality and exact-SHA CI first.",
-    "Both complete interviews are available privately. New timing-provenance and marked-empty-ending owner replies are recorded and source-bound; do not ask for the folder or these answers again. Neither approves alignment/cuts/idle gains.",
-    "Owner feedback is received for the existing one-file review: 1/3/4/5/6 work, 2B unintelligible. Preserve both raw replies and source bindings. Pair 2 is rejected and timing-unscorable; no second comparison or whole-recording certificate. Independent native/continuous-resample checks agree exactly; AAC matches closely, exact perceived cause unknown. Preserve pending exact-analysis-bound audible request as unapplied data, never an origin/cut/idle approval.",
-    "Offline v2 coverage previews preserve every original source/sample/event/null offset and propose 51093/47005-frame ends. They are NOT EditPlans or Application/desktop inputs. All v1 origin/exact-tail refusals remain.",
-    "Synthetic N2 mono 192 kHz EOF native/render proof passes scoped checks; raw PCM unity and pixel identity are explicitly false under channel/image conversion. Native extra extent frame is distinct from 301 rendered frames. No real stereo output acceptance follows.",
-    "Retain prior 13-anchor findings and new fixed review-position diagnostics: participant_01 -10/+32.5/+32.5 ms inconsistent, participant_02 three +32.5 ms offsets. Do not discard the early disagreement, infer zero, certify drift or repair sources. Review actual baseline/quality evidence explicitly before production EOF integration.",
-    "Preserve frozen held-out configuration/exposure, no fitting, every protected event/exterior handle/shared mic/map, original picture timing, source-clock Keep/audible, refined cleanup binding and headroom.",
-    "Preserve original files/caches/immutable jobs and failed evidence. Offline helper adds no core module or job/config identity change. Use new destinations for changed code/options; no implicit rebinding or repairs.",
-    "Complete independent held-out labels and valid real editable exports; measure actual retention/approval/noise/sync/editability/performance/manual and assisted correction time and focused owner acceptance. 90%/70% unmeasured. At most one comparison file, no new connection.",
-    "Attempt 06 confirms codec/digest matching but execution still refuses the original origins. Pending audible request remains unapplied/unrebound; fifteen saved job inputs do not reference it. Retained read-only audit and 33 focused regressions are engineering evidence, not reviewed baseline, labels or real acceptance. Do not repeat evidence-only audits as a substitute for the missing review.",
-    "Run applicable gates, update state/NEXT_STEP/S12 handover, commit/push/verify, verbose handover and STOP. No S13."
+    "Resume S12 only; do not start S13. Read the current attempt-07 handover, production audit, original-timing guide, original gate/review history and protocols. Verify live/local/upstream SHA and clean status.",
+    "Both original interviews, already levelled WAVs and native starters are present. Do not ask for them, repeat six-excerpt review, create another comparison file or connection, or tune settings on the held-out recording.",
+    "Explicit production schema-2 requests preserve unchanged analyses/null offsets and all original timing/endings. Schema 1 still refuses unknown origins/unequal exact coverage. Preserve old commits, initial held-out registration, old jobs, failed launches/renders, approvals and caches.",
+    "Use latest private ready-run ledgers for exact commands, inputs and approval bindings. Outputs are new immutable folders; no old job is rebound. Existing exact audible request was validated and preserved in the new explicitly selected policy without broadening authority.",
+    "Both actual Kdenlive 26.08.2 rev. d4e87e4 native round trips and post-reopen full renders pass. Preserve exact ready/native outputs and evidence. After any approved correction use a new run, rerun affected checks and retain failed attempts; Codex owns all setup, commands, editor interaction and evidence.",
+    "Retain five old qualitative positives, rejected unintelligible/unscorable 2B, two new section-specific positive sync replies and all prior inconsistent numerical engineering diagnostics. Do not infer numerical human offsets or a full-recording sync certificate.",
+    "Only the narrow approved noise edit waits for matching source information. No pause cuts or idle mutes are approved. Reuse supplied human observations and request only genuinely missing labels/owner utility judgments; never show model cut/mute proposals as independent evidence.",
+    "Measure actual manual and assisted correction time, including review/approval entry, and owner quality on the prepared local task. 90%/70% remain unset until measured. Mark S12 complete only when required gates pass; push and verify exact remote SHA."
   ],
   "validation_evidence": [
     {
@@ -2535,5 +2530,56 @@
     "attempt_06_full_suite_rerun": false,
     "attempt_06_new_Kdenlive_operations": false,
     "attempt_06_new_comparison_files": 0
+  },
+  "attempt_07_production_coverage": {
+    "report": "docs/fixtures/S12_PRODUCTION_COVERAGE.md",
+    "metrics": "docs/fixtures/S12_PRODUCTION_COVERAGE.json",
+    "first_implementation_commit": "9af678916f1dd42545330904229f7f8519826d71",
+    "current_implementation_commit": "a817f93c051bf15041da4f25efcfbcc32fdb1ecd",
+    "normal_command_exports_complete": 2,
+    "original_sources_hashes_unchanged": 8,
+    "older_private_artifacts_hashes_unchanged": 243,
+    "original_analysis_and_null_offsets_preserved": true,
+    "held_out_tuning": false,
+    "new_comparison_media_files": 0,
+    "new_connections": 0,
+    "full_tests": {
+      "tests": 243,
+      "skips": 0,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 425.675
+    },
+    "full_picture_stream_index": 1,
+    "recorded_picture_coverage_complete_both": true,
+    "unobserved_recorded_frames": 0,
+    "actual_installed_Kdenlive_render_successes": 4,
+    "original_clock_audio_max_error_PCM16_LSB": 0.5,
+    "all_source_and_output_gray_frame_positions_match": true,
+    "gray_comparison_resolution": [
+      64,
+      36
+    ],
+    "mix_overload_sample_values": 0,
+    "cut_approvals": 0,
+    "idle_mute_approvals": 0,
+    "removed_frames": 0,
+    "existing_audible_safeguard_strictly_validated_and_applied_without_scope_expansion": true,
+    "narrow_noise_correction_held_for_matching_source": true,
+    "pause_automation_target": null,
+    "effort_reduction_target": null,
+    "s12_complete": false,
+    "exact_current_native_open_play_group_move_save_undo_close_reopen_pass": 2,
+    "exact_current_post_reopen_full_renders_pass": 2,
+    "native_group_members_moved": {
+      "band_001": 5,
+      "two_person_002": 3
+    },
+    "original_source_and_output_bounds_restored_after_native_edit": true,
+    "human_labels_complete": false,
+    "owner_correction_times_measured": false,
+    "full_real_pipeline_peak_memory_measured": false,
+    "original_picture_and_render_pts_duration_mismatches": 0,
+    "numerical_human_offsets_and_precision": null
   }
 }

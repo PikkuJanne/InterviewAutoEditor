@@ -1,5 +1,9 @@
 # S12 attempt 06 — binding, preservation and remaining acceptance gates
 
+**Historical checkpoint.** The subsequent S12 production implementation and
+current gate results are in [the production audit](S12_PRODUCTION_COVERAGE.md).
+This attempt-06 record and its measurements remain preserved.
+
 **S12 remains BLOCKED; no S13.** This checkpoint adds read-only evidence and
 focused regression results. Implementation remains `645f5c784b9ce9cb903590919873b7fe969f4b73`. No product policy,
 source baseline, approval, source media or real job changes.

@@ -1,5 +1,12 @@
 # Canonical edit plan and invariants
 
+S12 adds the explicit `original_timing_with_gaps_v2` policy through schema-2
+planner requests/results. It preserves unknown offsets and each source's full
+end, with explicit empty coverage and one shared removal map. Schema-1 behavior
+and refusals remain. See [the current policy](S12_ORIGINAL_TIMING.md) for exact
+source/EOF/profile/headroom semantics; the v1 rules below remain historical and
+executable, rather than being silently relaxed.
+
 The plan is versioned application data, not Kdenlive XML. Establish schema v1 in S03/S06 and validate every exported plan. Fields below are required concepts; choose an explicit machine schema and documented migrations during implementation.
 
 S03 establishes the executable typed v1 records and strict JSON codec in

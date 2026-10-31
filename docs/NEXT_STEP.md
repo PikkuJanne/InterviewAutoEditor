@@ -1,76 +1,49 @@
-# Resume S12 — validated bindings, rejected pair and real acceptance gates
+## What I fixed
 
-**S12 BLOCKED; no S13.** Both complete interviews and the previous owner replies
-remain available. The next required gate is an actual source-bound reviewed
-baseline consistent with the retained observations. Read-only audits cannot
-certify that baseline, supply independent labels or enable real export.
+Both interviews now generate new editable projects with their original timing
+and full endings. Audio continues after the picture ends, and the empty picture
+is marked. Original recordings, old runs and review decisions remain recoverable.
+S12 is still open; do not start S13.
 
-Branch `codex/kdenlive26-overhaul`; implementation `645f5c784b9ce9cb903590919873b7fe969f4b73`.
-Starting checkpoint `294586484b8b6594838e9004006b7cc5ef85b309` verified clean and equal to live/upstream.
-Resolve this handover's containing checkpoint from Git history and reverify live.
+Read [state](project/STATE.json), [current handover](handovers/S12_ATTEMPT_07.md),
+[production audit](fixtures/S12_PRODUCTION_COVERAGE.md),
+[policy](project/S12_ORIGINAL_TIMING.md), the S12 brief and both execution/GitHub
+protocols. Earlier audits remain historical evidence. Implementation:
+`a817f93c051bf15041da4f25efcfbcc32fdb1ecd`.
 
-- [State](project/STATE.json), [complete handover](handovers/S12.md), including attempts 05/06.
-- [Current gate audit](fixtures/S12_GATE_AUDIT.md) and [measurements](fixtures/S12_GATE_AUDIT.json).
-- [Unchanged feedback/fidelity report](fixtures/S12_SYNC_FEEDBACK.md) and [evidence](fixtures/S12_SYNC_FEEDBACK.json).
-- [Source coverage](project/S12_SOURCE_COVERAGE_PROPOSAL.md), [procedure](project/S12_VALIDATION.md), [brief](project/steps/S12.md).
+## What I tested
 
-Owner reports **1/3/4/5/6 work; 2B unintelligible**. Preserve both exact replies,
-all six source-bound selection windows, five qualitative positives and rejected,
-timing-unscorable pair 2. Native PCM and continuous-versus-guarded resampling
-match exactly; AAC reproduction has 44.602707 dB SNR and >0.99998 correlations.
-Exact perceived cause remains unknown. These are retained attempt-05 measurements,
-not fresh listening or a source-quality certificate. No second comparison,
-repair, implicit certification, repeated broad listening request or connection.
+Both normal exports and full renders from Kdenlive 26.08.2 rev. d4e87e4 completed.
+They retain every participant sample within normal PCM rounding, every recorded
+picture frame in order and marked empty endings, with no mix overload. All 243
+automated checks passed without skips.
 
-Preserve all prior thirteen-anchor evidence and participant_01's
-**-10/+32.5/+32.5 ms** inconsistency / participant_02's three **+32.5 ms** offsets.
-All six original audio origins remain **unverified**, with **null offsets**.
-Do not infer zero, drift or correction. Volume-leveling provenance and marked
-empty-ending preference approve neither alignment nor cuts/idle gains.
+Both real projects opened and played. Band five-clip and two-person three-clip
+group move/save/undo/save checks passed. Both saved projects closed and reopened
+intact, remained editable, and passed full renders after reopening. Delivery
+copies are in `.local/S12/attempt-07/band_001-ready-native/` and
+`.local/S12/attempt-07/two_person_002-ready-native/`, each `project.kdenlive`.
 
-The pending exact-analysis-bound source-time **audible** request passes strict
-codec/digest/window checks, but execution still refuses origins for Tight/Gentle.
-Changed-analysis and cross-recording bindings refuse; fifteen saved job inputs do
-not reference it. It stays **unapplied/unrebound**, with zero gap/idle approvals
-and no export authority. Changed analysis/refined cleanup needs explicit matching
-reviewed bindings. No real job is resumed or altered.
+## What I need from Janne
 
-Attempt 06: **33 focused tests, zero skips, 31.453 s**; eight original media
-files and 243 pre-existing S12/cache files match before/after; 22 frozen core
-modules, two model hashes and eight configured assets match. Nine historical
-manifests, four complete current runs, two failed runs and nine genuine-artifact
-hashes validate. The first audit's error-message assertion failed while the codec
-correctly refused; failure/snapshots and successful new-destination rerun remain.
-Full suite remains retained attempt-03 **237 tests, zero skips, 254.017 s**.
+The narrow noise approval is retained, but the named source is silent at that
+second. The pending source-identity question affects only that correction.
+Positive timing judgments grant no pause cuts or microphone mutes.
 
-Coverage-only v2 previews reproduce **51093/47005** shared frames and preserve all
-samples/events/null offsets. They refuse as EditPlans. Production EOF integration
-is still absent and original v1 refusals remain. Retained actual synthetic mono
-N2/192 kHz Kdenlive 26.08.2 rev. d4e87e4 open/play/group-move/undo/save/reopen/render
-is representation evidence only; raw PCM unity/pixel identity are explicitly false.
-No new actual GUI operation or real editable output. The known stream-0-only /
-8192-frame picture-analysis limits remain, including held-out MP4 video stream 1.
+The local band usefulness task uses the privately recorded short source window
+and separate manual/assisted copies. Exact files, timecodes and questions are in
+`.local/S12/attempt-07/HANDOVER_PRIVATE.md`. Record actual correction seconds including review, a
+personally safe pause's original timecode and Janne's quality judgment. Missing
+sound/pause/idle labels stay unknown; do not use model detections as listening
+evidence or repeat the old six-pair review.
 
-Remaining: actual reviewed source baseline; explicit production EOF integration;
-independent protected-content/removable-gap/idle labels and approvals; accepted
-real editable outputs and full/held-out retention/noise/sync/editability/
-performance/correction-effort/owner utility. 90%/70% remain unmeasured. Preserve
-original picture timing, protected/uncertain content, exterior handles, shared
-maps/mics, source-time overrides, exact refined cleanup binding, headroom,
-frozen held-out configuration/exposure and recoverable jobs/caches.
+## What happens next
 
-```powershell
-git log -1 --format=%H -- docs/handovers/S12.md
-python tools/verify_checkpoint.py --repo .
-```
+Codex records human replies privately, applies only a
+source-matched approved correction and reruns affected checks. S12 and the
+90%/70% targets stay unclaimed until measured. Do not ask for the existing files,
+tune the held-out recording, create another comparison/connection or start S13.
+Resolve the handover's containing checkpoint with Git and verify live branch
+equality and clean status before resuming.
 
-Final chat records actual pushed SHA/live/upstream equality and a clean worktree.
-Starting checkpoint and implementation exact-SHA CI have zero workflows/runs/
-checks/statuses: **not configured**, not green. Failed sync/configured CI requires
-resuming S12. S13-S15 remain pending.
-
-Ready-to-paste continuation prompt:
-
-> Resume S12 only in InterviewAutoEditor on codex/kdenlive26-overhaul. Read AGENTS.md, STATE.json, NEXT_STEP.md, the complete S12 handover including attempts 05/06, execution/GitHub protocols, S03-S12 guides, S12_SYNC_FEEDBACK.md/JSON and S12_GATE_AUDIT.md/JSON. Implementation remains 645f5c784b9ce9cb903590919873b7fe969f4b73; resolve the handover-containing checkpoint and verify live/local/upstream equality, clean tracked work and exact-SHA CI first. Preserve five positive excerpt judgments (1/3/4/5/6), rejected unintelligible/timing-unscorable pair 2B, exact private feedback/selection/fidelity bindings, the original thirteen-anchor evidence and conflicting six-window diagnostics (-10/+32.5/+32.5 ms for participant_01; three +32.5 ms for participant_02). All six audio origins remain unverified with original null offsets. Keep the pending exact-analysis-bound source-time audible request unapplied: codec/digest checks pass but execution validation still refuses origins; metadata-only and cross-recording stale bindings refuse. No implicit certification, repair, rebinding, second comparison, repeated broad listening request or new connection. Preserve original picture timing, protected/uncertain content, full exterior handles, shared maps/mics, exact refined cleanup binding, headroom, frozen held-out configuration/exposure and recoverable jobs/caches. Continue only remaining S12 gates: actual reviewed source baseline, explicit production EOF integration, independent labels/approvals, then real editable-output/full/held-out retention/noise/sync/editability/performance/correction-effort/owner utility acceptance. Do not turn repeated engineering audits into acceptance. Update state/NEXT_STEP/S12 handover, commit/push/verify, verbose handover and STOP. No S13.
-
-Paused with S12 blocked. The next thread must resume S12.
+Commit/push status: verify live at checkpoint; final chat records the exact SHA.
