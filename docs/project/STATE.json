@@ -7,11 +7,11 @@
   "production_kdenlive_build": "26.08.2",
   "development_branch": "codex/kdenlive26-overhaul",
   "historical_baseline_commit": "0c445a400c96b1f85f17fcb0ee8916d283e22d6f",
-  "active_step": "S14",
+  "active_step": "S15",
   "next_step": "S15",
   "latest_handover": "docs/handovers/S14.md",
   "implementation_commit": "94e2b290ca30e9e87ae815379d0e0738f8720d5c",
-  "technical_gate_status": "s14_unsigned_portable_candidate_clean_install_and_primary_native_technical_acceptance_pass_S15_pending",
+  "technical_gate_status": "S15_in_progress_preparing_stable_integration_and_final_assets",
   "synchronization": "must_verify_live_at_each_checkpoint",
   "blockers": [],
   "steps": [
@@ -125,7 +125,7 @@
       "title": "Integrate publish and close the project",
       "prerequisite": "S14",
       "brief": "docs/project/steps/S15.md",
-      "status": "pending"
+      "status": "in_progress"
     }
   ],
   "release": {
@@ -155,17 +155,10 @@
   "inventory": "docs/project/BOOTSTRAP_INVENTORY.md",
   "updated_date": "2026-10-31",
   "prerequisites_for_next_step": [
-    "Owner commands S15 only in a new chat. First verify the containing S14 documentation checkpoint against local HEAD, upstream and LIVE GitHub SHA with a clean worktree; failed sync resumes S14.",
-    "Read S14 handover, readiness/evidence, quick start, build guide, S15 brief and execution/GitHub/release protocols. Accepted candidate source is 94e2b290ca30e9e87ae815379d0e0738f8720d5c. Local candidate ZIPs are not a published release.",
-    "S15 owns normal main integration/review/protection checks, final assets from the actual release commit, affected validation, intended unused stable tag, publication and verification. No main merge/tag/release ran in S14; never force-push or replace tags.",
-    "Exact TESTED editor row remains 26.08.2 rev d4e87e4 / Windows 11 NT10.0.26300 / AMD64. Fresh package-clean Sandbox NT10.0.26100 passes setup/CPU/desktop but its editor registry remains EXPERIMENTAL. Recheck latest stable at release; no blanket future support.",
-    "Portable candidate bundles CPython 3.12.16/Tk 8.6.15, 16 locked wheels and unchanged models. Kdenlive/FFmpeg and Microsoft C++ x64 runtime are separate prerequisites. Preserve notices, exact locks/hashes and honest unsigned status; no paid signing requirement.",
-    "Cache location identity is now the stable absolute logical path for MSIX first creation; source/tool/model/profile/code fingerprints and cache-entry integrity remain. Changed implementation still refuses old partial resume; use a new destination, never rewrite historical manifests.",
-    "Final 267-test bundled-runtime Sandbox suite has zero skips/failures/errors; actual final-candidate primary open/play/group-move/save/undo/quit/reopen/GUI render and 11 independent render checks pass. Both final complete-interview regenerations match S12 timeline/effect semantics and retain native/full-render hashes.",
-    "Preserve originals/private evidence, six null offsets, held-out registration, separate scoped safeguards and the authorized full mute. Normal conservative generation stays prompt-free; no detector tuning or broader editorial authority follows.",
-    "Timed owner exercise and mandatory subjective pace/usability/usefulness sign-off remain retired by owner, not passed. Unknown seconds/quality and unsupported 90-percent/70-percent targets stay null. Codex owns setup/repair/retries/editor operation; ask only for a consequential unresolved editorial choice.",
-    "Carry known small-viewport optional Keep/Restore control clipping and unqualified wider DPI/accessibility/other Windows/editor states into release notes unless repaired/validated. CLI/native restoration remains available. Do not ask for an owner study to cover the limitation.",
-    "Commit/push/live-verify/CI/handover/STOP after S15. Finish with real release URLs/SHAs and a maintenance continuation, not an invented S16 or automatic post-release work."
+    "S15 is explicitly authorized in the current chat; prior synchronized S14 checkpoint is 4d1dfeff6e092d02e3453109d354a3587dbdc753.",
+    "Complete permitted main integration, final builds/affected validation, unused v1.0.0 tag/publication, remote asset verification and final handover; do not claim completion from prepared files.",
+    "Preserve exact compatibility, unchanged application/runtime/models, private originals/evidence, null offsets and scoped safeguards. Retired owner exercise is not passed; unknown quality/effort stays unmeasured.",
+    "After final synchronized S15 checkpoint STOP. Maintenance is owner-directed; no invented S16 or background work."
   ],
   "validation_evidence": [
     {

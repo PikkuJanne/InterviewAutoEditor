@@ -1,6 +1,6 @@
 # Tested compatibility
 
-## Current S13 matrix — 2026-10-31
+## Current matrix — rechecked for S15 on 2026-10-31
 
 The exact measured target is **26.08.2 rev d4e87e4 / Windows 11, NT
 10.0.26300, AMD64**; MLT 7.43.0, Qt 6.11.1 and FFmpeg 8.1.1. Its executable
@@ -9,6 +9,11 @@ The official [download page](https://kdenlive.org/en/download/) and
 [release index](https://kdenlive.org/categories/release/) list 26.08.2 as latest
 stable at this check. Production and latest stable are the same row. No version
 range is declared, so no additional oldest-supported build is implied.
+The S15 check of the official release index still lists 26.08.2 as newest
+stable. S14 additionally passed the final packaged ordinary output's actual
+primary open/play/group move/save/undo/quit/reopen/GUI render. Clean Windows
+Sandbox NT10.0.26100 passed setup, CPU generation and desktop operation, while
+its editor registry remains EXPERIMENTAL. This does not extend the TESTED row.
 
 | Build / structure / target | State and export behavior | Measured scope |
 |---|---|---|
@@ -41,7 +46,9 @@ Use the [probe and maintenance guide](project/S13_MAINTENANCE.md). Supply
 EXPERIMENTAL even when the writer string says 26.08.2. It does not operate the
 GUI. Canonical plans keep their existing exact schema/adapter identifier; no
 silent migration, version downgrade or approval rebinding occurs. G02 and S13's
-compatibility portion of G10 pass; clean-install packaging belongs to S14.
+compatibility portion of G10 pass; completed clean-install evidence is in
+[S14 acceptance](fixtures/S14_RC_VALIDATION.json). Stable release verification
+is recorded separately by S15; earlier stage descriptions below are historical.
 
 ## Historical S01–S12 checkpoint records
 

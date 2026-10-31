@@ -1,10 +1,11 @@
-# InterviewAutoEditor Windows candidate
+# InterviewAutoEditor 1.0.0 for Windows
 
-This unsigned **1.0.0-rc.1** portable candidate runs locally on Windows AMD64.
+This unsigned **1.0.0** portable release runs locally on Windows AMD64.
 Use the exact tested Kdenlive **26.08.2 rev d4e87e4** installation. Other
 installations remain experimental until tested. See `docs/COMPATIBILITY.md`.
-This candidate is prepared for S14 validation; see the checkpoint evidence for
-the actual acceptance result. Stable publication belongs to S15.
+The S14 candidate passed clean Windows setup and native editor validation.
+Stable assets identify their exact integrated source commit in `PACKAGE.json`.
+See `RELEASE_NOTES.md` and `docs/project/S15_RELEASE.md` for the release scope.
 
 ## Start
 
@@ -94,6 +95,10 @@ and compatibility guides included under `docs/project/`.
   changed. Delete a private cache only when its reuse is no longer wanted.
 
 ## Expected limits
+
+On small screens, maximize the desktop. Lower optional Keep/Restore controls
+can remain clipped; use the CLI source-time overrides or native Kdenlive
+restoration described above. Wider DPI and accessibility states are unqualified.
 
 Automatic pauses require exact digital silence on every participant channel,
 plus all content/handle safeguards. Quiet room tone and uncertain noises stay.

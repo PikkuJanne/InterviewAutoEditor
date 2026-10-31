@@ -14,8 +14,8 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-NAME = 'InterviewAutoEditor-1.0.0-rc.1-windows-x64'
 STAMP = (2026, 10, 31, 0, 0, 0)
+VERSIONS = {'1.0.0-rc.1': 'docs/RELEASE_NOTES_RC1.md', '1.0.0': 'docs/RELEASE_NOTES.md'}
 
 
 def digest(path):
@@ -91,7 +91,10 @@ def deterministic_zip(directory, output, prefix=''):
                 archive.writestr(info, p.read_bytes(), compresslevel=9)
 
 
-def build(runtime, wheels, speech, reaction, output):
+def build(runtime, wheels, speech, reaction, output, version='1.0.0-rc.1'):
+    if version not in VERSIONS:
+        raise ValueError('Unsupported release version')
+    package_name = 'InterviewAutoEditor-' + version + '-windows-x64'
     lock = json.loads((ROOT / 'third_party/s14-runtime.json').read_text())
     checked(runtime, lock['runtime']['sha256'])
     models = ((speech, 'silero_vad.onnx', lock['models']['silero']),
@@ -108,7 +111,7 @@ def build(runtime, wheels, speech, reaction, output):
     tracked = subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).decode().split('\0')
     output.mkdir(parents=True, exist_ok=False)
     with tempfile.TemporaryDirectory() as temporary:
-        root = Path(temporary) / NAME
+        root = Path(temporary) / package_name
         root.mkdir()
         runtime_files(runtime, root / 'runtime')
         for entry in entries:
@@ -130,9 +133,9 @@ def build(runtime, wheels, speech, reaction, output):
         for source, dest in [('packaging/portable.py', 'app/portable.py'),
             ('packaging/InterviewAutoEditor.cmd', 'InterviewAutoEditor.cmd'),
             ('packaging/InterviewAutoEditor-cli.cmd', 'InterviewAutoEditor-cli.cmd'),
-            ('docs/QUICKSTART.md', 'QUICKSTART.md'), ('docs/RELEASE_NOTES_RC1.md', 'RELEASE_NOTES.md')]:
+            ('docs/QUICKSTART.md', 'QUICKSTART.md'), (VERSIONS[version], 'RELEASE_NOTES.md')]:
             put(root, dest, (ROOT / source).read_bytes())
-        inventory = {'schema_version': 1, 'candidate': NAME, 'source_commit': commit,
+        inventory = {'schema_version': 1, 'candidate': package_name, 'version': version, 'source_commit': commit,
             'platform': 'Windows AMD64; only recorded Windows 11 build tested',
             'signed': False, 'runtime': lock['runtime'],
             'wheels': [{'file': e['wheel'], 'sha256': e['sha256']} for e in entries],
@@ -140,14 +143,14 @@ def build(runtime, wheels, speech, reaction, output):
             'external_cpp_prerequisite': lock['external_cpp_prerequisite'],
             'files': {p.relative_to(root).as_posix(): digest(p) for p in sorted(root.rglob('*')) if p.is_file()}}
         put(root, 'PACKAGE.json', (json.dumps(inventory, indent=2, sort_keys=True) + '\n').encode())
-        deterministic_zip(root, output / (NAME + '.zip'), NAME + '/')
+        deterministic_zip(root, output / (package_name + '.zip'), package_name + '/')
         # Complete tracked source snapshot, independently reviewable/rebuildable.
         source = Path(temporary) / 'source'
         source.mkdir()
         for name in tracked:
             if name:
                 put(source, name, (ROOT / name).read_bytes())
-        deterministic_zip(source, output / (NAME + '-source.zip'))
+        deterministic_zip(source, output / (package_name + '-source.zip'))
     artifacts = {p.name: digest(p) for p in sorted(output.glob('*.zip'))}
     (output / 'SHA256SUMS.txt').write_text(''.join(f'{sha}  {name}\n' for name, sha in artifacts.items()), encoding='ascii')
     print(json.dumps({'source_commit': commit, 'artifacts': artifacts}, indent=2))
@@ -157,4 +160,6 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     for arg in ('runtime', 'wheels', 'speech', 'reaction', 'output'):
         p.add_argument('--' + arg, type=Path, required=True)
+    p.add_argument('--version', choices=sorted(VERSIONS), default='1.0.0-rc.1',
+                   help='Explicit stable release identity; default preserves the S14 candidate command')
     build(**vars(p.parse_args()))

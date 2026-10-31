@@ -1,5 +1,49 @@
 # InterviewAutoEditor
 
+Create a new editable Kdenlive interview from one unedited Zoom MP4 and N
+aligned, already cleaned participant PCM WAV files. The Windows AMD64 portable
+**1.0.0** release bundles Python/Tk and both CPU models; processing stays local.
+
+Download the full portable ZIP and verify its hash from the
+[v1.0.0 release](https://github.com/PikkuJanne/InterviewAutoEditor/releases/tag/v1.0.0).
+Extract everything, then double-click `InterviewAutoEditor.cmd`. Use
+`InterviewAutoEditor-cli.cmd --self-check` to verify files and local CPU setup.
+Kdenlive/FFmpeg and Microsoft's Visual C++ x64 v14 runtime are separate
+prerequisites. The archive is unsigned; paid signing is not required.
+
+Read the [quick start](docs/QUICKSTART.md), [release notes](docs/RELEASE_NOTES.md),
+[exact compatibility matrix](docs/COMPATIBILITY.md) and
+[offline rebuild/maintenance guide](docs/project/S15_RELEASE.md).
+
+The output has one video track and N named audio tracks, useful aligned groups,
+original media in the bin and reversible native effects. MP4 audio is excluded.
+Keep the immutable generated run and edit a separate Kdenlive copy. Global
+pause removal requires exact all-participant silence and every protection
+check; uncertain audio and overlap remain. Full leading/trailing coverage and
+recorded Zoom picture timing survive. Cleaned files are not processed again.
+
+Tested editor: **Kdenlive 26.08.2 rev d4e87e4 / Windows 11 NT10.0.26300 /
+AMD64**, rechecked against the latest stable release on 2026-10-31. Other
+builds remain experimental until tested; arbitrary edited starters refuse.
+Zero safe cuts is a valid conservative result. Lower optional Keep/Restore
+controls can be clipped on small screens; CLI/native restoration is available.
+Broader DPI/accessibility and numerical accuracy/effort are unmeasured. The
+timed owner exercise/usefulness sign-off is retired, not passed.
+
+Source development needs Python 3.12 and the explicit pinned local assets
+described in the guides. Run `python -B -m unittest discover -s tools -p 'test_*.py' -v`;
+model/decoder integration tests require the configured assets and never download
+them. See [state](docs/project/STATE.json), [continuation](docs/NEXT_STEP.md) and
+the latest handover before maintenance. Preserve the original [MIT licence](LICENSE)
+and [third-party notices](THIRD_PARTY_NOTICES.md). Keep recordings, transcripts,
+reports, private paths and credentials out of public Git and support uploads.
+
+## Historical development notes
+
+The following stage descriptions are retained as history. References to pending
+S13/S14 work or experimental product releases describe those checkpoints;
+the current release, compatibility scope and recovery instructions are above.
+
 S14 adds an unsigned Windows x64 portable **1.0.0-rc.1** candidate with a bundled
 Python/Tk runtime, pinned CPU dependencies and both models. See the
 [portable quick start](docs/QUICKSTART.md), [candidate notes](docs/RELEASE_NOTES_RC1.md)
