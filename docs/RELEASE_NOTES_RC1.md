@@ -19,8 +19,9 @@ The exact build/acceptance record is in the S14 handover and package inventory.
   AMD64/NT 10.0.26300. Latest stable matched this patch at the S13 check. Unknown
   targets are experimental; unsafe structures refuse. No promised version range.
 
-Kdenlive and its FFmpeg/ffprobe are an explicit separate prerequisite, not
-redistributed in this archive. All app/runtime/model hashes, source commit,
+Kdenlive and its FFmpeg/ffprobe, plus Microsoft's Visual C++ x64 v14 runtime,
+are explicit separate prerequisites. No editor/decoder or additional Microsoft
+installer/system DLL is copied into this archive. All app/runtime/model hashes, source commit,
 licences/notices and a complete tracked source archive accompany the candidate.
 The dependency/model versions remain fixed; the standalone CPython patch differs
 from the development runtime and receives its own package validation.

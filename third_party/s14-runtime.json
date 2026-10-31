@@ -18,6 +18,17 @@
     "silero": "2623a2953f6ff3d2c1e61740c6cdb7168133479b267dfef114a4a3cc5bdd788f",
     "yamnet": "10c95ea3eb9a7bb4cb8bddf6feb023250381008177ac162ce169694d05c317de"
   },
+  "external_cpp_prerequisite": {
+    "name": "Microsoft Visual C++ x64 v14 Redistributable",
+    "redistributed": false,
+    "tested_host_version": "14.44.35211.0",
+    "clean_sandbox_installer_version": "14.51.36247.0",
+    "url": "https://download.visualstudio.microsoft.com/download/pr/ebdab8e5-1d7b-4d9f-a11b-cbb1720c3b12/843068991DAAA1F73AD9F6239BCE4D0F6A07A51F18C37EA2A867E9BECA71295C/VC_redist.x64.exe",
+    "sha256": "843068991daaa1f73ad9f6239bce4d0f6a07a51f18c37ea2a867e9beca71295c",
+    "bytes": 18731856,
+    "official_setup": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist",
+    "policy": "Separate official prerequisite; no system DLL copying or installer redistribution. Install only when missing, under Microsoft's own terms."
+  },
   "download_policy": "Explicit setup only; builder and application operate offline",
   "ffmpeg_policy": "Not redistributed. Use a separately installed Kdenlive toolchain. Exact build flags and hashes belong to private run identity, never a blanket LGPL assertion."
 }

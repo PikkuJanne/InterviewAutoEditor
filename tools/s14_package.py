@@ -137,6 +137,7 @@ def build(runtime, wheels, speech, reaction, output):
             'signed': False, 'runtime': lock['runtime'],
             'wheels': [{'file': e['wheel'], 'sha256': e['sha256']} for e in entries],
             'models': lock['models'], 'external_prerequisite': 'Separately installed Kdenlive and its FFmpeg/ffprobe; no binaries redistributed',
+            'external_cpp_prerequisite': lock['external_cpp_prerequisite'],
             'files': {p.relative_to(root).as_posix(): digest(p) for p in sorted(root.rglob('*')) if p.is_file()}}
         put(root, 'PACKAGE.json', (json.dumps(inventory, indent=2, sort_keys=True) + '\n').encode())
         deterministic_zip(root, output / (NAME + '.zip'), NAME + '/')

@@ -36,6 +36,11 @@ copied. No code signing is claimed or required. `-I -B` starts bundled Python
 without system/user Python path configuration or new bytecode caches; the
 bootstrap supplies package-relative model/Tcl paths and a private per-user cache.
 User `IAE_...` tool/model/cache choices retain their documented behavior.
+The Microsoft Visual C++ x64 v14 runtime is a separate prerequisite. A fresh
+Sandbox exposed the missing `msvcp140.dll` dependency; the launcher now names it
+clearly. Its official tested installer is pinned in `third_party/s14-runtime.json`
+but not redistributed. Installing that prerequisite can need administrator
+permission; the portable app itself does not. No host system DLL is copied.
 
 The ZIP uses sorted names, fixed timestamps, regular-file modes and deflate
 level 9. Two builds from the same source/binary inputs must have identical

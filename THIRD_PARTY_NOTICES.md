@@ -25,6 +25,12 @@ notices are preserved; exact applicable upstream licences are in that metadata.
 Microsoft VC runtime DLLs retain their upstream bytes/copyright; the associated
 [Microsoft runtime terms](https://visualstudio.microsoft.com/license-terms/vs2022-cruntime/)
 are retained in `third_party/python-runtime/Microsoft-Visual-Cpp-Runtime.txt`.
+The model runtime also needs Microsoft's separately installed Visual C++ x64
+v14 prerequisite (`msvcp140.dll`). The tested official installer version/hash
+is recorded in the S14 lock, but neither that installer nor a copied system
+DLL is redistributed. Microsoft's
+[redistribution terms](https://learn.microsoft.com/en-us/cpp/windows/redistributing-visual-cpp-files)
+are separate from permission to install/use its official prerequisite.
 
 **No Kdenlive or FFmpeg binary is redistributed.** The candidate invokes the
 user's separate local installation. Its tested decoder is Kdenlive's FFmpeg

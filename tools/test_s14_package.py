@@ -4,12 +4,24 @@ from pathlib import Path
 import tarfile
 import tempfile
 import unittest
+from unittest.mock import patch
 import zipfile
 
 from s14_package import checked, deterministic_zip, digest, put, runtime_files, safe_name, wheel_files
 
 
 class PackageTests(unittest.TestCase):
+    def test_missing_cpp_prerequisite_has_a_specific_diagnostic(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('portable', Path(__file__).resolve().parents[1] / 'packaging/portable.py')
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with patch.object(module.os, 'name', 'nt'), patch('ctypes.WinDLL', create=True, side_effect=OSError('missing')):
+            with self.assertRaisesRegex(RuntimeError, 'MICROSOFT_CPP_RUNTIME_MISSING'):
+                module.check_cpp_runtime()
+        with patch.object(module.os, 'name', 'nt'), patch('ctypes.WinDLL', create=True, return_value=object()):
+            module.check_cpp_runtime()
+
     def test_archive_paths_cannot_escape_or_address_windows_devices(self):
         for name in ('../outside', '/outside', 'C:/outside', 'a\\b', 'a/../b', 'a/b.', 'a/b ', '.', 'a/CON.txt'):
             with self.subTest(name=name), self.assertRaises(ValueError):

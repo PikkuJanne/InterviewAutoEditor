@@ -36,8 +36,19 @@ def verify():
     return manifest
 
 
+def check_cpp_runtime():
+    if os.name == 'nt':
+        import ctypes
+        try:
+            ctypes.WinDLL('msvcp140.dll')
+        except OSError:
+            raise RuntimeError('MICROSOFT_CPP_RUNTIME_MISSING') from None
+
+
 def main():
     configure()
+    if sys.argv[1:] and sys.argv[1] in ('--self-check', '--desktop', 'edit', 'run', 'analyze'):
+        check_cpp_runtime()
     if sys.argv[1:] == ['--self-check']:
         manifest = verify()
         from interview_auto_editor.speech import SileroCPU
@@ -66,13 +77,13 @@ def main():
 if __name__ == '__main__':
     try:
         raise SystemExit(main())
-    except Exception:
+    except Exception as error:
+        message = ('Microsoft Visual C++ x64 runtime is missing. Install the official prerequisite '
+            'listed in QUICKSTART.md, then retry.' if str(error) == 'MICROSOFT_CPP_RUNTIME_MISSING' else
+            'Portable startup failed. Verify the archive checksum and extract a fresh copy. See QUICKSTART.md.')
         if sys.argv[1:] == ['--desktop']:
             import tkinter.messagebox
-            tkinter.messagebox.showerror('InterviewAutoEditor',
-                'Startup failed. Run InterviewAutoEditor-cli.cmd --self-check. '
-                'See QUICKSTART.md for local setup and recovery.')
+            tkinter.messagebox.showerror('InterviewAutoEditor', message)
         else:
-            print('Portable startup failed. Verify the archive checksum and extract a fresh copy. '
-                  'See QUICKSTART.md.', file=sys.stderr)
+            print(message, file=sys.stderr)
         raise SystemExit(1)
